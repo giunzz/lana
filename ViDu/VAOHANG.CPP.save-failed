@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+using namespace std;
+long n, a[(long)1e8+9], y[(long)1e8+9], d=0;
+void sx(int d, int c){
+    int i,j,x;
+    i=d;
+    j=c;
+    x=a[(i+j)/2];
+    do {
+        while (a[i]<x) i++;
+        while (a[j]>x) j--;
+        if (i<=j) swap(a[i],a[j]), i++, j--;
+    }
+    while (i<=j);
+    if (j>d) sx (d,j);
+    if (i<c) sx (i,c);
+}
+void sx1(int d, int c){
+    int i,j,x;
+    i=d;
+    j=c;
+    x=a[(i+j)/2];
+    do {
+        while (y[i]<x) i++;
+        while (y[j]>x) j--;
+        if (i<=j) swap(y[i],y[j]), i++, j--;
+    }
+    while (i<=j);
+    if (j>d) sx1(d,j);
+    if (i<c) sx1(i,c);
+}
+int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    freopen("VAOHANG.INP","r",stdin);
+    freopen("VAOHANG.OUT","w",stdout);
+    cin >> n;
+    for (int i=1 ; i<= n ; i++) cin >> a[i];
+    for (int i=1 ; i<= n ; i++) cin >> y[i];
+    sx(1,n);
+    sx1(1,n);
+    for (int i=1 ; i<= n ; i++){
+         d=max(d,(a[i]-y[i]));
+    }
+    cout << d;
+    return 0;
+}

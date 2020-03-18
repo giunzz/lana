@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<ctime>
+using namespace std;
+
+const int  maxn = 1e6 +2;
+int n , w[maxn] , h[maxn] , mh1 = -1 , mh = -1 ;
+long long  mw = 0 , ans = 0 , ans1; 
+
+int main(){
+    freopen("photo.inp","r",stdin);
+    //freopen("photo\\test1\\photo.inp", "r", stdin);
+    freopen("photo.out","w",stdout);
+    scanf("%d", &n);
+    for (int i = 1 ; i <= n ; i++) {
+        scanf("%d%d", &w[i] , &h[i]);            
+        mw += w[i];
+        if( mh < h[i] ) mh1 = mh , mh = h[i];
+        else if( mh1 < h[i] )  mh1 =  h[i];               
+    }
+    for  ( int i = 1 ; i <= n ; i++ ) {
+        ans = ( mw - w[i] ) * mh ; 
+        ans1 = (mw - w[i]) * mh1;
+        if ( h[i] != mh ) printf("%lld ", ans); 
+        else printf("%lld ", ans1);
+    }   
+   // fprintf(stderr, "%d ms", clock());
+   // fprintf(stdout, "%d", clock());
+ return 0;
+}
