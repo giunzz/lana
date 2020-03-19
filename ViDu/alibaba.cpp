@@ -5,7 +5,7 @@ using namespace std;
 long n , d , t;
 int main(){
     ios_base::sync_with_stdio(0);
-    cin.tie(0);
+    //cin.tie(0);
     //freopen("alibaba.inp","r",stdin);
     //freopen("alibaba.out","w",stdout);   
     freopen("input.txt","w",stdin);
