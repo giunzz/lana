@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+/*#include<bits/stdc++.h>
 
 using namespace std;
 
@@ -27,4 +27,31 @@ int main()
     }
     cout << ans1 << " " << b;
     return 0;
+}*/
+
+#include <bits/stdc++.h>
+using namespace std;
+int t, a, n, b = INT_MIN;
+
+void sol(int i){
+    int s = t / i + 1 - i;
+    if (s % 2 || s < 0) return;
+    else if (i > (b - a + 1)) {
+        a = s / 2;
+        b = a + i - 1;
+    }
+}
+
+int main(){
+    freopen("arrt.inp", "r", stdin);
+    freopen("arrt.out", "w", stdout);
+    cin >> t;
+    t *= 2;
+    for (int i = 1; i * i <= t; i++){
+        if (!(t % i)){
+            sol(i);
+            sol (t / i);
+        }
+    }
+    cout << a << " " << b;
 }
