@@ -13,6 +13,7 @@ int main(){
     cin >> n >> d ;
     if (n % 3 != 0 ) cout <<-1;
     else {
+        
         t = n / 3;
         cout << t-d << " " << t << " " << t+d;
     }

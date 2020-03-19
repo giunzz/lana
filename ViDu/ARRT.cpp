@@ -51,6 +51,7 @@ int main(){
         if (!(t % i)){
             sol(i);
             sol (t / i);
+            
         }
     }
     cout << a << " " << b;
