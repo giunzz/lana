@@ -401,7 +401,7 @@ struct bigint
  
 int main()
 {    //freopen("input.txt","r",stdin);
-    //freopen("output.txt","w",stdout);   
+    freopen("output.txt","w",stdout);   
    
     bigint first, second, temp;
     first = 1;

@@ -1,4 +1,4 @@
-#include<stdio.h>
+/*#include<stdio.h>
 #include<algorithm>
 using namespace std;
 
@@ -39,5 +39,17 @@ int main()
     sort(a+1,a+1+n);
     ans[0] = -1;
     quaylui(1);
+    return 0;
+}*/
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int a[6]={1,2,3,4,5,6};
+    cout << a[4] << " " << 4[a] << endl ;
+    cout << *(a+4) << " " << *(4+a);
     return 0;
 }

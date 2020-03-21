@@ -39,10 +39,10 @@ for (int i=0;i<=300; i++)
 }
 int x=random(640-100), y=random(480-100),x1,y1;
 do{
-  putimage(x,y,p,1); /* in bóng màu đỏ với phép XOR (vẽ bóng trên màn hình chỗ nào đã có màu lần trước thì màu đó được in đè lên bóng do ta sử dụng xor); */
-  delay(100); // tạm dừng
-  putimage(x,y,p,1); /* in với phép XOR một lần nữa (xoá bóng vừa in trên màn hình do bóng lần trước in là màu đỏ lại in lại màu đỏ nhưng theo phép xor thì 1 XOR 1 =0 tức là 2 màu đỏ đè lên nhau sẽ ra màu nền cũ trước đó) */
-  do{ /* mục đích của vòng do while này nhằm không cho quả bóng hiển thị ngoài vùng màn hình (0,0,540,340) và tạo giá trị toạ độ ngẫu nhiên mới cho bóng */
+  putimage(x,y,p,1); /* in b�ng m�u d? v?i ph�p XOR (v? b�ng tr�n m�n h�nh ch? n�o d� c� m�u l?n tru?c th� m�u d� du?c in d� l�n b�ng do ta s? d?ng xor); */
+  delay(100); // t?m d?ng
+  putimage(x,y,p,1); /* in v?i ph�p XOR m?t l?n n?a (xo� b�ng v?a in tr�n m�n h�nh do b�ng l?n tru?c in l� m�u d? l?i in l?i m�u d? nhung theo ph�p xor th� 1 XOR 1 =0 t?c l� 2 m�u d? d� l�n nhau s? ra m�u n?n cu tru?c d�) */
+  do{ /* m?c d�ch c?a v�ng do while n�y nh?m kh�ng cho qu? b�ng hi?n th? ngo�i v�ng m�n h�nh (0,0,540,340) v� t?o gi� tr? to? d? ng?u nhi�n m?i cho b�ng */
   x1 =x+random(50) -25;
   y1 =y+random(50) -25;
  } while ( (x1<0) || ( x1> (639-100) ) || (y1<0) || (y1>(439-100) ) ) ;

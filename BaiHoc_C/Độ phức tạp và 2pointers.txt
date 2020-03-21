@@ -1,0 +1,22 @@
+độ phức tạp
+(như tên)
+big omega (tốt nhất)
+big thelta (medium)
+big O (trường hợp xấu nhất)**
+##Big O
+O(1): hằng số (nhập, xuất, xét, truy địa chỉ,....) ko phụ thuộc dữ liệu đầu vào
+O(logc(N)): vòng lặp với số bước logcN (<=1e18)
+O(sqrt(N)): vòng lặp số bước căn N (<= 1e9)
+O(N): 1 vòng lặp số bước = N (<= 1e7)
+O(NlogN): số ước NlogN (<= 1e6)
+**thuật KMP
+O(N^c): số bước lũy thừa (c = 2 -> <= 5e3, c = 3 -> <= 3e2) 
+O(c^N): xấu nhất (c = 2 -> <= 16)
+O(N!): xấu xấu nhất :)) (<= 8)
+Quy tắc tính toán:
+O(k.f(N)) = O(f(N)) k nhỏ hằng số
+O(f(N) + g(N)) = O(max(f(N), g(N)))
+O(f(N).g(N)) = O(f(N)).O(g(N))
+**1s máy tính thực hiện được khoảng 1e7 phép tính 
+**ko sử dụng quá 1e8 phần tử lưu trữ (tốt nhất 1e7)
+224B codeforces
