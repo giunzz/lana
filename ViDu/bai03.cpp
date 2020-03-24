@@ -30,9 +30,9 @@ double dodai2(int o1,int p1 , int o2 , int p2){
 int main()
 {
     giun;
-    //freopen("input.inp", "r", stdin) , freopen("output.txt", "w", stdout);
-    freopen("bai06.inp", "r", stdin);
-    freopen("bai06.out", "w", stdout);
+    freopen("input.inp", "r", stdin) , freopen("output.txt", "w", stdout);
+    //freopen("bai03.inp", "r", stdin);
+    //nnfreopen("bai03.out", "w", stdout);
     cin >> n ;
     for (int i = 1 ; i <= n ; i++ ) cin >> a[i].fi >> a[i].se;
     for (int i = 1 ; i < n ; i++)
@@ -48,20 +48,20 @@ int main()
     meo = meo / (float ) 2 , ans = meo;
     for (int i = 1 ; i < n ; i++)
     {
-        double r = dodai(a[i].fi , a[i].se);
+        double r = dodai(a[i].fi , a[i].se) / (float ) 2;
         if ( r > meo ) s.push_back(i);
+        //cerr << r << " ";
     }
+    
     for (int i = 0 ; i < (int)s.size() ; i++ )
     {
         dt = abs ( ( (m2-m1) * (g1+g2) + (m2 - a[s[i]].fi ) * ( g2 + a[s[i]].se ) + (a[s[i]].fi - m1 ) * ( g1 + a[s[i]].se ) ) / 2 );
         ac = dodai2 (m1 , g1 , a[s[i]].fi, a[s[i]].se);
         cb = dodai2 (m2 , g2 , a[s[i]].fi, a[s[i]].se);
-        ans = max ( ans , (meo*ac*cb) / (4 *dt ) );
+        ans = max ( ans ,  (meo*ac*cb) / (4 *dt ) );
     }
     cout << fixed << setprecision(3) << ans ;
+    //cerr << clock() << " ms";
     return 0;
 }
-
-
-
 

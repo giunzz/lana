@@ -1,100 +1,68 @@
-/*#include<stdio.h>
-#include<algorithm>
+#include<bits/stdc++.h>
+
 using namespace std;
 
-int n , a[22] , ans[22] = {0} , k , d[(int(1e6+8))] = {0};
+#define fi first
+#define se second
+#define dd pair<int , int >
+#define giun ios_base::sync_with_stdio(0) , cin.tie(0);
 
-void xuat()
+int n , m1 , m2 , g1 , g2;
+dd a[1007];
+double dt , meo = -2.00 , ans = -2.00 , ac , cb;
+vector <int> s;
+
+double len(dd x, dd y) 
 {
-    for (int i= 1 ; i <= k ; i++) printf("%d ",ans[i]);
-    printf("\n");
+    return ( sqrt( pow(x.fi - y.fi , 2) + pow (x.se - y.se , 2) ) );
 }
 
-void quaylui(int vt)
+double dodai(int o1,int p1 )
 {
-    if( vt == k + 1) xuat();
-    else 
-    {
-        for (int i = 1 ; i <= n ; i++)
-        {
-            if (ans[vt - 1] <= a[i]) 
-            {
-                ans[vt] = a[i];
-                quaylui(vt+1);
-            }
-        }
-    }
+    return (sqrt( pow(o1-0,2) + pow (p1-0,2)));
 }
+
+double dodai2(int o1,int p1 , int o2 , int p2){
+    return (sqrt( pow(o1-o2,2) + pow (p1-p2,2)));
+}
+
 
 int main()
 {
-    freopen("input.inp","r",stdin);
-    freopen("output.txt","w",stdout);
-    scanf("%d %d",&n,&k);
-    for (int i = 1 ; i <= n ; i++) 
+    giun;
+    //freopen("input.inp", "r", stdin) , freopen("output.txt", "w", stdout);
+    freopen("bai03.inp", "r", stdin);
+    freopen("bai03.out", "w", stdout);
+    cin >> n ;
+    for (int i = 1 ; i <= n ; i++ ) cin >> a[i].fi >> a[i].se;
+    for (int i = 1 ; i < n ; i++)
     {
-        scanf("%d",&a[i]);
-        d[a[i]]++;
+        for (int j = i+1 ; j <= n ; j++)
+            if ( meo < len (a[i] , a[j]) ) 
+            {
+                m1 = a[i].fi , m2 = a[j].fi ;
+                g1 = a[i].se , g2 = a[j].se ;
+                meo = len (a[i] , a[j]);
+            }
     }
-    sort(a+1,a+1+n);
-    ans[0] = -1;
-    quaylui(1);
+    meo = meo / (float ) 2 , ans = meo;
+    for (int i = 1 ; i < n ; i++)
+    {
+        double r = dodai(a[i].fi , a[i].se) / (float ) 2;
+        if ( r > meo ) s.push_back(i);
+        cerr << r << " ";
+    }
+    cerr << endl;
+    for (int i = 0 ; i < (int)s.size() ; i++ ) cerr << s[i] << " ";
+    cerr << endl;
+    for (int i = 0 ; i < (int)s.size() ; i++ )
+    {
+        dt = abs ( ( (m2-m1) * (g1+g2) + (m2 - a[s[i]].fi ) * ( g2 + a[s[i]].se ) + (a[s[i]].fi - m1 ) * ( g1 + a[s[i]].se ) ) / 2 );
+        ac = dodai2 (m1 , g1 , a[s[i]].fi, a[s[i]].se);
+        cb = dodai2 (m2 , g2 , a[s[i]].fi, a[s[i]].se);
+        ans = max ( ans ,  (meo*ac*cb) / (4 *dt ) );
+        cerr << endl;
+    }
+    cout << fixed << setprecision(3) << ans ;
     return 0;
-}*/
-  
-/*
-
- */
-#include <bits/stdc++.h>
-
-using namespace std;
-
-const string task = "task";
-const int N = 1e4 + 10;
-const int inf = 1e9 + 7;
-
-#define FileOpen freopen ((task + ".inp").c_str(), "r", stdin);	freopen ((task + ".out").c_str(), "w", stdout);
-#define fi first
-#define se second
-#define dd pair < double, double >
-
-int n;
-dd a[N];
-double ans = 1.0 * inf;
-
-dd GetMidPoint(dd x, dd y) {
-    dd res = dd(((x.fi + y.fi) / 2), ((x.se + y.se) / 2));
-    return (res);
-}
-
-double sqr(double x) {return (x * x);}
-
-double DistanceOf2Points(dd x, dd y) {
-    return (sqrt(sqr(x.fi - y.fi) + sqr(x.se - y.se)));
-}
-
-bool Check(double R, dd O) {
-    for (int i = 1; i <= n; i++) {
-        double r = DistanceOf2Points(a[i], O);
-        if (r > R) return (false);
-    }
-    return (true);
-}
-
-int main() {
-    FileOpen;
-    cin >> n;
-    for (int i = 1; i <= n; i++) {
-        cin >> a[i].fi >> a[i].se;
-    }
-
-    for (int i = 1; i <= n - 1; i++) {
-        for (int j = i + 1; j <= n; j++) {            
-            dd midPoint = GetMidPoint(a[i], a[j]);
-            double d = DistanceOf2Points(a[i], midPoint);
-            bool res = Check(d, midPoint);
-            if (res) ans = min(ans, d);
-        }
-    }
-    cout << fixed << setprecision(3) << ans << endl;
 }
