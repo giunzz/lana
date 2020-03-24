@@ -1,8 +1,7 @@
-#a = int(input())
-#b = int(input())
-#print("Kiểu dữ liệu:", type(a), type(b))
-#print("Sum = ", a+b)
+a = int(input())
+b = int(input())
+print("Kiểu dữ liệu:", type(a), type(b))
+print("Sum = ", a+b)
+print("MŨ = ", a**b)
+print("Hệ cơ số 2 = ", bin(a));
 
-In [1]: import tkinter as tk
-
-In [2]: tk.Frame(tk.Tk()).mainloop()

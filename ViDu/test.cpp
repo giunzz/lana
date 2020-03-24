@@ -41,15 +41,60 @@ int main()
     quaylui(1);
     return 0;
 }*/
+  
+/*
 
-#include<bits/stdc++.h>
+ */
+#include <bits/stdc++.h>
 
 using namespace std;
 
-int main()
-{
-    int a[6]={1,2,3,4,5,6};
-    cout << a[4] << " " << 4[a] << endl ;
-    cout << *(a+4) << " " << *(4+a);
-    return 0;
+const string task = "task";
+const int N = 1e4 + 10;
+const int inf = 1e9 + 7;
+
+#define FileOpen freopen ((task + ".inp").c_str(), "r", stdin);	freopen ((task + ".out").c_str(), "w", stdout);
+#define fi first
+#define se second
+#define dd pair < double, double >
+
+int n;
+dd a[N];
+double ans = 1.0 * inf;
+
+dd GetMidPoint(dd x, dd y) {
+    dd res = dd(((x.fi + y.fi) / 2), ((x.se + y.se) / 2));
+    return (res);
+}
+
+double sqr(double x) {return (x * x);}
+
+double DistanceOf2Points(dd x, dd y) {
+    return (sqrt(sqr(x.fi - y.fi) + sqr(x.se - y.se)));
+}
+
+bool Check(double R, dd O) {
+    for (int i = 1; i <= n; i++) {
+        double r = DistanceOf2Points(a[i], O);
+        if (r > R) return (false);
+    }
+    return (true);
+}
+
+int main() {
+    FileOpen;
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        cin >> a[i].fi >> a[i].se;
+    }
+
+    for (int i = 1; i <= n - 1; i++) {
+        for (int j = i + 1; j <= n; j++) {            
+            dd midPoint = GetMidPoint(a[i], a[j]);
+            double d = DistanceOf2Points(a[i], midPoint);
+            bool res = Check(d, midPoint);
+            if (res) ans = min(ans, d);
+        }
+    }
+    cout << fixed << setprecision(3) << ans << endl;
 }
