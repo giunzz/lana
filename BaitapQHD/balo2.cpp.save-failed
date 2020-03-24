@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+const int maxn = 1e3 + 5;
+const int maxm = 2*1e6 + 5;
+int w[maxn], v[maxn], n, m, rs;
+vector<vector<int>> s(maxm, vector<int> (maxn, 0));
+
+void enter(){
+    cin >> n >> m;
+    for (int i = 1; i <= n; i++)
+        cin >> v[i];
+    for (int i = 1; i <= n; i++)
+        cin >> w[i];
+}
+
+int optimize(){
+    for (int i = 1; i <= n; i++){
+        for (int j = 0; j <= m; j++){
+            s[i][j] = s[i - 1][j];
+            if (w[i] <= j && s[i][j] < s[i - 1][j - w[i]] + v[i])
+                s[i][j] = s[i - 1][j - w[i]] + v[i];
+        }
+    }
+    return s[n][m];
+}
+
+int main(){
+    freopen("balo2.INP", "r", stdin);
+    //freopen("balo2.OUT", "w", stdout);
+    enter();
+    rs = optimize();
+    cout << rs;
+    /*for (int j = m; j >= 0; j--){
+        for (int i = n; i >= 0; i--)
+            cout << s[i][j] << " ";
+        cout << endl;
+    }*/
+    return 0;
+}

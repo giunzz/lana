@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+#include <fstream>
+
+using namespace std;
+
+ifstream fin;
+ofstream fout;
+static int dt[100000];
+int n;
+
+long int zdist(){
+    int i = 0, money = 0, first_index_owe, sum_owe = 0, step = 0;
+    while (i < n)
+        if (dt[i] > 0){    //Được nhận tiền
+            money+= dt[i];
+            if ((money > abs(sum_owe)) && (sum_owe != 0)) //Đủ tiền trả nợ cho tất cả khoản nợ trước đó
+            {
+                money += sum_owe; //Trả nợ
+                sum_owe = 0;
+                step += 2*(i - first_index_owe);
+            }
+            i++, step++;
+        }
+        else if (money > abs(dt[i])){    //Đủ tiền trả nợ cho người hiện tại
+            money += dt[i];
+            step++, i++;
+        }
+        else{
+            if (sum_owe == 0)  //Ko đủ tiền trả nợ nhưng ko có khoảng nợ trước đó hay còn gọi bắt đầu ghi nợ
+            {
+                sum_owe = dt[i];
+                first_index_owe = i; //Người đầu tiên trong danh sách thiếu nợ
+            }
+            else //Cộng dồn nợ
+                sum_owe += dt[i];
+            step++, i++;
+        }
+    return step;
+}
+
+void ipdt(){
+    int i = 0;
+    while(fin >> dt[i]) i++;
+}
+
+int main(){
+    fin.open("zdist.INP");
+    fout.open("zdist.OUT");
+    fin >> n;
+    ipdt();
+    fout << zdist();
+    fin.close();
+    fout.close();
+    return 0;
+}

@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1565711671 source:c:\users\minhq\onedrive\máy tính\quanlidiem\main.cpp
+	<iostream>
+	<fstream>
+	<cstring>
+	<iomanip>
+

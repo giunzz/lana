@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1562067459 source:c:\users\minhq\onedrive\máy tính\c1\main.cpp
+	<iostream>
+	<fstream>
+	<cmath>
+

@@ -1,0 +1,6 @@
+chuong trinh cham bai tu dong
+themis
+2 thu muc: hocsinh -> tenem -> file.cpp
+	  test -> thu muc tenbai -> testi -> 2 file INP va OUT
+hocsinh ---> thi sinh
+test ---> phai

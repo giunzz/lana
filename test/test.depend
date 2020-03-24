@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1570204062 source:c:\users\minhq\onedrive\máy tính\test\main.cpp
+	<iostream>
+
+1565706361 source:c:\users\minhq\desktop\test\main.cpp
+	<iostream>
+	<fstream>
+
+1580833720 source:c:\users\minhq\onedrive\máy tính\c++\test\main.cpp
+	<bits/stdc++.h>
+
