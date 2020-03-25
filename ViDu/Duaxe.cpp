@@ -2,8 +2,8 @@
 
 using namespace std;
 
-long t, l , m , n  , a[1000007] ;
-long r = 0 , ans = 0;
+long l , m , n  , a[(int) 1e6 + 7] ;
+long r = 0 , ans = 0 , t = 0;
 void timchao(long k)
 {
     m = k ,  r = k ,   l = k;
@@ -11,7 +11,8 @@ void timchao(long k)
     while ( ( r+1 <= n ) && ( a[r] < a[r+1] ))  r++;
 	for (m = l+1 ; m <= r-1 ; m++) 
         if (a[m] < a[m-1]  && a[m] <a[m+1] ) break;
-	
+    cerr << l << " " << m << " " << r << endl ;
+    //cerr << a[l] << " " <<a[m] << " " << a[r] << endl;
 }
 int main()
 {
@@ -26,9 +27,9 @@ int main()
     while (r < n)
     {
         timchao (r+1);
-        t = (a[r] - a[m]) - (a[l] -a[m]);
-        if (t < 0 ) t = 0;
-        ans += t; 
+        t = (a[r] - a[m]) - (a[l] - a[m]);
+        if (t<0) t = 0;
+	    ans =+ t;
     }
     cout << ans;
     return 0;
