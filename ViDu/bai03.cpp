@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+/*#include<bits/stdc++.h>
 
 using namespace std;
 
@@ -63,5 +63,15 @@ int main()
     cout << fixed << setprecision(3) << ans ;
     //cerr << clock() << " ms";
     return 0;
-}
+}*/
 
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    freopen("input.inp", "r", stdin);
+    freopen("output.txt", "w", stdout);
+}

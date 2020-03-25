@@ -40,50 +40,35 @@ int main()
 }*/
 
 #include <bits/stdc++.h>
-
+#define ii int
+#define ll long long
+#define cii const int
+#define cll const long long
+#define opt ios_base::sync_with_stdio(0); cin.tie(0)
+#define fin(tenfile) freopen(tenfile, "r", stdin)
+#define fout(tenfile) freopen(tenfile, "w", stdout)
+#define in(variable) cin >> variable
+#define out(variable) cout << variable << " "
+#define outl(variable) cout << variable << "\n"
+#define err(variable) cerr << variable << " "
+#define errl(variable) cerr << variable << "\n"
+#define loop(variable, valuegan, valuebehonbang) for(long long variable = valuegan; variable <= valuebehonbang; variable++)
+#define loopd(variable, valuegan, valuelonhonbang) for(long long variable = valuegan; variable >= valuelonhonbang; variable--)
+#define loopdk(variable, valuegan, conditions, thaydoi) for(long long variable = valuegan; conditions; thaydoi) 
+#define fi first
+#define se second
+#define pp(kieu) pair<kieu, kieu>
+#define vec vector<long long>
+#define vec2 vector<vector<long long>>
+#define vecite vector<long long>::iterator
 using namespace std;
-int ans[107] = {0}, n, s, k;
-vector<int> tt;
-
-int sol(int vt){
-    vector<int> res = tt;
-    int dem = 0;
-    while((int)res.size() - 1){
-        if (!(s - ++dem)){
-            cerr << vt << " ";
-            dem = 0;
-            res.erase(res.begin() + vt);
-        }
-        else
-        {
-            vt = (vt + 1) % res.size();
-            //cerr << res[vt] << endl;
-        }
-    }
-    //for (int i = 0 ; i < (int)res.size() ; i++ ) cerr << res[i] << " ";
-    return res[0];
-}
+pp(float) a[107];
 
 int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    //freopen("input.inp", "r", stdin);
-    //freopen("output.txt", "w", stdout);
-    freopen("bai06.inp", "r", stdin);
-    freopen("bai06.out", "w", stdout);
-    cin >> n >> s >> k;
-    for (int i = 1; i <= n; i++) tt.push_back(i);
-    for (int i = 0; i < n; i++)
-    {
-        ans[i + 1] = sol(i);
-    }
-    cerr << endl;
-    for (int i = 1 ; i <= n ; i++) cerr << ans[i] << " ";
-    cout << ans[1] << endl;
-    for (int i = 1; i <= n; i++){
-        if (ans[i] == k) {
-            cout << i;
-            return 0;
-        }
-    }
+    opt;
+    fin("input.inp");
+    fout("output.txt");
+    in(n);
+    loop(i, 1, n) in(a[i].fi), in(a[i].se);
+    
 }
