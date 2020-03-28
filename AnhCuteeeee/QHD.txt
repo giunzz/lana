@@ -1,0 +1,16 @@
+radical
+bottom up - top down
+4 buoc qhd
+- dinh nghia bai toan con
+- giai bai toan con co so
+- tim dap an bai toan
+- lap cong thuc
+LIS
+F[i] la do dai day con ko giam ma BAT BUOC a[i] la phan tu cuoi cua day
+Phan tu thu 1 -> F[1] = 1
+
+
+Cho m?t chu?i s g?m các ký t? latin, in thu?ng. Hãy tìm 1 chu?i con d?i x?ng dài nh?t.
+Ð?nh nghia 1 chu?i con st là khi chu?i st du?c t?o thành t? chu?i s b?ng cách xóa di 0, 1 ho?c nhi?u ký t?.
+Ví d?:
+s = "cancauco" => "canac", "cacac"

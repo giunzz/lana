@@ -1,68 +1,58 @@
-#include<bits/stdc++.h>
-
+#include<iostream>
+#include<string>
+#define giuncute freopen("input.inp", "r", stdin) , freopen("output.txt", "w", stdout)
 using namespace std;
-
-#define fi first
-#define se second
-#define dd pair<int , int >
-#define giun ios_base::sync_with_stdio(0) , cin.tie(0);
-
-int n , m1 , m2 , g1 , g2;
-dd a[1007];
-double dt , meo = -2.00 , ans = -2.00 , ac , cb;
-vector <int> s;
-
-double len(dd x, dd y) 
+int n,k;
+int xx( int h, int c)
 {
-    return ( sqrt( pow(x.fi - y.fi , 2) + pow (x.se - y.se , 2) ) );
+	int cheo = h+c-1;
+	int s = 0;
+	for(int i=1; i < cheo; i++) s+=i;
+	if(cheo % 2 == 0) s+=h;
+	else s+=c;
+	return s;
 }
-
-double dodai(int o1,int p1 )
+int meo(int h, int c)
 {
-    return (sqrt( pow(o1-0,2) + pow (p1-0,2)));
+	int cheo=h+c-1;
+	int t=0;
+	if(cheo<=n)	{
+		t=xx(h,c);
+	}
+	else
+	{
+		int chenhlech=cheo-n;
+		cheo=n-chenhlech;
+		
+		if(h==n ||c==n)
+		{
+			if(h==n) h=1,c=n-chenhlech;	
+			if (c==n) c=1,h=n-chenhlech;	
+		}
+		else c=h-chenhlech,h=cheo-c+1;
+		t=(n*n+1)-xx(h,c);
+	}
+	return t;	
 }
-
-double dodai2(int o1,int p1 , int o2 , int p2){
-    return (sqrt( pow(o1-o2,2) + pow (p1-p2,2)));
-}
-
-
 int main()
 {
-    giun;
-    //freopen("input.inp", "r", stdin) , freopen("output.txt", "w", stdout);
-    freopen("bai03.inp", "r", stdin);
-    freopen("bai03.out", "w", stdout);
-    cin >> n ;
-    for (int i = 1 ; i <= n ; i++ ) cin >> a[i].fi >> a[i].se;
-    for (int i = 1 ; i < n ; i++)
-    {
-        for (int j = i+1 ; j <= n ; j++)
-            if ( meo < len (a[i] , a[j]) ) 
-            {
-                m1 = a[i].fi , m2 = a[j].fi ;
-                g1 = a[i].se , g2 = a[j].se ;
-                meo = len (a[i] , a[j]);
-            }
-    }
-    meo = meo / (float ) 2 , ans = meo;
-    for (int i = 1 ; i < n ; i++)
-    {
-        double r = dodai(a[i].fi , a[i].se) / (float ) 2;
-        if ( r > meo ) s.push_back(i);
-        cerr << r << " ";
-    }
-    cerr << endl;
-    for (int i = 0 ; i < (int)s.size() ; i++ ) cerr << s[i] << " ";
-    cerr << endl;
-    for (int i = 0 ; i < (int)s.size() ; i++ )
-    {
-        dt = abs ( ( (m2-m1) * (g1+g2) + (m2 - a[s[i]].fi ) * ( g2 + a[s[i]].se ) + (a[s[i]].fi - m1 ) * ( g1 + a[s[i]].se ) ) / 2 );
-        ac = dodai2 (m1 , g1 , a[s[i]].fi, a[s[i]].se);
-        cb = dodai2 (m2 , g2 , a[s[i]].fi, a[s[i]].se);
-        ans = max ( ans ,  (meo*ac*cb) / (4 *dt ) );
-        cerr << endl;
-    }
-    cout << fixed << setprecision(3) << ans ;
-    return 0;
+    giuncute;
+    ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	int h=1,c=1;
+	string ch;
+	cin >> n >> k >> ch;
+	long long t=0,sum=1;
+	for(int i = 0; i < k ; i++)
+	{
+		if(ch[i]=='D'||ch[i]=='d')	t=meo(++h,c);
+		else if(ch[i]=='R'||ch[i]=='r')t=meo(h,++c);
+		else if(ch[i]=='L'||ch[i]=='l')	t=meo(h,--c);
+		else if(ch[i]=='U'||ch[i]=='u')	t=meo(--h,c);
+		sum+=t;
+		t=0;		
+	}	
+	cout<<sum;
 }
+

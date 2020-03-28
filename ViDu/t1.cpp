@@ -1,8 +1,14 @@
 #include<bits/stdc++.h>
+#define giuncute freopen("input.inp", "r", stdin) , freopen("output.txt", "w", stdout)
 using namespace std;
 int main(){
-    int a[100]{0};
-    a[-9]=4;
-    for (int i= -100 ; i<= 100 ; i++) cout << a[i]<< endl;
+    char st[300];
+    giuncute;
+    scanf("%s",&st);
+    //cin >> st;
+    //cout << st;
+    printf("%s",st);
+    //printf("hello %s.\n", st.c_st());
+
     return 0;
 }
