@@ -41,6 +41,7 @@ int main()
 	cin >> st;
 	cout << st.length();
 	cout << endl;
+	scanf
 	decToBinary(6382179);
 	return 0;
 }

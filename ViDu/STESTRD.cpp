@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
-#define finame "test.inp" //file inp
+#define finame "input.inp" //file inp
 using namespace std;
-const long long maxt = 15, mint = 5, mi = 1, ma = 20; //limit
+const long long maxt = 1e7, mint = 1e5, mi = 20, ma = 100; //limit
 long long d[maxt + 3], t; 
 
 long long Rand(long long l, long long h)
@@ -31,9 +31,11 @@ int main(){
     srand((int) time(0));
     freopen(finame, "w", stdout);
     t = Rand(mint, maxt);
-    cout << t << endl;
+    cout << t << " ";
+    int k = Rand(mint - 1, t);
+    cout << k << endl;
     for (int i = 1; i <= t; i++){
-        pri();
+        cout << Rand(mi, ma) << " ";
     }
     return 0;
 }
