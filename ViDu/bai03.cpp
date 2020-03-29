@@ -45,10 +45,10 @@ int main()
                 meo = len (a[i] , a[j]);
             }
     }
-    meo = meo / (float ) 2 , ans = meo;
+    meo = meo / (double ) 2 , ans = meo;
     for (int i = 1 ; i < n ; i++)
     {
-        double r = dodai(a[i].fi , a[i].se) / (float ) 2;
+        double r = dodai(a[i].fi , a[i].se) / (double ) 2;
         if ( r > meo ) s.push_back(i);
         //cerr << r << " ";
     }
@@ -65,30 +65,39 @@ int main()
     return 0;
 }*/
 
-#include <cstdio>
-
+#include<bits/stdc++.h>
 using namespace std;
 #define fi first
 #define se second
 #define dd pair<int , int >
 #define giun freopen("input.inp", "r", stdin) ,freopen("output.txt", "w", stdout);
+#define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
 int n;
-dd a[107];
-double bk , a , b, c;
+dd at[107];
+double bk , a , b, c , ans = DBL_MIN;
+
 double kc(dd x, dd y) 
 {
-    return ( sqrt( pow(x.fi - y.fi , 2) + pow (x.se - y.se , 2) ) );
+    double d = ( sqrt( pow(x.fi - y.fi , 2) + pow (x.se - y.se , 2) ) );
+    return d;
 }
 
-double dt (int u , int l , int k) // a , b ,c
+double dt ( dd ya , dd yb , dd yc )
+{
+    double d;
+    d = abs ( ( ( yc.fi + ya.fi ) * (yc.se - ya.se) +  ( ya.fi + yb.fi ) * (ya.se - yb.se) + ( yb.fi + yc.fi ) * (yb.se - yc.se) ) / 2  );
+    d = round( d * 1000.0 ) / 1000.0;
+    return d;
+}
+
+
+int main()
 {
     double s;
-    s = abs ( (k + u ) *       )
-}
-int main(){
     giun;
-    cin >> n ;
-    for (int i = 1 ; i <= n ; i++ ) cin >> a[i].fi >> a[i].se;
+    giuncute;
+    cin >> n;
+    for (int i = 1 ; i <= n ; i++ ) cin >> at[i].fi >> at[i].se;
 
     for (int i = 1 ; i <= n - 2 ; i++)
     {
@@ -96,12 +105,20 @@ int main(){
         {
             for (int z = j+1 ; z <= n ; z++)
             {
-                a = kc( a[i] , a[j] ); 
-                b = kc( a[j] , a[z] ); 
-                c = kc( a[z] , a[i] );
-                bk = (a*b*c) / (4*dt);
+                a = kc( at[i] , at[j] ); 
+                b = kc( at[j] , at[z] ); 
+                c = kc( at[z] , at[i] );
+                s = dt (at[i] , at[j] , at[z]);
+                bk = (a*b*c) / ( 4 * s );
+                cerr << at[i].fi << " " << at[i].se << " | " <<  at[j].fi << " " << at[j].se << " | " << at[z].fi << " " << at[z].se << endl;
+                cerr << a << " " << b << " " << c << " " << s << " " << bk << endl;
+                ans = max( ans , bk);
             }
         }
-
-    }    
+   
+    }
+    cout << fixed << setprecision(3) << ans ;
+    cerr << endl;
+    cerr << clock() << " ms";
+    return 0;    
 }
