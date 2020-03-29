@@ -12,11 +12,14 @@
 #define loopdk(variable, valuegan, conditions, thaydoi) for(long long variable = valuegan; conditions; thaydoi) 
 #define pp(type) pair<type, type>
 #define mp make_pair
+#define fi first
+#define se second
 #define vec(type) vector<type>
 #define vecite(type) vector<type>::iterator
 using namespace std;
-int n, m, d[1007] = {INT_MAX};
-bool f[1007] = {0};
+const int maxn = INT_MAX/100;
+int n, m, d[1007] = {maxn};
+bool f[1007] = {1};
 vec(vec(pp(int))) g;
 
 void enter(){
@@ -29,7 +32,21 @@ void enter(){
 }
 
 void dijkstra(){
-
+    int u = 1, mi, v;
+    d[u] = 0;
+    while(true){
+      u = 0, mi = maxn;
+      loop(i, 1, n)
+        if(f[i] && d[i] < mi)
+          u = i, mi = d[i];
+      if(!u && u == n) break;
+      f[u] = 0;
+      loop(i, 0, g[u].size() - 1){
+        if (d[g[u][i].fi] > (d[u] + g[u][i].se)){
+          d[g[u][i].fi] = d[u] + g[u][i].se;
+        }
+      }
+    }
 }
 
 int main(){
@@ -40,4 +57,5 @@ int main(){
     g.resize(n);
     enter();
     dijkstra();
+    cout << d[n];
 }
