@@ -65,13 +65,43 @@ int main()
     return 0;
 }*/
 
-#include <bits/stdc++.h>
+#include <cstdio>
 
 using namespace std;
+#define fi first
+#define se second
+#define dd pair<int , int >
+#define giun freopen("input.inp", "r", stdin) ,freopen("output.txt", "w", stdout);
+int n;
+dd a[107];
+double bk , a , b, c;
+double kc(dd x, dd y) 
+{
+    return ( sqrt( pow(x.fi - y.fi , 2) + pow (x.se - y.se , 2) ) );
+}
 
+double dt (int u , int l , int k) // a , b ,c
+{
+    double s;
+    s = abs ( (k + u ) *       )
+}
 int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    freopen("input.inp", "r", stdin);
-    freopen("output.txt", "w", stdout);
+    giun;
+    cin >> n ;
+    for (int i = 1 ; i <= n ; i++ ) cin >> a[i].fi >> a[i].se;
+
+    for (int i = 1 ; i <= n - 2 ; i++)
+    {
+        for (int j = i+1 ; j <= n -1 ; j++)
+        {
+            for (int z = j+1 ; z <= n ; z++)
+            {
+                a = kc( a[i] , a[j] ); 
+                b = kc( a[j] , a[z] ); 
+                c = kc( a[z] , a[i] );
+                bk = (a*b*c) / (4*dt);
+            }
+        }
+
+    }    
 }
