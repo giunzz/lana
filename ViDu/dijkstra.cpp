@@ -54,7 +54,7 @@ int main(){
     fin("input.inp");
     fout("output.txt");
     cin >> n >> m;
-    g.resize(n);
+    g.resize(n + 2);
     enter();
     dijkstra();
     cout << d[n];
