@@ -39,7 +39,7 @@ void dijkstra(){
       loop(i, 1, n)
         if(f[i] && d[i] < mi)
           u = i, mi = d[i];
-      if(!u && u == n) break;
+      if(!u || u == n) break;
       f[u] = 0;
       loop(i, 0, g[u].size() - 1){
         if (d[g[u][i].fi] > (d[u] + g[u][i].se)){
