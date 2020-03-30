@@ -67,10 +67,11 @@ int main()
 
 #include<bits/stdc++.h>
 using namespace std;
+const string file = "giun";
 #define fi first
 #define se second
 #define dd pair<int , int >
-#define giun freopen("input.inp", "r", stdin) ,freopen("output.txt", "w", stdout);
+#define giun(a) freopen((a + ".inp").c_str(), "r", stdin) ,freopen((a + ".out").c_str(), "w", stdout);
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
 int n;
 dd at[107];
@@ -94,7 +95,7 @@ double dt ( dd ya , dd yb , dd yc )
 int main()
 {
     double s;
-    giun;
+    giun(file);
     giuncute;
     cin >> n;
     for (int i = 1 ; i <= n ; i++ ) cin >> at[i].fi >> at[i].se;

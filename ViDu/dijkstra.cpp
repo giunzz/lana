@@ -18,8 +18,8 @@
 #define vecite(type) vector<type>::iterator
 using namespace std;
 const int maxn = INT_MAX/100;
-int n, m, d[1007] = {maxn};
-bool f[1007] = {1};
+int n, m, d[1007], t[1007];
+bool f[1007];
 vec(vec(pp(int))) g;
 
 void enter(){
@@ -32,21 +32,27 @@ void enter(){
 }
 
 void dijkstra(){
-    int u = 1, mi, v;
-    d[u] = 0;
+    int u, mi, v;
     while(true){
       u = 0, mi = maxn;
-      loop(i, 1, n)
-        if(f[i] && d[i] < mi)
+      loop(i, 1, n){
+        if(f[i] && d[i] < mi){
           u = i, mi = d[i];
-      if(!u || u == n) break;
+        }
+      }
+      if(!u || u == 5) break;
       f[u] = 0;
       loop(i, 0, g[u].size() - 1){
         if (d[g[u][i].fi] > (d[u] + g[u][i].se)){
-          d[g[u][i].fi] = d[u] + g[u][i].se;
+          d[g[u][i].fi] = d[u] + g[u][i].se, t[g[u][i].fi] = u;
         }
       }
     }
+}
+
+void init(){
+  d[1] = 0, f[1] = 1;
+  loop(i, 2, n) d[i] = maxn, f[i] = 1;
 }
 
 int main(){
@@ -55,7 +61,14 @@ int main(){
     fout("output.txt");
     cin >> n >> m;
     g.resize(n + 2);
+    init();
     enter();
     dijkstra();
-    cout << d[n];
+    cout << d[5] << endl;
+    int u = 5;
+    while (u != 1){
+      cout << u << " ";
+      u = t[u];
+    }
+    cout << 1;
 }

@@ -1,4 +1,4 @@
-radical
+﻿radical
 bottom up - top down
 4 buoc qhd
 - dinh nghia bai toan con
@@ -10,7 +10,7 @@ F[i] la do dai day con ko giam ma BAT BUOC a[i] la phan tu cuoi cua day
 Phan tu thu 1 -> F[1] = 1
 
 
-Cho m?t chu?i s g?m c�c k� t? latin, in thu?ng. H�y t�m 1 chu?i con d?i x?ng d�i nh?t.
-�?nh nghia 1 chu?i con st l� khi chu?i st du?c t?o th�nh t? chu?i s b?ng c�ch x�a di 0, 1 ho?c nhi?u k� t?.
-V� d?:
+Cho 1 chuỗi s gồm các ký tự latin, in thường. Hãy tìm 1 chuỗi con đối xứng dài nhất.
+Định nghĩa 1 chuỗi con st là khi chuỗi st được tạo thành từ chuỗi s bằng cách xóa đi 0, 1 hoặc nhiều ký tự.
+Ví dụ:
 s = "cancauco" => "canac", "cacac"
