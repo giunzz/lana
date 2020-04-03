@@ -1,30 +1,51 @@
-#include<bits/stdc++.h>
-
+#include<cstdio>
+#include<algorithm>
+#include<climits>
+#include<string>
 using namespace std;
+const string file = "bai84";
+#define balabolo(a) freopen((a + ".inp").c_str(), "r", stdin) ,freopen((a + ".out").c_str(), "w", stdout)
 
-long BCNN (long a , long b ){
+int n ;
+long a[ (int) 1e5+7], ans = LONG_MIN;
+    
+/*long BCNN1 (long a , long b )
+{
     long x = max(a,b);
     long y = min (a,b);
     long bc=x;
     while ( bc % y !=0 ) bc+=x;
     return bc;
+}*/
+
+long UCLN(long x , long y)
+{
+        long t ;
+        while ( y  != 0 ){
+            t = x % y ;
+            x = y;
+            y = t;
+        }
+        return x;
 }
 
-int main(){
-int n ;
-long a[int (1e5+9)],ans;
+long BCNN (long x , long y ){
+        long bc = x*y;
+        return bc / UCLN(x,y);
+}
 
-
-    freopen("Bai84.inp","r", stdin);
-    freopen("Bai84.out","w",stdout);
-    scanf("%ld",&n);
+int main()
+{
+    balabolo(file);
+    scanf("%d",&n);
     for (int i =1 ; i<= n ; i++) scanf("%ld",&a[i]);
 
-    for (int i=1 ; i<= n-1 ; i++){
+    for (int i=1 ; i<= n-1 ; i++)
+    {
         for (int j=i+1 ; j<= n ; j++)
             ans = max(ans , BCNN(a[i],a[j]));
     }
-    cout << ans;
+    printf("%ld",ans);
     return 0;
 }
 

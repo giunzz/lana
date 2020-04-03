@@ -1,15 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
-const string file = "giun";
+const string file = "TIMSO";
 #define balabolo(a) freopen((a + ".inp").c_str(), "r", stdin) ,freopen((a + ".out").c_str(), "w", stdout)
 #define fi first
 #define se second
-
+#define giun ios_base::sync_with_stdio(0) , cin.tie(0);
 pair <int , int > b[5]; 
 int N , a[100] ={1} , m ;
 
 int main()
 {
+    giun;
     balabolo(file);
     cin >> m >> N;
     int n1 = N;
