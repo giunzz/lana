@@ -30,18 +30,23 @@ int main()
     string st ="";
     for (int i = 1 ; i <= 4 ; i++)
     {
-        cerr << b[i].fi << " ^ " << b[i].se << endl;
+        //cerr << b[i].fi << " ^ " << b[i].se << endl;
         if ( b[i].se != 0 )
         {
-            t = b[i].fi*b[i].se;
+            t = pow(b[i].fi, b[i].se);
             p *= t;
             st += char (t + 48);
             sum += t;
+            cerr << t << " ";
         }
     }
+    sort(st.begin(), st.end()); 
+    cerr << endl;
     cerr << p << " " << sum << " " << st << endl;
     cerr << n1 << " " << m ;
     if ( (p == n1) && (sum == m) ) cout << st ;
-    else cout << -1;
+    else    if (p == 1 ) 
+                for (int i = 1; i <= m ; i++) cout << 1;
+            else cout << -1;
     return 0;
 }
