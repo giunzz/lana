@@ -1,3 +1,4 @@
+//Mo Algorithm
 #include <bits/stdc++.h>
 #define ii int
 #define ll long long
@@ -15,8 +16,47 @@
 using namespace std;
 const string tenfile = "f";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
+const int maxn = 5e5 + 7;
+
+int n, q, a[maxn];
+vec(vec(int)) st;
+
+void fastscan(int &number) 
+{ 
+    bool negative = false; 
+    register int c; 
+  
+    number = 0; 
+    c = getchar(); 
+    if (c == ' ') fastscan(number);
+    if (c=='-') 
+    { 
+        negative = true; 
+        c = getchar(); 
+    } 
+    for (; (c>47 && c<58); c=getchar()) 
+        number = number *10 + c - 48; 
+    if (negative) 
+        number *= -1; 
+} 
+
+void init(int id, int l, int r){
+    if (l == r) {
+        st[id].push_back(a[i]);
+        return;
+    }
+    int m = (l + r) / 2;
+    init(id * 2, l, m);
+    init(id * 2 + 1, m + 1, r);
+}
 
 int main(){
-    opt;
+    //opt;
     fi;
+    fastscan(n);
+    for (int i = 1 ; i <= n; i++){
+        fastscan(a[i]);
+    }
+    st.resize(4*n + 7);
+    init(1, 1, n);
 }
