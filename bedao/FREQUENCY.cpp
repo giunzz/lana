@@ -1,4 +1,6 @@
 //Mo Algorithm
+//it
+//rmq
 #include <bits/stdc++.h>
 #define ii int
 #define ll long long
