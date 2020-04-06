@@ -6,7 +6,8 @@ int stringToNum(char c){
     return c - '0';
 }
 
-char numToString(int n){
+char numToString(int n)
+{
     return (char)(n+48);
 }
 
