@@ -20,8 +20,8 @@ void sol(int a){
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    freopen("bai43ql.inp", "r", stdin);
-    freopen("bai43ql.out", "w", stdout);
+    freopen("f.inp", "r", stdin);
+    freopen("f.out", "w", stdout);
     cin >> s;
     sort(s.begin(), s.end());
     sol(0);
