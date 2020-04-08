@@ -16,6 +16,9 @@ using namespace std;
 const string tenfile = "f";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
+cii maxn = 1e5 + 7;
+int t, n, a[maxn], b[maxn], c[maxn], k;
+
 void fs(int &number) 
 { 
     bool negative = false; 
@@ -34,8 +37,42 @@ void fs(int &number)
     if (negative) 
         number *= -1; 
 } 
+// 0 ko tang
+// 1 tang
+//-1 giam
+//2 tang + giam + ko tang
+bool xuly(){
+    bool kt = 1;
+    loop(i, 1, n) {
+        scanf("%d", &a[i]);
+        //fs(a[i]);
+        if (i == 1) k = a[i], c[i] = 0;
+        else{
+            c[i] = k;
+            if (k == 0) k = a[i];
+            else if(k != a[i] && a[i] != 0) k = 2;
+        }
+    }
+    //loop(i, 1, n) cerr << c[i] << " ";
+    loop(i, 1, n) {
+        scanf("%d", &b[i]);
+        //fs(b[i]);
+        if(a[i] != b[i] && c[i] == 0) kt = 0;
+        if(a[i] < b[i] && c[i] == -1) kt = 0;
+        if(a[i] > b[i] && c[i] == 1) kt = 0;
+    }
+    return kt;
+}
 
 int main(){
-    opt;
-    fi;
+    //opt;
+    //fi;
+    scanf("%d", &t);
+    //fs(t);
+    loop(i, 1, t){
+        scanf("%d", &n);
+        //fs(n);
+        if(xuly()) printf("YES\n");
+        else printf("NO\n");
+    }
 }

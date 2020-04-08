@@ -35,7 +35,19 @@ void fs(int &number)
         number *= -1; 
 } 
 
+cll maxn = 2e5 + 7;
+ll n, a[maxn], t;
+
 int main(){
-    opt;
+    //opt;
     fi;
+    scanf("%I64d", &n);
+    loop(i, 1, n){
+        scanf("I64d", &a[i]);
+    }
+    t = (n*n + 1)/2;
+    int i = 1, j = 1, s = a[1];
+    while (j <= n){
+        
+    }
 }

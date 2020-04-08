@@ -16,6 +16,9 @@ using namespace std;
 const string tenfile = "f";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
+int n, m, t, s, b = 0, w = 0;
+char a[107][107] = {{0}};
+
 void fs(int &number) 
 { 
     bool negative = false; 
@@ -35,7 +38,25 @@ void fs(int &number)
         number *= -1; 
 } 
 
+
 int main(){
-    opt;
-    fi;
+    //opt;
+    //fi;
+    fs(t);
+    loop(i, 1, t){
+        fs(n); fs(m);
+        loop(i, 1, n){
+            loop(j, 1, m){
+                if (i % 2){
+                    if(j % 2) printf("B");
+                    else printf("W");
+                }
+                else {
+                    if(j % 2) printf("W");
+                    else printf("B");
+                }
+            }
+            printf("\n");
+        }
+    }
 }
