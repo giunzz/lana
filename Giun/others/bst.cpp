@@ -71,7 +71,7 @@ int main(){
     freopen("bst.inp", "r", stdin);
     freopen("bst.out", "w", stdout);
     int value;
-    node ruuu = NULL;
+    node root = NULL;
     cin >> x;
     while(!cin.eof()){
         cin >> value;
@@ -79,9 +79,9 @@ int main(){
     }
     sole(tmpnam);
     cout << endl << "nlr: ";
-    nlr(ruuu);
+    nlr(root);
     cout << endl << "lnr: "; 
-    lnr(ruuu);
+    lnr(root);
     cout << endl << "lrn: ";
     lrn(root);
     return  1;

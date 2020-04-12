@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #define ii int
 #define ll long long
+#define usn unsigned
 #define cii const int
 #define cll const long long
 #define opt ios_base::sync_with_stdio(0); cin.tie(0)
@@ -16,45 +17,22 @@ using namespace std;
 const string tenfile = "f";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-int n, m, t, s, b = 0, w = 0;
-char a[107][107] = {{0}};
+ll a[30], n, t;
 
-void fs(int &number) 
-{ 
-    bool negative = false; 
-    register int c; 
-  
-    number = 0; 
-    c = getchar(); 
-    if (c == ' ') fs(number);
-    if (c=='-') 
-    { 
-        negative = true; 
-        c = getchar(); 
-    } 
-    for (; (c>47 && c<58); c=getchar()) 
-        number = number *10 + c - 48; 
-    if (negative) 
-        number *= -1; 
-} 
-
+void init(){
+    a[0] = 1;
+    loop(i, 1, 19) a[i] = i * a[i - 1];
+}
 
 int main(){
-    //opt;
+    //init();
     //fi;
-    fs(t);
+    //cerr << a[19];
+    scanf("%I64d", &t);
     loop(i, 1, t){
-        fs(n); fs(m);
-        loop(i, 1, n){
-            loop(j, 1, m){
-                if (i == 1 && j == 1){
-                    printf("W");
-                }
-                else {
-                    printf("B");
-                }
-            }
-            printf("\n");
-        }
+        scanf("%I64d", &n);
+        //if (n == 2) printf("%I64d\n", a[2]);
+        //else printf("%I64d\n", a[2*n-1]);
+        printf("%I64d\n", n);
     }
 }

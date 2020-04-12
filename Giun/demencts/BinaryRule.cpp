@@ -13,11 +13,10 @@
 #define vec(type) vector<type>
 #define vecite(type) vector<type>::iterator
 using namespace std;
-const string tenfile = "f";
+const string tenfile = "BinaryRule";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-int n, m, t, s, b = 0, w = 0;
-char a[107][107] = {{0}};
+int n;
 
 void fs(int &number) 
 { 
@@ -38,23 +37,15 @@ void fs(int &number)
         number *= -1; 
 } 
 
-
 int main(){
     //opt;
-    //fi;
-    fs(t);
-    loop(i, 1, t){
-        fs(n); fs(m);
-        loop(i, 1, n){
-            loop(j, 1, m){
-                if (i == 1 && j == 1){
-                    printf("W");
-                }
-                else {
-                    printf("B");
-                }
-            }
-            printf("\n");
-        }
+    fi;
+    scanf("%d", &n);
+    if (n == 0){
+        printf("0");
+        return 0;
+    }
+    loop(i, 1, n){
+        printf("1");
     }
 }

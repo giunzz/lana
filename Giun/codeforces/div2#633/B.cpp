@@ -16,45 +16,33 @@ using namespace std;
 const string tenfile = "f";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-int n, m, t, s, b = 0, w = 0;
-char a[107][107] = {{0}};
-
-void fs(int &number) 
-{ 
-    bool negative = false; 
-    register int c; 
-  
-    number = 0; 
-    c = getchar(); 
-    if (c == ' ') fs(number);
-    if (c=='-') 
-    { 
-        negative = true; 
-        c = getchar(); 
-    } 
-    for (; (c>47 && c<58); c=getchar()) 
-        number = number *10 + c - 48; 
-    if (negative) 
-        number *= -1; 
-} 
-
+cii maxn = 1e5 + 7;
+int t, a[maxn], n, tt, l = 1, r = 1;
+vec(ii) ans;
 
 int main(){
-    //opt;
     //fi;
-    fs(t);
+    scanf("%d", &t);
     loop(i, 1, t){
-        fs(n); fs(m);
-        loop(i, 1, n){
-            loop(j, 1, m){
-                if (i == 1 && j == 1){
-                    printf("W");
-                }
-                else {
-                    printf("B");
-                }
+        scanf("%d", &n);
+        loop(i, 1, n) scanf("%d", &a[i]);
+        sort(a + 1, a + 1 + n);
+        tt = 0, l = 1, r = n;
+        while (tt < n){
+            if (!(tt % 2)) {
+                //printf ("%d ", a[l]);
+                ans.push_back(a[l]);
+                ++l;
             }
-            printf("\n");
+            else {
+                //printf ("%d ", a[r]);
+                ans.push_back(a[r]);
+                --r;
+            }
+            ++tt;
         }
+        loopd(i, ans.size() - 1, 0) printf("%d ", ans[i]);
+        ans.clear();
+        printf("\n");
     }
 }
