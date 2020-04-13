@@ -16,21 +16,29 @@ using namespace std;
 const string tenfile = "f";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-ii t;
-string s;
+void fs(int &number) 
+{ 
+    bool negative = false; 
+    register int c; 
+  
+    number = 0; 
+    c = getchar(); 
+    if (c == ' ') fs(number);
+    if (c=='-') 
+    { 
+        negative = true; 
+        c = getchar(); 
+    } 
+    for (; (c>47 && c<58); c=getchar()) 
+        number = number *10 + c - 48; 
+    if (negative) 
+        number *= -1; 
+} 
+
+cii maxn = 2e5 + 7;
+ii t, n, a[maxn];
 
 int main(){
     opt;
-    //fi;
-    cin >> t;
-    cin.ignore();
-    while(t--){
-        loop(i, 0, 8){
-            getline(cin, s);
-            if (s[(i % 3) * 3] == '9') s[(i % 3) * 3] = s[(i % 3) * 3 + 1];
-            else s[(i % 3) * 3] = '9';
-            cout << s << "\n";
-            s.clear();
-        }
-    }
+    fi;
 }
