@@ -36,27 +36,25 @@ void fs(int &number)
 } 
 
 cll maxn = 1e5 + 7;
-ll t, n, a[maxn], x, d, ans;
-map<ll, ii> mp;
+ll t, n, a[maxn], x, ans, lt[64];
 
 int main(){
     opt;
-    fi;
-    loop(i, 0, 62) mp[pow(2, i)] = i;
+    //fi;
+    loop(i, 0, 62) lt[i] = pow(2, i);
     cin >> t;
-    a[0] = INT_MIN;
     while(t--){
-        x = 1, d = 0, ans = INT_MIN;
+        x = 0, ans = INT_MIN;
         cin >> n;
         loop(i, 1, n) {
             cin >> a[i];
-            while (a[i] < a[i - 1]){
-                a[i] += x;
-                x *= 2, ++d; 
-            } 
-            x = 1, ans = max(ans, d), d = 0;
+            if (a[0] != a[1]) a[0] = a[1];
+            while (a[i] < a[i - 1])
+                a[i] += lt[x++];
+            ans = max(ans, x);
+            for(; x >= 0; x--)
+                if(a[i] - lt[x] >= a[i - 1]) a[i] -= lt[x];
         }
-        loop(i, 1, n) cerr << a[i] << " ";
         cout << ans << "\n";
     }
 }
