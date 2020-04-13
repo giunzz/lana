@@ -16,6 +16,9 @@ using namespace std;
 const string tenfile = "f";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
+const int st = (int)'a';
+ii t, n, a, b, c, i;
+
 void fs(int &number) 
 { 
     bool negative = false; 
@@ -37,5 +40,16 @@ void fs(int &number)
 
 int main(){
     opt;
-    fi;
+    //fi;
+    cin >> t;
+    while(t--){
+        cin >> n >> a >> b;
+        c = st + b - 1, i = 0;
+        while(i < n){
+            if (i % a < b - 1) cout << (char)(st + (i % a));
+            else cout << (char)(st + b - 1);
+            ++i;
+        }
+        cout << "\n";
+    }
 }

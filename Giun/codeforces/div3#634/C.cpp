@@ -16,6 +16,10 @@ using namespace std;
 const string tenfile = "f";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
+cii maxn = 2e5 + 7;
+ii cnt[maxn], t, n, num, ma;
+vec(ii) a;
+
 void fs(int &number) 
 { 
     bool negative = false; 
@@ -35,7 +39,30 @@ void fs(int &number)
         number *= -1; 
 } 
 
+vec(int) change(){
+    set<int> s(a.begin(), a.end());
+    vector<int> b(s.begin(), s.end());
+    return b;
+}
+
 int main(){
     opt;
-    fi;
+    //fi;
+    cin >> t;
+    while(t--){
+        memset(cnt, 0, sizeof(cnt));
+        cin >> n;
+        ma = INT_MIN;
+        loop(i, 0, n - 1){
+            cin >> num;
+            a.push_back(num);
+            ++cnt[a[i]];
+            if (cnt[a[i]] > ma) ma = cnt[a[i]];
+        }
+        a = change();
+        if (a.size() - 1 >= ma) cout << ma << endl;
+        else if(a.size() == ma) cout << ma - 1 << endl; 
+        else cout << a.size() << endl;
+        a.clear();
+    }
 }

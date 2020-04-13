@@ -35,7 +35,19 @@ void fs(int &number)
         number *= -1; 
 } 
 
+ii t;
+string s;
+
 int main(){
     opt;
     fi;
+    cin >> t;
+    while(t--){
+        loop(i, 0, 8){
+            getline(cin, s);
+            if (s[(i % 3) * 3] == '9') s[(i % 3) * 3] = '1';
+            else s[(i % 3) * 3] = '9';
+            cout << s << "\n";
+        }
+    }
 }
