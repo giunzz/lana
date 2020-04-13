@@ -18,5 +18,7 @@ const string tenfile = "f";
 
 
 int main(){
-    
+    map<ll, int> mp;
+    mp[(int)-1e10] = 1101;
+    cout << mp[(int)-1e10];
 }
