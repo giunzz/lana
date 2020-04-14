@@ -155,5 +155,5 @@ int main(){
     }
     loop(i, 1, 9)
         loop(j, 1, ts[i]) 
-            printf("%ld", i);
+            printf("%I64d", i);
 }

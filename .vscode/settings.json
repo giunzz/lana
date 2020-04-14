@@ -59,7 +59,8 @@
         "typeindex": "cpp",
         "typeinfo": "cpp",
         "valarray": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "string_view": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "python.testing.pytestArgs": [

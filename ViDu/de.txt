@@ -1,0 +1,15 @@
+Xét dãy số tự nhiên {an} đuợc xây dựng theo quy tắc sau:
+•	Cho trước số a0 là một số tự nhiên có tối đa 10 chữ số.
+•	Số ai (i>0) là một số tự nhiên nhận được từ a¬i-1 
+bằng cách viết thêm vào sau các chữ số của ai-1 chính ai-1 
+nhưng viết theo thứ tự ngược lại.
+Ví dụ:
+Với a0 = 123 thì a1 = 123321, a2 = 123321123321,
+ a3 = 123321123321123321123321
+Với hai số N và M cho trước, hãy tìm chữ số thứ M trong aN.
+Dữ liệu cho trong file văn bản với tên là CHUSO.INP 
+trong đó dòng đầu chứa số a0, 
+dòng thứ hai chứa hai số N và M.
+Kết quả ghi ra file văn bản với tên là CHUSO.OUT. 
+Trong trường hợp có lời giải, file này sẽ chứa số tìm được, 
+ngược lại file này chứa số -1.
