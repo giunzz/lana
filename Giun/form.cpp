@@ -16,7 +16,7 @@ using namespace std;
 const string tenfile = "f";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-void fs(int &number) 
+void fs(int &number)
 { 
     bool negative = false; 
     register int c; 

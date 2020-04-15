@@ -21,14 +21,17 @@ string s;
 
 int main(){
     opt;
-    //fi;
+    fi;
     cin >> t;
     cin.ignore();
     while(t--){
         loop(i, 0, 8){
             getline(cin, s);
-            if (s[(i % 3) * 3] == '9') s[(i % 3) * 3] = s[(i % 3) * 3 + 1];
-            else s[(i % 3) * 3] = '9';
+            //if (s[(i % 3) * 3 + i / 3] == '9') s[(i % 3) * 3 + i / 3] = s[(i % 3) * 3 + 1 + i / 3];
+            //else s[(i % 3) * 3 + i / 3] = '9';
+            //if (((i % 3) * 3 + i / 3) == 8) s[(i % 3) * 3 + i / 3] = s[7];
+            //else s[(i % 3) * 3 + i / 3] = s[(i % 3) * 3 + 1 + i / 3];
+            loop (i, 0, 8) if (s[i] == '1') s[i] = '2';
             cout << s << "\n";
             s.clear();
         }
