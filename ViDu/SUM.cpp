@@ -1,12 +1,8 @@
-/*Bài toán: 
-Hãy tìm đường chéo song song với đường chéo chính
-có tổng các phần tử trên đường chéo đó là lớn nhất.*/
-
 #include<bits/stdc++.h>
 using namespace std; 
 const string tenfile = "sum";
 #define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
-int a[107][107] ,n , j , ans = 0  , sum = 0 ;
+int a[1007][1007] ,n , j , ans = 0  , sum = 0 ;
 
 int main()
 {
