@@ -13,47 +13,32 @@
 #define vec(type) vector<type>
 #define vecite(type) vector<type>::iterator
 using namespace std;
-const string tenfile = "f";
+const string tenfile = "SC1";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-void fs(int &number)
-{ 
-    bool negative = false; 
-    register int c; 
-  
-    number = 0; 
-    c = getchar(); 
-    if (c == ' ') fs(number);
-    if (c=='-') 
-    { 
-        negative = true; 
-        c = getchar(); 
-    } 
-    for (; (c>47 && c<58); c=getchar()) 
-        number = number *10 + c - 48; 
-    if (negative) 
-        number *= -1; 
-} 
-
-cii maxn = 2e5 + 7;
-ll n, a[maxn], ans = 0;
-map<ll, ii> mp;
+const string giai[] = {"Giai_dac_biet", "Giai_nhat", "Giai_nhi", "Giai_ba", "Giai_tu", "Giai_nam", "Giai_sau", "Giai_bay", "Giai_tam"};
+ll t, sg = LLONG_MAX;
+string ve, cg, g;
 
 int main(){
     opt;
-    //fi;
-    a[0] = 0;
-    cin >> n;
-    loop(i, 1, n) {
-        cin >> a[i];
-        a[i] += a[i - 1];
-    }
-    for (int i = 0, j = 0; i <= n; ++i){
-        ++mp[a[i]];
-        while(mp[a[i]] > 1){
-            --mp[a[j++]];
+    fi;
+    cin >> t;
+    while(t--){
+        cin >> ve;
+        //cerr << ve << endl;
+        loop(i, 0, 8){
+            cin >> g >> cg;
+            if (i == 0 && ve == cg) sg = min(sg, i);
+            if (i >= 1 && i <= 4 && ve.substr(1) == cg) sg = min(sg, i);
+            if (i >= 5 && i <= 6 && ve.substr(2) == cg) sg = min(sg, i);
+            if (i == 7 && ve.substr(3) == cg) sg = min(sg, i);
+            if (i == 8 && ve.substr(4) == cg) sg = min(sg, i);
+            g.clear(), cg.clear(); 
         }
-        ans += i - j;
+        if (sg == LLONG_MAX) cout << "NONE\n";
+        else cout << giai[sg] << "\n";
+        sg = LLONG_MAX;
+        ve.clear();
     }
-    cout << ans;
 }

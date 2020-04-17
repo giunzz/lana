@@ -13,47 +13,18 @@
 #define vec(type) vector<type>
 #define vecite(type) vector<type>::iterator
 using namespace std;
-const string tenfile = "f";
+const string tenfile = "SC6";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-void fs(int &number)
-{ 
-    bool negative = false; 
-    register int c; 
-  
-    number = 0; 
-    c = getchar(); 
-    if (c == ' ') fs(number);
-    if (c=='-') 
-    { 
-        negative = true; 
-        c = getchar(); 
-    } 
-    for (; (c>47 && c<58); c=getchar()) 
-        number = number *10 + c - 48; 
-    if (negative) 
-        number *= -1; 
-} 
-
-cii maxn = 2e5 + 7;
-ll n, a[maxn], ans = 0;
-map<ll, ii> mp;
+ll t, n, p, a[60], b[32][32] = {{0}};
 
 int main(){
     opt;
-    //fi;
-    a[0] = 0;
-    cin >> n;
-    loop(i, 1, n) {
-        cin >> a[i];
-        a[i] += a[i - 1];
+    fi;
+    cin >> t;
+    while(t--){
+        cin >> n >>p;
+        loop(i, 1, n) cin >> a[i];
+        //Em hong biet lam :))))
     }
-    for (int i = 0, j = 0; i <= n; ++i){
-        ++mp[a[i]];
-        while(mp[a[i]] > 1){
-            --mp[a[j++]];
-        }
-        ans += i - j;
-    }
-    cout << ans;
 }

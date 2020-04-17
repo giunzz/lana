@@ -13,47 +13,37 @@
 #define vec(type) vector<type>
 #define vecite(type) vector<type>::iterator
 using namespace std;
-const string tenfile = "f";
+const string tenfile = "SC4";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-void fs(int &number)
-{ 
-    bool negative = false; 
-    register int c; 
-  
-    number = 0; 
-    c = getchar(); 
-    if (c == ' ') fs(number);
-    if (c=='-') 
-    { 
-        negative = true; 
-        c = getchar(); 
-    } 
-    for (; (c>47 && c<58); c=getchar()) 
-        number = number *10 + c - 48; 
-    if (negative) 
-        number *= -1; 
-} 
+ll t, n, m, x, y, ans;
 
-cii maxn = 2e5 + 7;
-ll n, a[maxn], ans = 0;
-map<ll, ii> mp;
+ll Pow(ll a, ll n)
+{
+    if(n == 0) return 1;
+    if(n == 1) {
+        return a;
+    } 
+    else {
+        ll t = Pow(a, n/2);
+        if(n % 2 == 0)
+            return (t * t) % m;
+        else
+            return (((t * t) % m) * a) % m;
+    }
+}
 
 int main(){
     opt;
-    //fi;
-    a[0] = 0;
-    cin >> n;
-    loop(i, 1, n) {
-        cin >> a[i];
-        a[i] += a[i - 1];
+    fi;
+    cin >> t;
+    while(t--){
+        cin >> x >> n >> m;
+        //y = Pow(x, n + 1);
+        //if (x == 2) cerr  << y;
+        //ans = ((y - 1)/(x - 1)) % m;
+        loop(i, 0, n) ans += Pow(x, i);
+        cout << ans % m << "\n";
+        ans = 0;       
     }
-    for (int i = 0, j = 0; i <= n; ++i){
-        ++mp[a[i]];
-        while(mp[a[i]] > 1){
-            --mp[a[j++]];
-        }
-        ans += i - j;
-    }
-    cout << ans;
 }

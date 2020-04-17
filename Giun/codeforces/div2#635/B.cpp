@@ -35,25 +35,19 @@ void fs(int &number)
         number *= -1; 
 } 
 
-cii maxn = 2e5 + 7;
-ll n, a[maxn], ans = 0;
-map<ll, ii> mp;
+int t, x, n, m;
 
 int main(){
     opt;
     //fi;
-    a[0] = 0;
-    cin >> n;
-    loop(i, 1, n) {
-        cin >> a[i];
-        a[i] += a[i - 1];
-    }
-    for (int i = 0, j = 0; i <= n; ++i){
-        ++mp[a[i]];
-        while(mp[a[i]] > 1){
-            --mp[a[j++]];
+    cin >> t;
+    while(t--){
+        cin >> x >> n >> m;
+        while(x >= 20 && n > 0){
+            x = x/2 + 10, --n;
         }
-        ans += i - j;
+        x -= 10*m;
+        if (x <= 0) cout << "YES\n";
+        else cout <<"NO\n";
     }
-    cout << ans;
 }
