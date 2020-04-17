@@ -16,7 +16,7 @@ using namespace std;
 const string tenfile = "SC4";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-ll t, n, m, x, y, ans;
+ll t, n, mod, k, tk, f, g, h, x;
 
 ll Pow(ll a, ll n)
 {
@@ -27,9 +27,9 @@ ll Pow(ll a, ll n)
     else {
         ll t = Pow(a, n/2);
         if(n % 2 == 0)
-            return (t * t) % m;
+            return (t * t) % mod;
         else
-            return (((t * t) % m) * a) % m;
+            return (((t * t) % mod) * a) % mod;
     }
 }
 
@@ -38,12 +38,13 @@ int main(){
     fi;
     cin >> t;
     while(t--){
-        cin >> x >> n >> m;
-        //y = Pow(x, n + 1);
-        //if (x == 2) cerr  << y;
-        //ans = ((y - 1)/(x - 1)) % m;
-        loop(i, 0, n) ans += Pow(x, i);
-        cout << ans % m << "\n";
-        ans = 0;       
+    	f = 0, g = 0, h = 0;
+        cin >> x >> n >> mod;
+        k = sqrt(++n);
+        tk = n/k;
+        loop(i, 0, k - 1) f += Pow(x, i);
+        loop(i, 0, tk - 1) g += Pow(x, i * k);
+        loop(i, tk * k, n - 1) h += Pow(x, i);
+        cout << (((f % mod) * (g % mod)) % mod + h % mod) % mod << "\n";
     }
 }
