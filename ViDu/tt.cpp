@@ -68,7 +68,7 @@ int main(){
 }*/
 #include<bits/stdc++.h>
 
-using namespace std;
+using namespace std;dhdhdh
 const string tenfile = "giun";
 #define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
