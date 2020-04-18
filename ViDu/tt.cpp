@@ -68,7 +68,8 @@ int main(){
 }*/
 #include<bits/stdc++.h>
 
-//  anh minh dep trai khô
+//  anh minh dep trai 
+// chị Giang đẹp gái <3
 
 using namespace std;
 const string tenfile = "giun";
