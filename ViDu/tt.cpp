@@ -66,3 +66,32 @@ int main(){
         printf("%d\n", ans);
     }
 }*/
+#include<bits/stdc++.h>
+
+using namespace std;
+const string tenfile = "giun";
+#define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
+
+int main()
+{
+    balabalo;
+	int b,i;
+	float salary,heso;
+	//printf("please enter seniority work: ");
+	scanf("%d ",&b);
+	i = 650000;
+	if(b<12){
+		heso=1,92;}
+	else if(b>=12 && b<36 ){
+		heso=2,34;
+		}
+	else if(b>=36 && b<60){
+		heso=3;
+		}
+	else{
+		heso=4,5;
+		}
+		salary=heso*i;
+	printf("salary = %f",salary);
+return 0;
+}
