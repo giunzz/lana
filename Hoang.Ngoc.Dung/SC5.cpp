@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-const string tenfile = "SC5";
+const string tenfile = "giun";
 #define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 int a , b , n , t ;
