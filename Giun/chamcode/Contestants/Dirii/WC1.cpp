@@ -20,7 +20,7 @@ cll maxn = 1e5 + 7, mod = 68718952446;
 ll t, n, a[maxn], b[maxn], e[maxn];
 
 ll nhan(ll x, ll y){
-    if(!y) return 0;
+    if(y < 1e8) return ((x % mod)*(y%mod))%mod;
     if(x == 1) return y;
     ll p = nhan(x, y / 2);
     p = (p + p) % mod;
