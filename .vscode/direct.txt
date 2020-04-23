@@ -1,0 +1,3 @@
+/mnt/c/MinGW/bin/
+C:\\MinGW\\bin\\
+D:\\MinGW\\bin\\
