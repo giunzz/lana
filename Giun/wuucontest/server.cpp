@@ -25,17 +25,35 @@ ll n, k, d = 0, c = 0, tt, ans = 0;
 pp(ll, ll) t[Max];
 pp3 s[Max];
 
-void setup(){
+void setup(ll b){
     ans = 0;
     loop(i, 1, n){
-        tt = t[i].first*s[i].fir + (t[i].second - t[i].first)*s[i].sec;
-        if(c > t[i].second) tt += (c - t[i].second) * s[i].thi;
+        tt = 0;
+        if (b <= t[i].first) 
+            tt += s[i].fir*b;
+        else{
+            tt += s[i].fir*t[i].first;
+            if (b <= t[i].second)
+                tt += (b - t[i].first) * s[i].sec;
+            else
+                tt += s[i].sec*(t[i].second - t[i].first) + (b - t[i].second) * s[i].thi;
+        }        
         ans += tt;
     }
 }
 
-void sol(ll l, ll r){
-
+int sol(ll l, ll r){
+    ll mid;
+    while(r - l > 1){
+        mid = (r + l)/2;
+        setup(mid);
+        if (ans < k) l = mid;
+        else if (ans > k) r = mid;
+        else return mid;
+    }
+    setup(r);
+    if (ans <= k) return r;
+    else return l;
 }
 
 int main(){
@@ -46,14 +64,14 @@ int main(){
         cin >> t[i].first >> t[i].second >> s[i].fir >> s[i].sec >> s[i].thi;
         c = max(c, t[i].second);
     }
-    setup();
+    setup(c);
     if (ans == k){ cout << c; return 0;}
     if (ans < k){
         d = c;
         while (ans < k && c <= 1e18){
             c = min(c * 2, (ll)1e18);
-            setup();
+            setup(c);
         }
     }
-    sol(d, c);
+    cout << sol(d, c);
 }
