@@ -1,11 +1,9 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-string s;
 
 int main(){
-    cout << "Nhap: ";
-    getline(cin, s);
-    cout << endl << "Vua nhap: " << s;
-    cout << " giunn cute eeeee ";
+    vector <int> a {1, 4, 3};
+    for (auto i = a.begin(); i < a.end(); i++)
+        cout << *i << " ";
 }

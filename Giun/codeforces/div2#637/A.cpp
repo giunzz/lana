@@ -20,7 +20,7 @@ ii t, n, a, b, c, d, k[4][4];
 
 int main(){
     opt;
-    //fi;
+    //afi;
     cin >> t;
     while(t--){
         cin >> n >> a >> b >> c >> d;
