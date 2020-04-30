@@ -1,22 +1,25 @@
-import logging
+import sys, time
 from flask import Flask 
 
+directfilelog = 'python/testbackend/f.log'
 app = Flask(__name__)
-#log = create_logger(app)
-logging.basicConfig(level=logging.DEBUG)
 
 @app.route('/')
 def helloword():
-    app.logger.info('test')
+    with open(directfilelog, 'a') as log:
+        current_time = time.strftime("%H:%M:%S", time.localtime())
+        log.write(current_time + ' test log\n')
     return 'Hello!'
 
 
 @app.route('/user/<name>')
 def adminpage(name):
+    with open(directfilelog, 'a') as log:
+        log.write('test log 1\n')
     return 'hello %s' % name
 
 
 if __name__ == '__main__':
-    app.logger.setLevel(logging.INFO)
-    app.run(debug=True)
-
+    with open(directfilelog, 'w') as log:
+        log.write('test log 2\n')
+    app.run(debug=False)
