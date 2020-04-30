@@ -1,0 +1,1 @@
+float((datetime.now() - i).seconds)
