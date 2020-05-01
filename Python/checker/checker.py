@@ -1,4 +1,5 @@
 import os, shutil, time
+import checkSolution as cS
 import killFileExe as kle
 from datetime import datetime
 from threading import Thread
@@ -14,6 +15,7 @@ nameAns = 'ans.out'
 timeStart = timeEnd = datetime.now()
 getObjOfDir = os.listdir(direction)
 logFile = 'Score.log'
+cntAC = cntTest = 0
 
 def joinPath(name1, name2):
     return os.path.join(name1, name2)
@@ -27,7 +29,6 @@ def init(name):
     shutil.copyfile(joinPath(direction, nameTargetExe), joinPath(dirFolderTest, nameTargetExe))
 
 def runfile():
-    #print(dirFolderTest)
     os.chdir(dirFolderTest)
     timeStart = datetime.now()
     os.system(joinPath(dirFolderTest, nameTargetExe))
@@ -60,6 +61,7 @@ if __name__ == "__main__":
         writeLog.write("Target: %s \nDirectory: %s\n" % (nameTarget, direction))
     for nameFolder in getObjOfDir:
         if os.path.isdir(joinPath(direction, nameFolder)) and nameFolder != '__pycache__':
+            cntTest += 1
             dirFolderTest = joinPath(direction, nameFolder)
             init(nameFolder)
             print("%s:" % nameFolder, end=" ")
@@ -68,3 +70,7 @@ if __name__ == "__main__":
                 wLog("TLE\n")
                 pass
             wLog('%f\n' % float((timeEnd - timeStart).seconds))
+            reqCheck = cS.checkSol(dirFolderTest, nameAns, nameTargetOut)
+            if reqCheck == 'Accept':
+                cntAC += 1
+            wLog('%s\n' % reqCheck)

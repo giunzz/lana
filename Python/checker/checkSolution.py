@@ -4,17 +4,17 @@ def checkSol(directoryAns, fileAns, fileOut):
     fileTask = open(os.path.join(directoryAns, fileOut), 'r')
     fileSol = open(os.path.join(directoryAns, fileAns), 'r')
     lineAllTask = fileTask.readlines()
-    print(lineAllTask)
     numLine = 0
     for line in fileSol:
+        if(numLine + 1 > len(lineAllTask)):
+            return 'Wrong Ans at line %d' % (numLine + 1)
         lineTask = lineAllTask[numLine].split()
         lineSol = line.split()
-        print(lineSol, ' ', lineTask)
         numLine += 1
         if(lineSol != lineTask):
             return 'Wrong Ans at line %d' % numLine
-        if(numLine == len(lineAllTask)):
-            return 'Wrong Ans at line %d' % (numLine + 1)
+    if(numLine < len(lineAllTask)):
+        return 'Wrong Ans at line %d' % (numLine + 1)
     return 'Accept'
 
 if __name__ == "__main__":
