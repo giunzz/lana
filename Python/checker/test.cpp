@@ -19,5 +19,6 @@ int main(){
     fi;
     int i;
     cin >> i;
-    cout << 1;
+    //while(1){}
+    cout << i;
 }
