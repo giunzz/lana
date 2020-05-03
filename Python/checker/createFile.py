@@ -7,7 +7,10 @@ def createExe():
     for nameFileCpp in os.listdir(currentDirectory):
         if nameFileCpp.endswith('.cpp'):
             nameTarget = ''.join(nameFileCpp.split('.cpp'))
-            os.system('cd "%s" && g++ %s -o %s' % (currentDirectory, os.path.join(currentDirectory, nameFileCpp), os.path.join(currentDirectory, nameTarget + '.exe')))
+            try:
+                os.system('cd "%s" && g++ %s -o %s' % (currentDirectory, os.path.join(currentDirectory, nameFileCpp), os.path.join(currentDirectory, nameTarget + '.exe')))
+            except:
+                print('Build file Error!')
     return nameTarget
 
 def delFile(directoryTest, nameExe, nameOut, nameAns):

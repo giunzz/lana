@@ -57,7 +57,7 @@ def processingRun():
     else:
         print('Run file Success!')
     thread1.join()
-    if float((timeEnd - timeStart).seconds) > timeLimit:
+    if float((timeEnd - timeStart).total_seconds()) > timeLimit:
         checknonTLE = False
     time.sleep(0.5)
     return checknonTLE
@@ -83,7 +83,7 @@ def Checker(name, time):
                 wLog("No File Output Found\n")
                 delFile(dirFolderTest, nameTargetExe, nameTargetOut, nameAns)
                 continue
-            wLog('%fs\n' % float((timeEnd - timeStart).seconds))
+            wLog('%fs\n' % float((timeEnd - timeStart).total_seconds()))
             reqCheck = cS.checkSol(dirFolderTest, nameAns, nameTargetOut)
             if reqCheck == 'Accept':
                 cntAC += 1
