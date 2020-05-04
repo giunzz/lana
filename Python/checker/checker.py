@@ -59,7 +59,6 @@ def processingRun():
     thread1.join()
     if float((timeEnd - timeStart).total_seconds()) > timeLimit:
         checknonTLE = False
-    time.sleep(0.5)
     return checknonTLE
 
 def Checker(name, time):
