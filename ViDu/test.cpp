@@ -1,32 +1,45 @@
-#include<bits/stdc++.h>
+#include <cstdio>
 using namespace std;
-const string file = "giun";
-#define balabolo(a) freopen((a + ".inp").c_str(), "r", stdin) ,freopen((a + ".out").c_str(), "w", stdout)
-#define giun ios_base::sync_with_stdio(0) , cin.tie(0);
-
-vector <int> arr = { 1 , 2 , 3 , 8};
-bool ans = false;
-bool checkQuadrilateral(vector<int> arr)
-{
-    int a , b , c, d;
-    
-    a =  arr[0] , b = arr[1] , c = arr[2] , d = arr[3];
-    if (a+b > abs (c-d) && c+b > abs (a-d) ) ans = true;
-    if (a+c > abs (b-d) && c+b > abs (a-d) ) ans = true;
-    if (a+d > abs (b-c) && c+b > abs (a-d) ) ans = true;
-    if (c+b > abs (a-d) && a+d > abs (c-b) ) ans = true;
-    if (d+b > abs (a-c) && a+c > abs (d-b) ) ans = true;
-    if (c+d > abs (a-b) && a+b > abs (c+d) ) ans = true;
-    return ans;
-}
+const int maxn = 1e7+7;
+long n , t , dd[maxn]={0};
+long long bayhoi = 0, ans = 0;
+void fastscan(long &num) 
+{  
+    bool neg = false; 
+    register int c;
+    num = 0;  
+    c = getchar(); 
+    if (c == ' ' || c == '\n') fastscan(num);
+    if (c=='-') 
+    {  
+        neg = true;  
+        c = getchar(); 
+    }  
+    for (; (c>47 && c<58); c=getchar()) 
+        num = num *10 + c - 48; 
+    if (neg) 
+        num *= -1; 
+} 
 
 int main()
 {
-    balabolo(file);
-    giun;
-    //arr[0] = 1 , arr[1] = 2 , arr[2] = 3 , arr[3] = 8;
-    checkQuadrilateral(arr);
-    cout << ans;
-
-
+  fastscan(n) ; fastscan(t);  
+  for (int i = 1 ; i <= n ; i++) 
+  {
+  	long a,b;
+  	fastscan(a) ; 
+    fastscan(b);
+  	bayhoi+=b; 
+    ans+=a;
+  	dd[a/b+1]+=(b-(a%b)); 
+    dd[a/b+2]+=(a%b);
+  }
+  printf("%I64d\n",ans);
+  for (int i = 1 ; i <= t ; i++) 
+  {
+  	bayhoi-=dd[i];
+  	ans-=bayhoi;
+  	printf("%I64d\n",ans);
+  }
+  return 0;
 }

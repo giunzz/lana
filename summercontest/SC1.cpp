@@ -1,11 +1,11 @@
-#include<bits/stdc++.h>
+/*#include<bits/stdc++.h>
 using namespace std;
-const string tenfile = "SC1";
+const string tenfile = "giun";
 #define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 string s , num , x , s1;
 long n ,  ok = 0;
-vector <int> ans;
+vector <int> ans , tam;
 
 int main()
 {
@@ -14,6 +14,7 @@ int main()
     cin >> n;
     for (int i = 1 ; i <= n ; i++)
     {
+        tam.clear();
         cin >> s ;
         cin.ignore();
         for (int j = 0 ; j <= 8 ; j++)
@@ -32,17 +33,23 @@ int main()
                 s1 += s[k];
             if ( s1 == x)
             {
-                ans.push_back(j);
+                tam.push_back(j);
                 ok = 1;
-                break;
-                    
             }
         }
         if ( ok == 0 ) ans.push_back(20);
+        else 
+        {
+            int t1 = tam[0];
+            for (int yy = 1 ; yy < (int)tam.size() ; yy++)
+                t1 = max ( t1 , tam[yy]);
+            ans.push_back(t1);
+        }
     }
     sort(ans.begin() , ans.end());
     for (int i = (int) ans.size() -1  ; i >= 0 ; i--)
     {
+        cerr << ans[i] << " ";
         switch (ans[i])
         {
             case 0:
@@ -77,4 +84,44 @@ int main()
             } 
     }
     return 0;
+}*/
+
+#include <bits/stdc++.h> 
+
+using namespace std;
+
+int test; 
+string s; 
+
+bool check(string st) {
+  for (int i = (int) st.size() - 1, j = (int) s.size() - 1; i >= 0; i--, j--) {
+    if (st[i] != s[j]) {
+      return false;
+    }
+  }
+  return true; 
+}
+
+int main () {
+  freopen("giun.INP", "r", stdin);
+  freopen("giun.OUT", "w", stdout);
+  cin >> test;
+  for (int tt = 1; tt <= test; tt++) {
+    bool found = false; 
+    string res = "NONE"; 
+    cin >> s; 
+    for (int i = 1; i <= 9; i++) {
+      string name, st;
+      cin >> name >> st; 
+      if (found == false && check(st) == true) {
+        found = true;
+        res = name;   
+      }
+    }
+    if (res[(int) res.size() - 1] == ':') {
+      res = res.substr(0, (int) res.size() - 1); 
+    }                                    
+    cout << res << endl; 
+  }
+  return 0; 
 }

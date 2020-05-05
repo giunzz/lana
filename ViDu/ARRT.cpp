@@ -33,7 +33,8 @@ int main()
 using namespace std;
 int t, a, n, b = INT_MIN;
 
-void sol(int i){
+void sol(int i)
+{
     int s = t / i + 1 - i;
     if (s % 2 || s < 0) return;
     else if (i > (b - a + 1)) {

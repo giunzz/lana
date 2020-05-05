@@ -1,0 +1,42 @@
+Target: TILE 
+Directory: g:\HocLapTrinh\cham\checker
+Test00: 0.000000s
+Accept
+Test01: 0.000000s
+Accept
+Test02: 0.000000s
+Accept
+Test03: 0.000000s
+Wrong Ans at line 1
+Test04: 0.000000s
+Accept
+Test05: 0.000000s
+Accept
+Test06: 0.000000s
+Accept
+Test07: 0.000000s
+Accept
+Test08: 0.000000s
+Accept
+Test09: 0.000000s
+Wrong Ans at line 1
+Test10: 0.000000s
+Accept
+Test11: 0.000000s
+Wrong Ans at line 1
+Test12: 0.000000s
+Accept
+Test13: 0.000000s
+Accept
+Test14: 0.000000s
+Accept
+Test15: 1.000000s
+Accept
+Test16: 1.000000s
+Accept
+Test17: TLE
+Test18: 1.000000s
+Wrong Ans at line 1
+Test19: 1.000000s
+Accept
+AC: 15/20

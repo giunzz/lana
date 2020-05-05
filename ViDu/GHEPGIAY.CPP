@@ -1,6 +1,4 @@
 #include<bits/stdc++.h>
-#include <dos.h> //for delay
-#include <conio.h> //for getch()
 using namespace std;
 const  long maxn=1e6+9;
 long a[maxn],b[maxn],o=0,t,k,m,n;
@@ -10,9 +8,9 @@ int main(){
     cin.tie(0);
     freopen("GHEPGIAY.INP","r",stdin);
     freopen("GHEPGIAY.OUT","w",stdout);
-    cin >> m >> n;
+    scanf("%ld%ld",&m,&n);
     for (long i= 1 ; i<=m ; i++ ) {
-            cin >> t;
+            scanf("%ld",&t);
             a[t]=a[t]+1;
             //cerr << t << " " << a[t] << endl;
             //m1=max(m1,t);
@@ -21,7 +19,7 @@ int main(){
     }
     //cerr << endl;
     for (long i= 1 ; i<=n ; i++ ) {
-            cin >> k;
+            scanf("%ld",&k);
             b[k]=b[k]+1;
             //cerr << k << " " << b[k] << endl;
             //m2=max(m2,k);
@@ -32,10 +30,11 @@ int main(){
     //cerr << m1 << " " << m2 << endl;
      //for (long i= 0 ; i<= max(m1,m2); i++)
         //if (a[i] > 0 && b[i] > 0 ) s+=min(a[i],b[i]);
-     for (long i=0 ; i<=maxn; i++){
+     for (long i=0 ; i<=maxn; i++)
+     {
             //cerr << i << " " << a[i] << " " << b[i] << endl;
          o+=min(a[i],b[i]);
     }
-    cout << o; //<< endl << o;
+        printf("%ld",o);
     return 0;
 }

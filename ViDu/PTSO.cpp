@@ -7,8 +7,8 @@ using namespace std;
 long n , a = 0 , b = 0 , mi = 100000008, j , i = 1;
 
 int main(){
-    freopen("input.txt","r", stdin);
-    freopen("output.txt","w",stdout);
+    freopen("PTSO.txt","r", stdin);
+    freopen("PTSOt.txt","w",stdout);
     scanf("%ld", & n);
 
     if (n % 2 == 0 ) j = n - 1;
