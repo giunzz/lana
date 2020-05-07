@@ -69,3 +69,4 @@ int main(){
     freopen("tratien.out", "w", stdout);
     cout << 1;
 }
+
