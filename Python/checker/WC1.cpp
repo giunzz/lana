@@ -24,7 +24,7 @@ ll nhan(ll x, ll y){
     if(x == 1) return y;
     ll p = nhan(x, y / 2);
     p = (p + p) % mod;
-    if (y % 2 == 1) p = (p + x) % mod;
+    if (y % 2) p = (p + x) % mod;
     return p;
 }
 
