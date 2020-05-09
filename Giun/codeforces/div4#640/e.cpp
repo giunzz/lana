@@ -14,28 +14,7 @@ using namespace std;
 const string tenfile = "f";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-cii maxn = 1e4 + 7;
-ii n, d, a[maxn], c[maxn] = {0}, k, ans = 0;
-
 int main(){
     opt;
     fi;
-    cin >> n >> d;
-    loop(i, 1, n) cin >> a[i];
-    sort(a + 1, a + 1 + n);
-    loopd(i, n, 1){
-        if(c[i]) continue;
-        c[i] = 1;
-        if(a[i] + a[1] > d || i == 1) ++ans;
-        else{
-            k = lower_bound(a + 1, a + 1 + i, d - a[i]) - a;
-            if (k == i + 1) ++ans;
-            else{
-                while(c[k]) --k;
-                if(!k) ++ans;
-                else c[k] = 1, ++ans;
-            }
-        }
-    }
-    cout << ans;
 }
