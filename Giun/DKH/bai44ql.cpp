@@ -5,10 +5,10 @@ int n;
 string s;
 
 void sol(int a){
-    for (int i = 'A'; i <= 'B'; i++){
-        if (s[a - 1] == 'B' && i == 'B' && a > 0) continue;
+    for (char i = 'A'; i <= 'B'; i++){
+        if (a > 0 && s[a - 1] == 'B' && i == 'B') continue;
         s.push_back(i);
-        if (s.length() == n) cout << s << endl;
+        if ((int)s.length() == n) cout << s << endl;
         else sol(a + 1);
         s.pop_back();
     }

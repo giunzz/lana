@@ -14,32 +14,34 @@ using namespace std;
 const string tenfile = "f";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-cii maxn = 1e4 + 7;
-ii n, d, a[maxn], c[maxn] = {0}, s, k, ans = 0;
+// cii maxn = 1e4 + 7;
+// ii n, d, a[maxn], c[maxn] = {0}, s, k, ans = 0;
 
-int main(){
-    opt;
-    fi;
-    cin >> n >> d;
-    loop(i, 1, n) cin >> a[i];
-    sort(a + 1, a + 1 + n);
-    s = 0;
-    loopd(i, n, 1){
-        if(c[i]) continue;
-        if (s + a[i] <= d) s += a[i], c[i] = 1;
-        else{
-            k = lower_bound(a + 1, a + 1 + n, d - s) - a;
-            if (k == n) ++ans, s = a[i];
-            else{
-                while(k){
-                    s += a[k], c[k] = 1;
-                    k = lower_bound(a + 1, a + 1 + n, d - s) - a;
-                    while(c[k]) --k;
-                }
-                ++ans, s = a[i];
-            }
-        }
-    }
-    if(s) ++ans;
-    cout << ans;
-}
+// int main(){
+//     opt;
+//     fi;
+//     cin >> n >> d;
+//     loop(i, 1, n) cin >> a[i];
+//     sort(a + 1, a + 1 + n);
+//     s = 0;
+//     loopd(i, n, 1){
+//         if(c[i]) continue;
+//         if (s + a[i] <= d) s += a[i], c[i] = 1;
+//         else{
+//             k = lower_bound(a + 1, a + 1 + n, d - s) - a;
+//             if (k == n) ++ans, s = a[i];
+//             else{
+//                 while(k){
+//                     s += a[k], c[k] = 1;
+//                     k = lower_bound(a + 1, a + 1 + n, d - s) - a;
+//                     while(c[k]) --k;
+//                 }
+//                 ++ans, s = a[i];
+//             }
+//         }
+//     }
+//     if(s) ++ans;
+//     cout << ans;
+// }
+
+cii maxn
