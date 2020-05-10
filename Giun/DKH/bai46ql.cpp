@@ -14,23 +14,27 @@ using namespace std;
 const string tenfile = "f";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-string s;
-vec(ii) anslaketqua;
-bool check[100] = {0};
-int giuncute;
+string chankobuonnghiten, ans;
+vec(ii) ansvt;
+ii tt;
 
-void quayvongvong(int vitridequyvongvong){
-    
-    if(!anslaketqua.empty()) giuncute = 0;
-    else giuncute = anslaketqua.back() + 1;
-    loop(i, giuncute, s.length() - 1) {
-        if(i > 1 && )
+void quaylui(int vitri){
+    bool checkkyty[500] = {0};
+    if(ansvt.empty()) tt = 0;
+    else tt = ansvt.back() + 1;
+    loop(i, tt, chankobuonnghiten.length() - 1){
+        if (checkkyty[chankobuonnghiten[i]]) continue;
+        ansvt.push_back(i); ans.push_back(chankobuonnghiten[i]);
+        checkkyty[chankobuonnghiten[i]] = 1;
+        cout << ans << "\n";
+        quaylui(vitri + 1);
+        ansvt.pop_back(); ans.pop_back();
     }
 }
 
 int main(){
     opt;
     fi;
-    getline(cin, s);
-    quayvongvong(0);
+    getline(cin, chankobuonnghiten);
+    quaylui(0);
 }
