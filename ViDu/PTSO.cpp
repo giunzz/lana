@@ -1,27 +1,16 @@
-//#include<bits/stdc++.h>
-#include<cstdio>
-#include<ctime>
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
-long n , a = 0 , b = 0 , mi = 100000008, j , i = 1;
+long n , a = 0 , b = 0 ;
 
 int main(){
-    freopen("PTSO.txt","r", stdin);
-    freopen("PTSOt.txt","w",stdout);
+    freopen("giun.inp","r", stdin);
+    freopen("giun.out","w",stdout);
     scanf("%ld", & n);
-
-    if (n % 2 == 0 ) j = n - 1;
-    else j = n ;
-    while ( j >= i  ){
-        if (i + j == n && j - i < mi) {
-            mi = j - i;
-            a = j ;
-            b = i;
-        }
-        i += 2 , j -= 2;
-    }
-    if ( a == 0 && b == 0 ) printf("%d",-1) ;
+    n = n / 2;
+    if (n % 2 != 0 ) a = n / 2 ,  b = n  / 2;
+    else  a = n / 2 + 1 , b = n /2 -1;
+    if ( a + b != n ) printf("%d",-1) ;
     else printf("%ld %ld", a, b);
     cerr << clock() << " ms";
 }

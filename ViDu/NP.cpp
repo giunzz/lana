@@ -24,8 +24,8 @@ void np(int vt){
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    freopen("input.txt","r",stdin);
-    freopen("output.txt","w",stdout);
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
     
     cin >> n ;
     np(1);

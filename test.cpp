@@ -27,8 +27,9 @@ void fastscan(int &num)
 
 int main()
 {
-    //balabolo(file);
+    balabolo(file);
     fastscan(n) ; fastscan(t);
+    int i = 0 ;
     for (int i = 1 ; i <= n ; i++)
     {
         fastscan(a[i]) ; fastscan(b[i]) ;
