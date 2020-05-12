@@ -32,9 +32,12 @@ int main(){
     freopen(finame, "w", stdout);
     //t = Rand(mint, maxt);
     //cout << t << endl;
-    for (int i = 1; i <= 5; i++){
+    cout << 1000 << endl;
+    for (int i = 1; i <= 1000; i++){
         //pri();
-        cout << Rand(1, 100) << " ";
+        int a = Rand(1, 100);
+        int b = Rand(a + 1, 101);
+        cout << a << " " << b << endl;
     }
     return 0;
 }

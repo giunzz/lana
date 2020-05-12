@@ -11,7 +11,7 @@
 #define vec(type) vector<type>
 #define vecite(type) vector<type>::iterator
 using namespace std;
-const string tenfile = "f";
+const string tenfile = "chonhd";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 cll maxn = 1e3 + 7;
