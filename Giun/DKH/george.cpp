@@ -15,12 +15,17 @@ const string tenfile = "f";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 cll maxn = 5e3 + 7;
-ll n, m, k, a[maxn] = {0};
+ll n, m, k, a[maxn] = {0}, f[maxn][maxn] = {{0}};
 
 int main(){
     opt;
     fi;
     cin >> n >> m >> k;
     loop(i, 1, n) cin >> a[i], a[i] += a[i - 1];
-    
+    loop(i, 1, k){
+        loop(j, i * m, n){
+            f[i][j] = max(f[i][j - 1], f[i - 1][j - m] + a[j] - a[j - m]);
+        }
+    }
+    cout << f[k][n];
 }
