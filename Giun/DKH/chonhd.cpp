@@ -30,14 +30,12 @@ int main(){
     loop(i, 1, n) {cin >> a[i].first >> a[i].second; b[i].first = a[i].first, b[i].second = a[i].second;}
     sort(a + 1, a + 1 + n, sortext);
     f[0] = 0;
-    loop(j, 1, n){
-        loop(i, 1, n){
+    loop(j, 1, n)
+        loop(i, 1, n)
             if (!vt[i] && a[i].first == b[j].first && a[i].second == b[j].second){
                 vt[i] = j;
                 break;
             }
-        }
-    }
     a[0].first = 0, a[0].second = 0;
     loop(i, 1, n){
         ll t = -1;
