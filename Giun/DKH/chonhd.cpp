@@ -41,9 +41,8 @@ int main(){
     a[0].first = 0, a[0].second = 0;
     loop(i, 1, n){
         ll t = -1;
-        for(int j = 0; a[j].second <= a[i].first; j++){ 
+        for(int j = 0; a[j].second <= a[i].first; j++)
             if(f[j] > t) tv[i] = j, t = f[j];
-        }
         f[i] = t + 1;
         ans = max(ans, f[i]);
     }
