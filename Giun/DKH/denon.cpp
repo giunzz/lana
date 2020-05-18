@@ -10,12 +10,23 @@
 #define pp(type, type1) pair<type, type1>
 #define vec(type) vector<type>
 #define vecite(type) vector<type>::iterator
-#define MOD 1e9 + 7
 using namespace std;
 const string tenfile = "f";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
+ll m, n, k, x, y, hg = 0, ct = 0, osl, ans;
+map<ll, bool> dhg, dct;
+
 int main(){
     opt;
     fi;
+    cin >> m >> n >> k;
+    loop(i, 1, k){
+        cin >> x >> y;
+        if(!dhg[x]) dhg[x] = 1, ++hg;
+        if(!dct[y]) dct[y] = 1, ++ct;
+    }
+    osl = hg*n + (ct * (m - hg));
+    ans = n * m - osl;
+    cout << ans;
 }

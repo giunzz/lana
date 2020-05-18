@@ -10,12 +10,21 @@
 #define pp(type, type1) pair<type, type1>
 #define vec(type) vector<type>
 #define vecite(type) vector<type>::iterator
-#define MOD 1e9 + 7
 using namespace std;
 const string tenfile = "f";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
+ll q, n, k, tt;
+
 int main(){
     opt;
-    fi;
+    //fi;
+    cin >> q;
+    while(q--){
+        cin >> n >> k;
+        if (n % 2) tt = (n / 2) * 8;
+        else tt = (n / 2) * 3 + (n / 2 - 1) * 5;
+        if (tt >= k) printf("YES\n");
+        else printf("NO\n");
+    }
 }
