@@ -17,3 +17,13 @@ c, d trai phia ab
 1 doan 1 tia
 chon 1 diem co tung do hoanh do lon hon 2 diem cua doan va thuoc tia
 kiemtra doan thang goc tia va diem xa nhat voi doan thang de co cat nhau ko
+   
+   
+   
+cho 20 doan thang
+Input: 20 dong 
+moi dong toa do 2 dau doan thang
+Output:
+in ra so doan thang sau khi bo bot cac doan trung nhau
+
+2 doan trung nhau (cung mut hoac chong nhau) gop lai 1 doan
