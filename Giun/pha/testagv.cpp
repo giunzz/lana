@@ -17,7 +17,9 @@ using namespace std;
 const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-int main(){
+int main(int argc, char **argv){
     opt;
-    file;
+    //file;
+    cout << argc << endl;
+    lp(i, 0, argc - 1) cout << argv[i] << " ";
 }
