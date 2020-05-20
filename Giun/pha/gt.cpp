@@ -54,16 +54,15 @@ int main(int argc, char **argv){
     string msg = "sync", name;
     if(mp["-m"]) {
         if(fd(argv, "-m", argc) == (argc - 1) || cvt(argv, fd(argv, "-m", argc) + 1) == "-h") {errorErr(); return 0;}
-        for (int j = fd(argv, "-m", argc) + 1; cvt(argv, j) != "-h" && j < argc; j++) msg += " " + cvt(argv, j);
+        msg = "";
+        for (int j = fd(argv, "-m", argc) + 1; j < argc && cvt(argv, j) != "-h"; j++) msg += cvt(argv, j) + " ";
     }
     if(mp["-h"]){
         if(fd(argv, "-h", argc) == (argc - 1) || cvt(argv, fd(argv, "-h", argc) + 1) == "-m") {errorErr(); return 0;}
         name = cvt(argv, fd(argv, "-h", argc) + 1);
     }
-    if (mp["-m"]){
-        system("git add .");
-        system(("git commit -m \"" + msg +"\"").c_str());
-    }
+    system("git add .");
+    system(("git commit -m \"" + msg +"\"").c_str());
     if(mp["-h"]) 
         system(("git push -u origin " + name).c_str());
 }
