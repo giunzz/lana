@@ -11,11 +11,13 @@
 #define vec(type) vector<type>
 #define vecite(type) vector<type>::iterator
 #define MOD 1e9 + 7
+#define fi fisrt
+#define se second
 using namespace std;
 const string tenfile = "f";
-#define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
+#define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 int main(){
     opt;
-    fi;
+    file;
 }
