@@ -46,7 +46,7 @@ int main(int argc, char **argv){
         cerr << "**Add all file to commit is default and auto in this tool\n";
         cerr << "-h <name> to push commits with name origin\n";
         cerr << "-l <name> to pull lastest commit with name origin\n";
-        cerr << "-m \"<message>\" to commit file with message ex: gt -m sync \nIf -m is not found, \"sync\" will default message\n";
+        cerr << "-m <message> to commit file with message ex: gt -m sync \nIf -m is not found, \"sync\" will default message\n";
         cerr << "By PMQ - ver 1.0";
         return 0;
     }
