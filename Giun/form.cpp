@@ -10,10 +10,10 @@
 #define pp(a, b) pair<a, b>
 #define vec(a) vector<a>
 #define vecite(a) vector<a>::iterator
-#define MOD 1e9 + 7
 #define fi first
 #define se second
 using namespace std;
+cll MOD = 1e9 + 7;
 const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
