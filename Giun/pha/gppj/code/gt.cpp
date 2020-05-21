@@ -42,6 +42,10 @@ int main(int argc, char **argv){
         return 0;
     }
     lp(i, 1, argc - 1) if(cvt(argv, i) == "-h" || cvt(argv, i) == "-m" || cvt(argv, i) == "-l" || cvt(argv, i) == "--help") ++mp[cvt(argv, i)], ++tt;
+    if (!tt){
+        cerr << "Use --help to get information this tool";
+        return 0;
+    }
     if (tt == 1 && cvt(argv, 1) == "--help"){
         cerr << "**Add all file is default and auto in this tool\n";
         cerr << "-h <name> to push file with name origin\n";
