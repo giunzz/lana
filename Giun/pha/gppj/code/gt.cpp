@@ -37,12 +37,17 @@ void errorErr(){
 int main(int argc, char **argv){
     opt;
     //file;
+    if(argc == 1) {
+        cerr << "Use --help to get information this tool";
+        return 0;
+    }
     lp(i, 1, argc - 1) if(cvt(argv, i) == "-h" || cvt(argv, i) == "-m" || cvt(argv, i) == "-l" || cvt(argv, i) == "--help") ++mp[cvt(argv, i)], ++tt;
     if (tt == 1 && cvt(argv, 1) == "--help"){
         cerr << "**Add all file is default and auto in this tool\n";
         cerr << "-h <name> to push file with name origin\n";
         cerr << "-l <name> to pull file with name origin\n";
-        cerr << "-m \"<message>\" to commit file with message ex: gt -m sync \nIf -m is not found, \"sync\" will default message";
+        cerr << "-m \"<message>\" to commit file with message ex: gt -m sync \nIf -m is not found, \"sync\" will default message\n";
+        cerr << "By PMQ";
         return 0;
     }
     if((mp["-l"] && tt > 1) || (mp["--help"] && tt > 1) || tt > 2) {errorErr(); return 0;}
