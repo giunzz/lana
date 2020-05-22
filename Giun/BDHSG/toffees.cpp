@@ -14,7 +14,7 @@
 #define se second
 using namespace std;
 cll MOD = 1e9 + 7;
-const string tenfile = "f";
+const string tenfile = "toffees";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 cll maxn = 1e6 + 7;
@@ -29,11 +29,20 @@ int main(){
     ans[1] = 1;
     lp(i, 1, n - 1){
         if(s[i] == '=') ans[i + 1] = ans[i];
-        if(s[i] == 'R') ans[i + 1] = ans[i] + 1;
-        if(s[i] == 'L') ans[i + 1] = 1;
+        else if(s[i] == 'R') ans[i + 1] = ans[i] + 1;
+        else if(s[i] == 'L' && ans[i] > 1) ans[i + 1] = 1;
+        else ans[i + 1] = ans[i] - 1;
     }
-    lpd(i, n, 2){
-
-    }
+    ii i = n - 1, dem = 0;
+    while((s[i] == 'R' || s[i] == '=') && i >= 0)
+        if(s[i--] == 'R') ++dem;
+    if(i > 0) ans[n] += dem;
     lp(i, 1, n) cerr << ans[i] << " ";
+    lpd(i, n, 2){
+        if(s[i - 1] == '=') ans[i - 1] = ans[i];
+        else if(s[i - 1] == 'R' && ans[i] < ans[i  -1]) ans[i - 1] = ans[i] + 1;
+        else if(s[i - 1] == 'L' && ans[i] < 1) ans[i] = 1, ans[i - 1] = 2;
+        else if(s[i - 1] == 'L' && ans[i] > ans[i  - 1]) ans[i - 1] = ans[i] + 1;
+    }
+    lp(i, 1, n) cout << ans[i] << " ";
 }
