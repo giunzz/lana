@@ -1,5 +1,49 @@
-Target: chonhd 
-Directory: c:\Users\tienp\Documents\Quang\Hoc\Python\checker
-Test01: 0.200911s
+Target: toffees 
+Directory: c:\Users\Hp\Desktop\GitAnh\Python\checker
+test00: 0.212803s
 Accept
-AC: 1/1
+test01: 0.236492s
+Accept
+test02: 0.247923s
+Accept
+test03: 0.287914s
+Accept
+test04: 0.219938s
+Accept
+test05: 0.263920s
+Accept
+test06: 0.255923s
+Accept
+test07: 0.275911s
+Wrong Ans at line 1
+test08: 0.281106s
+Wrong Ans at line 1
+test09: 0.261099s
+Wrong Ans at line 1
+test10: 0.251924s
+Wrong Ans at line 1
+test11: 0.335900s
+Wrong Ans at line 1
+test12: 0.255916s
+Wrong Ans at line 1
+test13: 0.255918s
+Wrong Ans at line 1
+test14: 0.275912s
+Wrong Ans at line 1
+test15: 0.279914s
+Wrong Ans at line 1
+test16: 0.275910s
+Wrong Ans at line 1
+test17: 0.323902s
+Wrong Ans at line 1
+test18: 0.343893s
+Wrong Ans at line 1
+test19: 0.335901s
+Accept
+test20: 0.285740s
+Accept
+test21: 0.251923s
+Accept
+test22: 0.795758s
+Wrong Ans at line 1
+AC: 10/23
