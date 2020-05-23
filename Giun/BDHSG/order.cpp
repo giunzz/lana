@@ -4,22 +4,29 @@
 #define cii const int
 #define cll const long long
 #define opt ios_base::sync_with_stdio(0); cin.tie(0)
-#define loop(variable, valuegan, valuebehonbang) for(ll variable = valuegan; variable <= valuebehonbang; variable++)
-#define loopd(variable, valuegan, valuelonhonbang) for(ll variable = valuegan; variable >= valuelonhonbang; variable--)
-#define loopdk(variable, valuegan, conditions, thaydoi) for(ll variable = valuegan; conditions; thaydoi) 
-#define pp(type, type1) pair<type, type1>
-#define vec(type) vector<type>
-#define vecite(type) vector<type>::iterator
-#define MOD 1e9 + 7
+#define lp(a, b, c) for(ll a = b; a <= c; a++)
+#define lpd(a, b, c) for(ll a = b; a >= c; a--)
+#define lpdk(a, b, c, d) for(ll a = b; c; d) 
+#define pp(a, b) pair<a, b>
+#define vec(a) vector<a>
+#define vecite(a) vector<a>::iterator
+#define fi first
+#define se second
 using namespace std;
+cll MOD = 1e9 + 7;
 const string tenfile = "f";
-#define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
+#define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-ll n, c;
+cll maxn = 1e4 + 3;
+ll n, c, f[maxn][maxn] = {{0}};
 
 int main(){
     opt;
-    fi;
+    file;
     cin >> n >> c;
-    loop(i, 1, c)
+    lp(i, 1, n) f[i][0] = 1;
+    lp(i, 1, n){
+        lp(j, 1, c) f[i][j] = f[i - 1][j] + f[i - 1][j - 1];
+    }
+    cout << f[n][c];
 }
