@@ -17,7 +17,24 @@ cll MOD = 1e9 + 7;
 const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
+cll maxn = 107;
+ll s, n, a[maxn] = {0}, ans = 0, b, sum = 0, ma = -1, f[maxn][(int)1e5 + 7] = {{0}};
+
 int main(){
     opt;
     file;
+    cin >> n >> s;
+    lp(i, 1, n) cin >> a[i], sum += a[i], ma = max(ma, a[i]);
+    while (s - ma > 2 * sum){
+        s -= ma, ++ans;
+    }
+    cerr << s;
+    lp(i, 1, s) f[0][i] = LLONG_MAX/2;
+    lp(i, 1, n){
+        lp(j, 0, s){
+            if(j < a[i]) f[i][j] = f[i - 1][j];
+            else f[i][j] = min(f[i - 1][j], f[i][j - a[i]] + 1);
+        }
+    }
+    cout << ans + f[n][s];
 }
