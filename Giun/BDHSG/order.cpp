@@ -18,15 +18,19 @@ const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 cll maxn = 1e4 + 3;
-ll n, c, f[maxn][maxn] = {{0}};
+ll n, c, f[maxn][maxn] = {{0}}, g[maxn][maxn] = {{0}};
 
 int main(){
     opt;
     file;
     cin >> n >> c;
-    lp(i, 1, n) f[i][0] = 1;
+    lp(i, 1, n) f[i][0] = 1, g[i][0] = 1;
     lp(i, 1, n){
-        lp(j, 1, c) f[i][j] = f[i - 1][j] + f[i - 1][j - 1];
+        lp(j, 1, c) {
+            if(j < i){
+                f[i - 1][j] = g[i - 1][j - 1];
+            }
+        }
     }
     cout << f[n][c];
 }
