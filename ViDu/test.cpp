@@ -1,110 +1,46 @@
-// Vector nghiệm X[1] .. X[2*n]
-// Tập ứng cử viên	A = {'(' , ')'};
-//		const A:Array[1..2] of char =('(',')');
-// Điều kiện: X thỏa đk là xâu dấu ngoặc của bt toán học
-
-/*const A:Array[1..2] of char =('(',')');
-var X:string;
-	n,i:integer;
-
-function thoadk:boolean;
-var i,d:integer;
-begin
-	d:=0;
-	for i:=1 to 2*n do
-	begin
-		if (X[i]='(') then inc(d)
-		else dec(d);
-		if (d<0) then exit(false);
-	end;
-	exit(d=0);
-end;
-procedure Chon(i:integer);
-var j:integer;
-begin
-	for j:=1 to 2 do
-	begin
-		X[i]:=A[j];
-		if i=2*n then 
-		begin
-			if thoadk then writeln(output,X);
-		end
-		else Chon(i+1);
-	end;
-end;
-begin
-	assign(input,'BAI47QL.INP'); reset(input);
-	assign(output,'BAI47QL.OUT'); rewrite(output);
-	readln(input, n);
-	for i:=1 to 2*n do X:=X+'(';
-	Chon(1);
-	close(input);
-	close(output);
-end.*/
 #include<bits/stdc++.h>
 using namespace std;
-int main()
-{
+const string tenfile = "BAI29";
+#define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
+#define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
 
-	cerr<< 20/10; 
+int X[maxn], n; 
+bool C[maxn]={false}, CC[maxn]={false},CP[maxn]={false};
+bool VoNghiem=true;
+int doi(int a){
+	return a+n;
 }
 
-/*char* addBigNumber(char* a, char* b)
+bool DieuKien(int i, int j)
 {
-	if (strlen(a) < strlen(b))
-	{
-		swapPointer(&a, &b);
+	return (!C[j] && !CC[doi(i-j)] && !CP[i+j]);
+}
+
+void Ghinghiem()
+{
+	for (int i=1;i<=n;i++) cout << X[i] << " ";
+	cout << endl;
+	VoNghiem = false;
+}
+
+void Try(int i){
+	for (int j=1;j<=n;j++){
+		if (DieuKien(i,j)) {
+			X[i]=j;
+			C[j]=true;
+			CC[doi(i-j)]=true;
+			CP[i+j]=true;
+			if (i==n) Ghinghiem();
+			else Try(i+1);
+			C[j]=false;
+			CC[doi(i-j)]=false;
+			CP[i+j]=false;
+		}
 	}
- 
-	size_t a_len = strlen(a), b_len = strlen(b);
-	char* result = new char[a_len + 2];
-	memset(result, '0', a_len);
-	bool remember = false;
- 
-	for (int i = 0; i < b_len; i++)
-	{
-		int temp = *(b + b_len - i - 1) - '0' + *(a + a_len - i - 1) - '0';
- 
-		if (remember)
-			temp++;
- 
-		if (temp > 9)
-			remember = true;
-		else
-			remember = false;
- 
-		temp = temp % 10;
- 
-		*(result + a_len - i) = temp + '0';
-	}
- 
-	for (int i = 0; i < a_len - b_len; i++)
-	{
-		int temp = *(a + a_len - b_len - i - 1) - '0';
- 
-		if (remember)
-			temp++;
-		if (temp > 9)
-			remember = true;
-		else
-			remember = false;
-	
-		temp = temp % 10;
- 
-		*(result + a_len - b_len - i) = temp + '0';
-	}
- 
-	*(result + a_len + 1) = '\0';
- 
-	if (remember)
-	{
-		*(result) = '1';
-	}
-	else
-	{
-		for (int i = 0; i <= a_len; i++)
-			*(result + i) = *(result + i + 1);
-	}
- 
-	return result;
-}*/
+}
+int main(){
+	cin >> n;
+	Try(1);
+	if (VoNghiem) cout << -1;
+	return 0;
+}

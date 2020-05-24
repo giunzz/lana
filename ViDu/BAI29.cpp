@@ -4,35 +4,14 @@ const string tenfile = "giun";
 #define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
 
-int d , k , a[9]={0};
-long long  ans1 , ans2;
+int d , k , a[105] , nho , dem = 0 ;
+//unsigned long long b;
 
-int kt ()
+/*unsigned long long mu10 (int o )
 {
-    ans2 = d;
-    for (int j = n-d ; j >= 1 ; j++)
-    {
-        cerr << a[j];
-        ans1 = ans1 * 10 + a[j];
-        ans2 = ans2 * 10 + a[j];
-    }
-    ans2 = ans2 / 10;
-    if (  ans2 / ans1 == k ) return 0;
-    else return 1;
-}
-
-void chonso ()
-{
-    int i = 8 , nho = 0 , d = 1;
-    while ( kt() == 1)
-    {
-        int tam = (a[i+1] * k + nho)  ;
-        int t = tam % 10 ;
-        int nho = (tam / 10 );
-        a[i] = t ;
-        i--;
-        d++;
-    }
+    unsigned long long s = 10;
+    for (int i = 2 ; i <= o ; i++) s *= 10;
+    return s;
 }
 
 int main()
@@ -40,11 +19,37 @@ int main()
     balabalo;
     giuncute;
     cin >> d >> k ;
-    if ( d < k ) cout << -1;
-    else 
+    int t = k*10-1;
+    for (int i = 1 ; i <= 15 ; i++)
     {
-        a[9] = d;
-        chonso();
+        b =  ( d* ( mu10(i) ) - d*k ) / t;
+        //cerr << b << " ";
+        if ( (( b * 10 + d) * k ) == d*mu10(i) +b )
+        {
+            cout <<  (b *10 + d);
+            return 0;
+        }  
     }
+    cout << -1;
+    return 0;
+}*/
 
+int main()
+{
+   balabalo;
+   giuncute;
+   cin >> d >> k;
+   a[0] = d; 
+   nho = 0;
+   for (int i = 1 ; i <= 105 ;i++)
+   {
+       dem ++;
+       a[i] = ( a[i-1] * k + nho ) % 10;
+       nho  = ( a[i-1] * k + nho ) / 10 ;
+       //cerr  << a[i] << " " << nho << endl;
+       if ( nho  ==  0  && a[i] == d  ) break;
+   }
+   for (int j = dem -1 ; j >= 0 ; j--) cout << a[j];
+   return 0; 
 }
+
