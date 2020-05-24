@@ -1,29 +1,40 @@
 #include<bits/stdc++.h>
 using namespace std;
-const string tenfile = "giun";
-#define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
-#define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
+const string tenfile = "BAI48QL";
+#define C2H2 freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
+#define CH3COOH ios_base::sync_with_stdio(0) , cin.tie(0);
 
-int n, a[22] , dd[1009]={0}, mi = INT_MAX , sum1 = 0 ;
+int n, a[22] , dd[1009]={0} , t  , s = 0;
+vector < int > x;
 
-void C2H5OH (int vt)
+void C2H5OH(int vt)
 {
-    dd[a[vt]] = 1;
-    sum1 = a[vt];
-    for (int i = 1 ; i <= n ; i++)
+    if ( vt > n ) return;
+    if (x.empty()) t = 1;
+    else t = x.back()+1;
+    for (int i = t ; i <= n ;i++)
     {
-        dd[sum-a[i]]
-        sum += a[i]
+        s+=a[i];
+        x.push_back(i);
+        dd[s] = 1;
+        C2H5OH(vt+1);
+        s-=a[i];
+        x.pop_back();
     }
-   
-        
-        
+}      
 int main()
 {
-    balabalo;
-    giuncute;
+    C2H2;
+    CH3COOH;
     cin >> n ;
-    int sum = 0;
-    for (int i = 1 ; i <= n ; i++) cin >> a[i] , sum += a[i], dd[sum] = 1;
-    C2H5OH(1);    
+    for (int i = 1 ; i <= n ; i++) cin >> a[i];
+    C2H5OH(1);
+    for (int i = 1 ; i <= 1000 ; i++)
+    {
+        if (!dd[i])
+        {
+            cout << i ;
+            return 0;
+        } 
+    }    
 }

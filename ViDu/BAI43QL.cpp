@@ -30,6 +30,5 @@ int main()
     freopen("Bai43QL.inp","r",stdin);
     freopen("Bai43QL.out","w",stdout);
     cin >> s;
-    //sort ( s.begin() , s.end());
     huhu(0);
 }
