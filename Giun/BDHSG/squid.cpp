@@ -14,28 +14,23 @@
 #define se second
 using namespace std;
 cll MOD = 1e9 + 7;
-const string tenfile = "order";
+const string tenfile = "squid";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-cll maxn = 1e4 + 3;
-ll n, c, f[maxn][maxn] = {{0}}, g[maxn][maxn] = {{0}};
+cii maxn = 1e6 + 7;
+ii n, k, f[maxn] = {0}, g, x, ans = -1, m = -1;
 
 int main(){
     opt;
     file;
-    cin >> n >> c;
-    lp(i, 0, n) f[i][0] = 1, g[i][0] = 1;
+    cin >> n >> k;
     lp(i, 1, n){
-        lp(j, 1, c) {
-            if(j <= i){
-                f[i][j] = g[i - 1][j];
-                g[i][j] = f[i][j] + g[i][j - 1]; //sigma(fi0 -> fij)
-            }
-            else{
-                f[i][j] = g[i - 1][j] - g[i - 1][j - i - 1];
-                g[i][j] = g[i][j - 1] + f[i][j]; 
-            } 
-        }
+        cin >> g >> x;
+        f[x] += g;
+        m = max(m, x);
     }
-    cout << f[n][c];
+    lp(i, 1, maxn - 2) f[i] += f[i - 1];
+    k = min(int(1e6), k * 2 + 1);
+    for(int i = k; i <= maxn - 2; i++) ans = max(ans, f[i] - f[i - k]);
+    cout << ans;
 }

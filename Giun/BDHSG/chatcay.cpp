@@ -14,28 +14,25 @@
 #define se second
 using namespace std;
 cll MOD = 1e9 + 7;
-const string tenfile = "order";
+const string tenfile = "chatcay";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-cll maxn = 1e4 + 3;
-ll n, c, f[maxn][maxn] = {{0}}, g[maxn][maxn] = {{0}};
+cii maxn = 1e4 + 7;
+ii n, w;
+pp(ii, ii) a[maxn];
+ii f[maxn][maxn] = {{0}};
 
 int main(){
     opt;
     file;
-    cin >> n >> c;
-    lp(i, 0, n) f[i][0] = 1, g[i][0] = 1;
+    cin >> n >> w;
+    lp(i, 1, n) cin >> a[i].fi >> a[i].se;
+    lp(i, 1, w) if(a[1].fi < i) f[1][i] = a[1].se;
     lp(i, 1, n){
-        lp(j, 1, c) {
-            if(j <= i){
-                f[i][j] = g[i - 1][j];
-                g[i][j] = f[i][j] + g[i][j - 1]; //sigma(fi0 -> fij)
-            }
-            else{
-                f[i][j] = g[i - 1][j] - g[i - 1][j - i - 1];
-                g[i][j] = g[i][j - 1] + f[i][j]; 
-            } 
+        lp(j, 1, w){
+            if(a[i].fi > j) f[i][j] = f[i-1][j];
+            else f[i][j] = max(f[i - 1][j], f[i-1][j - a[i].fi] + a[i].se);
         }
-    }
-    cout << f[n][c];
+    } 
+    cout << f[n][w];
 }
