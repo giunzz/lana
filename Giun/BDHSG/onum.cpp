@@ -23,6 +23,6 @@ int main(){
     opt;
     file;
     cin >> n >> a >> b;
-    sl = b - a + 1;
-    cout << ((n - 2) * b - (n - 2) * a + 1);
+    if(a <= b) cout << ((n - 2) * b - (n - 2) * a + 1);
+    else cout << "0";
 }
