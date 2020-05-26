@@ -1,11 +1,30 @@
 #include<bits/stdc++.h>
 using namespace std;
-const string tenfile = "XEPHAU";
+const string tenfile = "xephau";
 #define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
-#define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
 
 const int maxn = 30;
 int  C[maxn] =  {0} , CP[maxn] = {0} , CC[maxn] ={0} , ans[maxn] , n , ok = 1 ; 
+
+
+void fastscan(int &number) 
+{ 
+    bool negative = false; 
+    register int c; 
+  
+    number = 0; 
+    c = getchar(); 
+    if (c == ' ') fastscan(number);
+    if (c=='-') 
+    { 
+        negative = true; 
+        c = getchar(); 
+    } 
+    for (; (c>47 && c<58); c=getchar()) 
+        number = number *10 + c - 48; 
+    if (negative) 
+        number *= -1; 
+}
 
 int heloooo(int a) {return a+n;}
 
@@ -16,8 +35,8 @@ bool DieuKien(int i, int j)
 
 void print_ans()
 {
-    for (int i = 1 ; i <= n ; i++ ) cout << ans[i] << " " ;
-    cout << endl;
+    for (int i = 1 ; i <= n ; i++ ) printf("%d ",ans[i]);
+    printf("\n");
     ok = 0 ;
 }
 
@@ -43,8 +62,7 @@ void Giun(int i)
 int main()
 {
     balabalo;
-    giuncute;
-    cin >> n;
+    scanf("%d",&n);
 	Giun(1);
 	if (ok == 1) cout << -1;
 	return 0;
