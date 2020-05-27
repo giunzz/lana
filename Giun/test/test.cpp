@@ -1,8 +1,8 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 int main(){
-    int i;
-    while(1){}
-    if (i = 5) cout << 1;
+    float a = 3.1429;
+    cout << fixed << a;
 }
