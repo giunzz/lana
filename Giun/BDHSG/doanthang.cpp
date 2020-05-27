@@ -41,10 +41,29 @@ int main(){
         diem = seg.back();
         seg.pop_back();
         lp(i, 0, seg.size() - 1){
-            if(diem.x1 <= seg[i].x1 && seg[i].x1 <= diem.x2){
-                if(!(check(diem, seg[i].x1, seg[i].y1) || check(diem, seg[i].x2, seg[i].y2))){
-                    if(diem.x1 < seg[i].x1) tmp.x1 = diem.x1, tmp.y1 = diem.y1;
-                    if(diem.x2) //xet gop diem toi uu
+            // if((diem.x1 <= seg[i].x1 && seg[i].x1 <= diem.x2) || (seg[i].x1 <= diem.x1 && diem.x1 <= seg[i].x2)){
+            //     if(!(check(diem, seg[i].x1, seg[i].y1) || check(diem, seg[i].x2, seg[i].y2))){
+            //         if(diem.x1 < seg[i].x1) tmp.x1 = diem.x1, tmp.y1 = diem.y1;
+            //         else if(diem.x1 > seg[i].x1) tmp.x1 = seg[i].x1, tmp.y1 = seg[i].y1;
+            //         else if(diem.y1 < seg[i].y1) tmp.x1 = diem.x1, tmp.y1 = diem.y1;
+            //         else tmp.x1 = diem.x1, tmp.y1 = seg[i].y1;
+            //         if(diem.x2)
+            //     }
+            // }
+            if(!(check(diem, seg[i].x1, seg[i].y1) || check(diem, seg[i].x2, seg[i].y2))){
+                if(diem.x1 == diem.x2 == seg[i].x1 == seg[i].x2){
+
+                }
+                else{
+                    if(diem.x1 < seg[i].x1 < diem.x2){
+                        tmp.x1 = diem.x1, tmp.y1 = diem.y1;
+                        if(seg[i].x2 < diem.x2) tmp.x2 = diem.x2, tmp.y2 = diem.y2;
+                        else tmp.x2 = seg[i].x2, tmp.y2 = seg[i].y2;
+                    }
+                    else if(seg[i].x1 < diem.x1 < seg[i].x2){
+                        tmp.x1 = seg[i].x1, tmp.y1 = seg[i].y1;
+                        if()
+                    }
                 }
             }
         }
