@@ -17,8 +17,6 @@ cll MOD = 1e9 + 7;
 const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-
-
 int main(){
     opt;
     file;
