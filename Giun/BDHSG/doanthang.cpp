@@ -49,7 +49,7 @@ int main(){
                     // if(diem.yy1 == seg[i].yy1 && diem.y2 == seg[i].y2){
                     //     tmp.yy1 = diem.yy1, tmp.y2 = diem.y2, b = 1;
                     // }
-                    if(diem.yy1 < seg[i].yy1 && seg[i].yy1 < diem.y2){
+                    if(diem.yy1 <= seg[i].yy1 && seg[i].yy1 <= diem.y2){
                         tmp.yy1 = diem.yy1, b = 1;
                         if(seg[i].y2 < diem.y2) tmp.y2 = diem.y2;
                         else tmp.y2 = seg[i].y2;
@@ -76,7 +76,9 @@ int main(){
             }
         }
         segans.push_back(diem);
+        cerr << 1;
     }
+    cerr << 1;
     lp(i, 0, segans.size() - 1){
         cout << segans[i].x1 << " " << segans[i].yy1 << " " << segans[i].x2 << " " << segans[i].y2 << endl;
     }
