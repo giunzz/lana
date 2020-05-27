@@ -18,13 +18,14 @@ const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 struct segment{
-    ii x1, y1, x2, y2;
+    ii x1, yy1, x2, y2;
 };
 
 vec(segment) seg, segans;
+bool b = 0;
 
 ii check(segment diem, ii x, ii y){
-    return ((diem.y2 - diem.y1) * (x - diem.x1) + (diem.x1 - diem.x2) * (y - diem.y1));
+    return ((diem.y2 - diem.yy1) * (x - diem.x1) + (diem.x1 - diem.x2) * (y - diem.yy1));
 }
 
 int main(){
@@ -32,40 +33,48 @@ int main(){
     file;
     segment diem, tmp;
     lp(i, 0, 19){
-        cin >> diem.x1 >> diem.y1 >> diem.x2 >> diem.y2;
-        if(diem.x1 > diem.x2) {swap(diem.x1, diem.x2); swap(diem.y1, diem.y2);}
-        if(diem.x1 == diem.x2 && diem.y1 > diem.y2) swap(diem.y1, diem.y2);
+        cin >> diem.x1 >> diem.yy1 >> diem.x2 >> diem.y2;
+        if(diem.x1 > diem.x2) {swap(diem.x1, diem.x2); swap(diem.yy1, diem.y2);}
+        if(diem.x1 == diem.x2 && diem.yy1 > diem.y2) swap(diem.yy1, diem.y2);
         seg.push_back(diem);
     }
     while(!seg.empty()){
         diem = seg.back();
         seg.pop_back();
-        lp(i, 0, seg.size() - 1){
-            // if((diem.x1 <= seg[i].x1 && seg[i].x1 <= diem.x2) || (seg[i].x1 <= diem.x1 && diem.x1 <= seg[i].x2)){
-            //     if(!(check(diem, seg[i].x1, seg[i].y1) || check(diem, seg[i].x2, seg[i].y2))){
-            //         if(diem.x1 < seg[i].x1) tmp.x1 = diem.x1, tmp.y1 = diem.y1;
-            //         else if(diem.x1 > seg[i].x1) tmp.x1 = seg[i].x1, tmp.y1 = seg[i].y1;
-            //         else if(diem.y1 < seg[i].y1) tmp.x1 = diem.x1, tmp.y1 = diem.y1;
-            //         else tmp.x1 = diem.x1, tmp.y1 = seg[i].y1;
-            //         if(diem.x2)
-            //     }
-            // }
-            if(!(check(diem, seg[i].x1, seg[i].y1) || check(diem, seg[i].x2, seg[i].y2))){
-                if(diem.x1 == diem.x2 == seg[i].x1 == seg[i].x2){
-
+        if(!seg.empty()) lp(i, 0, seg.size() - 1){
+            b = 0;
+            if(!(check(diem, seg[i].x1, seg[i].yy1) || check(diem, seg[i].x2, seg[i].y2))){
+                if(diem.x1 == diem.x2 && seg[i].x1 == seg[i].x2){
+                    tmp.x1 = diem.x1, tmp.x2 = diem.x2;
+                    if(diem.yy1 < seg[i].yy1 < diem.y2){
+                        tmp.yy1 = diem.yy1, b = 1;
+                        if(seg[i].y2 < diem.y2) tmp.y2 = diem.y2;
+                        else tmp.y2 = seg[i].y2;
+                    }
+                    else if(seg[i].yy1 < diem.yy1 < seg[i].y2){
+                        tmp.yy1 = seg[i].yy1, b = 1;
+                        if(diem.y2 < seg[i].y2) tmp.y2 = seg[i].y2;
+                        else tmp.y2 = diem.y2;
+                    }
                 }
                 else{
-                    if(diem.x1 < seg[i].x1 < diem.x2){
-                        tmp.x1 = diem.x1, tmp.y1 = diem.y1;
+                    if(diem.x1 < seg[i].x1 && seg[i].x1 < diem.x2){
+                        tmp.x1 = diem.x1, tmp.yy1 = diem.yy1, b = 1;
                         if(seg[i].x2 < diem.x2) tmp.x2 = diem.x2, tmp.y2 = diem.y2;
                         else tmp.x2 = seg[i].x2, tmp.y2 = seg[i].y2;
                     }
-                    else if(seg[i].x1 < diem.x1 < seg[i].x2){
-                        tmp.x1 = seg[i].x1, tmp.y1 = seg[i].y1;
-                        if()
+                    else if(seg[i].x1 < diem.x1 && diem.x1 < seg[i].x2){
+                        tmp.x1 = seg[i].x1, tmp.yy1 = seg[i].yy1, b = 1;
+                        if(diem.x2 < seg[i].x2) tmp.x2 = seg[i].x2, tmp.y2 = seg[i].y2;
+                        else tmp.x2 = diem.x2, tmp.y2 = diem.y2;
                     }
                 }
+                if(b) {seg.erase(seg.begin() + i); diem = tmp, i = -1;}
             }
         }
+        segans.push_back(diem);
+    }
+    lp(i, 0, segans.size() - 1){
+        cout << segans[i].x1 << " " << segans[i].yy1 << " " << segans[i].x2 << " " << segans[i].y2 << endl;
     }
 }
