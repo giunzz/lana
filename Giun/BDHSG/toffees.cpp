@@ -17,20 +17,40 @@ cll MOD = 1e9 + 7;
 const string tenfile = "toffees";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-cll maxn = 1e6 + 7;
-ll n, ans[maxn] = {0};
+ll n;
 string s;
 
 struct rg{
-    string c;
-    ii cnt = 0;
+    char c;
+    ii cnt;
 };
+
+vec(rg) a;
+vec(ii) ans;
 
 int main(){
     opt;
     file;
     cin >> n >> s;
-    lp(i, 0, s.size() - 1){
-        
+    a.push_back({s[0], 1});
+    lp(i, 1, s.size() - 1){
+        if(s[i] == a.back().c) ++a.back().cnt;
+        else a.push_back({s[i], 1});
+    }
+    ans.resize(a.size() + 1);
+    ans[0] = 1;
+    lp(i, 0, a.size() - 1){
+        if(a[i].c == '=') ans[i + 1] = a[i];
+        else if (a[i].c == 'R') ans[i + 1] = ans[i] + a[i].cnt;
+        else {
+            if(ans[i] - a[i].cnt >= 1) ans[i + 1] = ans[i] - a[i].cnt;
+            else{
+                ans[i + 1] = 1;
+                ii j = i;
+                while(j >= 0 && a[j].c != 'R'){
+                    if(a[j].c == '=') ans[j] = ans[j + 1] 
+                }
+            }
+        } 
     }
 }

@@ -2,7 +2,12 @@
 #include <iomanip>
 using namespace std;
 
+struct test{
+    string c; 
+    int a = 0;
+};
+
 int main(){
-    float a = 3.1429;
-    cout << fixed << a;
+    test b = {"abc", 1};
+    cout << b.c << " " << b.a;
 }
