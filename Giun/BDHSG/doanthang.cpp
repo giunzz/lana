@@ -32,7 +32,7 @@ int main(){
     opt;
     file;
     segment diem, tmp;
-    lp(i, 0, 19){
+    lp(i, 0, 3){
         cin >> diem.x1 >> diem.yy1 >> diem.x2 >> diem.y2;
         if(diem.x1 > diem.x2) {swap(diem.x1, diem.x2); swap(diem.yy1, diem.y2);}
         if(diem.x1 == diem.x2 && diem.yy1 > diem.y2) swap(diem.yy1, diem.y2);
@@ -46,12 +46,15 @@ int main(){
             if(!(check(diem, seg[i].x1, seg[i].yy1) || check(diem, seg[i].x2, seg[i].y2))){
                 if(diem.x1 == diem.x2 && seg[i].x1 == seg[i].x2){
                     tmp.x1 = diem.x1, tmp.x2 = diem.x2;
-                    if(diem.yy1 < seg[i].yy1 < diem.y2){
+                    // if(diem.yy1 == seg[i].yy1 && diem.y2 == seg[i].y2){
+                    //     tmp.yy1 = diem.yy1, tmp.y2 = diem.y2, b = 1;
+                    // }
+                    if(diem.yy1 < seg[i].yy1 && seg[i].yy1 < diem.y2){
                         tmp.yy1 = diem.yy1, b = 1;
                         if(seg[i].y2 < diem.y2) tmp.y2 = diem.y2;
                         else tmp.y2 = seg[i].y2;
                     }
-                    else if(seg[i].yy1 < diem.yy1 < seg[i].y2){
+                    else if(seg[i].yy1 < diem.yy1 && diem.yy1 < seg[i].y2){
                         tmp.yy1 = seg[i].yy1, b = 1;
                         if(diem.y2 < seg[i].y2) tmp.y2 = seg[i].y2;
                         else tmp.y2 = diem.y2;

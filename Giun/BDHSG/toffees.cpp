@@ -21,28 +21,16 @@ cll maxn = 1e6 + 7;
 ll n, ans[maxn] = {0};
 string s;
 
+struct rg{
+    string c;
+    ii cnt = 0;
+};
+
 int main(){
     opt;
     file;
     cin >> n >> s;
-    s = "0" + s;
-    ans[1] = 1;
-    lp(i, 1, n - 1){
-        if(s[i] == '=') ans[i + 1] = ans[i];
-        else if(s[i] == 'R') ans[i + 1] = ans[i] + 1;
-        else if(s[i] == 'L' && ans[i] > 1) ans[i + 1] = 1;
-        else ans[i + 1] = ans[i] - 1;
+    lp(i, 0, s.size() - 1){
+        
     }
-    ii i = n - 1, dem = 0;
-    while((s[i] == 'R' || s[i] == '=') && i >= 0)
-        if(s[i--] == 'R') ++dem;
-    if(i > 0) ans[n] += dem;
-    lp(i, 1, n) cerr << ans[i] << " ";
-    lpd(i, n, 2){
-        if(s[i - 1] == '=') ans[i - 1] = ans[i];
-        else if(s[i - 1] == 'R' && ans[i] < ans[i  -1]) ans[i - 1] = ans[i] + 1;
-        else if(s[i - 1] == 'L' && ans[i] < 1) ans[i] = 1, ans[i - 1] = 2;
-        else if(s[i - 1] == 'L' && ans[i] > ans[i  - 1]) ans[i - 1] = ans[i] + 1;
-    }
-    lp(i, 1, n) cout << ans[i] << " ";
 }
