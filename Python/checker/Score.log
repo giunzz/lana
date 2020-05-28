@@ -1,49 +1,49 @@
 Target: toffees 
-Directory: c:\Users\Hp\Desktop\GitAnh\Python\checker
-test00: 0.212803s
+Directory: C:\Users\Hp\Desktop\GitAnh\Python\checker
+test00: 0.241418s
 Accept
-test01: 0.236492s
+test01: 0.320314s
 Accept
-test02: 0.247923s
+test02: 0.199358s
 Accept
-test03: 0.287914s
-Accept
-test04: 0.219938s
-Accept
-test05: 0.263920s
-Accept
-test06: 0.255923s
-Accept
-test07: 0.275911s
+test03: 0.263920s
 Wrong Ans at line 1
-test08: 0.281106s
+test04: 0.269453s
 Wrong Ans at line 1
-test09: 0.261099s
+test05: 0.270618s
 Wrong Ans at line 1
-test10: 0.251924s
+test06: 0.211934s
 Wrong Ans at line 1
-test11: 0.335900s
+test07: 0.231940s
 Wrong Ans at line 1
-test12: 0.255916s
+test08: 0.249813s
 Wrong Ans at line 1
-test13: 0.255918s
+test09: 0.299909s
 Wrong Ans at line 1
-test14: 0.275912s
+test10: 0.261340s
 Wrong Ans at line 1
-test15: 0.279914s
+test11: 0.311647s
 Wrong Ans at line 1
-test16: 0.275910s
+test12: 0.265730s
 Wrong Ans at line 1
-test17: 0.323902s
+test13: 0.266125s
 Wrong Ans at line 1
-test18: 0.343893s
+test14: 0.240220s
 Wrong Ans at line 1
-test19: 0.335901s
-Accept
-test20: 0.285740s
-Accept
-test21: 0.251923s
-Accept
-test22: 0.795758s
+test15: 0.279813s
 Wrong Ans at line 1
-AC: 10/23
+test16: 0.271916s
+Wrong Ans at line 1
+test17: 0.314431s
+Wrong Ans at line 1
+test18: 0.293077s
+Wrong Ans at line 1
+test19: 0.291023s
+Wrong Ans at line 1
+test20: 0.329840s
+Wrong Ans at line 1
+test21: 0.246540s
+Wrong Ans at line 1
+test22: 0.838097s
+Wrong Ans at line 1
+AC: 3/23
