@@ -29,6 +29,9 @@ int main(){
     lp(i, 0, 37 && (s + a[i] <= m)) alp = i, s += a[i];
     s = m;
     while(1){
+        // chuyen m sang so he co so 3
+        // bruce A sang he co so 3: 0 & 1 M + A = B voi A B chi co 0 va 1 A & B = 0
+        // duyet vi tri i o so m o he co so 3: 0 thi ko tang o B, 1 thi tang o B tai vi tri i, 2 thi tang A tai i va tang B o i + 1, neu i + 1 B va i o m deu = 1 tang i+ 1 tai A tang i + 2 tai B bo i + 1
         lpd(i, alp, 0){
             s += a[i];
             d[i] = 1;
