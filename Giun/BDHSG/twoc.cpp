@@ -17,28 +17,25 @@ cll MOD = 1e9 + 7;
 const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-cll maxn = 3e4;
-ll n, node, a[maxn] = {0}, getsum[maxn] = {0}, sum = 0;
-
-void getsm(int id){
-    getsum[id] = getsum[id/2] + a[id];
-    if(pow(2, n) <= id && id < pow(2, n + 1)) {
-        // getsum[id] = getsum[id/2] + a[id];
-        return;
-    }
-    getsm(2 * id);
-    getsm(2 * id + 1);
-}
+map<char, ll> mp;
+ll n, cnt = -1;
+string s, subs;
+vec(vec(char)) id;
 
 int main(){
     opt;
     file;
     cin >> n;
-    node = pow(2, n + 1) - 1;
-    cerr << node << endl;
-    lp(i, 2, node) cin >> a[i];
-    getsm(1);
-    lp(i, pow(2, n), pow(2, n + 1) - 1){
-        
+    cin.ignore();
+    cin >> s;
+    lp(i, 0, n - 1) ++mp[s[i]];
+    id.resize(n + 3);
+    lp(i, 'a', 'z'){
+        if(mp[i]) id[mp[i]].push_back(i);
+    }
+    lpd(i, n + 3, 1){
+        if(!(id[i].empty())){
+            lp(j, 0, n - 1) if ()
+        }
     }
 }
