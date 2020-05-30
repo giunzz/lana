@@ -1,10 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
-const string tenfile = "giun";
+const string tenfile = "bai29";
 #define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
 
-int d , k , a[105] , nho , dem = 0 ;
+int d , k , a[105] , nho , dem  ;
 //unsigned long long b;
 
 /*unsigned long long mu10 (int o )
@@ -40,16 +40,20 @@ int main()
    giuncute;
    cin >> d >> k;
    a[0] = d; 
-   nho = 0;
+   nho = 0 ;
    for (int i = 1 ; i <= 105 ;i++)
    {
-       dem ++;
-       a[i] = ( a[i-1] * k + nho ) % 10;
+       a[++dem] = ( a[i-1] * k + nho ) % 10;
        nho  = ( a[i-1] * k + nho ) / 10 ;
        //cerr  << a[i] << " " << nho << endl;
-       if ( nho  ==  0  && a[i] == d  ) break;
+       if ( nho == 0 && a[i] == d  ) break;
    }
-   for (int j = dem -1 ; j >= 0 ; j--) cout << a[j];
+   if (!a[nho])
+   {
+       cout << -1;
+       return 0;
+   }
+   for (int j = dem -1  ; j >= 0 ; j--) cout << a[j];
    return 0; 
 }
 
