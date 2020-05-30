@@ -30,15 +30,76 @@ ll doiso ( ll d , ll m , ll y)
             case 8: 
             case 10:
             case 12: 
-            res += 31;
-            
-            
-            break;
-        
-        default:
-            break;
+                res += 31;
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                res += 30;    
+                break;
+            case 2:
+                if ( nhuan(y) ) res += 29;
+                else res += 28;
         }
     }
-
-
+    return (res + d);
 }
+
+bool han (ll n )
+{
+    if ( n % 23 == 1  && n % 27 == 1 ) return true;
+    if ( n % 23 == 1  && n % 33 == 1 ) return true;
+    if ( n % 27 == 1  && n % 33 == 1 ) return true;
+    return false;
+}
+
+void doingay (ll n  , ll &d , ll &m , ll &y)
+{
+    ll dem = 0  , truoc;
+    y = 0;
+    while ( dem < n )
+    {
+        truoc = dem ;
+        y++
+        if (nhuan(y)) dem += 366;
+        else dem += 365;
+    }
+    n -= truoc;
+    dem = 0 , m = 0 , truoc = 0;
+    while ( dem < n )
+    {
+        truoc = dem ;
+        m++;
+        switch (i)
+        {
+            case 1: 
+            case 3:
+            case 5: 
+            case 7:
+            case 8: 
+            case 10:
+            case 12: 
+                res += 31;
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                res += 30;    
+                break;
+            case 2:
+                if ( nhuan(y) ) res += 29;
+                else res += 28;
+        }
+    }
+    n -= truoc;
+    d = n ;
+}
+
+void  giunxinhdep()
+{
+    ll i , dem , y , start , stop ;
+    giu
+}
+
