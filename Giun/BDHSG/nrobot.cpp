@@ -23,15 +23,12 @@ pp(ll, ll) point;
 
 pp(ll, ll) checkPoint(pp(ll, ll) p){
     pp(ll, ll) tmp = p;
-    if(p.first >= mid and p.second < mid){
+    if(p.first >= mid and p.second < mid)
         tmp.second = n - p.first + 1, tmp.first = p.second;
-    }
-    else if(p.first > mid && p.second >= mid){
+    else if(p.first > mid && p.second >= mid)
         tmp.second = mid * 2 - p.second, tmp.first = n - p.first + 1;
-    }
-    else if(p.first <= mid && p.second > mid){
+    else if(p.first <= mid && p.second > mid)
         tmp.second = p.first, tmp.first = n - p.second + 1; 
-    }
     return tmp;
 }
 
