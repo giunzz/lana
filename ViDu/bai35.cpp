@@ -99,7 +99,28 @@ void doingay (ll n  , ll &d , ll &m , ll &y)
 
 void  giunxinhdep()
 {
-    ll i , dem , y , start , stop ;
-    giu
+    ll i , dem , y , start , stop , n ;
+    giuncute;
+    balabalo;
+    cin >> d1 >> m1 >> y1 >> y;
+    n = doiso ( d1 , m1 , y1);
+    start = doiso(1,1,y);
+    stop( 31 , 12 , y);
+    dem = 0;
+    for (int i = start ; i <= stop ; i++)
+    {
+        if han(i - n + 1)
+        {
+            dem++:
+            doingay(i,d2,m2,y2);
+            cout << d2 << " " << m2 << " " << y2;
+        }
+    if ( dem == 0 ) cout << "lucky";
+    }
 }
 
+int main()
+{
+    giunxinhdep();
+    return 0;
+}

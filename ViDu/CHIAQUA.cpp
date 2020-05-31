@@ -1,12 +1,12 @@
 #include<bits/stdc++.h>
 using namespace std;
-const string tenfile = "giun";
+const string tenfile = "CHIAQUA";
 #define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
 
 int n , a[30] , x[30];
-long long s , s1 , s2 , ans;
-
+long long s , s1 , s2 , ans , s3;
+int ok = 1;
 
 void Kt() 
 {
@@ -16,7 +16,9 @@ void Kt()
         s2 += (x[i] * a[i]);
     }
     s1 = s - s2;
-    if (abs(s1-s2) < ans ) ans = abs(s1-s2);        
+    s3 = s2;
+    if (abs(s1-s2-s3) < ans ) ans = abs(s1-s2- s3); 
+    ok = 0;
 }
 
 void chon (int i)
@@ -39,8 +41,9 @@ int main()
         cin >> a[i];
         s += a[i];
     }
-     ans = s;
+    ans = s;
     chon(1);
-    cout << ans ;
+    if (ok == 0)  cout << ans ;
+    else cout << -1;
     return 0;
 }

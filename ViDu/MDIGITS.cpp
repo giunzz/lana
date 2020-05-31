@@ -1,15 +1,10 @@
 #include<iostream>
 #include<algorithm>
-#include<stdio.h>
-#include<string>
 using namespace std;
-const string tenfile = "giun";
-#define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
-#define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
 
-int  a , b , n , dem[12] ;
+long long  a , b , n , dem[12] ;
 
-void fastscan(int &number) 
+void fastscan(long long &number) 
 { 
     bool negative = false; 
     register int c; 
@@ -29,21 +24,17 @@ void fastscan(int &number)
 
 int main()
 {
-    balabalo;
     for (int giun = 1 ; giun <= 500 ; giun++)
     {
-        fastscan(a) ; 
-        fastscan(b);
-        //cin >> a >> b ;
-        cerr << a << " " << b << endl;
+        fastscan(a) ; fastscan(b);
         if ( a == 0 && b == 0 ) return 0;
         else 
             {
                 for (int i = 0 ; i <= 10 ; i++) dem[i] = 0;
-                int i = min(a,b);
+                long long i = min(a,b);
                 while ( i <= max(a,b) )
                 {  
-                    int j = i;
+                    long long j = i;
                     while (j != 0 )
                     {
                         dem[j % 10 ]+= 1;

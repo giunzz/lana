@@ -60,7 +60,20 @@
         "typeinfo": "cpp",
         "valarray": "cpp",
         "random": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "any": "cpp",
+        "bit": "cpp",
+        "charconv": "cpp",
+        "codecvt": "cpp",
+        "cuchar": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "iterator": "cpp",
+        "memory_resource": "cpp",
+        "optional": "cpp",
+        "string": "cpp",
+        "shared_mutex": "cpp",
+        "variant": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "python.testing.pytestArgs": [
