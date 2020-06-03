@@ -23,24 +23,21 @@ const double esp = 1e-9;
 ll n,R,r;
 int main()
 {
-    ios_base::sync_with_stdio(0);
+    opt;
     file;
-	cin>>n>>R>>r;
-	if(r > R)
-	{
-		cout<<"NO";
+	cin >> n >> R >> r;
+	if (r > R){
+		cout << "NO";
 		return 0;
 	}
-	if(2*r > R)
-	{
-		if(n == 1)cout<<"YES";
-		else cout<<"NO";
+	if (2*r > R){
+		if(n == 1) cout << "YES";
+		else cout << "NO";
 		return 0;
 	}
 	double alpha = asin((r*1.0)/(R-r));
-	if(n*alpha - M_PI <= esp)
-	{
-		cout<<"YES";
+	if (n*alpha - M_PI <= esp){
+		cout << "YES";
 	}
-	else cout<<"NO";
+	else cout << "NO";
 }
