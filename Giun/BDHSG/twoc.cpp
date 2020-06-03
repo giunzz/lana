@@ -19,8 +19,12 @@ const string tenfile = "f";
 
 map<char, ll> mp;
 ll n, cnt = -1;
-string s, subs;
-vec(vec(char)) id;
+string s;
+vec(char) id;
+
+bool ktra(string a){
+
+}
 
 int main(){
     opt;
@@ -28,14 +32,31 @@ int main(){
     cin >> n;
     cin.ignore();
     cin >> s;
-    lp(i, 0, n - 1) ++mp[s[i]];
-    id.resize(n + 3);
-    lp(i, 'a', 'z'){
-        if(mp[i]) id[mp[i]].push_back(i);
-    }
-    lpd(i, n + 3, 1){
-        if(!(id[i].empty())){
-            lp(j, 0, n - 1) if ()
+    // lp(i, 0, n - 1) ++mp[s[i]];
+    // id.resize(n + 3);
+    // lp(i, 'a', 'z'){
+    //     if(mp[i]) id[mp[i]].push_back(i);
+    // }
+    // lpd(i, n + 3, 1){
+    //     if(!(id[i].empty())){
+    //         string sn;
+    //         lp(j, 0, n - 1){
+    //             lp(q, 0, id[i].size() - 1) {
+    //                 if(id[i] == s[j]) {sn.push_back(s[j]); break;}
+    //             }
+    //         }
+    //         if(ktra(sn)){
+
+    //         }
+    //     }
+    // }
+    lp(i, 0, n - 1) {if(!mp[s[i]]) id.push_back(s[i]); ++mp[s[i]];}
+    string sn;
+    lp(i, 0, id.size() - 1){
+        lp(j, i + 1, id.size() - 1){
+            if(abs(mp[id[i]] - mp[id[j]]) <= 1){
+                
+            }
         }
     }
 }
