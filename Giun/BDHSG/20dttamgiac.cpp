@@ -14,8 +14,11 @@
 #define se second
 using namespace std;
 cll MOD = 1e9 + 7;
+cll esf = 1e-9;
 const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
+
+ll ans = 0;
 
 struct point{
     double x, y;
@@ -34,6 +37,7 @@ double gettich(segment s, point a){
 bool ktracat2diem(segment s, point a, point b){
     double sa = gettich(s, a);
     double sb = gettich(s, b);
+    cerr << sa*sb << " ";
     return (sa*sb <= 0);
 }
 
@@ -53,24 +57,38 @@ point giaihpt(double a1, double b1, double c1, double a2, double b2, double c2){
 }
 
 point getgd(segment a, segment b){
-    return giaihpt()
+    double a1, b1, c1, a2, b2, c2;
+    a1 = a.p2.y - a.p1.y;
+    b1 = a.p1.x - a.p2.x;
+    c1 = (a.p1.x - a.p2.x) * a.p1.y + (a.p2.y - a.p1.y) * a.p1.x;
+    a2 = b.p2.y - b.p1.y;
+    b2 = b.p1.x - b.p2.x;
+    c2 = (b.p1.x - b.p2.x) * b.p1.y + (b.p2.y - b.p1.y) * b.p1.x;
+    return giaihpt(a1, b1, c1, a2, b2, c2);
 }
 
 int main(){
     opt;
     file;
     segment sg;
-    lp(i, 1, 20){
+    lp(i, 1, 3){
         cin >> sg.p1.x >> sg.p1.y >> sg.p2.x >> sg.p2.y;
         dt.push_back(sg);
     }
     lp(a, 0, dt.size() - 1){
         lp(b, a + 1, dt.size() - 1){
             lp(c, b + 1, dt.size() - 1){
+                cerr << ktracat2s(dt[a], dt[b]);
                 if(ktracat2s(dt[a], dt[b]) && ktracat2s(dt[b], dt[c]) && ktracat2s(dt[c], dt[a])){
                     point ab = getgd(dt[a], dt[b]);
+                    cerr << ab.x << " " << ab.y;
+                    point bc = getgd(dt[b], dt[c]);
+                    point ca = getgd(dt[c], dt[a]);
+                    if(abs(ab.x - bc.x) <= esf && abs(ab.y - bc.y) <= esf) continue;
+                    ++ans;
                 }
             }
         }
     }
+    cout << ans;
 }
