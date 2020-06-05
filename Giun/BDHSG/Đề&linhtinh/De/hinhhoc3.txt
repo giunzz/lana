@@ -5,12 +5,12 @@ chuyển các điểm còn lại về hệ tọa độ gốc P
 => ko có góc > 180
 khi đó các đỉnh đều nằm trên trục tung
             ^
-	    |
-	    |
-	    |
+	        |
+	        |
+	        |
        .    |
             |       .
-	    |   .
+	        |   .
 ------------P----------------->
 
 tìm các đỉnh nối gốc qua trục hoành với trục dương hoành
@@ -19,3 +19,5 @@ x1 / y1 với x2 / y2 <=> x1 * y2 với x2 * y1
 nếu < thì đỉnh nằm bên trái
     >              bên phải
     =              chung đường chứa tâm tọa độ
+
+detansuoi@gmail.com
