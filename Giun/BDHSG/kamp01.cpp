@@ -22,9 +22,19 @@ cll maxn = 5e5 + 7;
 ll tg[maxn] = {0}, trace[maxn] = {0}, d[maxn] = {0};
 vec(pp(ll, ll)) g[maxn];
 
+bool check(ll u, ll v){
+    lp(i, 0, g[u].size() - 1){
+        if(g[u][i].first == v) return 1;
+    }
+    return 0;
+}
+
 void dfs(ll u){
     lp(i, 2, n){
-        if()
+        if(!d[i] && check(u, i)){
+            d[i] = u;
+            dfs(i);
+        }
     }
 }   
 
@@ -32,7 +42,7 @@ int main(){
     opt;
     file;
     cin >> n >> k;
-    lp(i, 1,n -1 ){
+    lp(i, 1, n - 1){
         ll u, v, c;
         cin >> u >> v >> c;
         g[u].push_back(make_pair(v, c));
