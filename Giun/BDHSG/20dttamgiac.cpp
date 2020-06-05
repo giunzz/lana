@@ -37,7 +37,7 @@ double gettich(segment s, point a){
 bool ktracat2diem(segment s, point a, point b){
     double sa = gettich(s, a);
     double sb = gettich(s, b);
-    cerr << sa*sb << " ";
+    if(abs(sa - esf) <= esf && abs(sb - esf) <= esf) return 0;
     return (sa*sb <= 0);
 }
 
@@ -71,17 +71,17 @@ int main(){
     opt;
     file;
     segment sg;
-    lp(i, 1, 3){
+    lp(i, 1, 4){
         cin >> sg.p1.x >> sg.p1.y >> sg.p2.x >> sg.p2.y;
         dt.push_back(sg);
     }
     lp(a, 0, dt.size() - 1){
         lp(b, a + 1, dt.size() - 1){
             lp(c, b + 1, dt.size() - 1){
-                cerr << ktracat2s(dt[a], dt[b]);
+                // cerr << ktracat2s(dt[a], dt[b]);
                 if(ktracat2s(dt[a], dt[b]) && ktracat2s(dt[b], dt[c]) && ktracat2s(dt[c], dt[a])){
                     point ab = getgd(dt[a], dt[b]);
-                    cerr << ab.x << " " << ab.y;
+                    // cerr << ab.x << " " << ab.y;
                     point bc = getgd(dt[b], dt[c]);
                     point ca = getgd(dt[c], dt[a]);
                     if(abs(ab.x - bc.x) <= esf && abs(ab.y - bc.y) <= esf) continue;
