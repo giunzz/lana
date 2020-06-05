@@ -15,7 +15,7 @@
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
-const string tenfile = "f";
+const string tenfile = "army";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 struct sgmt{
@@ -29,12 +29,12 @@ ii check(sgmt diem, ii x, ii y){
     return ((diem.y2 - diem.yy1) * (x - diem.x1) + (diem.x1 - diem.x2) * (y - diem.yy1));
 }
 
-ifstream fi1, fi2; ofstream fo1, fo2;
+// ifstream fi1, fi2; ofstream fo1, fo2;
 
 vec(sgmt) dtgop(ll ca){
     sgmt diem, tmp;
     lp(i, 0, ca - 1){
-        fi1 >> diem.x1 >> diem.yy1 >> diem.x2 >> diem.y2;
+        cin >> diem.x1 >> diem.yy1 >> diem.x2 >> diem.y2;
         if(diem.x1 > diem.x2) {swap(diem.x1, diem.x2); swap(diem.yy1, diem.y2);}
         if(diem.x1 == diem.x2 && diem.yy1 > diem.y2) swap(diem.yy1, diem.y2);
         seg.push_back(diem);
@@ -78,7 +78,7 @@ vec(sgmt) dtgop(ll ca){
     // lp(i, 0, segans.size() - 1){
     //     fo1 << segans[i].x1 << " " << segans[i].yy1 << " " << segans[i].x2 << " " << segans[i].y2 << endl;
     // }
-    fo1.close(); fi1.close();
+    // fo1.close(); fi1.close();
     return segans;
 }
 
@@ -156,17 +156,17 @@ void dttg(){
             }
         }
     }
-    fo2.open("army.out");
-    fo2 << ans << "\n";    
-    fo2.close();
+    // fo2.open("army.out");
+    cout << ans << "\n";    
+    // fo2.close();
 }
 
 int main(){
     opt;
-    //file;
-    fi1.open("army.inp");
+    file;
+    // fi1.open("army.inp");
     ll n;
-    fi1 >> n;
+    cin >> n;
     dtgop(n);
     dttg();
 }
