@@ -1,72 +1,55 @@
 #include<bits/stdc++.h>
 using namespace std;
-const string tenfile = "giun";
+const string tenfile = "NROBOT";
 #define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
+#define ll long long
+#define lp(a, b, c) for(ll a = b; a <= c; a++)
+#define pp(a, b) pair<a, b>
+const int  maxn = 107;
+ll n, k, f[maxn][maxn] = {{0}}, mid, ans = 0;
+pp(ll, ll) point;
 
-int n , k , mid , ans[107] ={0};
-pair <int , int > r[108];
-
+pp(ll, ll) checkPoint(pp(ll, ll) p)
+{
+    pp(ll, ll) tmp = p;
+    if(p.first >= mid and p.second < mid)
+        tmp.second = n - p.first + 1, tmp.first = p.second;
+    else if(p.first > mid && p.second >= mid)
+        tmp.second = mid * 2 - p.second, tmp.first = n - p.first + 1;
+        else if(p.first <= mid && p.second > mid)
+            tmp.second = p.first, tmp.first = n - p.second + 1; 
+    return tmp;
+}
+void xuly()
+{
+    lp(i, point.first - 1, mid) f[i][point.second - 1] = INT_MAX;
+    lp(i, point.second - 1, mid) f[point.first - 1][i] = INT_MAX;
+    f[point.first][point.second] = 0;
+    lp(i, point.first, mid)
+    {
+        lp(j, point.second, mid)
+        {
+            if(i == point.first && j == point.second) continue;
+            f[i][j] = min(f[i - 1][j] + 10, min(f[i][j - 1] + 10, f[i - 1][j - 1] + 15));
+        }
+    }
+    ans += f[mid][mid];
+}
 int main()
 {
-    balabalo;
     giuncute;
+    balabalo;
     cin >> n >> k;
-
-    mid = (n / 2) + 1;
-    for (int i = 1 ; i <= k ; i++)
+    mid = n / 2 + 1;
+    lp(i, 1, k)
     {
-        for (int j = 1 ; j <= k ; j++)
-            cin >> a[i][j];
+        cin >> point.first >> point.second;
+        point = checkPoint(point);
+        xuly();
     }
-    for (int i = 1 ; i <= n / 2 ; i++)
-    {
-        for (int j = 1 ; j <= n / 2; j++)
-        
-    }
-
-
-
-    lấy min đi tới từ 3 ô i-1,j or i,j-1 mất 10 hoặc i-1,j-1 mất 15
-    mid = ( n / 2 ) + 1 ;
-    for (int i = 1 ; i <= n ; i++)
-        {
-            if ( i % 2 == 0 ) ans[i] = min( ans[i-1] + a , ans[i / 2] + b );
-            else ans[i] = ans[i-1] + a;
-        }
-    for (int d = 1 ; d <= k; i++ )
-    {
-        cin >> a[i][j] ;
-        for (int u = )
-        {
-            if (a[i - 1][j] )
-        }
-        cin >> r[i].first >> r[i].second;
-        while (r[i].first != mid && r[i].second != mid)
-        {
-            if (r[i].first < mid )
-            {
-                if (r[i].first + r[i].second == mid ) ans += 15;
-                else ans += 10;
-            }
-            else 
-            {
-                if (r[i].first - r[i].second == mid ) ans += 15;
-                else ans += 10;  
-            }
-            if (r[i].second > mid )
-            {
-                if (r[i].first - r[i].second == mid ) ans += 15;
-                else ans += 10;  
-            }
-            else 
-            {
-                if (r[i].first + r[i].second == mid ) ans += 15;
-                else ans += 10;  
-            }
-        }
-    }
-    cout << ans ;
-    return 0; 
-
+    cout << ans;
 }
+
+
+

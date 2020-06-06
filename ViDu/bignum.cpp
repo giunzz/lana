@@ -2,7 +2,8 @@
 
 using namespace std;
 
-int stringToNum(char c){
+int stringToNum(char c)
+{
     return c - '0';
 }
 
@@ -39,7 +40,7 @@ int main(){
 
     //cin >> t;
     //cout << t;
-    ios_base::sync_with_stdio(false);
+        ios_base::sync_with_stdio(false);
         cin.tie(0);
 
         freopen("bignum.inp","r",stdin);

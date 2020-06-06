@@ -1,0 +1,17 @@
+﻿cho 1 cái cân đĩa và có các quả cân nặng 3^k kg (ví dụ: 1, 3, 9, 27, ....)
+cho 1 vật nặng m kg đặt vào đĩa cân bên trái
+e được sử dụng vô hạn loại cân đặt vào cân phải sao cho đĩa cân đc cân bằng
+nhiệm vụ chọn ra số quả cân ít nhất để 2 bên cân đc cân bằng
+m <= 1e5
+input: số m
+output: 1 dòng:
+	+ là số các cân đặt vào đĩa phải, tiếp theo là các loại cân đặt vào đĩa bên phải
+	(các loại cân tăng dần)
+ví dụ:
+inp: 10
+out 2 1 9
+
+101 = 1 * 3 ^ 2 + 0 * 3 + 1 * (3 ^ 0) = 10
+1 cân 3 ^ 2 và 1 cân 3 ^ 0
+
+

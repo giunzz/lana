@@ -4,30 +4,34 @@ const string tenfile = "CHIAQUA";
 #define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
 
-int n , a[30] , x[30];
-long long s , s1 , s2 , ans , s3;
+long long n , a[30] , s[30] ={0};
+long long  t1 = 0  , t2 = 0 ,  t3 = 0 , ans = INT64_MAX;
 int ok = 1;
 
-void Kt() 
+void printhhans()
 {
-    s2 = 0;
-    for (int i = 1; i <= n; i++)
+    t1 = 0 , t2 = 0 , t3 = 0;
+    for (int i = 1 ; i <= n ; i++)
     {
-        s2 += (x[i] * a[i]);
+        if (s[i] == 1) t1 += a[i];
+        if (s[i] == 2) t2 += a[i];
+        if (s[i] == 3) t3 += a[i];
     }
-    s1 = s - s2;
-    s3 = s2;
-    if (abs(s1-s2-s3) < ans ) ans = abs(s1-s2- s3); 
-    ok = 0;
+    if ( t1 != 0 && t2 != 0 && t3 != 0 )
+    {
+        int mi = min(min(t1,t2),t3);
+		int ma =  max(max(t1,t2),t3);
+        if (ma - mi < ans) ans = (ma-mi) , ok = 0;
+    }
 }
 
-void chon (int i)
+void chiaquaa(int i)
 {
-    for (int j = 0 ; j <= 1 ; j++)
+    for (int j = 1 ; j <= 3 ; j++)
     {
-        x[i] = j;
-        if ( i == n ) Kt();
-        else chon(i+1);
+        s[i] = j;
+        if (i == n ) printhhans();
+        else chiaquaa(i+1);
     }
 }
 
@@ -36,13 +40,8 @@ int main()
     balabalo;
     giuncute;
     cin >> n ; 
-    for (int i = 1 ; i <= n ; i++) 
-    {
-        cin >> a[i];
-        s += a[i];
-    }
-    ans = s;
-    chon(1);
+    for (int i = 1 ; i <= n ; i++)  cin >> a[i];
+    chiaquaa(1);
     if (ok == 0)  cout << ans ;
     else cout << -1;
     return 0;
