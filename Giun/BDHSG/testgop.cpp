@@ -67,17 +67,15 @@ bool cpr(const segment &a, const segment &b){
 void prcGop(){
     lp(i, 0, gopPt.size() - 1){
         sort(gopPt[i].begin(), gopPt[i].end(), cpr);
-    }    
-    // lp(i, 0, gopPt.size() - 1){
-    //     lp(j, 0, gopPt[i].size() - 1){
-    //         cerr << gopPt[i][j].p1.x << " " << gopPt[i][j].p1.y << " " << gopPt[i][j].p2.x << " " << gopPt[i][j].p2.y << "\n";
-    //     }
-    //     cerr << "\n";
-    // }
+    }   
     lp(i, 0, gopPt.size() - 1){
         lp(j, 0, gopPt[i].size() - 1){
-            for (ll u = j + 1; (gopPt[i][j].p2.x > gopPt[i][u].p1.x) || (gopPt[i][j].p2.x == gopPt[i][u].p1.x); u++){
-
+            for (ll u = j + 1; u < gopPt[i].size() && ((gopPt[i][j].p2.x > gopPt[i][u].p1.x) || (gopPt[i][j].p2.x == gopPt[i][u].p1.x && gopPt[i][j].p2.y >= gopPt[i][u].p1.y)); u++){
+                if((gopPt[i][j].p2.x < gopPt[i][u].p2.x) || (gopPt[i][j].p2.y < gopPt[i][u].p2.y)) {
+                    gopPt[i][j].p2.x = gopPt[i][u].p2.x, gopPt[i][j].p2.y = gopPt[i][u].p2.y;
+                }       
+                gopPt[i].erase(gopPt[i].begin() + u);
+                --u;
             }
         }
     }    
@@ -96,5 +94,11 @@ int main(){
         getabc(sg);
         gopSeg(sg);
     }
-    prcGop();
+    prcGop(); 
+    // lp(i, 0, gopPt.size() - 1){
+    //     lp(j, 0, gopPt[i].size() - 1){
+    //         cerr << gopPt[i][j].p1.x << " " << gopPt[i][j].p1.y << " " << gopPt[i][j].p2.x << " " << gopPt[i][j].p2.y << "\n";
+    //     }
+    //     cerr << "\n";
+    // }
 }

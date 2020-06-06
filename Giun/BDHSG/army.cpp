@@ -4,169 +4,141 @@
 #define cii const int
 #define cll const long long
 #define opt ios_base::sync_with_stdio(0); cin.tie(0)
-#define lp(a, b, c) for(ll a = b; a <= c; a++)
-#define lpd(a, b, c) for(ll a = b; a >= c; a--)
-#define lpdk(a, b, c, d) for(ll a = b; c; d) 
-#define pp(a, b) pair<a, b>
-#define vec(a) vector<a>
-#define vecite(a) vector<a>::iterator
+#define lp(obj1, obj2, obj3) for(ll obj1 = obj2; obj1 <= obj3; obj1++)
+#define lpd(obj1, obj2, obj3) for(ll obj1 = obj2; obj1 >= obj3; obj1--)
+#define lpdk(obj1, obj2, obj3, obj4) for(ll obj1 = obj2; obj3; obj4) 
+#define pp(obj1, obj2) pair<obj1, obj2>
+#define vec(obj1) vector<obj1>
+#define vecite(obj1) vector<obj1>::iterator
 #define fi first
 #define se second
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
-const string tenfile = "army";
+const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-struct sgmt{
-    ii x1, yy1, x2, y2;
-};
-
-vec(sgmt) seg, segans;
-bool b = 0;
-
-ii check(sgmt diem, ii x, ii y){
-    return ((diem.y2 - diem.yy1) * (x - diem.x1) + (diem.x1 - diem.x2) * (y - diem.yy1));
-}
-
-// ifstream fi1, fi2; ofstream fo1, fo2;
-
-vec(sgmt) dtgop(ll ca){
-    sgmt diem, tmp;
-    lp(i, 0, ca - 1){
-        cin >> diem.x1 >> diem.yy1 >> diem.x2 >> diem.y2;
-        if(diem.x1 > diem.x2) {swap(diem.x1, diem.x2); swap(diem.yy1, diem.y2);}
-        if(diem.x1 == diem.x2 && diem.yy1 > diem.y2) swap(diem.yy1, diem.y2);
-        seg.push_back(diem);
-    }
-    while(!seg.empty()){
-        diem = seg.back();
-        seg.pop_back();
-        lp(i, 0, seg.size() - 1 && !seg.empty()){
-            b = 0;
-            if(!(check(diem, seg[i].x1, seg[i].yy1) || check(diem, seg[i].x2, seg[i].y2))){
-                if(diem.x1 == diem.x2 && seg[i].x1 == seg[i].x2){
-                    tmp.x1 = diem.x1, tmp.x2 = diem.x2;
-                    if(diem.yy1 <= seg[i].yy1 && seg[i].yy1 <= diem.y2){
-                        tmp.yy1 = diem.yy1, b = 1;
-                        if(seg[i].y2 <= diem.y2) tmp.y2 = diem.y2;
-                        else tmp.y2 = seg[i].y2;
-                    }
-                    else if(seg[i].yy1 < diem.yy1 && diem.yy1 < seg[i].y2){
-                        tmp.yy1 = seg[i].yy1, b = 1;
-                        if(diem.y2 < seg[i].y2) tmp.y2 = seg[i].y2;
-                        else tmp.y2 = diem.y2;
-                    }
-                }
-                else{
-                    if(diem.x1 <= seg[i].x1 && seg[i].x1 <= diem.x2){
-                        tmp.x1 = diem.x1, tmp.yy1 = diem.yy1, b = 1;
-                        if(seg[i].x2 <= diem.x2) tmp.x2 = diem.x2, tmp.y2 = diem.y2;
-                        else tmp.x2 = seg[i].x2, tmp.y2 = seg[i].y2;
-                    }
-                    else if(seg[i].x1 < diem.x1 && diem.x1 < seg[i].x2){
-                        tmp.x1 = seg[i].x1, tmp.yy1 = seg[i].yy1, b = 1;
-                        if(diem.x2 < seg[i].x2) tmp.x2 = seg[i].x2, tmp.y2 = seg[i].y2;
-                        else tmp.x2 = diem.x2, tmp.y2 = diem.y2;
-                    }
-                }
-                if(b) {seg.erase(seg.begin() + i); diem = tmp, i = -1;}
-            }
-        }
-        segans.push_back(diem);
-    }
-    // lp(i, 0, segans.size() - 1){
-    //     fo1 << segans[i].x1 << " " << segans[i].yy1 << " " << segans[i].x2 << " " << segans[i].y2 << endl;
-    // }
-    // fo1.close(); fi1.close();
-    return segans;
-}
+ll ans = 0;
 
 struct point{
-    double x, y;
+    ll x, y;
 };
 
-struct segment {
+struct segment{
     point p1, p2;
+    ll a, b, c; // ax + by + c = 0
 };
+
+vec(vec(segment)) gopPt;
+
+void getabc(segment &s){
+    s.a = s.p1.y - s.p2.y;
+    s.b = s.p2.x - s.p1.x;
+    s.c = (s.p1.x - s.p2.x) * s.p1.y + (s.p2.y - s.p1.y) * s.p1.x;
+    ll ucln = __gcd(__gcd(s.a, s.b), s.c);
+    if(!ucln) ucln = 1;
+    s.a /= ucln, s.b /= ucln, s.c /= ucln;
+}
+
+void gopSeg(segment &s){
+    if(gopPt.empty()){
+        gopPt.push_back(vec(segment)());
+        gopPt[0].push_back(s);
+    }
+    else{
+        lp(i, 0, gopPt.size() - 1){
+            if(gopPt[i][0].a == s.a && gopPt[i][0].b == s.b && gopPt[i][0].c == s.c){
+                gopPt[i].push_back(s);
+                return;
+            }
+        }
+        gopPt.push_back(vec(segment)());
+        gopPt[gopPt.size() - 1].push_back(s);
+    }
+}
+
+bool cpr(const segment &a, const segment &b){
+    if(a.p1.x < b.p1.x)
+        return (a.p1.x < b.p1.x);
+    else if(a.p1.x == b.p1.x && a.p2.x <= b.p2.x){
+        return (a.p1.x == b.p1.x && a.p2.x <= b.p2.x);
+    }
+    return 0;
+}
+
+void prcGop(){
+    lp(i, 0, gopPt.size() - 1){
+        sort(gopPt[i].begin(), gopPt[i].end(), cpr);
+    }   
+    lp(i, 0, gopPt.size() - 1){
+        lp(j, 0, gopPt[i].size() - 1){
+            for (ll u = j + 1; u < gopPt[i].size() && ((gopPt[i][j].p2.x > gopPt[i][u].p1.x) || (gopPt[i][j].p2.x == gopPt[i][u].p1.x && gopPt[i][j].p2.y >= gopPt[i][u].p1.y)); u++){
+                if((gopPt[i][j].p2.x < gopPt[i][u].p2.x) || (gopPt[i][j].p2.y < gopPt[i][u].p2.y)) {
+                    gopPt[i][j].p2.x = gopPt[i][u].p2.x, gopPt[i][j].p2.y = gopPt[i][u].p2.y;
+                }       
+                gopPt[i].erase(gopPt[i].begin() + u);
+                --u;
+            }
+        }
+    }    
+}
 
 vec(segment) dt;
 
-double gettich(segment s, point a){
-    return ((s.p2.y - s.p1.y) * (a.x - s.p1.x) + (s.p1.x - s.p2.x) * (a.y - s.p1.y));
+ll gettich(segment s, point p){
+    return (s.a * p.x + s.b * p.y + s.c);
 }
 
-bool ktracat2diem(segment s, point a, point b){
-    double sa = gettich(s, a);
-    double sb = gettich(s, b);
-    if(abs(sa - esf) <= esf && abs(sb - esf) <= esf) return 0;
-    return (sa*sb <= 0);
+bool checkgiao(segment s1, segment s2){
+    if(gettich(s1, s2.p1) == 0 && gettich(s1, s2.p2) == 0) return 0;
+    ll tichs1v2diems2, tichs2v2diems1;
+    tichs1v2diems2 = gettich(s1, s2.p1) * gettich(s1, s2.p2);
+    tichs2v2diems1 = gettich(s2, s1.p1) * gettich(s2, s1.p2);
+    return ((tichs1v2diems2 <= 0) && (tichs2v2diems1 <= 0));
 }
 
-bool ktracat2s(segment s1, segment s2){
-    return (ktracat2diem(s1, s2.p1, s2.p2) && ktracat2diem(s2, s1.p1, s1.p2));
+ll checkdongquy(segment s1, segment s2, segment s3){
+    ll f, g, h;
+    f = s3.a * (s1.b * s2.c - s2.b * s1.c);
+    g = s3.b * (s1.c * s2.a - s2.c * s1.a);
+    h = s3.c * (s1.a * s2.b - s2.a * s1.b);
+    return (f + g + h);
 }
 
-point giaihpt(double a1, double b1, double c1, double a2, double b2, double c2){
-    double D, Dx, Dy;
-    D = a1 * b2 - a2 * b1;
-    Dx = c1 * b2 - c2 * b1;
-    Dy = a1 * c2 - a2 * c1;
-    point gd;
-    gd.x = Dx / D;
-    gd.y = Dy / D;
-    return gd;
-}
-
-point getgd(segment a, segment b){
-    double a1, b1, c1, a2, b2, c2;
-    a1 = a.p2.y - a.p1.y;
-    b1 = a.p1.x - a.p2.x;
-    c1 = (a.p1.x - a.p2.x) * a.p1.y + (a.p2.y - a.p1.y) * a.p1.x;
-    a2 = b.p2.y - b.p1.y;
-    b2 = b.p1.x - b.p2.x;
-    c2 = (b.p1.x - b.p2.x) * b.p1.y + (b.p2.y - b.p1.y) * b.p1.x;
-    return giaihpt(a1, b1, c1, a2, b2, c2);
-}
-
-void dttg(){
-    ll ans = 0;
-    segment sg;
-    // fi2.open("f.inp"); fo2.open("f.out");
-    lp(i, 0, segans.size() - 1){
-        // fi2 >> sg.p1.x >> sg.p1.y >> sg.p2.x >> sg.p2.y;
-        sg.p1.x = segans[i].x1;
-        sg.p1.y = segans[i].yy1;
-        sg.p2.x = segans[i].x2;
-        sg.p2.y = segans[i].y2;
-        dt.push_back(sg);
-    }
+void prc(){
     lp(a, 0, dt.size() - 1){
         lp(b, a + 1, dt.size() - 1){
             lp(c, b + 1, dt.size() - 1){
-                // cerr << ktracat2s(dt[a], dt[b]);
-                if(ktracat2s(dt[a], dt[b]) && ktracat2s(dt[b], dt[c]) && ktracat2s(dt[c], dt[a])){
-                    point ab = getgd(dt[a], dt[b]);
-                    // cerr << ab.x << " " << ab.y;
-                    point bc = getgd(dt[b], dt[c]);
-                    point ca = getgd(dt[c], dt[a]);
-                    if(abs(ab.x - bc.x) <= esf && abs(ab.y - bc.y) <= esf) continue;
+                if (checkgiao(dt[a], dt[b]) && checkgiao(dt[b], dt[c]) && checkgiao(dt[c], dt[a]) && checkdongquy(dt[a], dt[b], dt[c])){
                     ++ans;
-                }
+                    // cerr << a << " " << b << " " << c << endl;
+                }                
             }
         }
     }
-    // fo2.open("army.out");
-    cout << ans << "\n";    
-    // fo2.close();
 }
 
 int main(){
     opt;
     file;
-    // fi1.open("army.inp");
+    segment sg;
     ll n;
     cin >> n;
-    dtgop(n);
-    dttg();
+    lp(i, 1, n){
+        cin >> sg.p1.x >> sg.p1.y >> sg.p2.x >> sg.p2.y;
+        if(sg.p1.x > sg.p2.x) {swap(sg.p1.x, sg.p2.x); swap(sg.p1.y, sg.p2.y);}
+        if(sg.p1.x == sg.p2.x && sg.p1.y > sg.p2.y) swap(sg.p1.y, sg.p2.y);
+        getabc(sg);
+        gopSeg(sg);
+    }
+    prcGop(); 
+    lp(i, 0, gopPt.size() - 1){
+        lp(j, 0, gopPt[i].size() - 1){
+            // cerr << gopPt[i][j].p1.x << " " << gopPt[i][j].p1.y << " " << gopPt[i][j].p2.x << " " << gopPt[i][j].p2.y << "\n";
+            dt.push_back(gopPt[i][j]);
+        }
+        // cerr << "\n";
+    }
+    prc();
+    cout << ans;
 }
