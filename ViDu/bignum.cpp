@@ -1,60 +1,42 @@
-#include <bits/stdc++.h>
-
+#include<bits/stdc++.h>
 using namespace std;
+#define giuncute ios_base::sync_with_stdio(0) , cin.tie(0)
+const string tenfile = "giun";
+#define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-int stringToNum(char c)
-{
-    return c - '0';
-}
+vector<int> v1 , v2 , v3;
+string s1 , s2;
 
-char numToString(int n)
+void remove0( vector<int> &v)
 {
-    return (char)(n+48);
-}
-
-void chuanHoa(string a, string b) // lam 2 xau co do dai bang nhau
-{
-    int l1 = a.length(), l2 = b.length();
-    if (l1 >= l2)  b.insert(0, l1-l2, '0');
-    else  a.insert(0, l2-l1, '0');
-}
-
-string sum(string a, string b)
-{
-    string s = "";
-    chuanHoa(a,b);      // chuan hoa
-    int l = a.length();
-    int nho = 0;
-    for (int i=l-1; i>=0; i--) {
-        nho = stringToNum(a[i]) + stringToNum(b[i]) + nho;    // tinh tong tung doi mot
-        s.insert(0, 1 , numToString( nho % 10 ));         // gan phan don vi vao
-        nho = nho/10;     // lay lai phan hang chuc
+    while (v[v.size() - 1] == 0 && v.size() > 1)
+    {
+        v.pop_back();
     }
-    if (nho > 0) s.insert(0 ,1 ,numToString( nho ));
-    return s;
+}
+void addnit(string a , vector<int> &v)
+{
+    for (int i = a.length() -1; i >= 0 ; i--)
+    {
+        v.push_back(a[i] -'0');
+    }
+    remove0(v);
 }
 
-int main(){
-    int n;
-    string a[11],ss ="";
+void print_ans( vector<int> v)
+{
+    for (int i = v.size() - 1 ; i >= 0 ; i--) cout <<v[i];
+}
 
-    //cin >> t;
-    //cout << t;
-        ios_base::sync_with_stdio(false);
-        cin.tie(0);
-
-        freopen("bignum.inp","r",stdin);
-        freopen("bignum.out","w",stdout);
-        cin >> n;
-    for (int i=1 ; i<= n ; i++) {
-            cin >> a[i];
-            cerr << a[i] << " ";
-    }
-    for (int i = 1 ; i<= n )
-   //for (int i=1 ; i<= n ; i++)  sum(ss,a[i]);
-    cout << sum("123456","66666666789");
-    cout << endl;
-    cout << sum("9","89");
-
-    return 0;
+int main()
+{
+        giuncute;
+        balabalo;
+        cin >> s1 >> s2;
+        addnit( s1 , v1);
+        addnit( s2 , v2);
+        print_ans(v1) ; cout << endl;
+        print_ans(v2) ; cout << endl;
+        return 0;
+    
 }
