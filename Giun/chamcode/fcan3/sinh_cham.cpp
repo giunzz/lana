@@ -44,6 +44,7 @@ bool cham(){
     }
     if(cong != m) ok = 0;
     ci.close();
+    // cerr << cong << endl;
     return ok;
 }
 
@@ -63,11 +64,11 @@ int main(){
             co << m;
         }
         else if(i <= 80){
-            m = Rand(1e4, 1e6);
+            m = Rand(1e7, 1e9);
             co << m;
         }
         else {
-            m = Rand(1e7, 1e9);
+            m = Rand(1e16, 1e18);
             co << m;
         }
         co.close();
@@ -81,5 +82,5 @@ int main(){
         }
         else cout << "TLE\n";
     }
-    cout<< endl << "AC: " << AC << "/100 Tests";
+    cout << endl << "AC: " << AC << "/100 Tests";
 }
