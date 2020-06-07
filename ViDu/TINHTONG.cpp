@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0)
-const string tenfile = "giun";
+const string tenfile = "TINHTONG";
 #define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 vector<int> v1 , v2 , v3;
