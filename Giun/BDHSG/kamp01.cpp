@@ -19,7 +19,7 @@ const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 cll maxn = 5e5 + 7;
-ll tg[maxn] = {0}, trace[maxn] = {0}, d[maxn] = {0};
+ll tg[maxn] = {0}, trace[maxn] = {0}, d[maxn] = {0}, l, n, k;
 vec(pp(ll, ll)) g[maxn];
 
 bool check(ll u, ll v){
@@ -50,4 +50,8 @@ int main(){
     }
     lp(i, 1, k) cin >> tg[i];
     dfs(1);
+    lp(i, 1, k){
+        ll j = i;
+        while(!trace[i])
+    }
 }
