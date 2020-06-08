@@ -30,6 +30,7 @@ ll sochu1, sochu2, d1, d2, ac = 0;
 string ans, bailam;
 
 int main(){
+    srand((int)time(0));
     opt;
     // file;
     freopen("score.log", "w", stdout);

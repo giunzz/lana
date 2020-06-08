@@ -1,202 +1,202 @@
-Test 1: 33ms
+Test 1: 110ms
+AC
+Test 2: 47ms
 WA
-Test 2: 31ms
+Test 3: 48ms
 AC
-Test 3: 29ms
-AC
-Test 4: 31ms
-AC
-Test 5: 31ms
+Test 4: 47ms
 WA
-Test 6: 34ms
+Test 5: 55ms
+AC
+Test 6: 47ms
+AC
+Test 7: 47ms
+AC
+Test 8: 65ms
 WA
-Test 7: 32ms
-AC
-Test 8: 32ms
+Test 9: 64ms
 WA
-Test 9: 32ms
+Test 10: 40ms
 AC
-Test 10: 134ms
+Test 11: 48ms
+AC
+Test 12: 44ms
 WA
-Test 11: 116ms
+Test 13: 48ms
 WA
-Test 12: 42ms
+Test 14: 48ms
 AC
-Test 13: 35ms
-AC
-Test 14: 50ms
+Test 15: 36ms
 WA
-Test 15: 40ms
+Test 16: 33ms
 AC
-Test 16: 53ms
+Test 17: 36ms
 AC
-Test 17: 50ms
+Test 18: 40ms
 WA
-Test 18: 55ms
+Test 19: 48ms
 AC
-Test 19: 51ms
+Test 20: 40ms
 AC
-Test 20: 34ms
+Test 21: 32ms
 AC
-Test 21: 49ms
+Test 22: 52ms
 AC
-Test 22: 35ms
+Test 23: 64ms
+AC
+Test 24: 40ms
 WA
-Test 23: 40ms
+Test 25: 40ms
 WA
-Test 24: 43ms
+Test 26: 36ms
+AC
+Test 27: 19ms
+AC
+Test 28: 47ms
 WA
-Test 25: 39ms
+Test 29: 33ms
 AC
-Test 26: 30ms
-AC
-Test 27: 31ms
+Test 30: 39ms
 WA
-Test 28: 30ms
+Test 31: 31ms
 AC
-Test 29: 36ms
+Test 32: 31ms
+AC
+Test 33: 31ms
 WA
-Test 30: 42ms
-AC
-Test 31: 51ms
+Test 34: 31ms
 WA
-Test 32: 37ms
+Test 35: 208ms
+AC
+Test 36: 205ms
+AC
+Test 37: 84ms
 WA
-Test 33: 33ms
+Test 38: 68ms
 AC
-Test 34: 35ms
+Test 39: 44ms
 AC
-Test 35: 60ms
+Test 40: 96ms
 WA
-Test 36: 65ms
+Test 41: 44ms
 AC
-Test 37: 64ms
+Test 42: 52ms
 WA
-Test 38: 46ms
+Test 43: 36ms
 WA
-Test 39: 38ms
+Test 44: 40ms
+AC
+Test 45: 36ms
+AC
+Test 46: 36ms
+AC
+Test 47: 44ms
 WA
-Test 40: 37ms
-AC
-Test 41: 34ms
-AC
-Test 42: 39ms
+Test 48: 41ms
 WA
-Test 43: 35ms
+Test 49: 40ms
+AC
+Test 50: 34ms
+AC
+Test 51: 40ms
 WA
-Test 44: 61ms
+Test 52: 44ms
 WA
-Test 45: 57ms
+Test 53: 32ms
 AC
-Test 46: 77ms
+Test 54: 33ms
 AC
-Test 47: 53ms
-AC
-Test 48: 65ms
-AC
-Test 49: 131ms
-AC
-Test 50: 150ms
-WA
-Test 51: 33ms
-AC
-Test 52: 36ms
-AC
-Test 53: 56ms
-WA
-Test 54: 35ms
-WA
 Test 55: 36ms
+AC
+Test 56: 36ms
 WA
-Test 56: 52ms
-AC
-Test 57: 35ms
-AC
-Test 58: 48ms
+Test 57: 31ms
 WA
-Test 59: 51ms
-AC
-Test 60: 49ms
+Test 58: 47ms
 WA
-Test 61: 34ms
+Test 59: 24ms
 AC
-Test 62: 36ms
+Test 60: 47ms
 AC
-Test 63: 36ms
+Test 61: 31ms
+AC
+Test 62: 47ms
+AC
+Test 63: 47ms
+AC
+Test 64: 47ms
+AC
+Test 65: 39ms
 WA
-Test 64: 37ms
+Test 66: 47ms
+AC
+Test 67: 63ms
 WA
-Test 65: 37ms
-AC
-Test 66: 38ms
-AC
-Test 67: 36ms
-AC
 Test 68: 40ms
 AC
 Test 69: 32ms
 WA
-Test 70: 31ms
+Test 70: 44ms
 AC
-Test 71: 33ms
+Test 71: 47ms
+WA
+Test 72: 48ms
 AC
-Test 72: 42ms
+Test 73: 35ms
 WA
-Test 73: 31ms
+Test 74: 40ms
+WA
+Test 75: 32ms
 AC
-Test 74: 41ms
-WA
-Test 75: 35ms
+Test 76: 35ms
 AC
-Test 76: 31ms
+Test 77: 80ms
 AC
-Test 77: 31ms
+Test 78: 194ms
 AC
-Test 78: 37ms
-WA
-Test 79: 32ms
-WA
-Test 80: 31ms
-WA
-Test 81: 31ms
-WA
-Test 82: 43ms
+Test 79: 56ms
 AC
-Test 83: 32ms
-WA
-Test 84: 32ms
-WA
-Test 85: 32ms
-WA
-Test 86: 36ms
-WA
-Test 87: 46ms
-WA
-Test 88: 34ms
+Test 80: 84ms
 AC
-Test 89: 31ms
-WA
-Test 90: 32ms
+Test 81: 132ms
 AC
-Test 91: 31ms
+Test 82: 84ms
 WA
-Test 92: 33ms
+Test 83: 44ms
+AC
+Test 84: 68ms
+AC
+Test 85: 44ms
+AC
+Test 86: 56ms
 WA
-Test 93: 35ms
+Test 87: 64ms
 WA
-Test 94: 33ms
+Test 88: 56ms
+AC
+Test 89: 60ms
 WA
-Test 95: 32ms
+Test 90: 44ms
 WA
-Test 96: 36ms
+Test 91: 40ms
+AC
+Test 92: 44ms
 WA
+Test 93: 48ms
+WA
+Test 94: 35ms
+AC
+Test 95: 47ms
+WA
+Test 96: 47ms
+AC
 Test 97: 31ms
+WA
+Test 98: 44ms
 AC
-Test 98: 30ms
-WA
-Test 99: 36ms
-WA
-Test 100: 31ms
+Test 99: 27ms
+AC
+Test 100: 47ms
 WA
 
-AC: 48/100 tests
+AC: 59/100 tests
