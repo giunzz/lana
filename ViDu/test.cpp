@@ -60,14 +60,9 @@ int main()
 #include <bits/stdc++.h>
 using namespace std;
 
-const int base = 1000000000; const int base_digits = 9;
-
-#include<bits/stdc++.h>
-using namespace std;
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0)
 const string tenfile = "giun";
 #define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
-using namespace std;
 
 int stringToNum(char c) {return c - '0';}
 
@@ -95,37 +90,13 @@ string sum(string a, string b)
     return s;
 }
 
-void remove0( vector<int> &v)
-{
-    while (v[v.size() - 1] == 0 && v.size() > 1)
-    {
-        v.pop_back();
-    }
-}
-
-void addnit(string a , vector<int> &v)
-{
-    for (int i = a.length() - 1 ; i >= 0 ; i--)
-    {
-        v.push_back(a[i] -'0');
-    }
-    remove0(v)
-}
-
-void print_ans( vector<int> v)
-{
-    for (int i = v.size() - 1 ; i >= 0 ; i--) cout <<v[i];
-}
 
 int main()
 {
         string s1 , s2;
-        freopen("giun.inp","r",stdin);
-        freopen("giun.out","w",stdout);
-        ios_base::sync_with_stdio(false);
-        cin.tie(0);
+        balabalo;
+        giuncute;
         cin >> s1 >> s2;
-        if (s1  < 0 && )
         cout << sum(s1,s2);
         return 0;
     

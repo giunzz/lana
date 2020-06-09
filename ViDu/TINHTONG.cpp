@@ -102,7 +102,7 @@ int main()
             }
             else
             {
-                if (ds1 == 1)
+                if (ds2 == 1)
                 {
                     tru(v1 , v2 , v3); 
                     print_ans(v3);
@@ -120,6 +120,5 @@ int main()
             cong( v1 , v2 , v3);
             print_ans(v3);
         }       
-        return 0;
-    
+        return 0;    
 }

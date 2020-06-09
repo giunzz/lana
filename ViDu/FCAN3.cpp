@@ -1,10 +1,17 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0)
-const string tenfile = "giun";
+const string tenfile = "FCAN3";
 #define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
+#define linh long long 
+int m , dem = 0  , d[30] = {0};
 
-int m , dem = 0  , d[15] = {0};
+long long linhcute(int x)
+{
+    long long sum = 1;
+    for (int i = 1 ; i <= x ; i++) sum *= 3  ;
+    return sum;
+}
 
 void print_ans()
 {
@@ -14,13 +21,16 @@ void print_ans()
     for (int i = 0 ; i <= dem ; i++)
     {
         if (d[i] != 0 ) 
-            for (int j = 1 ; j <= d[i] ; j++) cout << pow(3,i) << " ";
+        {
+            long long tam = linhcute(i);
+            for (int j = 1 ; j <= d[i] ; j++) cout << tam << " ";
+        }
     }
 }
-
 void chonn( int chon)
 {
-    if ( pow(3, chon) > m ) {print_ans();}
+    long long t1 = linhcute(chon);
+    if ( t1 > m ) {print_ans();}
     else 
     {
         if (chon == 0) d[0] = m;
