@@ -23,7 +23,7 @@ int main(){
     opt;
     // file;
     freopen("tinhtong.inp", "r", stdin);
-    freopen("ans.out", "w", stdout);
+    freopen("tinhtong.out", "w", stdout);
     bigint a, b;
     cin >> a >> b;
     cout << (a + b);
