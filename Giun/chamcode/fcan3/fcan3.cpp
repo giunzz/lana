@@ -1,26 +1,36 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0)
-const string tenfile = "fcan3";
+const string tenfile = "FCAN3";
 #define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 #define linh long long 
-long long m , dem = 0  , d[300] = {0};
+linh m , dem = 0  , d[400] = {0};
+
+long long linhcute(linh x)
+{
+    linh sum = 1;
+    for (linh i = 1 ; i <= x ; i++) sum *= 3  ;
+    return sum;
+}
 
 void print_ans()
 {
-    int de = 0;
-    for (int i = 0 ; i <= dem ; i++)  de += d[i];
+    linh de = 0;
+    for (linh i = 0 ; i <= dem ; i++)  de += d[i];
     cout << de << " ";
-    for (int i = 0 ; i <= dem ; i++)
+    for (linh i = 0 ; i <= dem ; i++)
     {
         if (d[i] != 0 ) 
-            for (int j = 1 ; j <= d[i] ; j++) cout << (linh)pow(3,i) << " ";
+        {
+            linh tam = linhcute(i);
+            for (linh j = 1 ; j <= d[i] ; j++) cout << tam << " ";
+        }
     }
 }
-
 void chonn( int chon)
 {
-    if ( (linh ) pow(3, chon) > m ) {print_ans();}
+    long long t1 = linhcute(chon);
+    if ( t1 > m ) {print_ans();}
     else 
     {
         if (chon == 0) d[0] = m;
@@ -41,3 +51,4 @@ int main()
     cin >> m ;
     chonn(0);
 }
+
