@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0)
-const string tenfile = "giun";
+const string tenfile = "TINHTONG";
 #define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 vector<int> v1 , v2 , v3;
@@ -14,6 +14,17 @@ void remove0( vector<int> &v)
         v.pop_back();
     }
 }
+int so_sanh(vector<int> a , vector<int> b )
+{
+    if (a.size() > b.size() ) return -1;
+    if (a.size() < b.size() ) return 1;
+    for (int i = a.size()-1; i >= 0 ; i--)
+    {
+        if(a[i] > b[i]) return -1;
+        if(a[i] <b[i] ) return 1;
+    }
+    return 0;
+}
 void addnit(string a , vector<int> &v)
 {
     for (int i = a.length()-1; i >= 0 ; i--)
@@ -21,7 +32,7 @@ void addnit(string a , vector<int> &v)
         if (a[i] =='-') d++;
         else v.push_back(a[i] -'0');
     }
-    remove0(v);
+   //remove0(v);
 }
 
 void print_ans( vector<int> v)
@@ -50,18 +61,18 @@ void tru ( vector<int> v1 , vector<int> v2 , vector<int> &v3 )
     v3.clear();
     int l = v1.size();
     v2.resize(l);
-    int nho = 0 ;
+    int du = 0 ;
     for (int i = 0 ; i < l ; i++)
     {
-        if ( v1[i] < v2[i] + nho )
+        if ( v1[i] < v2[i] + du )
         {
-            v3.push_back(v1[i] - v2[i] - nho + 10);
-            nho = 1;
+            v3.push_back(v1[i] - v2[i] - du + 10);
+            du = 1;
         }
         else 
         {
-            v3.push_back(v1[i] - v2[i] - nho);
-            nho = 0;
+            v3.push_back(v1[i] - v2[i] - du);
+            du = 0;
         }
         remove0(v3);
     }

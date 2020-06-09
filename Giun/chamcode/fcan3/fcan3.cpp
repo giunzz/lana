@@ -6,6 +6,7 @@ const string tenfile = "fcan3";
 #define linh long long 
 long long m , dem = 0  , d[300] = {0};
 
+
 void print_ans()
 {
     int de = 0;
