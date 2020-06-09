@@ -39,11 +39,13 @@ void print_ans( vector<int> v)
 {
     for (int i = v.size() - 1 ; i >= 0 ; i--) cout << v[i] ;
 }
-
+// deque
 void cong ( vector<int> v1 , vector<int> v2 , vector<int> &v3 )
 {
     v3.clear();
     int l = v1.size() > v2.size() ? v1.size() : v2.size();
+    if (v 1 > v2) l = v1.size();
+    else l = v2.size();
     v1.resize(l) , v2.resize(l);
     int nho = 0 , t ;
     for (int i = 0 ; i < l ; i++)
