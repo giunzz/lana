@@ -1,203 +1,203 @@
 FCAN3
-Test 1: 47ms
+Test 1: 32ms
 AC
-Test 2: 41ms
+Test 2: 40ms
 AC
-Test 3: 42ms
+Test 3: 25ms
 AC
-Test 4: 42ms
+Test 4: 28ms
 AC
-Test 5: 43ms
+Test 5: 32ms
 AC
-Test 6: 42ms
+Test 6: 32ms
 AC
-Test 7: 39ms
+Test 7: 28ms
 AC
-Test 8: 41ms
+Test 8: 28ms
 AC
-Test 9: 38ms
+Test 9: 32ms
 AC
-Test 10: 41ms
+Test 10: 32ms
 AC
 Test 11: 36ms
 AC
-Test 12: 37ms
+Test 12: 28ms
 AC
-Test 13: 40ms
+Test 13: 32ms
 AC
-Test 14: 38ms
+Test 14: 36ms
 AC
-Test 15: 42ms
+Test 15: 32ms
 AC
-Test 16: 37ms
+Test 16: 31ms
 AC
-Test 17: 38ms
+Test 17: 31ms
 AC
-Test 18: 39ms
+Test 18: 32ms
 AC
-Test 19: 35ms
+Test 19: 40ms
 AC
-Test 20: 38ms
+Test 20: 36ms
 AC
-Test 21: 40ms
+Test 21: 32ms
 AC
-Test 22: 42ms
+Test 22: 32ms
 AC
-Test 23: 43ms
+Test 23: 32ms
 AC
-Test 24: 39ms
+Test 24: 32ms
 AC
-Test 25: 37ms
+Test 25: 32ms
 AC
-Test 26: 34ms
+Test 26: 32ms
 AC
-Test 27: 40ms
+Test 27: 36ms
 AC
-Test 28: 38ms
+Test 28: 36ms
 AC
-Test 29: 50ms
+Test 29: 27ms
 AC
-Test 30: 39ms
+Test 30: 28ms
 AC
-Test 31: 47ms
+Test 31: 36ms
 AC
-Test 32: 45ms
+Test 32: 32ms
 AC
-Test 33: 45ms
+Test 33: 33ms
 AC
-Test 34: 47ms
+Test 34: 25ms
 AC
-Test 35: 49ms
+Test 35: 33ms
 AC
-Test 36: 48ms
+Test 36: 28ms
 AC
-Test 37: 44ms
+Test 37: 35ms
 AC
-Test 38: 38ms
+Test 38: 32ms
 AC
-Test 39: 44ms
+Test 39: 32ms
 AC
-Test 40: 37ms
+Test 40: 36ms
 AC
-Test 41: 38ms
+Test 41: 32ms
 AC
-Test 42: 38ms
+Test 42: 32ms
 AC
-Test 43: 36ms
+Test 43: 32ms
 AC
-Test 44: 44ms
+Test 44: 36ms
 AC
-Test 45: 39ms
+Test 45: 32ms
 AC
-Test 46: 47ms
+Test 46: 32ms
 AC
-Test 47: 74ms
+Test 47: 41ms
 AC
-Test 48: 51ms
+Test 48: 32ms
 AC
-Test 49: 39ms
+Test 49: 32ms
 AC
-Test 50: 44ms
+Test 50: 32ms
 AC
-Test 51: 38ms
+Test 51: 32ms
 AC
-Test 52: 43ms
+Test 52: 32ms
 AC
-Test 53: 47ms
+Test 53: 32ms
 AC
-Test 54: 65ms
+Test 54: 28ms
 AC
-Test 55: 46ms
+Test 55: 32ms
 AC
-Test 56: 53ms
+Test 56: 32ms
 AC
-Test 57: 42ms
+Test 57: 32ms
 AC
-Test 58: 37ms
+Test 58: 36ms
 AC
-Test 59: 37ms
+Test 59: 33ms
 AC
-Test 60: 37ms
+Test 60: 32ms
 AC
-Test 61: 51ms
+Test 61: 28ms
 AC
-Test 62: 39ms
+Test 62: 32ms
 AC
-Test 63: 37ms
+Test 63: 32ms
 AC
-Test 64: 43ms
+Test 64: 28ms
 AC
-Test 65: 38ms
+Test 65: 32ms
 AC
-Test 66: 46ms
+Test 66: 31ms
 AC
-Test 67: 51ms
+Test 67: 29ms
 AC
-Test 68: 37ms
+Test 68: 32ms
 AC
-Test 69: 37ms
+Test 69: 28ms
 AC
-Test 70: 39ms
+Test 70: 36ms
 AC
-Test 71: 38ms
+Test 71: 36ms
 AC
-Test 72: 36ms
+Test 72: 28ms
 AC
-Test 73: 41ms
+Test 73: 28ms
 AC
-Test 74: 38ms
+Test 74: 32ms
 AC
-Test 75: 45ms
+Test 75: 36ms
 AC
-Test 76: 41ms
+Test 76: 32ms
 AC
-Test 77: 42ms
+Test 77: 36ms
 AC
-Test 78: 37ms
+Test 78: 32ms
 AC
-Test 79: 44ms
+Test 79: 36ms
 AC
-Test 80: 37ms
+Test 80: 40ms
 AC
-Test 81: 33ms
+Test 81: 32ms
 WA
-Test 82: 33ms
+Test 82: 36ms
 WA
-Test 83: 31ms
+Test 83: 32ms
 WA
-Test 84: 34ms
+Test 84: 32ms
 WA
-Test 85: 33ms
+Test 85: 28ms
 WA
 Test 86: 32ms
 WA
-Test 87: 36ms
+Test 87: 32ms
 WA
-Test 88: 36ms
+Test 88: 28ms
 WA
-Test 89: 34ms
+Test 89: 28ms
 WA
-Test 90: 33ms
+Test 90: 32ms
 WA
-Test 91: 31ms
+Test 91: 36ms
 WA
-Test 92: 33ms
+Test 92: 32ms
 WA
-Test 93: 31ms
+Test 93: 32ms
 WA
-Test 94: 31ms
+Test 94: 32ms
 WA
-Test 95: 33ms
+Test 95: 32ms
 WA
 Test 96: 32ms
 WA
-Test 97: 33ms
+Test 97: 32ms
 WA
-Test 98: 33ms
+Test 98: 32ms
 WA
-Test 99: 32ms
+Test 99: 28ms
 WA
-Test 100: 37ms
+Test 100: 29ms
 WA
 
 AC: 80/100 Tests
