@@ -8,6 +8,6 @@ struct test{
 };
 
 int main(){
-    test b = {"abc", 1};
-    cout << b.c << " " << b.a;
+    char a[] = {72, 80, 66, 68, 87, 117, 97, 110, '\n'};
+    cout << a;
 }
