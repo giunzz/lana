@@ -57,47 +57,26 @@ int main()
     }
 }*/
 
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
+
 using namespace std;
 
-#define giuncute ios_base::sync_with_stdio(0) , cin.tie(0)
-const string tenfile = "giun";
-#define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
+const int maxn = 1e6;
 
-int stringToNum(char c) {return c - '0';}
+int n , sang[maxn + 9]={0};
 
-char numToString(int n) {return (char)(n+48);}
-
-void chuanHoa(string &a, string &b) 
+void ss()
 {
-    int l1 = a.length(), l2 = b.length();
-    if (l1 >= l2) b.insert(0, l1-l2, '0');    
-    else a.insert(0, l2-l1, '0');    
+    sang[0] = 1 , sang[1] = 1;
+    for ( int i = 2 ; i <= maxn ; i++)
+        if (!sang[i])
+            for (int j = i+i ; j <= maxn ; j += i ) sang[j] = 1;
 }
-string sum(string a, string b) 
-{
-    string s = "";
-    chuanHoa(a,b);    
-    int l = a.length();
-    int nho = 0;
-    for (int i = l - 1; i > 0 ; i--)  
-    {
-        nho = stringToNum(a[i]) + stringToNum(b[i]) + nho;   
-        s.insert( 0,1,numToString(nho % 10) );         
-        nho /=  10;     
-    }
-    if (nho > 0)  s.insert(0,1,numToString(nho));
-    return s;
-}
-
 
 int main()
 {
-        string s1 , s2;
-        balabalo;
-        giuncute;
-        cin >> s1 >> s2;
-        cout << sum(s1,s2);
-        return 0;
-    
+    ss();
+    for( int i = 1 ; i <= 100 ; i ++ )
+        if(sang[i] == 0 ) cout << i << " ";
+    return 0;
 }
