@@ -4,7 +4,7 @@ using namespace std;
 const string tenfile = "TMOVE";
 #define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-int m , n , a[25][25] , f[25][25] = {INT_MIN/100} ;
+int  m , n , a[100][100] = {0} , f[100][100] = {{INT_MIN / 100}} ;
 
 int main()
 {
@@ -20,7 +20,7 @@ int main()
     {
         for (int j = 1 ; j <= n ; j++) 
         {
-            if ( i == j  && i == 1) f[i][j] = a[i][j] ; 
+            if ( i == 1  && j == 1) f[i][j] = a[i][j] ; 
             else f[i][j] = max(  f[i-1][j], max ( f[i][j-1]  , f[i-1][j-1]) ) + a[i][j];
         }
     }
