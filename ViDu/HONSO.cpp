@@ -17,7 +17,6 @@ long UCLN(long x , long y)
         }
         return x;
 }
-
 int main()
 {
     balabalo;

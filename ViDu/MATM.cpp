@@ -3,7 +3,7 @@ using namespace std;
 const string tenfile = "giun";
 #define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-int n , k ,  a[25] , b[25] , ans = 0 , x[25] = {0} , y[25] ={0} , sum = 0 ;
+int n , k ,  a[25] , b[25] , ans = 0 , c[25] ={0} , sum = 0 ;
 
 void fastscan(int &number) 
 { 
@@ -22,26 +22,33 @@ void fastscan(int &number)
     if (negative) 
         number *= -1; 
 }
-
 void check_ans()
 {
-    for (int i = 1 ; i <= n ; i++) sum += x[i]*y[i];
-    cerr << sum << " ";
-    if ( sum == k ) ans ++;
     sum = 0;
+    for (int i = 1 ; i <= n ; i++) 
+    {
+        sum += c[i] * a[i];
+        cerr << c[i] << " ";
+    }
+    if ( sum == k ) ans ++;
+    cerr << endl;
 }
 
-void chon ( int vt)
+void chon (int vt)
 {
     if ( vt == n + 1) check_ans();
     else 
     {
         for (int i = 1 ; i <= n ; i++)
         {
-            x[i] = b[i];
-            y[i] = a[i]; 
-            chon (vt + 1);
+            for (int j = 0 ; j <= b[i] ; j++) 
+            {
+                c[i] = j;
+                chon (vt + 1);
+            }
+            
         }
+        
     }
 }
 
