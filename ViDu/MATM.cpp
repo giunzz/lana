@@ -1,9 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
-const string tenfile = "giun";
+const string tenfile = "MATM";
 #define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-int n , k ,  a[25] , b[25] , ans = 0 , c[25] ={0} , sum = 0 ;
+int n , k ,  a[25] , b[25] , ans = 0 , c[25] ={0}  ;
 
 void fastscan(int &number) 
 { 
@@ -22,33 +22,28 @@ void fastscan(int &number)
     if (negative) 
         number *= -1; 
 }
-void check_ans()
-{
-    sum = 0;
-    for (int i = 1 ; i <= n ; i++) 
-    {
-        sum += c[i] * a[i];
-        cerr << c[i] << " ";
-    }
-    if ( sum == k ) ans ++;
-    cerr << endl;
-}
 
 void chon (int vt)
 {
-    if ( vt == n + 1) check_ans();
-    else 
+    if ( vt == n + 1) 
     {
-        for (int i = 1 ; i <= n ; i++)
+        int sum = 0 ; 
+        for (int i = 1 ; i <= n ; i++) 
+        {
+            sum += c[i] * a[i];
+        }
+        if ( sum == k ) ans ++;
+    }
+    else 
+    {   
+        for (int i = 1 ; i <= vt ; i++)
         {
             for (int j = 0 ; j <= b[i] ; j++) 
             {
-                c[i] = j;
+                c[vt] = j;
                 chon (vt + 1);
             }
-            
         }
-        
     }
 }
 
