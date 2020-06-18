@@ -2,6 +2,12 @@
 
 using namespace std;
 
+int getlength(char* a){
+    int l = 0;
+    for (int i = 0; a[i] != '\0'; i++) ++l;
+    return l;
+}
+
 char* delAm( char* a)
 {
     // cout << a;
@@ -13,15 +19,18 @@ char* delAm( char* a)
         p[i-1] = p[i], last = i;    
     }
     p[last] = '\0';
-    return p;
+    a = p;
+    return a;
 }
 
 char* del0( char* a)
 {
-    // cerr << a << endl;
-    char* p2 = new char(strlen(a) + 1);
-    strcpy(p2, ((const char*)a));
-    // cout << p2 << endl;
+    // int length = getlength(a);
+    // cerr << a;
+    char p2 = new *char[1];
+    // strcpy(p2,(const char*) a);
+    p2[0] = '1';
+    cout << p2 << endl;
     int last;
     if(0 == strlen(p2) - 1)  p2[0] = '\0';
     else {
@@ -49,7 +58,9 @@ int main(){
     // test = p;
     // delete[] p;
     // cout << test;
+    // cout << strlen(test);
     test = delAm(test);
+    cout << test;
     test = del0(test);
     cout << test;
 }

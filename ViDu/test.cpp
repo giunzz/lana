@@ -73,19 +73,6 @@ void ss()
             for (int j = i+i ; j <= maxn ; j += i ) sang[j] = 1;
 }
 
-char* del( char* p)
-{
-    // cout << p << endl;
-    int last;
-    for (int i = 1 ; p[i] != '\0' ; i++ ) {
-        // cout << p[i] << endl;
-        p[i-1] = p[i], last = i;
-        // cout << p << endl;    
-    }
-    // cout << p << endl;
-    p[last] = '\0'; //*(p + 3)
-    return p;
-}
 
 int main()
 {
