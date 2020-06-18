@@ -73,10 +73,32 @@ void ss()
             for (int j = i+i ; j <= maxn ; j += i ) sang[j] = 1;
 }
 
+char* del( char* p)
+{
+    // cout << p << endl;
+    int last;
+    for (int i = 1 ; p[i] != '\0' ; i++ ) {
+        // cout << p[i] << endl;
+        p[i-1] = p[i], last = i;
+        // cout << p << endl;    
+    }
+    // cout << p << endl;
+    p[last] = '\0'; //*(p + 3)
+    return p;
+}
+
 int main()
 {
-    ss();
-    for( int i = 1 ; i <= 100 ; i ++ )
-        if(sang[i] == 0 ) cout << i << " ";
-    return 0;
+    // char a[] = "giun";
+    string a;
+    // cin >> a;
+    // char* p = new char[a.length() + 1];
+    char* p = "giun";
+    p = '0';
+    for (int i = 0; p[i] != '\0'; i++) cout << typeid( p[i]).name();
+    // strcat(p, "\0".c_str());
+    // strcpy(p, a.c_str());
+    // p[0] = (char)'0';
+    // cin >> p;
+    cout << del(p);
 }
