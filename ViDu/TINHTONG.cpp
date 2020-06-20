@@ -53,6 +53,7 @@ char* cong( char * a , char *b)
 	}
 	return result;
 }
+
 char* tru(char* a, char* b)
 {
 	bool sign = false, remember = false;
@@ -121,7 +122,20 @@ char* tru(char* a, char* b)
 	return result;
 }
 
-char* s1 , s2;
+void del( char* &p, int vt)
+{
+    int last;
+    if(vt == strlen(p) - 1)  p[vt] = '\0';
+    else {
+        for (int i = vt + 1 ; p[i] != '\0' ; i++ ) 
+        {
+            p[i-1] = p[i], last = i;    
+        }
+        p[last] = '\0';
+    } 
+}
+
+char* s1 , s2 , ans;
 char  d1 , d2 , d ;
 int main()
 {
@@ -131,15 +145,59 @@ int main()
     if(s1[0] == '-')
     {
         d1 ='-';
-        s1 = s1.substr(1,s1.length()-1);
+        char* tam = new char(strlen(s1)+ 1);
+    	strcpy(tam, ((const char*)s1));
+    	del(tam,0);
+		s1 = tam
     }
     else d1 = '0';
     if(s2[0] == '-')
     {
         d2 ='-';
-        s2 = s2.substr(1,s2.length()-1);
+        char* tam2 = new char(strlen(s2)+ 1);
+    	strcpy(tam2, ((const char*)s2));
+    	del(tam2,0);
+		s2 = tam2
     }
     else d2 = '0';
-    while (strlen(s1) != strlen(s2) )  do
-		if ( strlen(s1) < strlen(s2) ) 
+    while (strlen(s1.c_str()) != strlen(s2.c_str()) ) 
+	{
+		if ( strlen(s1.c_str()) < strlen(s2.c_str()) ) strcat(s1 , "0");
+		else strcat(s2 , "0");
+	}
+	strcat(s1 , "0");
+	strcat(s2 , "0");
+	if (d1 == d2)
+	{
+		d = d1 ;
+		ans = cong(s1 , s2);
+	}
+	else 
+	{
+		if (strcmp(s1, s2) == 0) 
+		{
+			d ='0';
+			ans = '0';
+		}
+		else if (strcmp(s1, s2) > 0)
+		{
+			ans = tru(s1,s2);
+			d = d1;
+		}
+		else 
+		{
+			ans = tru(s2,s1);
+			d = d2;
+		}
+	}
+	char* p = new char(strlen(ans)+ 1);
+    strcpy(p, ((const char*)ans));
+    while ( strlen(p) > 1 && p[0] == '0'   )
+	{
+        del(p, 0);
+    }
+    ans = p;
+	if (d == '-') cout << dau << ans;
+	else cout << ans;
+	return 0;
 }
