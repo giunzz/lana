@@ -1,13 +1,7 @@
-#include <iostream>
-#include <iomanip>
+#include <bits/stdc++.h>
 using namespace std;
-
-struct test{
-    string c; 
-    int a = 0;
-};
-
-int main(){
-    char a[] = {72, 80, 66, 68, 87, 117, 97, 110, '\n'};
-    cout << a;
-}
+#define ll long long
+#define ii int
+#define lp(a, b, c) for(ll a; a<=b; a++)
+#define lpd(a, b, c) for(ll a; a>=b; a++)
+#define vec(a, b) vector<a, b>

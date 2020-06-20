@@ -19,7 +19,14 @@ const double esf = 1e-9;
 const string tenfile = "pb";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
+string name;
+
 int main(){
-    opt;
-    file;
+    cout << "name: ";
+    cin >> name;
+    st("mkdir " + name);
+    st("copy pb " + name);
+    st("cd " + name + " && rename pb.* " + name + ".*");
+    st("cd " + name + " && rename pb_bruce.cpp " + name + "_bruce.cpp");
 }
+

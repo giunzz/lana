@@ -16,10 +16,15 @@
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
-const string tenfile = "pb";
-#define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
+const string tenfile = "test";
+#define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".ans").c_str(), "w", stdout)
 
 int main(){
     opt;
     file;
+    ll n;
+    cin >> n;
+    ll ans = 0;
+    lp(i, 1, n) ans += i;
+    cout << ans;
 }
