@@ -22,15 +22,15 @@ int main()
     balabalo;
     giuncute;
     cin >> a >> b;
-    if ( a == 0 ) cout << 0 << " " <<  0 << " " << b;
-    else if ( b == 0 ) cout << -1;
-        else 
-        {
-            long c = UCLN( a , b );
-            if(!c) c = 1;
-            a /= c, b /= c;
-            cout << a / b << " " << a - ((a / b) * b) << " " << b; 
-        }
-    return 0;
+        if ( b == 0 ) cout << -1;
+        else if ( a % b == 0 ) cout << a/b;
+            else 
+            {
+                long c = UCLN( a , b );
+                if(!c) c = 1;
+                a /= c, b /= c;
+                cout << a / b << " " << a - ((a / b) * b) << " " << b; 
+            }
+        return 0;
 
 }

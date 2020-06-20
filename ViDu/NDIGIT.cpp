@@ -11,7 +11,7 @@ int main()
     ios_base::sync_with_stdio(0) , cin.tie(0);
     balabalo;
     cin >> m >> n ;
-    for (int i = m ; i <= n ; i++)
+    for (int i = min(m,n) ; i <= max(m,n) ; i++)
     {
         int t = i;
         while ( t != 0 )
