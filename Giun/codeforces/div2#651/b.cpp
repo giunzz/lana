@@ -20,7 +20,28 @@ const double esf = 1e-9;
 const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
+ll a[2003], d[2003];
+// vec(ll) a;
+
 int main(){
     opt;
-    file;
+    // file;
+    ll t,n;
+    cin >>t;
+    while(t--){
+        memset(d, 0, sizeof(d));
+        cin>>n;
+        ll cnt = 0;
+        lp(i,1,n*2){cin>>a[i];}
+        lp(i, 1, n*2 && cnt<n-1){
+            lp(j, i+1, n*2){
+                if(!(abs((a[i]%2)-(a[j]%2))) && !d[i] && !d[j]){
+                    cout << i << " " << j<<endl;
+                    ++cnt;
+                    d[i] = 1; d[j]=1;
+                    break;
+                }
+            }
+        }
+    }
 }

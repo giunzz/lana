@@ -20,7 +20,13 @@ const double esf = 1e-9;
 const string tenfile = "pb";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".ans").c_str(), "w", stdout)
 
+sr s;
+ll n;
+
 int main(){
     opt;
     file;
+    cin >> s;
+    n = s.length();
+    
 }

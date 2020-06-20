@@ -17,10 +17,20 @@
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
-const string tenfile = "pb";
-#define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".ans").c_str(), "w", stdout)
+const string tenfile = "f";
+#define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
+
+ll t,n;
 
 int main(){
     opt;
-    file;
+    // file;
+    cin>>t;
+    while(t--){
+        cin>>n;
+        if(!(n%2)) cout << n/2 <<endl;
+        else{
+            cout << (n-1)/2 <<endl;
+        }
+    }
 }

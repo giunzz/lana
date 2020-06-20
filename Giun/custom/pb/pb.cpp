@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 #define ii int
 #define ll long long
-#define sr string
 #define cii const int
 #define cll const long long
 #define opt ios_base::sync_with_stdio(0); cin.tie(0)
@@ -18,7 +17,7 @@ using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
 const string tenfile = "pb";
-#define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".ans").c_str(), "w", stdout)
+#define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 int main(){
     opt;

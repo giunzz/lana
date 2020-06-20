@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 #define ii int
 #define ll long long
-#define sr string
 #define cii const int
 #define cll const long long
 #define opt ios_base::sync_with_stdio(0); cin.tie(0)
