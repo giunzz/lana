@@ -36,14 +36,14 @@ int main(){
     freopen("score.log", "w", stdout);
     ofstream co;
     ifstream as, bl;
-    lp(i, 1, 100){
+    lp(i, 1, 1000){
         cout << "Test " << i << ": ";
         co.open("tinhtong.inp");
-        if(i <= 40){
+        if(i <= 400){
             sochu1 = Rand(20, 99);
             sochu2 = Rand(sochu2, 100);
         }
-        else if(i <= 80){
+        else if(i <= 800){
             sochu2 = Rand(20, 99);
             sochu1 = Rand(sochu2, 100);
         }

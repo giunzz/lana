@@ -1,138 +1,90 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
+#define ii int
+#define ll long long
+#define sr string
+#define cii const int
+#define cll const long long
+#define opt ios_base::sync_with_stdio(0); cin.tie(0)
+#define lp(obj1, obj2, obj3) for(ll obj1 = obj2; obj1 <= obj3; obj1++)
+#define lpd(obj1, obj2, obj3) for(ll obj1 = obj2; obj1 >= obj3; obj1--)
+#define pp(obj1, obj2) pair<obj1, obj2>
+#define vec(obj1) vector<obj1>
+#define vecite(obj1) vector<obj1>::iterator
+#define fi first
+#define se second
+#define mp(obj1, obj2) map<obj1, obj2>
+#define st(obj) system((obj).c_str());
 using namespace std;
-#define giuncute ios_base::sync_with_stdio(0) , cin.tie(0)
-const string tenfile = "TINHTONG";
-#define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
+cll MOD = 1e9 + 7;
+const double esf = 1e-9;
+const string tenfile = "tinhtong";
+#define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-vector<int> v1 , v2 , v3;
-string s1 , s2;
-int d = 0;
-void remove0( vector<int> &v)
-{
-    while (v[v.size() - 1] == 0 && v.size() > 1)
-    {
-        v.pop_back();
-    }
+vec(ll) a[2], ans;
+bool d[2]={0}, da=0;
+void fastscan(ll n) 
+{ 
+    register int c; 
+    a[n].clear();
+    c = getchar(); 
+    if (c == ' ') fastscan(n);
+    if (c=='-') 
+    { 
+        d[n] = true; 
+        c = getchar(); 
+    } 
+    for (; (c>47 && c<58); c=getchar()) 
+        a[n].push_back(c-48);
+} 
+void xl(vec(ll)&n, bool &dg){
+    while(!n.empty()&&!n.back())n.pop_back();
+    if(n.empty()){n.push_back(0);dg=0;}
 }
-int so_sanh(vector<int> a , vector<int> b )
-{
-    if (a.size() > b.size() ) return -1;
-    if (a.size() < b.size() ) return 1;
-    for (int i = a.size()-1; i >= 0 ; i--)
-    {
-        if(a[i] > b[i]) return -1;
-        if(a[i] <b[i] ) return 1;
-    }
+bool check(){
+    if(a[0].size()==a[1].size())
+        lpd(i,a[0].size()-1,0){
+            if(a[0][i]>a[1][i]) return 0;
+            else if(a[0][i]<a[1][i]) return 1;
+        }    
     return 0;
 }
-void addnit(string a , vector<int> &v)
-{
-    for (int i = a.length()-1; i >= 0 ; i--)
-    {
-        if (a[i] =='-') d++;
-        else v.push_back(a[i] -'0');
+void cg(){
+    ll n=0;
+    lp(i,0,a[1].size()-1){
+        ans.push_back((a[0][i]+a[1][i]+n)%10);
+        n=(a[0][i]+a[1][i]+n)/10;
     }
-   //remove0(v);
+    if(n)ans.push_back(n);
+}
+void tr(){
+    ll n=0,tmp;
+    lp(i,0,a[0].size()-1){
+        tmp=a[0][i]-a[1][i]-n;
+        if(tmp<0){ans.push_back(tmp+10);n=1;}
+        else{ans.push_back(tmp);n=0;}
+    }
 }
 
-void print_ans( vector<int> v)
-{
-    for (int i = v.size() - 1 ; i >= 0 ; i--) cout << v[i] ;
-}
-// deque
-void cong ( vector<int> v1 , vector<int> v2 , vector<int> &v3 )
-{
-    v3.clear();
-    int l = v1.size() > v2.size() ? v1.size() : v2.size();
-    if (v 1 > v2) l = v1.size();
-    else l = v2.size();
-    v1.resize(l) , v2.resize(l);
-    int nho = 0 , t ;
-    for (int i = 0 ; i < l ; i++)
-    {
-        t = v1[i] + v2[i] + nho;
-        v3.push_back( t % 10 );
-        nho = t / 10;
+int main(){
+    opt;
+    file;
+    fastscan(0); fastscan(1);
+    reverse(a[0].begin(), a[0].end());
+    reverse(a[1].begin(), a[1].end());
+    xl(a[0], d[0]); xl(a[1], d[1]);
+    if(a[0].size()<a[1].size() || check()){a[0].swap(a[1]); swap(d[0],d[1]);}
+    while(a[1].size()<a[0].size())a[1].push_back(0);
+    if(d[0]==d[1]){
+        cg();
+        while(!ans.empty()&&!ans.back())ans.pop_back();
+        if(ans.empty()){ans.push_back(0);d[1]=0;}
+        if(d[1])cout<<"-";
+        while(!ans.empty()){cout<<ans.back();ans.pop_back();}
     }
-    if (nho > 0 ) v3.push_back(t);
-}
-
-// v1 > v2
-void tru ( vector<int> v1 , vector<int> v2 , vector<int> &v3 )
-{
-    v3.clear();
-    int l = v1.size();
-    v2.resize(l);
-    int du = 0 ;
-    for (int i = 0 ; i < l ; i++)
-    {
-        if ( v1[i] < v2[i] + du )
-        {
-            v3.push_back(v1[i] - v2[i] - du + 10);
-            du = 1;
-        }
-        else 
-        {
-            v3.push_back(v1[i] - v2[i] - du);
-            du = 0;
-        }
-        remove0(v3);
+    else{
+        tr();
+        if(d[0])cout<<"-";
+        xl(ans,da);
+        while(!ans.empty()){cout<<ans.back();ans.pop_back();}
     }
-}
-int main()
-{
-        int ds1 = 0 , ds2 = 0;
-        giuncute;
-        balabalo;
-        cin >> s1 >> s2;
-        if (s1[0] =='-') ds1 = 1;
-        if (s2[0] =='-') ds2 = 1;
-        addnit( s1 , v1);
-        addnit( s2 , v2);
-        //print_ans(v1) ; cout << endl;
-        //print_ans(v2) ; cout << endl;
-        if ( d == 2) 
-        {
-            cong( v1 , v2 , v3);
-            cout <<'-';
-            print_ans(v3);
-        }
-        else if (d == 1 )
-        {
-            if  ( (v1[v1.size() -1 ]) <  (v2[v2.size() -1 ]) )
-            {
-                    if (ds1 == 1 )
-                    {
-                        tru(v2 , v1 , v3); 
-                        print_ans(v3);
-                    }
-                    else 
-                    {
-                        tru(v2 , v1 , v3);
-                        cout<<'-';
-                        print_ans(v3);
-                    }
-            }
-            else
-            {
-                if (ds2 == 1)
-                {
-                    tru(v1 , v2 , v3); 
-                    print_ans(v3);
-                }
-                else 
-                {
-                    tru(v1 , v2 , v3);
-                    cout<<'-';
-                    print_ans(v3);
-                }
-            } 
-        }
-        else 
-        {
-            cong( v1 , v2 , v3);
-            print_ans(v3);
-        }       
-        return 0;
-    
 }
