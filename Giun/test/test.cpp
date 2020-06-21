@@ -1,6 +1,10 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
 int main(){
-    cout << 18 * 3;
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long n;
+    cin >> n;
+    cout << n;
 }

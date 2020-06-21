@@ -21,7 +21,7 @@ const string tenfile = "pb";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 ofstream co;
-string name, no, ni, na, nb;
+string name=tenfile, no, ni, na, nb;
 ll ac = 0, cs = 0;
 
 long long Rand(long long l, long long h)
@@ -47,8 +47,8 @@ void cham(){
 
 int main(){
     srand((int)time(0));
-    cout << "name: ";
-    cin >> name;
+    // cout << "name: ";
+    // cin >> name;
     no = name + ".out";
     ni = name + ".inp";
     na = name + ".ans";

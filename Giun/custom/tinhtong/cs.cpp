@@ -16,11 +16,11 @@
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
-const string tenfile = "pb";
+const string tenfile = "tinhtong";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 ofstream co;
-string name, no, ni, na, nb;
+string name=tenfile, no, ni, na, nb;
 ll ac = 0, cs = 0;
 
 long long Rand(long long l, long long h)
@@ -33,7 +33,10 @@ long long Rand(long long l, long long h)
 
 void sinh(){
     co.open((ni).c_str());
-    
+    if(Rand(1,100)%2) co<<"-";
+    co<<Rand(1e3,1e18)<<" ";
+    if(Rand(1,100)%2)co<<"-";
+    co<<Rand(1e3,1e18);
     co.close();
     st(name); st(nb);
 }
@@ -46,13 +49,13 @@ void cham(){
 
 int main(){
     srand((int)time(0));
-    cout << "name: ";
-    cin >> name;
+    // cout << "name: ";
+    // cin >> name;
     no = name + ".out";
     ni = name + ".inp";
     na = name + ".ans";
     nb = name + "_bruce";
-    lp(i, 1, 100){
+    lp(i, 1, 1000){
         sinh();
         cham();
     }
