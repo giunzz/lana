@@ -50,8 +50,8 @@ int main(){
     }
     lp(i, 1, k) cin >> tg[i];
     dfs(1);
-    lp(i, 1, k){
-        ll j = i;
-        while(!trace[i])
+    lp(i,1,k){
+        ll j = tg[i];
+        
     }
 }

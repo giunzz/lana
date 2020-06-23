@@ -27,7 +27,7 @@ void fastscan(int &number)
 { 
     bool negative = false; 
     register int c; 
-  
+
     number = 0; 
     c = getchar(); 
     if (c == ' ') fastscan(number);
