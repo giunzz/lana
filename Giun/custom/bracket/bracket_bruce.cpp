@@ -16,10 +16,38 @@
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
-const string tenfile = "pb";
+const string tenfile = "bracket";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".ans").c_str(), "w", stdout)
 
-int main(){
+string s;
+ll anssl = -1, ansvt = -1;
+
+void fML(string str){
+    ll n = str.length();
+    stack<ll> stk;
+    stk.push(-1);
+    ll res = 0;
+    for (ll i=0; i<n; i++){
+        if (str[i] == '(')
+            stk.push(i);
+        else {
+            stk.pop();
+            if (!stk.empty()){
+                if(res == i-stk.top()) ++anssl;
+                else if(res < i - stk.top()) res = i - stk.top(), ansvt = res, anssl = 1;
+                //res = max(res, i - stk.top());
+            }
+            else stk.push(i);
+        }
+    }
+} 
+
+// )()
+
+ii main(){
     opt;
     file;
+    cin >> s;
+    fML(s);
+    cout << ansvt << " " << anssl;
 }

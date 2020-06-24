@@ -22,31 +22,28 @@ const string tenfile = "bracket";
 string s;
 cll maxn = 1e6 + 7;
 stack<ll> a;
-ll cnt = 0, cntd = 0, cnts[maxn] = {0}, anssl = -1, ansvt = -1, ri = 0;
+ll cnt = -1, ansdd = -1, anssl = -1;
 
 ii main(){
     opt;
     file;
     cin >> s;
     s.push_back('(');
-    //cerr << s;
-    lp(i, 0, s,length()-1){
-        if(s[i] == '(') {
-            a.push(1);
+    lp(i, 0, s.length() - 1){
+        if(s[i] == '('){
+            a.push(i);
         }
         else{
-            if(a.empty()){
-                ri = 0;
+            if(!a.empty()){
+                ll sl = i - a.top() + 1;
+                if(ansdd < sl) ansdd = sl, anssl = 1;
+                if(ansdd == sl) ++anssl;
+                a.pop();
             }
             else{
-                a.pop();
-                ++ri;
-                ++cnts[ri* 2];
+                
             }
         }
     }
-    lp(i,1, 1e6 + 2){
-
-    }
-    cout << ansvt << " " << anssl;
+    cout << ansdd << " " << anssl;
 }

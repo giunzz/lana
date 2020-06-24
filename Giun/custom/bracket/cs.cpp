@@ -38,7 +38,7 @@ void sinh(){
     if(Rand(0, 1)) co << "(";
     else co << ")";
     co.close();
-    //st(name); st(nb);
+    st(name); st(nb);
 }
 
 void cham(){
@@ -55,9 +55,9 @@ int main(){
     ni = name + ".inp";
     na = name + ".ans";
     nb = name + "_bruce";
-    lp(i, 1, 1){
+    lp(i, 1, 5){
         sinh();
-        //cham();
+        cham();
     }
     cout << "ac: " << ac << "/" << cs;
 }
