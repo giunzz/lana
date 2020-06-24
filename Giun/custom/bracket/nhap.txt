@@ -1,0 +1,25 @@
+lp(i,0,s.length()-1){
+        if(s[i] == '(') {
+            a.push(1);
+            //++cnt;
+        }
+        if(s[i] == ')'){
+            //++cntd;
+            if(a.empty()){
+                //if(cntd < cnt) ++cnts[(cntd - 1)*2];
+                //else ++cnts[cnt*2];
+                ++cnts[ri*2];
+                //cnt = 0, cntd = 0;
+                ri = 0;
+            }
+            else{
+                a.pop();
+                ++ri;
+            }
+        }
+        cerr << ri << " ";
+    }
+    //cerr << cnts[6];
+    lp(i, 1, 1e6 + 2) {
+        if(cnts[i] > anssl) anssl = cnts[i], ansvt = i;
+    }

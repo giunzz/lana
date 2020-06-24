@@ -16,10 +16,30 @@
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
-const string tenfile = "f";
+const string tenfile = "burglar";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
+
+cll maxm = 25;
+pp(ll, ll) a[maxm];
+ll n, m, ans = 0;
 
 ii main(){
     opt;
     file;
+    cin >> n >> m;
+    lp(i, 1, m){
+        cin >> a[i].se >> a[i].fi;
+    }
+    sort(a + 1, a + 1 + m);
+    lpd(i, m, 1){
+        if(n >= a[i].se){
+            ans += a[i].fi * a[i].se;
+            n -= a[i].se;
+        }
+        else{
+            ans += a[i].fi * n;
+            break;
+        }
+    }
+    cout << ans;
 }

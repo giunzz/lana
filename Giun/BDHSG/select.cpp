@@ -21,14 +21,15 @@ const string tenfile = "select";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 cll maxn = 1e4 + 7;
-ll n, m[maxn][5] = {{0}}, f[maxn][8] = {{0}}, tt[] = {0, 1, 2, 4, 5, 8, 9, 10}, ans = im, ma[maxn] = {im};
+ll n, maS[3] = {im}, m[maxn][5] = {{0}}, f[maxn][9] = {{0}}, tt[] = {0, 1, 2, 4, 5, 8, 9, 10}, ans = im, ma[maxn] = {im};
 
 int main(){
     opt;
-    file;
-    cin >> n;
-    lp(i, 1, n){
-        lp(j,1,4) cin >> m[i][j];
+    //file;
+   // fs(n);
+   cin >> n;
+    lp(j, 1, 4){
+        lp(i,1,n) cin >> m[i][j];
     }
     lp(i, 1, n){
         lp(j, 1, 7){
@@ -38,17 +39,23 @@ int main(){
                 t = t >> 1; --v;
             }
             //if(j == 6 && i == 3) cerr << sum << endl;
-            lp(k, 1, i - 2) {
-                getS = max(getS, ma[i]);
-            }
             lp(tr, 1, 7){
                 if(!(tt[tr] & tt[j])) getS = max(getS, f[i-1][tr]);
             }
             if(i == 1) getS = 0;
-            f[i][j] = sum + getS;
+            getS = max(maS[1], getS);
+            //lp(k, 1, i - 2) {
+            //    getS = max(getS, ma[k]);
+            //}
+            f[i][j] = max(sum + getS, sum);
             ma[i] = max(f[i][j], ma[i]);
             ans = max(ans, f[i][j]);
+            //cerr << getS << " ";
         }
+        maS[1] = max(maS[2], maS[1]);
+        maS[2] = ma[i];
+      // cerr << endl;
+       //cout << ma[i] << endl;
     }
     //cerr << f[3][6];
     cout << ans;
