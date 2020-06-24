@@ -20,7 +20,22 @@ const double esf = 1e-9;
 const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
+ll cnt[(ll)1e6] = {0}, s1, s2, s3, ans = -1, d = 0;
+
 int main(){
     opt;
-    file;
+    // file;
+    cin >> s1 >> s2 >> s3;
+    lp(a, 1, s1){
+        lp(b, 1, s2){
+            lp(c, 1, s3){
+                if(++cnt[a + b + c] > d){
+                    ans = a + b + c;
+                    d = cnt[a + b + c];
+                } 
+                if(cnt[a+b+c] == d && (a + b + c) < ans) ans = a + b + c;
+            }
+        }
+    }
+    cout << ans;
 }
