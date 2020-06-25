@@ -1,4 +1,3 @@
-//https://codeforces.com/group/FLVn1Sc504/contest/274522/problem/P
 #include <bits/stdc++.h>
 #define ii int
 #define ll long long
@@ -17,7 +16,7 @@
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
-const string tenfile = "f";
+const string tenfile = "spseq";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 cll maxn = 1e5 + 7;
@@ -43,8 +42,8 @@ ii main(){
     }
     ll bg = 1, ed = 1;
     lp(i,2,n){
+        ans = max(ans, min(ed - bg + 1, bg - f[bg] + 1) * 2 - 1);
         if(a[i] >= a[i - 1]) {
-            ans = max(ans, min(ed - bg + 1, bg - f[bg] + 1) * 2 - 1);
             bg = i;
         }
         else{

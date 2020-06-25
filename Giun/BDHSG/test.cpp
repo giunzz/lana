@@ -6,7 +6,7 @@
 #define opt ios_base::sync_with_stdio(0); cin.tie(0)
 #define lp(a, b, c) for(ll a = b; a <= c; a++)
 #define lpd(a, b, c) for(ll a = b; a >= c; a--)
-#define lpdk(a, b, c, d) for(ll a = b; c; d) 
+#define lpdk(a, b, c, d) for(ll a = b; c; d)
 #define pp(a, b) pair<a, b>
 #define vec(a) vector<a>
 #define vecite(a) vector<a>::iterator
@@ -18,9 +18,22 @@ cll esf = 1e-9;
 const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
+struct point{
+    ll x, y;
+};
+
+void swapst(point *a, point *b){
+    point temp = *a;
+    *a = *b;
+    *b = temp;
+}
 
 int main(){
     opt;
     //file;
-    if (0) cout << 1;
+    point p1 = {1, 0};
+    point p2 = {2, 3};
+    swap(p1, p2);
+    cout << p1.x << " " << p1.y << endl;
+    cout << p2.x << " " << p2.y << endl;
 }
