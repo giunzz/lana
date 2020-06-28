@@ -42,6 +42,7 @@ void ql(ll vt){
         }
         s = 0;
         while(!st.empty()) {s = (s + st.top()) % MOD; st.pop();}
+        s = (s + MOD) % MOD;
         if(!dd[s]++){
             ans.push_back(s);
         }

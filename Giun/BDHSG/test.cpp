@@ -18,22 +18,8 @@ cll esf = 1e-9;
 const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-struct point{
-    ll x, y;
-};
-
-void swapst(point *a, point *b){
-    point temp = *a;
-    *a = *b;
-    *b = temp;
-}
-
 int main(){
     opt;
     //file;
-    point p1 = {1, 0};
-    point p2 = {2, 3};
-    swap(p1, p2);
-    cout << p1.x << " " << p1.y << endl;
-    cout << p2.x << " " << p2.y << endl;
+    cout << (-7 % 3);
 }
