@@ -34,7 +34,9 @@ long long Rand(long long l, long long h)
 
 void sinh(){
     co.open((ni).c_str());
-    
+    ll n = 10, k = Rand(1, n - 1);
+    co << n << " " << k << endl;
+    lp(i, 1, 10) co << Rand(-10, 10) << " ";
     co.close();
     st(name); st(nb);
 }
