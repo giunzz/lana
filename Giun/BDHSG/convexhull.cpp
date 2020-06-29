@@ -36,10 +36,10 @@ void cdOp(){
         else if(p[1].y == p[i].y && p[i].x < p[1].x) swap(p[i], p[1]);
     }
     lp(i, 2, n) p[i].x -= (p[1].x), p[i].y -= (p[1].y);
-    cerr << p[1].x << " " << p[1].y << endl << endl;
     p[1].x = 0, p[1].y = 0;
 }
 
+//tich co huong cua 2 vector a = (x, y, 0), b = (x, y, 0), [a, b] = p = (0, 0, a1b2 - a2b1)
 ll ccw(point p1, point p2, point p3){
     point u, v;
     u.x = p2.x - p1.x;
@@ -63,22 +63,14 @@ ii main(){
     }
     cdOp();
     sort(p + 2, p + 1 + n, cpr);
-    lp(i,1 , n){
-        cerr << p[i].x << " " << p[i].y << endl;
-    }
     ll k = 2;
     pp[1] = p[1], pp[2] = p[2];
     lp(i, 3, n){
-        // if(ccw(p[i - 2], p[i - 1], p[i])){
-        //     //1cerr << i;
-        //     pp[++k] = p[i + 1];
-        // }
-        // else{
         while(!ccw(pp[k - 1], pp[k], p[i]) && k > 1) --k;
         pp[++k] = p[i];
-        // }
     }
-    lp(i,1 , k){
-        cout << pp[i].x << " " << pp[i].y << endl;
-    }
+    // lp(i,1 , k){
+    //     cout << pp[i].x << " " << pp[i].y << endl;
+    // }
+
 }
