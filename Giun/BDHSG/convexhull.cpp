@@ -36,6 +36,7 @@ void cdOp(){
         else if(p[1].y == p[i].y && p[i].x < p[1].x) swap(p[i], p[1]);
     }
     lp(i, 2, n) p[i].x -= (p[1].x), p[i].y -= (p[1].y);
+    cerr << p[1].x << " " << p[1].y << endl << endl;
     p[1].x = 0, p[1].y = 0;
 }
 
@@ -45,7 +46,7 @@ ll ccw(point p1, point p2, point p3){
     u.y = p2.y - p1.y;
     v.x = p3.x - p2.x;
     v.y = p3.y - p2.y;
-    if(u.x * v.x + u.y * v.y >= 0) return 1;
+    if(u.x * v.y - u.y * v.x >= 0) return 1;
     else return 0;
 }
 
@@ -67,15 +68,15 @@ ii main(){
     }
     ll k = 2;
     pp[1] = p[1], pp[2] = p[2];
-    lp(i,3, n){
-        if(ccw(pp[k - 1], pp[k], p[i])){
-            //1cerr << i;
-            pp[++k] = p[i];
-        }
-        else{
-            while(!ccw(pp[k - 1], pp[k], p[i])) --k;
-            pp[++k] = p[i];
-        }
+    lp(i, 3, n){
+        // if(ccw(p[i - 2], p[i - 1], p[i])){
+        //     //1cerr << i;
+        //     pp[++k] = p[i + 1];
+        // }
+        // else{
+        while(!ccw(pp[k - 1], pp[k], p[i]) && k > 1) --k;
+        pp[++k] = p[i];
+        // }
     }
     lp(i,1 , k){
         cout << pp[i].x << " " << pp[i].y << endl;
