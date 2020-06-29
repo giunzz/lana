@@ -50,6 +50,24 @@ ll ccw(point p1, point p2, point p3){
     else return 0;
 }
 
+ll getts(point p1, point p2, point p3){
+    point u, v;
+    u.x = p2.x - p1.x;
+    u.y = p2.y - p1.y;
+    v.x = p3.x - p1.x;
+    v.y = p3.y - p1.y;
+    return abs(u.x * v.y - u.y * v.x);
+}
+
+void getS(ll k){
+    double S = 0;
+    lp(i, 3, k){
+        S += getts(pp[i], pp[i - 1], pp[1]);
+    }
+    S /= 2;
+    cout << S;
+}
+
 void outp(point p){
     cerr << p.x << " " << p.y;
 }
@@ -69,8 +87,8 @@ ii main(){
         while(!ccw(pp[k - 1], pp[k], p[i]) && k > 1) --k;
         pp[++k] = p[i];
     }
+    getS(k);
     // lp(i,1 , k){
     //     cout << pp[i].x << " " << pp[i].y << endl;
     // }
-
 }
