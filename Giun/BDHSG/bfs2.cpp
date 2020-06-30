@@ -61,18 +61,13 @@ ii main(){
         g[v].push_back(u);
     }
     bfs(1);
-    //lp(i, 1, n) cerr << d[i] << " ";
-    //cerr << endl;
     ll x1 = getg1();
-    //cerr << x1 << endl;
     bfs(x1);
     ll x2 = getg1();
-    //cerr << x2 << endl;
-    //lp(i, 1, n) cerr << d[i] << " ";
     cout << d[x2] << endl;
     if(d[x2] % 2){
         cout << 1 << endl;
-        u = d[x2];
+        u = x2;
         lp(i, 1, d[x2] / 2){
             u = t[u];
         }
@@ -80,7 +75,7 @@ ii main(){
     }
     else{
         cout << 2 << endl;
-        u = d[x2];
+        u = x2;
         lp(i, 1, d[x2]/2 -1){
             u = t[u];
         }
