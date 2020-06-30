@@ -20,6 +20,8 @@ const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 vec(vec(pp(ll, ll))) g;
+vec(ll) s;
+ll n, t;
 
 void enter(){
     ll u, v, c;
@@ -30,14 +32,35 @@ void enter(){
     }
 }
 
+void bfs(ll vt){
+    queue<ll> qu;
+    qu.push(vt);
+    ll u, v;
+    bool d[n + 1];
+    while(!qu.empty()){
+        u = qu.front();
+        qu.pop();
+        lp(i, 0, g[u].size()-1){
+            v = g[u][i].fi;
+            if(d[v]) continue;
+            s[v] = s[u] + g[u][i].second;
+            qu.push(v);
+        }
+    }
+}
+
 ii main(){
     opt;
     file;
     cin >> t;
     while(t--){
         g.clear();
+        s.clear();
         cin >> n;
         g.resize(n + 1);
+        s.resize(n + 1);
         enter();
+        s[1] = 0;
+        bfs(1);
     }
 }
