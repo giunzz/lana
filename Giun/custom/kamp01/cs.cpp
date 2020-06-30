@@ -17,7 +17,7 @@
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
-const string tenfile = "pb";
+const string tenfile = "kamp01";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 ofstream co;
@@ -32,11 +32,34 @@ long long Rand(long long l, long long h)
                 rand()) % (h - l + 1);
 }
 
-void sinh(){
+void sinh(ll bt){
+    string s = "test" + to_string(bt) + "/";
     co.open((ni).c_str());
-    
+    map<pair<ll, ll>, bool> d;
+    ll n = 15, u = 0, v = 0;
+    ll k = Rand(3, 7);
+    co << n << " " << k << endl;
+    lp(i, 1, n - 1){
+        pair<ll, ll> uv = {u, v}, vu = {v, u};
+        while(u == v || d[vu] || d[uv]){
+            u = Rand(1, n), v = Rand(1, n);
+            uv = {u, v}, vu = {v, u};
+        }
+        d[uv] = 1, d[vu] = 1;
+        co << u << " " << v << " " << Rand(1, 10) << endl;
+    }
+    mp(ll, ll) dd;
+    ll uk = 0; dd[0] = 1;
+    lp(i, 1, k) {
+        while(dd[uk]){
+            uk = Rand(1, n);
+        }
+        dd[uk] = 1;
+        co << uk << endl;
+    }
     co.close();
-    st(name); st(nb);
+    st(name); 
+    st(nb);
 }
 
 void cham(){
@@ -53,8 +76,9 @@ int main(){
     ni = name + ".inp";
     na = name + ".ans";
     nb = name + "_bruce";
-    lp(i, 1, 100){
-        sinh();
+    lp(i, 1, 10){
+        // system(("mkdir test" + to_string(i)).c_str());
+        sinh(i);
         cham();
     }
     cout << "ac: " << ac << "/" << cs;

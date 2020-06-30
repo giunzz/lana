@@ -20,44 +20,49 @@ const string tenfile = "f";
 
 cll maxn = 5e5 + 7;
 ll tg[maxn] = {0}, trace[maxn] = {0}, d[maxn] = {0}, l, n, k, s[maxn] = {0}, ans = 0;
-vec(pp(ll, ll)) g[maxn];
+vector<pair<ll, ll>> g[maxn];
 
 void dfs(ll u){
-    //if (u > n) return;
-   // cerr <<u;
     for (ll i = 0; !g[u].empty() && i < g[u].size(); i++){
-        if(d[g[u][i].fi]) continue;
-        s[g[u][i].fi] = s[u] + g[u][i].se;
-        d[g[u][i].fi] = u;
-        dfs(g[u][i].fi);
+        ll v = g[u][i].fi;
+        if(d[v]) continue;
+        s[v] = s[u] + g[u][i].se;
+        d[v] = u;
+        dfs(v);
     }
+}
+
+void enter(){
+    cin >> n >> k;
+    // cerr << n << " " << k << endl;
+    ll u, v, c;
+    lp(i, 1, n - 1){
+        cin >> u >> v >> c;
+        // cerr << u << " " << v << " " << c << endl;
+        g[u].push_back(make_pair(v, c));
+        g[v].push_back(make_pair(u, c));
+    }
+    lp(i, 1, k) cin >> tg[i];
 }
 
 int main(){
     opt;
     file;
-    cin >> n >> k;
-    lp(i, 1, n - 1){
-        ll u, v, c;
-        cin >> u >> v >> c;
-        g[u].push_back(make_pair(v, c));
-        g[v].push_back(make_pair(u, c));
-    }
-    lp(i, 1, k) cin >> tg[i];
+    enter();
+    // lp(i, 0, g[2].size() - 1){
+    //     cerr << 2 << " " << g[2][i].fi << " " << g[2][i].se << endl;
+    // }
     memset(d, 0, sizeof(d));
-    d[tg[1]] = 0, s[tg[1]] = 0;
+    d[tg[1]] = -1, s[tg[1]] = 0;
     dfs(tg[1]);
-    //cerr << tg[1] << endl;
+    lp(i, 1, n) if(d[i] == -1) d[i] = 0;
     memset(trace, 0, sizeof(trace));
-    //lp(i, 1, n) cerr << d[i] << " ";
-    //cerr << s[1];
     lp(i, 2, k){
         ll a = tg[i];
-        while(a != tg[1] && !trace[a]){
+        while(a != 0 && !trace[a]){
             trace[a] = 1;
             a = d[a];
         }
-        //cerr << s[a];
         ans += s[tg[i]] - s[a];
     }
     cout << ans;

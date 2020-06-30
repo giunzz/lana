@@ -1,25 +1,76 @@
 #include <bits/stdc++.h>
-#define ii int
+
+using namespace std;
+
+#define fileInput(problemName) freopen ((string(problemName) + ".inp").c_str(), "r", stdin);freopen ((string(problemName) + ".ans").c_str(), "w", stdout);
+#define fast ios_base::sync_with_stdio(0);cin.tie(NULL);
+#define FOR(i, l, r) for (int i = l; i <= r; i++)
+#define REP(i, n) for (int i = 0; i < n; i++)
+#define REV(i, r, l) for (int i = r; i >= l; i--)
+#define ii pair < int, int >
 #define ll long long
-#define cii const int
-#define cll const long long
-#define opt ios_base::sync_with_stdio(0); cin.tie(0)
-#define lp(obj1, obj2, obj3) for(ll obj1 = obj2; obj1 <= obj3; obj1++)
-#define lpd(obj1, obj2, obj3) for(ll obj1 = obj2; obj1 >= obj3; obj1--)
-#define pp(obj1, obj2) pair<obj1, obj2>
-#define vec(obj1) vector<obj1>
-#define vecite(obj1) vector<obj1>::iterator
 #define fi first
 #define se second
-#define mp(obj1, obj2) map<obj1, obj2>
-#define st(obj) system((obj).c_str());
-using namespace std;
-cll MOD = 1e9 + 7;
-const double esf = 1e-9;
-const string tenfile = "pb";
-#define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".ans").c_str(), "w", stdout)
+#define mp make_pair
+#define pb push_back
+#define pp pop_back
 
-int main(){
-    opt;
-    file;
+const int inf = 1e9 + 7;
+const int esf = 1e-9;
+const int N = 5e5 + 7;
+
+int n, m;
+ll ans = 0;
+vector < ii > g[N];
+int parent[N], a[N], color[N];
+int cost[N];
+
+void BFS(int source) {
+    memset(parent, 0, sizeof(parent));
+    queue < int > q;
+    q.push(source);
+    parent[source] = -1;
+    while (!q.empty()) {
+        int u = q.front();
+        q.pop();
+        REP(i, g[u].size()) {
+            int v = g[u][i].fi;
+            int w = g[u][i].se;
+            if (!parent[v]) {
+                q.push(v);
+                parent[v] = u;
+                cost[v] = w;
+            }
+        }
+    }
+}
+
+int main() {
+    fileInput("kamp01");
+    fast;
+    cin >> n >> m;
+    FOR(i, 1, n - 1) {
+        int u, v, w;
+        cin >> u >> v >> w;
+        g[u].pb(ii(v, w));
+        g[v].pb(ii(u, w));
+    }
+    FOR(i, 1, m) {
+        cin >> a[i];
+    }
+
+    memset(color, 0, sizeof(color));
+    BFS(a[1]);
+    color[a[1]] = 1;
+    FOR(sink, 2, m) {
+        int v = a[sink];
+        while (!color[v] and v != a[1]) {
+            ans += cost[v];
+            color[v] = 1;
+            v = parent[v];
+        }
+    }
+    cout << ans << endl;
+
+    return (0);
 }
