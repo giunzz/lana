@@ -29,5 +29,5 @@ ii main(){
         cin >> num;
         ++cnt[num % 3];
     }
-    cout << cnt[0] / 2 + min(d[1], d[2]);
+    cout << cnt[0] / 2 + min(cnt[1], cnt[2]);
 }
