@@ -46,7 +46,7 @@ void fML(string str){
 explain:
     lưu ý vị trí đầu tiên của stack là vị trí ngoặc ) xa phía bên trái nhất bị sai hoặc -1 nếu tính tới vị trí hiện tại st chưa gặp vị trí ) sai
     khi gap ngoac ) thi pop lay vi tri sau do la vi tri xa nhat chuaws ngoac dung, khi pop nếu pop trúng vị trí ngoặc ) hoặc -1 thì stack sẽ rỗng bởi vì nó chỉ push vào vị trí ( và pop khi gặp ), khi nó rỗng thì push vào vị trí ) hiện tại là vị trí mới để bắt đầu phía sau là chuỗi ngoặc đúng
-    khi gặp ngoặc ( thì push vị trí vào 
+    khi gặp ngoặc ( thì push vị trí vào
 */
 
 ii main(){
@@ -54,5 +54,6 @@ ii main(){
     file;
     cin >> s;
     fML(s);
-    cout << ansvt << " " << anssl;
+    if(ansvt == -1) cout << -1;
+    else cout << ansvt << " " << anssl;
 }

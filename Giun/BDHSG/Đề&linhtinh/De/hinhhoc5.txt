@@ -11,11 +11,10 @@ mỗi giai đoạn: k cách làm
 cho số thực P (1 <= P <= 5)
 cho 1 cái túi chứa rất nhiều mẩu giấy chứa các số nguyên từ 1 -> 5
 yc: hãy tìm số mảnh giấy ít nhất sao cho trung bình cộng có gtri = P
-
-phần thập phân của P dài tối đa 9 chữ số
+phần thập phân của P dài tối đa 9 chữ số / maugiay.cpp
 
 
 cho n điểm trong 1 mp Oxy
-đếm số lượng tam giác vuông tạo thành từ 3 điểm bất kì
-- sao cho các cạnh góc vuông song song với 2 trục tọa độ (n <= 3e3)
+đếm số lượng tam giác vuông tạo thành từ 3 điểm bất kì / tamgiacvuongss.cpp
+- sao cho các cạnh góc vuông song song với 2 trục tọa độ (n <= 3e3) / tamgiacvuongbk.cpp
 - tgiac vg bất kì (n <= 15e2)
