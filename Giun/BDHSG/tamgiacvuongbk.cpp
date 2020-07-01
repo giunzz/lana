@@ -12,39 +12,43 @@
 #define fi first
 #define se second
 #define mp(a, b) map<a, b>
-#define st(a) system((a).c_str())
-#define filla(a, b) memset(a, b, sizeof(a))
+#define st(obj) system((obj).c_str());
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
 const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-ll n;
-cll maxn = 3e3 + 7;
-ll dy[(ll)1e5 + 7], dx[(ll)1e5 + 7], ans = 0;
+cll maxn = 15e2 + 7;
 struct point{
     ll x, y;
 }p[maxn];
+ll n;
 
-bool operator<(point const &left, point const &right){
-    return (left.x < right.x) || ((left.x == right.x) && (left.y < right.y));
+bool operator<(point const &l, point const &r){
+    return (l.x < r.x) || ((l.x == r.x) && (l.y < r.y));
 }
 
-map<point, ll> a;
+void xl(){
+    ll u, v, x;
+    lp(i, 1, n){
+        lp(j, i + 1, n){ //vt ij = (xj - xi, yj - yi)
+            // if(i == j) continue;
+            u = p[j].x - p[i].x;
+            v = p[j].y - p[i].y;
+            x = __gcd(abs(u), abs(v));
+            if(!x) x = 1;
+            u /= x, v /= x;
+        }
+    }
+}
 
 ii main(){
     opt;
     file;
-    cin >> n;
-    filla(dx, 0); filla(dy, 0);
+    cin >> n;  
     lp(i, 1, n){
         cin >> p[i].x >> p[i].y;
-        ++dx[p[i].x], ++dy[p[i].y];
-        ++a[p[i]];
     }
-    lp(i, 1, n){
-        ans += (dx[p[i].x] - a[p[i]]) * (dy[p[i].y] - a[p[i]]);
-    }
-    cout << ans;
+    xl();
 }

@@ -18,8 +18,12 @@ cll esf = 1e-9;
 const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
+struct point{
+    ll x, y;
+};
+
 int main(){
     opt;
     //file;
-    cout << (-7 % 3);
+    cout << __gcd(0, 0);
 }
