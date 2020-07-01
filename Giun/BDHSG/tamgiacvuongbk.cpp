@@ -23,7 +23,7 @@ cll maxn = 15e2 + 7;
 struct point{
     ll x, y;
 }p[maxn];
-ll n;
+ll n; 
 
 bool operator<(point const &l, point const &r){
     return (l.x < r.x) || ((l.x == r.x) && (l.y < r.y));
