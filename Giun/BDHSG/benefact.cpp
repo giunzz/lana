@@ -37,6 +37,8 @@ void bfs(ll vt){
     qu.push(vt);
     ll u, v;
     bool d[n + 1];
+    memset(d, 0 , sizeof(d));
+    d[vt] = 1;
     while(!qu.empty()){
         u = qu.front();
         qu.pop();
@@ -45,6 +47,7 @@ void bfs(ll vt){
             if(d[v]) continue;
             s[v] = s[u] + g[u][i].second;
             qu.push(v);
+            d[v] = 1;
         }
     }
 }
@@ -61,6 +64,18 @@ ii main(){
         s.resize(n + 1);
         enter();
         s[1] = 0;
+        ll x1, x2, sma = INT_MIN;
         bfs(1);
+        lp(i, 1, n){
+            if(s[i] > sma) x1 = i, sma = s[i];            
+        }
+        s.clear();
+        s.resize(n + 1);
+        s[x1] = 0;
+        bfs(x1);
+        sma = -1;
+        lp(i, 1, n) 
+            sma = max(sma, s[i]);
+        cout << sma << endl;
     }
 }
