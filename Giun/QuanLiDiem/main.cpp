@@ -191,7 +191,7 @@ void extraFunc::allScore(void)
 {
     system("CLS"); int choose;
     cout << "SHOW DIEM CAC MON\n";
-    cout << "Mon" <<
+    // cout << "Mon" <<
     for (int i = 0; i != 12; ++i)
     {
         if (checkMon[i] == 1)
