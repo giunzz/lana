@@ -24,14 +24,30 @@ ll n;
 cll maxn = 3e3 + 7;
 ll dy[(ll)1e5 + 7], dx[(ll)1e5 + 7], ans = 0;
 struct point{
-    ll x, y;
+    ll x = INT_MIN, y = INT_MIN;
 }p[maxn];
 
 bool operator<(point const &left, point const &right){
     return (left.x < right.x) || ((left.x == right.x) && (left.y < right.y));
 }
 
+bool operator==(point const &l, point const &r){
+    return (l.x == r.x && l.y == r.y);
+}
+
 map<point, ll> a;
+
+void xl(){
+    sort(p + 1, p + 1 + n);
+    vec(point) vtmp;
+    lp(i, 1, n){
+        if(!(p[i] == p[i - 1])) vtmp.push_back(p[i]);
+    }
+    n = vtmp.size();
+    lp(i, 1, n){
+        p[i] = vtmp[i - 1];
+    }
+}
 
 ii main(){
     opt;
@@ -40,6 +56,9 @@ ii main(){
     filla(dx, 0); filla(dy, 0);
     lp(i, 1, n){
         cin >> p[i].x >> p[i].y;
+    }
+    xl();
+    lp(i, 1, n){
         ++dx[p[i].x], ++dy[p[i].y];
         ++a[p[i]];
     }

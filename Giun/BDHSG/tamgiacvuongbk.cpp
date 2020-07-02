@@ -23,23 +23,43 @@ cll maxn = 15e2 + 7;
 struct point{
     ll x, y;
 }p[maxn];
-ll n; 
+ll n, ans = 0; 
 
 bool operator<(point const &l, point const &r){
     return (l.x < r.x) || ((l.x == r.x) && (l.y < r.y));
 }
 
+bool operator==(point const &l, point const &r){
+    return (l.x == r.x && l.y == r.y);
+}
+
+map<point, ll> cntvt;
+
 void xl(){
-    ll u, v, x;
+    sort(p + 1, p + 1 + n);
+    vec(point) vtmp;
     lp(i, 1, n){
-        lp(j, i + 1, n){ //vt ij = (xj - xi, yj - yi)
-            // if(i == j) continue;
-            u = p[j].x - p[i].x;
-            v = p[j].y - p[i].y;
-            x = __gcd(abs(u), abs(v));
-            if(!x) x = 1;
-            u /= x, v /= x;
-        }
+        if(!(p[i] == p[i - 1])) vtmp.push_back(p[i]);
+    }
+    n = vtmp.size();
+    lp(i, 1, n){
+        p[i] = vtmp[i - 1];
+    }
+}
+
+void prc(){
+    ll tmp;
+    point u, v;
+    lp(i, 1, n){
+        lp(j, i + 1, n){ //moi vector u = vt ij tim cac diem tao voi diem i la vector phap tuyen cua vt ij
+            u.x = p[j].x - p[i].x;
+            u.y = p[j].y - p[j].y;
+            tmp = __gcd(abs(u.x), abs(u.y));
+            if(!tmp) tmp = 1;
+            u.x /= tmp, u.y /= tmp;
+            if(u.x < 0) u.x *= -1, u.y *= -1;
+            ++cnt[vt];
+        }   
     }
 }
 
@@ -51,4 +71,5 @@ ii main(){
         cin >> p[i].x >> p[i].y;
     }
     xl();
+    prc();
 }
