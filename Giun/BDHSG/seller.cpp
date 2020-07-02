@@ -63,9 +63,9 @@ void enter(){
 }
 
 void prc(){
-    ll v, bg = 0;
+    ll v, bg;
     lpd(i, c.size() - 1, 0){
-        v = c[i].vt;
+        v = c[i].vt, bg = 0;
         if(d[v]) continue;
         lpd(j, v - 1, 0){
             if(d[j]) break;
