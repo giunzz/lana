@@ -12,6 +12,7 @@
 #define fi first
 #define se second
 #define mp(a, b) map<a, b>
+#define filln(a, b) memset(a, b, sizeof(a))
 #define st(obj) system((obj).c_str());
 using namespace std;
 cll MOD = 1e9 + 7;

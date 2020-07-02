@@ -27,7 +27,7 @@ int main(){
     opt;
     //file;
    // fs(n);
-   cin >> n;
+    cin >> n;
     lp(j, 1, 4){
         lp(i,1,n) cin >> m[i][j];
     }

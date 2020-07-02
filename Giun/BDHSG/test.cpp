@@ -12,18 +12,16 @@
 #define vecite(a) vector<a>::iterator
 #define fi first
 #define se second
+#define filln(a, b) memset(a, b, sizeof(a))
 using namespace std;
 cll MOD = 1e9 + 7;
 cll esf = 1e-9;
 const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-struct point{
-    ll x, y;
-};
-
 int main(){
     opt;
     //file;
-    cout << __gcd(0, 0);
+    // cout << __gcd(0, 0);
+    tinhluythua();
 }
