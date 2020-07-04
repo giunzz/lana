@@ -12,8 +12,8 @@
 #define fi first
 #define se second
 #define mp(a, b) map<a, b>
-#define filln(a, b) memset(a, b, sizeof(a))
-#define st(obj) system((obj).c_str());
+#define setE(a, b) fill_n(a, sizeof(a)/sizeof(a[0]), b)
+#define st(a) system((a).c_str());
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;

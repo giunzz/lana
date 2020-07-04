@@ -6,22 +6,21 @@
 #define opt ios_base::sync_with_stdio(0); cin.tie(0)
 #define lp(a, b, c) for(ll a = b; a <= c; a++)
 #define lpd(a, b, c) for(ll a = b; a >= c; a--)
-#define lpdk(a, b, c, d) for(ll a = b; c; d)
 #define pp(a, b) pair<a, b>
 #define vec(a) vector<a>
 #define vecite(a) vector<a>::iterator
 #define fi first
 #define se second
-#define filln(a, b) memset(a, b, sizeof(a))
+#define mp(a, b) map<a, b>
+#define setE(a, b) fill_n(a, sizeof(a)/sizeof(a[0]), b)
+#define st(a) system((a).c_str());
 using namespace std;
 cll MOD = 1e9 + 7;
-cll esf = 1e-9;
+const double esf = 1e-9;
 const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-int main(){
+ii main(){
     opt;
-    //file;
-    // cout << __gcd(0, 0);
-    tinhluythua();
+    file;
 }
