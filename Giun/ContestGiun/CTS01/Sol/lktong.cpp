@@ -74,5 +74,4 @@ ii main(){
     lp(i, 1, n) cin >> a[i];
     ql(1);
     cout << ans.size();
-    cerr << clock() << " ms";
 }

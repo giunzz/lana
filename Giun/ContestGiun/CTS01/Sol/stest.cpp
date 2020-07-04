@@ -52,7 +52,7 @@ int main(){
     ll n = 1e6;
     cout << n << endl;
     lp(i, 1, n){
-        cout << Rand(1, 20) << " ";
+        cout << Rand(1e8, 1e9) << " ";
     }
     return 0;
 }
