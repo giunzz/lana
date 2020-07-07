@@ -140,7 +140,6 @@ void fs(ll &number)
 { 
     bool negative = false; 
     register int c; 
-
     number = 0; 
     c = getchar(); 
     if (c == ' ') fs(number);
