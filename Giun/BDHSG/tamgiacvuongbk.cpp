@@ -64,8 +64,8 @@ void rg(point &p1){
 
 void getPT(point &p1, point &p2, point &pr, point &pt, point &cp){
     cp = {p2.x - p1.x, p2.y - p1.y};
-    pt = {-cp.y, cp.x};
     rg(cp);
+    pt = {-cp.y, cp.x};
     rg(pt);
     pr = p1;
 }
@@ -128,7 +128,7 @@ void cnttg(){
         lp(j, 0, alvt.size() - 1){
             if(dau[alvt[j]]) continue;
             p1 = alvt[j];
-            p2 = {-p2.y, p2.x};
+            p2 = {-p1.y, p1.x};
             rg(p2);
             l1 = getLine(p2, p[i]), l2 = getLine(p1, p[i]);
             if(cntp[l1] && cntp[l2]) ans += (cntp[l1] - 1) * (cntp[l2] - 1), dau[p1] = 1, dau[p2] = 1;
