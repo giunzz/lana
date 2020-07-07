@@ -20,7 +20,29 @@ const double esf = 1e-9;
 const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
+struct point{
+    ll x, y;
+    point(ll l, ll r){
+        x = l, y = r;
+    }
+    bool operator==(const point &p) const{
+        return x == p.x && y == p.y;
+    }
+};
+
+class hackHash{
+public:
+    size_t operator()(const point &p) const{
+        return (hash<ll>()(p.x)) ^
+                (hash<ll>()(p.y));
+    }
+};
+
 ii main(){
     opt;
-    file;
+    // file;
+    unordered_map<point, ll, hackHash> test;
+    point p1;
+    test[p1] = 1;
+    cout << test[p1] << (p2 == p1);
 }
