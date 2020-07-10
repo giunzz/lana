@@ -21,12 +21,10 @@ int main()
         for (int j = i+1 ; j <= n ; j++){
             tam.clear();
             for (int z = 0; z < (int)min(st[i].length(), st[j].length()); z++){
-                if(st[i][z] != st[j][z]) {
-                    if(ans.empty() || tam.length() > ans.length()) ans = tam;
-                    else if(tam.length() == ans.length() && tam < ans) ans = tam;
-                    break;
-                }
-                else tam.push_back(st[i][z]);
+                if(st[i][z] == st[j][z]) tam.push_back(st[i][z]);
+                else if(st[i][z] != st[j][z]) break;    
+                if(tam.length() > ans.length()) ans = tam;
+                else if(tam.length() == ans.length()) ans = min(ans, tam);
             }
         } 
     }

@@ -11,10 +11,10 @@ void quaylui(int can)
         ok = 1;
         return;
     }
-    if(st > sp || can > n ) return;
+    if( can > n ) return;
     for (int i = 0 ; i <= 1 ; i++)
     {
-        if ( i )
+        if ( i && st < sp )
         {
             st += a[can];
             dd[can] = 1;
