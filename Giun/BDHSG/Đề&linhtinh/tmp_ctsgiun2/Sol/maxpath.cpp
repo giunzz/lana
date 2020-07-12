@@ -33,7 +33,7 @@ ii main(){
     f[1][1] = a[1][1]; 
     lp(i, 1, m){
         lp(j, 1, n){
-            if(i == 1 && j == 1) continue;
+            if((i == 1 && j == 1) || a[i][j] == -1) continue;
             f[i][j] = max(f[i - 1][j], f[i][j - 1]);
             if(f[i][j] != -1) f[i][j] += a[i][j];
         }
