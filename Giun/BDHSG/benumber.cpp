@@ -22,6 +22,12 @@ const string tenfile = "f";
 
 ll q, p, t, a1, n, tu, mau, ans = LLONG_MAX, ps, ans1, p10[19];
 
+ll dd(ll k){
+    ll dem = 0;
+    while(k) ++dem, k /= 10;
+    return dem;
+}
+
 ii main(){
     opt;
     file;
@@ -43,7 +49,7 @@ ii main(){
             mau = q * 10 - p;
             if(!(tu % mau)){
                 ps = (tu / mau);
-                if(n == 1 && ps != 0) continue;
+                if(n == 1 && ps != 0 && (dd(ps) >= n)) continue;
                 if(ps >= 0) ans = min(ans,(ll)( a1 * p10[n-1] + ps));
             }
         }
