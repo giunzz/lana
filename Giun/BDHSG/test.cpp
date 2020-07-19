@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <arrguess.h>
 #define ii int
 #define ll long long
 #define cii const int
@@ -19,24 +20,6 @@ cll MOD = 1e9 + 7;
 const double esf = 1e-9;
 const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
-
-struct point{
-    ll x, y;
-    point(ll l, ll r){
-        x = l, y = r;
-    }
-    bool operator==(const point &p) const{
-        return x == p.x && y == p.y;
-    }
-};
-
-class hackHash{
-public:
-    size_t operator()(const point &p) const{
-        return (hash<ll>()(p.x)) ^
-                (hash<ll>()(p.y));
-    }
-};
 
 ii main(){
     opt;
