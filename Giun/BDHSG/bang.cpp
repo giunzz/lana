@@ -20,8 +20,24 @@ const double esf = 1e-9;
 const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
+cll maxn = 24;
+ll n, a[maxn][maxn] = {{0}}, tt[maxn] = {0};
+
+void init(){
+    ll x = 1;
+    lp(i, 1, n){
+        tt[i] = x;
+        x = x << 1;
+    }
+}
+
 ii main(){
     opt;
-    // file;
-    cout << ((15) ^ (1 << 2));
+    file;
+    cin >> n;
+    lp(i, 1, 20){
+        lp(j, 1, 20) cin >> a[i][j];
+    }
+    init();
+    lp(i, 1, n) cerr << tt[i] << " ";
 }

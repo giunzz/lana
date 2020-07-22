@@ -38,6 +38,9 @@ void getabc(segment &s){
     ll ucln = __gcd(__gcd(s.a, s.b), s.c);
     if(!ucln) ucln = 1;
     s.a /= ucln, s.b /= ucln, s.c /= ucln;
+    if(s.a < 0){
+        s.a *= -1, s.b *= -1, s.c *= -1;
+    }
 }
 
 void gopSeg(segment &s){
