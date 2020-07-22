@@ -1,0 +1,29 @@
+pt dg thang 
+vector pt cp
+luu he so a b c(-ax0 - by0)
+a(x - x0) + b(y - y0) = 0
+https://vn.spoj.com/problems/POINT/
+https://vn.spoj.com/problems/BALLGMVN/
+Da giac co n dinh a1, a2, a3, ..., an
+S = abs( sigma(i: 1 -> n, j: i + 1 -> n)(xai - xaj)(yai + yaj) ) / 2
+Ex:
+Sabc = ( (xa - xb)(ya + yb) + (xb - xc)(yb + yc) + (xc - xa)(yc + ya) ) / 2
+1 duong thang delta, va 2 diem a, b
+fdelta(xa, ya)*fdelta(xb, yb) <= 0 ton tai giao diem
+2 doan tuong tu
+kiem tra: 
+a, b trai phia cd
+c, d trai phia ab
+1 doan 1 tia
+chon 1 diem co tung do hoanh do lon hon 2 diem cua doan va thuoc tia
+kiemtra doan thang goc tia va diem xa nhat voi doan thang de co cat nhau ko
+   
+   
+   
+cho 20 doan thang
+Input: 20 dong 
+moi dong toa do 2 dau doan thang
+Output:
+in ra so doan thang sau khi bo bot cac doan trung nhau
+
+2 doan trung nhau (cung mut hoac chong nhau) gop lai 1 doan

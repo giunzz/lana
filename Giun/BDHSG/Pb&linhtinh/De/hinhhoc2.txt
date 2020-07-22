@@ -1,0 +1,32 @@
+vecAB(a, b)
+vecAC(c, d)
+
+ad - bc = 0 => thang hang 0
+        > 0 => qtrai 1
+        < 0 => qphai -1
+
+5 doan thang tao bao nhieu tam giac?
+
+qhd Ckn (hoc lai)
+
+dung dinh thuc trong tim giao diem 2 duong thang
+
+es = 1e-9 (10 ^ -9)
+a == b <=> a-es <= b && b-es <= a 
+ 
+**tie stl
+
+https://codeforces.com/group/FLVn1Sc504/contest/271520/problem/C
+
+https://codeforces.com/group/FLVn1Sc504/contest/274766/problem/L#
+
+dinit/ dicnit
+ford fulkerson
+
+<<<<<<< HEAD
+20 doan thang bao nhieu tam giac?
+=======
+20 doan thang bao nhieu tam giac?
+
+https://stackoverflow.com/questions/17333/what-is-the-most-effective-way-for-float-and-double-comparison
+>>>>>>> ca8c0575587e81f424c5d9e3a82bdca8ec07fbf1

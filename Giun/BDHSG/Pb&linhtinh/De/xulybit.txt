@@ -1,0 +1,23 @@
+and &
+or |
+xor ^
+not !
+SHL <<
+SHR >>
+
+eg: 1 SHL 3 (1 qua 3 bit 1000)
+
+Ung dung:
+- dao bit lat bit (x = 15 = 1111 lat bit thu 3 => (1111) ^ (1 << 2)
+- bit mask : qhd xu ly tren dec
+
+0101 -> 1000 
+   10
+ * 
+  100
+-----
+   00
+  00
+ 10
+-----
+ 1000
