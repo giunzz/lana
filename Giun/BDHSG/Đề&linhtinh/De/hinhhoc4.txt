@@ -1,9 +1,0 @@
-﻿cho n điểm trong mp
-yêu cầu: tìm tập hợp điểm chứa các điểm tạo thành đa giác lồi
-
-thuật graham:
-- b1: tìm điểm P có min Y sau đó nếu nhiều min Y -> min X
-- b2: chuyển góc tọa độ về P
-đổi P với p1(1,1)
-sắp xếp p2 tới pn theo gốc
-    
