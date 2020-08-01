@@ -35,7 +35,7 @@ void ent(){
 
 ll bfs(ll r){
     bool ok = 1;
-    ll u, d[maxn] = {0}, last, dh[maxk] = {0}, cnt = 1, ans = 0;
+    ll u, d[maxn] = {0}, last, dh[maxk] = {0}, cnt = s - 1, ans = 0;
     queue<ll> q;
     q.push(r);
     d[r] = -1, dh[a[r]] = 1;
@@ -46,9 +46,9 @@ ll bfs(ll r){
             if(!d[v]){
                 q.push(v);
                 d[v] = last + 1;
-                if(!dh[a[v]]) ++cnt, dh[a[v]] = 1, ans += d[v]; 
+                if(!dh[a[v]]) --cnt, dh[a[v]] = 1, ans += d[v]; 
             }
-            if(cnt == s) {ok = 0; break;}
+            if(!cnt) {ok = 0; break;}
         }
     }
     return ans;
