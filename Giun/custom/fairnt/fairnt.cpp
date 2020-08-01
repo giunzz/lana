@@ -14,35 +14,13 @@
 #define mp(a, b) map<a, b>
 #define setE(a, b) fill_n(a, sizeof(a)/sizeof(a[0]), b)
 #define st(a) system((a).c_str());
-#define YES cout << "YES\n"
-#define NO cout << "NO\n"
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
-const string tenfile = "f";
+const string tenfile = "fairnt";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-cll num[] = {6, 10, 14, 15}, s1 = 30, s2 = 31;
-ll t, n, tmp;
-
-ii main(){
+int main(){
     opt;
     file;
-    cin >> t;
-    while(t--){
-        cin >> n;
-        tmp = n - s1;
-        if((tmp == num[0] || tmp == num[1] || tmp == num[2]) && n > s2){
-            tmp = n - s2;
-            YES;
-            cout << num[0] << " " << num[1] << " " << num[3] << " " << tmp << endl;
-            continue;
-        }
-        if(tmp > 0){
-            YES;
-            cout << num[0] << " " << num[1] << " " << num[2] << " " << tmp << endl;
-            continue;
-        }
-        NO;
-    }
 }
