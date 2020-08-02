@@ -39,7 +39,7 @@ ll bfs(ll r){
     queue<ll> q;
     q.push(r);
     d[r] = -1, dh[a[r]] = 1;
-    while(!q.empty() && ok){
+    while(!q.empty() && ok && cnt){
         u = q.front(), last = (d[u] + 1) ? d[u] : 0;
         q.pop();
         for(ll v : g[u]){

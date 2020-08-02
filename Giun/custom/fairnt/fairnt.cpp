@@ -21,7 +21,7 @@ const string tenfile = "fairnt";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 cll maxn = 1e5 + 7, maxk = 107;
-ll n, m, k, s, a[maxn];
+ll n, m, k, s, a[maxn], dans[maxn] = {0};
 vec(ll) g[maxn];
 
 void ent(){
@@ -33,10 +33,41 @@ void ent(){
     }
 }
 
+void bfs(ll r){
+    bool ok = 1;
+    ll u, d[maxn] = {0}, last, dh[maxk] = {0}, cnt = s - 1, ans = 0;
+    vec(ll) chose;
+    queue<ll> q;
+    q.push(r); chose.push_back(r);
+    d[r] = -1, dh[a[r]] = 1;
+    while(!q.empty() && ok && cnt){
+        u = q.front(), last = (d[u] + 1) ? d[u] : 0;
+        q.pop();
+        for(ll v : g[u]){
+            if(!d[v]){
+                q.push(v);
+                d[v] = last + 1;
+                if(!dh[a[v]]) --cnt, dh[a[v]] = 1, ans += d[v], chose.push_back(v);
+            }
+            if(!cnt) {ok = 0; break;}
+        }
+    }
+    for(ll v : chose){
+        dans[v] = min(ans, dans[v]);
+    }
+}
+
 int main(){
     opt;
     file;
     cin >> n >> m >> k >> s;
     lp(i, 1, n) cin >> a[i];
     ent();
+    lp(i, 1, n) dans[i] = INT_MAX;
+    lp(i, 1, n){
+        if(dans[i] == INT_MAX) {
+            bfs(i);
+        }
+    }
+    lp(i, 1, n) cout << dans[i] << " ";
 }

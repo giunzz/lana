@@ -1,32 +1,26 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
-
+#include<bits/stdc++.h>
 using namespace std;
 
-/**
- * Auto-generated code below aims at helping you parse
- * the standard input according to the problem statement.
- **/
+float squareAllNumbers(float n)
+{
+    int tmp = n;
+    string s = to_string(tmp), ans;
+    for(int x = 0; x < s.length(); x++){
+        int a = s[x] - '0';
+        a *= a;
+        ans += to_string(a);
+    }
+    int tmp1 = 0;
+    for(char c : ans){
+        tmp1 = tmp1 * 10 + (c - '0');
+    }
+    cerr << tmp1 << endl;
+    float kq = tmp1;
+    return kq;
+}
 
 int main()
 {
-    string S, tmp;
-    getline(cin, S);
-
-    // Write an answer using cout. DON'T FORGET THE "<< endl"
-    // To debug: cerr << "Debug messages..." << endl;
-    vector<string>ans;
-    for(char&c:S){
-        if(c==' ') {
-            ans.push_back(tmp);
-            tmp.clear();
-        }
-        else{
-            tmp.push_back(c);
-        }
-    }
-    reverse(ans.begin(),ans.end());
-    for(string&x:ans)cout<<x<<" ";
+    float a = 2079123;
+    cout << squareAllNumbers(a);
 }
