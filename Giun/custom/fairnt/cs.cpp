@@ -36,7 +36,7 @@ void Sinh(){
     co.open((ni).c_str());
     bool dk[107] = {0};
     map<ll, map<ll, bool>> g;
-    ll n = 200, m = min(Rand(n - 1, n * (n - 1) / 2), (ll)1e5);
+    ll n = 10, m = min(Rand(n - 1, n * (n - 1) / 2), (ll)1e5);
     ll k = min(Rand(1, n), (ll)100), s, ak[207], cnt = 0;
     lp(i, 1, n) ak[i] = Rand(1, k), cnt += !dk[ak[i]], dk[ak[i]] = 1;
     s = Rand(1, cnt);
@@ -74,7 +74,7 @@ int main(){
     ni = name + ".inp";
     na = name + ".ans";
     nb = name + "_bruce";
-    lp(i, 1, 100){
+    lp(i, 1, 1){
         Sinh();
         cham();
     }

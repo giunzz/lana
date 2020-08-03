@@ -1,73 +1,62 @@
 #include <bits/stdc++.h>
-#define ii int
-#define ll long long
-#define cii const int
-#define cll const long long
-#define opt ios_base::sync_with_stdio(0); cin.tie(0)
-#define lp(a, b, c) for(ll a = b; a <= c; a++)
-#define lpd(a, b, c) for(ll a = b; a >= c; a--)
-#define pp(a, b) pair<a, b>
-#define vec(a) vector<a>
-#define vecite(a) vector<a>::iterator
-#define fi first
-#define se second
-#define mp(a, b) map<a, b>
-#define setE(a, b) fill_n(a, sizeof(a)/sizeof(a[0]), b)
-#define st(a) system((a).c_str());
 using namespace std;
-cll MOD = 1e9 + 7;
-const double esf = 1e-9;
-const string tenfile = "fairnt";
-#define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
-
-cll maxn = 1e5 + 7, maxk = 107;
-ll n, m, k, s, a[maxn], dans[maxn] = {0};
-vec(ll) g[maxn];
-
-void ent(){
-    ll u, v;
-    lp(i, 1, m){
-        cin >> u >> v;
-        g[u].push_back(v);
-        g[v].push_back(u);
-    }
-}
-
-void bfs(ll r){
-    bool ok = 1;
-    ll u, d[maxn] = {0}, last, dh[maxk] = {0}, cnt = s - 1, ans = 0;
-    vec(ll) chose;
-    queue<ll> q;
-    q.push(r); chose.push_back(r);
-    d[r] = -1, dh[a[r]] = 1;
-    while(!q.empty() && ok && cnt){
-        u = q.front(), last = (d[u] + 1) ? d[u] : 0;
-        q.pop();
-        for(ll v : g[u]){
-            if(!d[v]){
+#define fileInput(problemName) freopen ((string(problemName) + ".inp").c_str(), "r", stdin);freopen ((string(problemName) + ".out").c_str(), "w", stdout);
+#define ll long long
+const ll inf = 1e9 + 7;
+const ll MOD = 1e9 + 7;
+const ll N = 1e5 + 7;
+const ll M = 1e2 + 7;
+int n, m, k, s, val[N], ans[N], color[N];
+vector < int > adj[N];
+queue < int > q;
+int f[N][M];
+void BFS(int x) {
+    while (!q.empty()) {
+        int u = q.front(); q.pop();
+        for (int i = 0; i < adj[u].size(); ++i) {
+            int v = adj[u][i];
+            if (!color[v]) {
+                color[v] = 1;
                 q.push(v);
-                d[v] = last + 1;
-                if(!dh[a[v]]) --cnt, dh[a[v]] = 1, ans += d[v], chose.push_back(v);
+                f[v][x] = f[u][x] + 1;
             }
-            if(!cnt) {ok = 0; break;}
         }
-    }
-    for(ll v : chose){
-        dans[v] = min(ans, dans[v]);
     }
 }
-
-int main(){
-    opt;
-    file;
+main() {
+    fileInput("fairnt");
     cin >> n >> m >> k >> s;
-    lp(i, 1, n) cin >> a[i];
-    ent();
-    lp(i, 1, n) dans[i] = INT_MAX;
-    lp(i, 1, n){
-        if(dans[i] == INT_MAX) {
-            bfs(i);
-        }
+    for (int i = 1; i <= n; ++i) {
+        cin >> val[i];
+        f[i][val[i]] = 0;
     }
-    lp(i, 1, n) cout << dans[i] << " ";
+    for (int i = 1; i <= m; ++i) {
+        int u, v;
+        cin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    for (int i = 1; i <= k; ++i) {
+        for (int u = 1; u <= n; ++u) color[u] = 0;
+        for (int u = 1; u <= n; ++u) if (val[u] == i) q.push(u), color[u] = 1;
+        BFS(i);
+    }
+    // for (int i = 1; i <= n; ++i) {
+    //     for (int j = 1; j <= k; ++j) {
+    //         cout << f[i][j] << " ";
+    //     }
+    //     cout << endl;
+    // }
+    // cout << "--\n";
+    for (int u = 1; u <= n; ++u) {
+        sort(f[u] + 1, f[u] + 1 + k);
+        for (int i = 1; i <= s; ++i) ans[u] += f[u][i];
+    }
+    // for (int i = 1; i <= n; ++i) {
+    //     for (int j = 1; j <= k; ++j) {
+    //         cout << f[i][j] << " ";
+    //     }
+    //     cout << endl;
+    // }
+    for (int i = 1; i <= n; ++i) cout << ans[i] << " "; cout << endl;
 }
