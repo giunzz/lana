@@ -22,7 +22,7 @@ const string tenfile = "fairnt";
 
 ofstream co;
 string name=tenfile, no, ni, na, nb;
-ll ac = 0, cs = 0;
+ll ac = 0, cs = 0, timeBegin, timeEnd;
 
 long long Rand(long long l, long long h)
 {
@@ -37,7 +37,7 @@ void Sinh(){
     bool dk[107] = {0};
     map<ll, map<ll, bool>> g;
     ll n = 10, m = min(Rand(n - 1, n * (n - 1) / 2), (ll)1e5);
-    ll k = min(Rand(1, n), (ll)100), s, ak[207], cnt = 0;
+    ll k = 7, s, ak[(ll)1e5 + 7], cnt = 0;
     lp(i, 1, n) ak[i] = Rand(1, k), cnt += !dk[ak[i]], dk[ak[i]] = 1;
     s = Rand(1, cnt);
     co << n << " " << m << " " << k << " " << s << endl;
@@ -57,7 +57,10 @@ void Sinh(){
         g[u][v] = 1, g[v][u] = 1;
     }
     co.close();
-    st(name); st(nb);
+    timeBegin = clock();
+    // st(name);
+    timeEnd = clock();
+    // st(nb);
 }
 
 void cham(){
@@ -76,7 +79,8 @@ int main(){
     nb = name + "_bruce";
     lp(i, 1, 1){
         Sinh();
-        cham();
+        cout << "Test " << i <<  ": " << (timeEnd - timeBegin) << endl;
+        // cham();
     }
     cout << "ac: " << ac << "/" << cs;
 }
