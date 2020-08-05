@@ -1,103 +1,31 @@
-Target: beautp 
-Directory: c:\Users\Hp\Desktop\GitAnh\Python\checker
-test00: 0.203553s
+Target: arrm 
+Directory: c:\Users\tienp\Desktop\Hoc\Python\checker
+Test00: 0.310842s
+Accept
+Test01: 0.331795s
+Accept
+Test02: 0.333157s
+Accept
+Test03: 0.271825s
+Accept
+Test04: 0.478726s
+Accept
+Test05: 0.716556s
 Wrong Ans at line 1
-test01: 0.259917s
-Wrong Ans at line 1
-test02: 0.291911s
-Wrong Ans at line 1
-test03: 0.211937s
-Wrong Ans at line 1
-test04: 0.363889s
-Wrong Ans at line 1
-test05: 0.143954s
-Wrong Ans at line 1
-test06: 0.139959s
-Wrong Ans at line 1
-test07: 0.279915s
-Wrong Ans at line 1
-test08: 0.243926s
-Wrong Ans at line 1
-test09: 0.219935s
-Wrong Ans at line 1
-test10: 0.244335s
-Wrong Ans at line 1
-test11: 0.291904s
-Wrong Ans at line 1
-test12: 0.239930s
-Wrong Ans at line 1
-test13: 0.243928s
-Wrong Ans at line 1
-test14: 0.239922s
-Wrong Ans at line 1
-test15: 0.231930s
-Wrong Ans at line 1
-test16: 0.199939s
-Wrong Ans at line 1
-test17: 0.247923s
-Wrong Ans at line 1
-test18: 0.255932s
-Wrong Ans at line 1
-test19: 0.295909s
-Wrong Ans at line 1
-test20: 0.263653s
-Wrong Ans at line 1
-test21: 0.259920s
-Wrong Ans at line 1
-test22: 0.443862s
-Wrong Ans at line 1
-test23: 0.359892s
-Wrong Ans at line 1
-test24: 0.179947s
-Wrong Ans at line 1
-test25: 0.228827s
-Wrong Ans at line 1
-test26: 0.271921s
-Wrong Ans at line 1
-test27: 0.263927s
-Wrong Ans at line 1
-test28: 0.151955s
-Wrong Ans at line 1
-test29: 0.171951s
-Wrong Ans at line 1
-test30: 0.248234s
-Wrong Ans at line 1
-test31: 0.287909s
-Wrong Ans at line 1
-test32: 0.242386s
-Wrong Ans at line 1
-test33: 0.247927s
-Wrong Ans at line 1
-test34: 0.323903s
-Wrong Ans at line 1
-test35: 0.267919s
-Wrong Ans at line 1
-test36: 0.259917s
-Wrong Ans at line 1
-test37: 0.307908s
-Wrong Ans at line 1
-test38: 0.271918s
-Wrong Ans at line 1
-test39: 0.267117s
-Wrong Ans at line 1
-test40: 0.239927s
-Wrong Ans at line 1
-test41: 0.244847s
-Wrong Ans at line 1
-test42: 0.251586s
-Wrong Ans at line 1
-test43: 0.256570s
-Wrong Ans at line 1
-test44: 0.247928s
-Wrong Ans at line 1
-test45: 0.319904s
-Wrong Ans at line 1
-test46: 0.163953s
-Wrong Ans at line 1
-test47: 0.232947s
-Wrong Ans at line 1
-test48: 0.243925s
-Wrong Ans at line 1
-test49: 0.255932s
-Wrong Ans at line 1
-AC: 0/50
+Test06: 0.335791s
+Accept
+Test07: TLE
+Test08: TLE
+Test09: 0.990525s
+Accept
+Test10: 0.893208s
+Accept
+Test11: TLE
+Test12: TLE
+Test13: 0.876870s
+Accept
+Test14: 0.537671s
+Accept
+Test15: 0.263837s
+Accept
+AC: 11/16
