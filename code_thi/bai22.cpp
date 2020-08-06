@@ -1,3 +1,4 @@
+
 #include <bits/stdc++.h>
 using namespace std;
 long long  n ,p2[65]={1};
