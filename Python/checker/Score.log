@@ -1,31 +1,35 @@
 Target: arrm 
 Directory: c:\Users\tienp\Desktop\Hoc\Python\checker
-Test00: 0.310842s
+Test00: 0.702027s
 Accept
-Test01: 0.331795s
+Test01: 1.183100s
 Accept
-Test02: 0.333157s
+Test02: 0.656071s
 Accept
-Test03: 0.271825s
+Test03: 0.620298s
 Accept
-Test04: 0.478726s
+Test04: 1.512400s
 Accept
-Test05: 0.716556s
-Wrong Ans at line 1
-Test06: 0.335791s
+Test05: 0.995003s
 Accept
-Test07: TLE
-Test08: TLE
-Test09: 0.990525s
+Test06: 1.174267s
 Accept
-Test10: 0.893208s
+Test07: 1.810445s
 Accept
-Test11: TLE
-Test12: TLE
-Test13: 0.876870s
+Test08: 1.736331s
 Accept
-Test14: 0.537671s
+Test09: 1.998051s
 Accept
-Test15: 0.263837s
+Test10: 1.614029s
 Accept
-AC: 11/16
+Test11: 1.862165s
+Accept
+Test12: 1.811676s
+Accept
+Test13: 1.800241s
+Accept
+Test14: 1.456495s
+Accept
+Test15: 0.810467s
+Accept
+AC: 16/16

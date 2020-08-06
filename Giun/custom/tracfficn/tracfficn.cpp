@@ -21,60 +21,55 @@ const string tenfile = "tracfficn";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 cll maxn = 1e3 + 7, maxk = 307;
-ll n, m, k, s, t, ans = 0, f[maxn] = {0}, ds[maxn] = {0}, dd[maxn] = {0};
-vec(pp(ll, ll)) g[maxn];
+ll n, m, k, s, t, f[maxn][maxn] = {{0}};
 
 struct strgk{
-    ll u, w, v;
+    ll u, v, w;
 }gk[maxk];
 
 void ent(){
     ll u, v, w;
+    cin >> n >> m >> k >> s >> t;
     lp(i, 1, m){
         cin >> u >> v >> w;
-        g[u].push_back({w, v});
+        f[u][v] = w;
     }
     lp(i, 1, k){
         cin >> u >> v >> w;
-        gk[i] = {u, w, v};
+        gk[i] = {u, v, w};
     }
 }
 
-void dk(ll r, ll p, ll res[]){
-    ll u;
-    priority_queue<pp(ll, ll), vec(pp(ll, ll)), greater<pp(ll, ll)>> q;
+ll res[maxn] = {0};
+
+ll dk(ll r, ll q){
+    priority_queue<pp(ll, ll), vec(pp(ll, ll)), greater<pp(ll, ll)>> qu;
     lp(i, 1, n) res[i] = INT_MAX; res[r] = 0;
-    q.push({0, r});
+    ll u;
     pp(ll, ll) tmp;
-    while(!q.empty()){
-        tmp = q.top();
-        u = tmp.se;
-        q.pop();
-        if(tmp.fi == res[u] && u == p) break;
-        if(tmp.fi != res[u]) continue;
-        for(pp(ll, ll) v : g[u])
-            if(res[v.se] > res[u] + v.fi)
-                res[v.se] = res[u] + v.fi, q.push({res[v.se], v.se});
+    qu.push({0, r});
+    while(!qu.empty()){
+        tmp = qu.top(), u = tmp.se;
+        qu.pop();
+        if(res[u] == tmp.fi && u == q) break;
+        if(res[u] != tmp.fi) continue;
+        lp(i, 1, n)
+            if(f[u][i] && res[i] > res[u] + f[u][i]) res[i] = res[u] + f[u][i], qu.push({res[i], i});
     }
+    return res[q];
 }
 
-ii main(){
+int main(){
     opt;
     file;
-    cin >> n >> m >> k >> s >> t;
     ent();
-    lp(i, 1, n)
-        if(i != t){
-            dk(i, t, dd);
-            f[i] = dd[t];
-        }
-    dk(s, 0, ds);
-    ll ddt[2], ans = ds[t];
+    ll ans = dk(s, t), tmp, tmp1;
     lp(i, 1, k){
-        ddt[1] = ds[gk[i].u] + f[gk[i].v] + gk[i].w;
-        ddt[0] = ds[gk[i].v] + f[gk[i].u] + gk[i].w;
-        ans = min(ans, min(ddt[1], ddt[0]));
+        tmp = f[gk[i].u][gk[i].v], tmp1 = f[gk[i].v][gk[i].u];
+        f[gk[i].u][gk[i].v] = gk[i].w, f[gk[i].v][gk[i].u] = gk[i].w;
+        ans = min(ans, dk(s, t));
+        f[gk[i].u][gk[i].v] = tmp, f[gk[i].v][gk[i].u] = tmp1;
     }
-    if(ans==INT_MAX) cout << "-1";
+    if(ans == INT_MAX) cout << "-1";
     else cout << ans;
 }
