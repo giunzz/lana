@@ -17,7 +17,7 @@
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
-const string tenfile = "f";
+const string tenfile = "tracfficn";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 ofstream co;
@@ -34,7 +34,29 @@ long long Rand(long long l, long long h)
 
 void Sinh(){
     co.open((ni).c_str());
-    
+    ll n = 10, m = Rand(n, n * (n - 1) / 2), k = Rand(1, n), s = Rand(1, n), t = Rand(1, n);
+    while(s == t) s = Rand(1, n), t = Rand(1, n);
+    co << n << " " << m << " " << k << " " << s << " " << t << endl;
+    map<ll, map<ll, bool>> g;
+    lp(i, 1, n - 1){
+        co << i << " " << (i + 1) << " " << Rand(1, 1000) << endl;
+        g[i][i+1] = 1;
+    }
+    m -= (n - 1);
+    ll u, v;
+    lp(i, 1, m){
+        u = Rand(1, n), v = Rand(1, n);
+        while(u == v || g[u][v]) u = Rand(1, n), v = Rand(1, n);
+        g[u][v] = 1;
+        co << u << " " << v << " " << Rand(1, 1000) << endl;
+    }
+    g.clear();
+    lp(i, 1, k){
+        u = Rand(1, n), v = Rand(1, n);
+        while(u == v || g[u][v]) u = Rand(1, n), v = Rand(1, n);
+        g[u][v] = 1;
+        co << u << " " << v << " " << Rand(1, 25) << endl;
+    }
     co.close();
     st(name); st(nb);
 }

@@ -64,7 +64,7 @@ int main(){
     file;
     ent();
     ll ans = dk(s, t), tmp, tmp1;
-    cerr << ans;
+    // cerr << ans;
     lp(i, 1, k){
         tmp = f[gk[i].u][gk[i].v], tmp1 = f[gk[i].v][gk[i].u];
         f[gk[i].u][gk[i].v] = (f[gk[i].u][gk[i].v]) ? min(f[gk[i].u][gk[i].v], gk[i].w) : gk[i].w;
@@ -72,5 +72,6 @@ int main(){
         ans = min(ans, dk(s, t));
         f[gk[i].u][gk[i].v] = tmp, f[gk[i].v][gk[i].u] = tmp1;
     }
-    cout << ans;
+    if(ans == INT_MAX) cout << "-1";
+    else cout << ans;
 }
