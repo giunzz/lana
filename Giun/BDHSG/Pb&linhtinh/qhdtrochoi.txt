@@ -1,0 +1,20 @@
+đang có i viên đá
+em là A, 0 in theo đề thì là 1
+anh là B, 1      ''          2
+E lấy đi j * j viên đá (tức xét tất cả TH của j), đây là nước của e thì f[i] = 0 tức e thua, f[i]=1 a thua
+i - j * j = p
+nước anh đi 
+**f[p] a là ng đang bóc mà f[0] = 0 => f có nghĩa nếu f[i] = 0 thì e thắng, ngược lại a thắng 1 
+
+nếu em là ng bóc thì em phải quan tâm bài toán f[i - j*j],t thôi để đánh máy
+
+giờ em phải quan tâm bài toán f[i - j * j] thì ai là ng chiến thắng đk
+
+nếu f[i - j*j] = 0 thì e thắng, ngược lại = 1 a thắng bài toán này là lượt đi của anh
+
+
+f[i] = 1, e đang đi và e thắng nên f[i] = 1 là a thua
+
+
+f[n] là bài toán em đang đi, nước đi của em cho nên = 0 anh thắng, = 1 thì e thắng
+!f[n] + 1 
