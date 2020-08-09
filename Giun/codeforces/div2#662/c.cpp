@@ -1,4 +1,3 @@
-//https://codeforces.com/group/FLVn1Sc504/contest/274522/problem/P
 #include <bits/stdc++.h>
 #define ii int
 #define ll long long
@@ -13,7 +12,8 @@
 #define fi first
 #define se second
 #define mp(a, b) map<a, b>
-#define st(obj) system((obj).c_str());
+#define setE(a, b) fill_n(a, sizeof(a)/sizeof(a[0]), b)
+#define st(a) system((a).c_str());
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
@@ -21,28 +21,25 @@ const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 cll maxn = 1e5 + 7;
-ll n, a[maxn] = {0}, ans = 0, r[maxn], l[maxn];
-
-void dp(ll f[]){
-    ll k;
-    vector<ll> b(n+1, INT_MAX);
-    b[0] = INT_MIN;
-    lp(i, 1, n){
-        k = lower_bound(b.begin(), b.end(), a[i]) - b.begin();
-        b[k] = a[i], f[i] = k;
-    }
-}
+ll t, n, a[maxn], num;
 
 ii main(){
     opt;
-    // file;
-    cin >> n;
-    lp(i, 1, n) cin >> a[i];
-    dp(r);
-    reverse(a + 1, a + 1 + n);
-    dp(l);
-    reverse(l + 1, l + 1 + n);
-    lp(i, 1, n)
-        ans = max(ans, 2*min(r[i],l[i]) - 1);
-    cout << ans;
+    file;
+    cin >> t;
+    while(t--){
+        cin >> n;
+        memset(a, 0, sizeof(a));
+        lp(i, 1, n) cin >> num, ++a[num];
+        sort(a + 1, a + 1 + n);
+        reverse(a + 1, a + 1 + n);
+        ll x = 0;
+        lp(i, 1, n){
+            if(a[i] == a[1]) ++x;
+            else break;
+        }
+        n -= x; //bo di cac so nhieu nhat o cuoi chi quan tam khoang vs cac so it xuat hien hon
+        n /= (a[1] - 1); //chia khoang theo so xuat hien nhieu nhat 
+        cout << (n-1)<<endl;
+    }
 }
