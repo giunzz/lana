@@ -20,7 +20,13 @@ const double esf = 1e-9;
 const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
+cll maxd = 36;
+ll c[maxd][maxd] = {0}; //Cnk
+
 ii main(){
     opt;
     file;
+    lp(i, 0, 35) c[i][0] = 1;
+    lp(i, 1, 35) lp(j, 1, i) c[i][j] = c[i - 1][j - 1] + c[i - 1][j];
+    
 }
