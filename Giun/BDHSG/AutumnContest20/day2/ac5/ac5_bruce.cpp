@@ -1,32 +1,26 @@
 #include <bits/stdc++.h>
-using namespace std;
-#define fileInput(problemName) freopen ((string(problemName) + ".inp").c_str(), "r", stdin);freopen ((string(problemName) + ".ans").c_str(), "w", stdout);
+#define ii int
 #define ll long long
-const ll inf = 1e9 + 7;
-const ll MOD = 1e9 + 7;
-const ll N = 1e2 + 7;
-int query, n, k, key[N];
-bool cmp(int a, int b) {
-    return (a > b);
-}
-main() {
-    fileInput("ac5");
-    cin >> query;
-    for (int qq = 1; qq <= query; qq++) {
-        cin >> n >> k;
-        for (int i = 1; i <= n; i++) {
-            cin >> key[i];
-        }
-        sort(key + 1, key + 1 + n, cmp);
-        int cnt = 0;
-        for (int i = 1; i <= n; i++) {
-            if (key[i] == 1) continue;
-            while (k % key[i] == 0) {
-                cnt++;
-                k /= key[i];
-            }
-        }
-        if (k == 1) cout << cnt << endl;
-        else cout << "Impossible\n";
-    }
+#define cii const int
+#define cll const long long
+#define opt ios_base::sync_with_stdio(0); cin.tie(0)
+#define lp(a, b, c) for(ll a = b; a <= c; a++)
+#define lpd(a, b, c) for(ll a = b; a >= c; a--)
+#define pp(a, b) pair<a, b>
+#define vec(a) vector<a>
+#define vecite(a) vector<a>::iterator
+#define fi first
+#define se second
+#define mp(a, b) map<a, b>
+#define setE(a, b) fill_n(a, sizeof(a)/sizeof(a[0]), b)
+#define st(a) system((a).c_str());
+using namespace std;
+cll MOD = 1e9 + 7;
+const double esf = 1e-9;
+const string tenfile = "ac5";
+#define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".ans").c_str(), "w", stdout)
+
+int main(){
+    opt;
+    file;
 }
