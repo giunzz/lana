@@ -1,44 +1,24 @@
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
-const int maxn=1e6+5;
-int n,A[maxn],B[maxn],Tr[maxn];
+// ko lien tiep
+int n , a[10007] , f[1009]={0},t , ma = 0, ans = 0;
 
-void TaoBang(){
-	B[1]=1;
-	int bmax, v;
-	for (int i=2;i<=n;i++){
-		bmax=0;
-		v=0;
-		for (int j=i-1;j>=1;j--){
-			if (A[i]>=A[j] && B[j]>bmax){
-				bmax=B[j];
-				v=j;
-			}
-		}
-		B[i]=B[v]+1;
-		Tr[i]=v;
-	}
-}
-void InRa(int i){
-	if (Tr[i]==0){
-		cout << A[i] << " ";
-		return;
-	}
-	else {
-		InRa(Tr[i]);
-		cout << A[i] << " ";
-	}
-}
-int main(){
-	freopen("DAYCONTANG2.INP","r",stdin);
-	freopen("DAYCONTANG2.OUT","w",stdout);
-	cin >> n;
-	for (int i=1;i<=n;i++) cin >> A[i];
-	TaoBang();
-	int vmax = n;
-	for (int i=n-1;i>=1;i--){
-		if (B[i]>B[vmax]) vmax=i;
-	}
-	InRa(vmax);
-	return 0;
+int main()
+{
+    ios_base::sync_with_stdio(0);cin.tie(0);
+    //freopen("giun.inp","r",stdin);freopen("giun.out","w",stdout);
+    cin >> n ;
+    for (int i = 1 ; i <= n ; i++) cin >> a[i];
+    f[1] = 1;
+    for (int i = 2 ; i <= n ; i++ )
+    {
+        ma = 0;
+        for (int j = 1 ; j < i ; j++)
+        {
+            if (a[j] < a[i]) ma = max (ma,f[j]);
+        }
+        f[i] = ma+1;
+        ans = max (ans,f[i]);
+    }
+    cout << ans;
 }

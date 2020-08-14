@@ -1,0 +1,10 @@
+gọi fi là độ dài dãy con tăng dài nhất kết thúc tại vị trí i
+    b[f[i]] = a[i] tức b có nghĩa: b[k] là giá trị kết thúc của dãy con tăng độ dài k tại thời điểm đang xét
+b[0] = MIN, b[1..n] = MAX
+
+xét số a[i] thì e tìm trong mảng b số b[j] sao cho b[j] nhỏ nhất và b[j] >= a[i] b[j] = a[i]
+a[i] <= b[j] b[j] nhỏ nhất có thể
+**b[j] = x ? b[j + 1] = y
+a[q] x < a[q] < y
+
+cout << "[" << (n & 1) ? "x" : " " << "]".....
