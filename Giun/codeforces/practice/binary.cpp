@@ -20,33 +20,38 @@ const double esf = 1e-9;
 const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-cll maxd = 36;
-ll c[maxd][maxd] = {{0}}, n, k, ans, d0, d00; //Cnk
-vec(ll) a;
+cll maxd = 40;
+ll c[maxd][maxd] = {{0}}, n, k, ans; //Cnk
+vec(ll) dg;
 
-ll getS(ll q, ll r){
-    ll tmp = 0;
-    lp(i, 0, q && (r-i>=0)) tmp += c[i][r - i];
-    return tmp;
+void rg(ll x){
+    if(!x) {dg.push_back(x); return;}
+    while(x) dg.push_back(x&1), x>>=1;
 }
 
 ii main(){
     opt;
-    // file;
-    lp(i, 0, 35) c[i][0] = 1;
-    lp(i, 1, 35) lp(j, 1, i) c[i][j] = c[i - 1][j - 1] + c[i - 1][j];
+    file;
+    lp(i, 0, 36) c[i][0] = 1;
+    lp(i, 1, 36) lp(j, 1, i) c[i][j] = c[i - 1][j - 1] + c[i - 1][j];
     while(cin >> n >> k){
-        a.clear(); ans = 0, d0 = 0, d00 = 0;
-        while(n) a.push_back(n&1), d00 += (n&1)?0:1, n >>= 1;
-        if(!k) {ans = a.size() - 1; if(!d00) ++ans; cout << ans << endl; continue;}
-        reverse(a.begin(), a.end());
-        lp(i, 1, a.size() - 1)
-            if(a[i]) ans += getS(a.size() - i - 2, k - d0 - 1)  + ((d00 + 1) == k)?1:0;
-            else ++d0;
-        lp(i, 0, a.size() - 2) ans += c[i][k];
-        if(d00==k)++ans;
-        if(k==1)++ans;
-        cout << ans << endl;
+        ans = 0; dg.clear();
+        ll cnt0 = 0, tmp0 = 0, tmp;
+        rg(n);
+        for(ll i : dg) if(!i) ++cnt0;
+        if(k == cnt0) ++ans;
+        reverse(dg.begin(), dg.end());
+        lp(i, 1, dg.size()-1)
+            if(dg[i]){
+                tmp = k - tmp0 - 1;
+                if(cnt0-tmp0==dg.size()-i-1&&cnt0+1==k)++ans;
+                lp(j, i + 1, dg.size() - 1 && tmp >= 0 && k <= 32) ans += c[dg.size() - j - 1][tmp--];
+            }
+            else ++tmp0;
+        lp(i, 1, dg.size()-1 && k <= 32)
+            ans+=c[dg.size()-i-1][k];
+        if(k==1 && n)++ans;
+        cout<<ans<<endl;
     }
 }
 
