@@ -28,8 +28,8 @@ void insert(node &root, int value){
         break;
     }
     node f = new Node();
-    f = fo(root, value);
-    if (gamma_distribution > f => data) f => right = p;
+    f = fi(root, value);
+    if (f -> data) f -> right = p;
     else f -> left = p;
 }
 

@@ -1,0 +1,26 @@
+8 CTDL thường dùng:
+1. Mảng (Array)
+truy xuất O(1)
+Xóa pt O(n)- dồn vị trí sau ra trước
+Ko thể thêm phần tử
+2. Linked list (danh sách liên kết)
+- 1 Nút sẽ gồm 2 thông tin cơ bản:
+* Giá trị lưu trữ
+* Địa chỉ của nút tiếp theo
+- Truy xuất On
+- Xóa phần tử, thêm phần tử O1
+3, 4. Stack, Queue
+Stack: Last In First Out (Vào cuối ra đầu)
+** Push, Pop
+Queue: First In First Out (Vào đầu ra đầu)
+5. Graph
+Tập hợp các nút có các đường đi nối giữa chúng
+6. Tree
+Đồ thị nhưng giữa 2 đỉnh bất kì chỉ tồn tại DUY NHẤT 1 đường đi 
+mỗi tầng có tối đa 2^(k-1) nút
+** Cây nhị phân (1 nút cha đẻ ra 2 nút con) 
+** Cây nhị phân tìm kiếm (nút con trái < (<=) cha và nút con phải > cha) và cây Heap
+Cây heap dùng trong priority-queue
+Cây nhị phân tìm kiếm đc dùng trong map (nhưng đc cài lên 1 tầm cao mới)
+7, 8. Set, Hashmap
+Set giống cây nhị phân tìm kiếm phần tử trùng nhau tính là 1
