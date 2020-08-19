@@ -1,0 +1,85 @@
+﻿dấu hiệu sử dụng:
+
+ví dụ: đếm bao nhiêu số tự nhiên thuộc [1,n] thỏa:
+- chia hết cho 3
+- số lượng chữ số chia hết cho 3 chia hết cho 3 (0, 3, 6, 9 số lượng chữ số này chia hết cho 3)
+Eg: 15, 999, có thể 996
+1 <= n <= 1e5
+for từ 1 tới n đếm thủ công
+với 1 <= n <= 1e9
+=> dấu hiệu 1 trong sử dụng: đếm số trong đoạn ***** giới hạn to 1e9 10 ...
+quay lại bài
+tấn công bằng hướng khác:
+ví dụ n = 123456789
+độ dài chút xíu tối đa 10 digits
+f(i,rcount, r,status): số lượng tiền tố có độ dài là i mà số lượng chữ số chia hết cho 3 đem lấy phần khi chia cho 3 là rcount, tiền tố đó khi chia cho 3 có phần dư là r.
+status  = 0: tiền tố độ dài i của số đang xét < hơn so vs tiền tố độ dài i của N
+status  = 1: tiền tố độ dài i của số đang xét = hơn so vs tiền tố độ dài i của N
+status  = 2: tiền tố độ dài i của số đang xét > hơn so vs tiền tố độ dài i của N
+
+
+xét n bên trên
+f(3,1,1,0) = 0
+i số đầu tiền của n
+X = 123 tiền tố 3 số đầu tiên đếm có bao nhiêu số 3 chữ số < 123 số lượng chia 3 dư rcount, chia 3 dư r
+{100,...,122}
+
+f(3, 2, 1, 0)= 4
+f(2, 0, 2, 0) = 1
+x = 12
+{10, 11}
+11 
+f 2 0 2 2 = ?
+13 .. 99
+14 17 20 23 26 29 32 35 38 41 44 47 50 53 56 59 62 65 68 71 74 77 80 83 86 89 92 95 98 
+
+
+xây dựng bài toán cơ sở:
+xét f(0, 0, 0, 1) = 1
+0 ko đc tính là kí tự chia hết cho 3
+
+với f (i rcount r status) > 0
+Xét ký tự tiếp theo: {0, 1, ..., 9}
+f(i + 1, newrcount, newr, newstatus)
+giả sử thêm ký tự d vào vị trí i + 1
+
+nếu d thuộc {0, 3, 6, 9}
+==> newrcount = (rcount+1}mod3
+nếu ko thuộc
+==> newrcount = rcount
+
+newr = (r * 10 + d) mod 3
+13 % 3 = 1
+thêm 4
+134 % 3 = 2
+(1 * 10 + 4) % 3
+134 * 10 + 4 % 3
+quy tắc %
+1 * 10 + 4 % 3
+
+i = 3 và status = 1
+n = 123456789
+
+newstatus = 0 nếu status = 0
+newstatus = 2 nếu status = 2
+nếu status = 1
+nếu ký tự d < 
+
+ví dụ
+f(2, 0, 2, 2) = k
+thì f(3, 0, 1, 2) +=k
+
+
+- kết quả : sigma i từ 1 tới n
+f i 0 0 0
++
+f i 0 0 1
+
+
+
+trc hết gán 0 trc n
+
+len(n)*3*3*3  = len(n)*27 = 270
+
+search digit dp codeforces, geekforgeek
+investigation trong cf
