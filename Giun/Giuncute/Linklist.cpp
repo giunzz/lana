@@ -16,7 +16,7 @@ Node* createNode(int data){
 void insertNode(int data, Node* &root){
     Node* temp = createNode(data);
     if(root == NULL){
-        root = temp;
+        root = temp;  
     }
     else{
         Node* p = root;
