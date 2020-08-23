@@ -1,12 +1,10 @@
 from datetime import datetime
+from colorama import Fore, Back, Style, init
 import time
 
-timeStart = datetime.now()
-print(timeStart)
-timeStart += 10
-print(timeStart)
-time.sleep(1)
-timeEnd = datetime.now()
-# print(timeEnd - timeStart)
-diffTime = timeEnd - timeStart
-# print(time.strftime('%H:%M:%S', time.gmtime(int(diffTime.total_seconds()))))
+init()
+print(Fore.RED + 'some red text') 
+print(Back.GREEN + 'and with a green background') 
+print(Style.DIM + 'and in dim text') 
+print(Style.RESET_ALL) 
+print('back to normal now') 
