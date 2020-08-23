@@ -1,5 +1,5 @@
 from datetime import datetime
-from colorama import Fore, Back, init
+from colorama import Fore, init
 import time, os
 
 # test
@@ -12,23 +12,22 @@ minForPrepare = 10
 hoursForTask = 2
 
 def printMsgSec(msg, diff):
+    os.system('cls')
+    print(msg)
     while diff > 0:
-        print(msg)
-        print(int(diff))
-        print('\a', end='')
+        print(str(int(diff)) + '\r\a', end='')
         diff -= 1
         time.sleep(1)
-        os.system('cls')
 
 def printMsgMin(msg, diff):
     timeStart = timeEnd = datetime.now()
+    os.system('cls')
+    print(msg, end=' ')
+    print(time.strftime('%H:%M:%S', (time.gmtime(diff * 60))))
     while int((timeEnd - timeStart).total_seconds()) <= diff * 60:
-        print(msg, end=' ')
-        print(time.strftime('%H:%M:%S', (time.gmtime(diff * 60))))
         diffTime = timeEnd - timeStart
-        print(time.strftime('%H:%M:%S', time.gmtime(int(diffTime.total_seconds()))))
-        time.sleep(0.5)
-        os.system('cls')
+        print(time.strftime('%H:%M:%S', time.gmtime(int(diffTime.total_seconds()))) + '\r', end='')
+        time.sleep(1)
         timeEnd = datetime.now()
 
 msgPrepareBySec = ' seconds to prepare'
