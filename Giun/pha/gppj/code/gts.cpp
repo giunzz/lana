@@ -20,10 +20,10 @@ const string tenfile = "f";
 int main(int argc, char **argv){
     if(argc == 2) {
         string a(argv[1]);
-        system(("gt -h " + a).c_str());
+        system(("gt -l " + a  + " && gt -h " + a).c_str());
     }
     if(argc == 3){
         string a(argv[1]), b(argv[2]);
-        system(("gt -h " + a + " -m " + b).c_str());
+        system(("gt -l " + a +  " && gt -h " + a + " -m " + b).c_str());
     }
 }
