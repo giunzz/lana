@@ -35,9 +35,10 @@ int main()
 		nhiphan(n);
 		for(int i = 1; i <= m; i++){
 			++cnt[__builtin_ctz(a[i])];
+			if(a[i] && dn[i]) ans[i] = 1;
 		}
 		for(int i = 0; i <= 62; i++){
-			if(dn[i]){
+			if(dn[i] && !ans[i]){
 				for(int j = i; j >= 0; j--){
 					if(cnt[j] )
 				}
