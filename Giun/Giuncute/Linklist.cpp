@@ -50,10 +50,14 @@ int find(Node* root, int index){
     return temp -> value;
 }
 
-bool delNode(Node* root, int index){
+bool delNode(Node* &root, int index){ // index bat dau tu 1
     Node* temp = root;
     int length = getLength(root);
     if(length < index || length == 0) return false;
+    if(index == 1){
+        root = root -> next;
+        return true;
+    }
     int k = 1;
     while(temp -> next -> next != NULL && k != index){
         temp = temp -> next;
