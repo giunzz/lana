@@ -27,8 +27,7 @@ void sol(){
         }
         vl1 = vl;
         //cerr << ans << " " << d << endl;
-    }
-    cerr << clock << " ms";
+    } 
     cout << ans;
 }
 
