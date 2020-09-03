@@ -3,13 +3,13 @@ from colorama import Fore, init
 import time, os, win32gui
 
 # test
-secForPrepare = 5
-minForPrepare = 0.2
-hoursForTask = 0.005
-
 # secForPrepare = 5
-# minForPrepare = 10
-# hoursForTask = 2
+# minForPrepare = 0.2
+# hoursForTask = 0.005
+
+secForPrepare = 5
+minForPrepare = 10
+hoursForTask = 2
 
 def printMsgSec(msg, diff):
     os.system('cls')
@@ -37,7 +37,7 @@ msgDoTasks = ' hours to do the task'
 os.system('cls')
 # os.system('mode con: cols=35 lines=2')
 hwnd = win32gui.GetForegroundWindow()
-win32gui.MoveWindow(hwnd, 1367, 0, 355, 75, True)
+win32gui.MoveWindow(hwnd, 0, 0, 355, 75, True)
 init()
 print(Fore.GREEN + '\a');
 printMsgMin(str(minForPrepare) + msgPrepareByMin, minForPrepare)

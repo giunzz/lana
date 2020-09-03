@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <cmath>
 #define ll long long 
 #define cll const long long
 #define lp(a, b, c) for(ll a = b; a <= c; a++)
@@ -20,7 +22,7 @@ struct qr{
 }q[maxm];
 
 bool cpr(const qr &a, const qr &b){
-    if((a.l - 1) / S != (b.l - 1) / S) return (a.l - 1) / S < (b.l - 1) / S;
+    if (a.l / S != b.l / S) return a.l / S < b.l / S;
     return a.r < b.r;
 }
 
@@ -29,7 +31,7 @@ int main(){
     cin.tie(0);
     File("gopqua");
     cin >> n >> m;
-    S = sqrt(n);
+    S = sqrt(n); 
     lp(i, 1, n) cin >> a[i];
     lp(i, 1, m){
         cin >> q[i].l >> q[i].r;
@@ -37,13 +39,13 @@ int main(){
     }
     sort(q + 1, q + 1 + m, cpr);
     ll ans = 0;
-    lp(i, q[1].l, q[1].r) ans -= cnt[a[i]] * cnt[a[i]] * a[i], ans += ++cnt[a[i]] * cnt[a[i]] * a[i];
+    lp(i, q[1].l, q[1].r) ans += a[i] * (2 * cnt[a[i]]++ + 1);
     res[q[1].index] = ans;
     lp(i, 2, m){
-        lp(j, q[i - 1].l, q[i].l - 1) ans -= cnt[a[j]] * cnt[a[j]] * a[j], ans += --cnt[a[j]] * cnt[a[j]] * a[j];
-        lp(j, q[i].l, q[i - 1].l - 1) ans -= cnt[a[j]] * cnt[a[j]] * a[j], ans += ++cnt[a[j]] * cnt[a[j]] * a[j];
-        lp(j, q[i].r + 1, q[i - 1].r) ans -= cnt[a[j]] * cnt[a[j]] * a[j], ans += --cnt[a[j]] * cnt[a[j]] * a[j];
-        lp(j, q[i - 1].r + 1, q[i].r) ans -= cnt[a[j]] * cnt[a[j]] * a[j], ans += ++cnt[a[j]] * cnt[a[j]] * a[j];
+        lp(j, q[i - 1].l, q[i].l - 1) ans -= a[j] * (2 * cnt[a[j]]-- - 1);
+        lp(j, q[i].l, q[i - 1].l - 1) ans += a[j] * (2 * cnt[a[j]]++ + 1);
+        lp(j, q[i].r + 1, q[i - 1].r) ans -= a[j] * (2 * cnt[a[j]]-- - 1);
+        lp(j, q[i - 1].r + 1, q[i].r) ans += a[j] * (2 * cnt[a[j]]++ + 1);
         res[q[i].index] = ans;
     }
     lp(i, 1, m) cout << res[i] << endl;
