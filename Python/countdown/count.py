@@ -40,8 +40,8 @@ hwnd = win32gui.GetForegroundWindow()
 win32gui.MoveWindow(hwnd, 0, 0, 355, 75, True)
 init()
 print(Fore.GREEN + '\a');
-printMsgMin(str(minForPrepare) + msgPrepareByMin, minForPrepare)
-printMsgSec(str(secForPrepare) + msgPrepareBySec, secForPrepare)
+# printMsgMin(str(minForPrepare) + msgPrepareByMin, minForPrepare)
+# printMsgSec(str(secForPrepare) + msgPrepareBySec, secForPrepare)
 printMsgMin(str(hoursForTask) + msgDoTasks, hoursForTask * 60)
 print('Time Ended!')
 for i in range(10):
