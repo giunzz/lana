@@ -29,7 +29,7 @@ void init(){
 
 void dijkstra(ll r, ll d[]){
     priority_queue<pp(ll, ll), vec(pp(ll, ll)), greater<pp(ll, ll)>> q;
-    lp(i, 1, n) d[i] = 1e10;
+    lp(i, 1, n) d[i] = LLONG_MAX;
     d[r] = 0;
     q.push({0, r});
     ll u, wu;
@@ -39,7 +39,7 @@ void dijkstra(ll r, ll d[]){
         q.pop();
         if(d[u] != wu) continue;
         for(pp(ll, ll) v : g[u])
-            if(v.first + d[u] < d[v.second]) d[v.second] = v.first + d[u], q.push({d[v.second], v.second}); 
+            if(v.first + d[u] < d[v.second] && d[u] != LLONG_MAX) d[v.second] = v.first + d[u], q.push({d[v.second], v.second}); 
     }
 }
 
@@ -61,7 +61,7 @@ int main(){
     lp(i, 1, k){
         ans = LLONG_MAX;
         cin >> a >> b;
-        lp(j, 1, n) ans = min(ans, a * tmp[j].first + b * tmp[j].second);
+        lp(j, 1, n) if(tmp[j].first != LLONG_MAX && tmp[j].second != LLONG_MAX) ans = min(ans, a * tmp[j].first + b * tmp[j].second);
         cout << ans << endl;
     } 
 }
