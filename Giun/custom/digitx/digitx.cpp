@@ -20,36 +20,65 @@ const double esf = 1e-9;
 const string tenfile = "digitx";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-ll f[(int)1e6+10][10]={{0}}, t[(int)1e6 + 10];
+ll f[(int)1e6+10];
+vec(ll) g[10];
 
-void dp(){
-    lp(i, 1, 9) f[i][i] = 1, t[i] = i;
-    lp(i, 1, 1e6){
-        lp(j, 0, 9) f[i][j] += f[i - 1][j];
-        if(i <= 1e5){
-            lp(d, 0, 9){
-                if(d){
-                    ll p = t[i] * d;
-                    while(p > 9) 
-                        if(p % 10) p = p / 10 * (p % 10);
-                        else p /= 10;
-                    ++f[i * 10 + d][p], t[i * 10 + d] = p;
-                }
-                else t[i * 10 + d] = t[i];
-            }
+ll gett(ll t){
+    while(t > 9){
+        ll x = 1;
+        while(t) if(t % 10) x *= t % 10, t /= 10;
+        t = x;
+    }
+    return t;
+}
+
+void init(){
+    ll t, x;
+    lp(i, 1, 1e6) {
+        t = i;
+        while(t > 9){
+            x = 1;
+            while(t) {if(t % 10) x *= t % 10; t /= 10;}
+            t = x;
         }
+        // f[i] = t;
+        g[t].push_back(i);
     }
 }
+
+// void dp(){
+//     lp(i, 1, 9) f[i][i] = 1, t[i] = i;
+//     lp(i, 1, 1e6){
+//         lp(j, 0, 9) f[i][j] += f[i - 1][j];
+//         if(i <= 1e5){
+//             lp(d, 0, 9){
+//                 // if(d){
+//                 ll p = gett(i * 10 + d);
+//                     // ll p = t[i] * d;
+//                     // while(p > 9) 
+//                     //     if(p % 10) p = p / 10 * (p % 10);
+//                     //     else p /= 10;
+//                 ++f[i * 10 + d][p];
+//                     // t[i * 10 + d] = p;
+//                 // }
+//                 // else t[i * 10] = t[i], ++f[i * 10][t[i]];
+//             }
+//         }
+//     }
+// }
 
 ii main(){
     opt;
     file;
     ll l, r, q, k;
-    dp();
-    lp(i, 1, 64) cerr << f[i][6] << ' ' << t[i] << ' ' << i << endl;
+    init();
     cin >> q;
     while(q--){
         cin >> l >> r >> k;
-        cout << (f[r][k] - f[l - 1][k]) << endl;
+        ll low = lower_bound(g[k].begin(), g[k].end(), l) - g[k].begin();
+        ll high = lower_bound(g[k].begin(), g[k].end(), r) - g[k].begin();
+        if(low == g[k].size()) {cout << '0' << endl; continue;}
+        while(g[k][high] > r || high == g[k].size()) --high;
+        cout << (high - low + 1) << endl;
     }
 }

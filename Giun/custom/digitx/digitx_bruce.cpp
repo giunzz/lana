@@ -22,8 +22,11 @@ const string tenfile = "digitx";
 
 ll gett(ll t){
     while(t > 9){
-        if(t % 10) t = t / 10 * (t % 10);
-        else t /= 10;
+        string x = to_string(t);
+        t = 1;
+        for(char c : x){
+            if(c != '0') t *= c - '0';
+        }
     }
     return t;
 }
@@ -38,7 +41,7 @@ int main(){
         cin >> l >> r >> k;
         lp(i, l, r){
             ll p = gett(i);
-            if(p == k) ++ans;
+            if(p == k) {++ans;}
         }
         cout << ans << endl;
     }
