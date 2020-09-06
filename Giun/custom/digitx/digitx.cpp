@@ -17,7 +17,7 @@
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
-const string tenfile = "f";
+const string tenfile = "digitx";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 ll f[(int)1e6+10][10]={{0}}, t[(int)1e6 + 10];
