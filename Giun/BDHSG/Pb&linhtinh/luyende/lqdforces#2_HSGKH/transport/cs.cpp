@@ -12,7 +12,7 @@ void File(const string ff){
     freopen((ff + ".out").c_str(), "w", stdout);
 }
 
-string f = "pb";
+string f = "transport";
 ll ac = 0, cs = 0;
 
 long long Rand(long long l, long long h)
@@ -26,7 +26,16 @@ long long Rand(long long l, long long h)
 void sinh(){
     ofstream co;
     co.open((f + ".inp").c_str());
-
+    ll n = Rand(1, 10), m = Rand(1, n);
+    co << n << ' ' << m << endl;
+    bool d[1000][1000] = {{0}};
+    ll u, v, cnt = 0;
+    lp(i, 1, n - 1){
+        u = i, v = Rand(1, n);
+        while(d[u][v] || u == v) u = Rand(1, n), v = Rand(1, n);
+        d[u][v] = 1, d[v][u] = 1;
+        co << u << ' ' << v << endl;
+    }
     co.close();
     system(f.c_str());
     system((f + "_bruce").c_str());
@@ -42,8 +51,10 @@ bool cham(){
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);
+    srand((int)time(0));
     // File("pb");
     while(1){
+        cout << cs << endl;
         sinh();
         if(cham()) break;
     }
