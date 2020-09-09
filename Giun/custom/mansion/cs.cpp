@@ -17,7 +17,7 @@
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
-const string tenfile = "f";
+const string tenfile = "mansion";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 ofstream co;
@@ -34,9 +34,19 @@ long long Rand(long long l, long long h)
 
 void Sinh(){
     co.open((ni).c_str());
-    
+    ll m = 14, n = 17, k = 20;
+    co << m << ' ' << n << ' ' << k << '\n';
+    map<pp(ll, ll), bool> d;
+    ll x, y;
+    lp(i, 1, k) {
+        x = Rand(1, m), y = Rand(1, n);
+        while(d[{x, y}]) x = Rand(1, m), y = Rand(1, n);
+        d[{x, y}] = 1;
+        co << x << ' ' << y << '\n';
+    }
     co.close();
-    st(name); st(nb);
+    st(name);
+    // st(nb);
 }
 
 void cham(){
@@ -53,9 +63,9 @@ int main(){
     ni = name + ".inp";
     na = name + ".ans";
     nb = name + "_bruce";
-    lp(i, 1, 100){
+    lp(i, 1, 1){
         Sinh();
-        cham();
+        // cham();
     }
-    cout << "ac: " << ac << "/" << cs;
+    // cout << "ac: " << ac << "/" << cs;
 }

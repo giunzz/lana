@@ -20,20 +20,81 @@ const double esf = 1e-9;
 const string tenfile = "mansion";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-ll n, m, k;
 cll maxn = 2e5 + 7;
-vec(pp(ll, ll)) g[maxn];
-vec(ll) hang[maxn], cot[maxn];
+ll n, m, k;
+
+struct quang{
+    ll val, p;
+    bool stt; //0 di doc, 1 di ngang
+};
+vec(quang) g[maxn];
+
+struct quang1{
+    ll first, second, index;
+};
+
+inline bool cpr(const quang1 &a, const quang1 &b){
+    if(a.first < b.first) return true;
+    if(a.first == b.first && a.second < b.second) return true;
+    return false;
+}
+
+inline bool cpr1(const quang1 &a, const quang1 &b){
+    if(a.second < b.second) return true;
+    if(a.second == b.second && a.first < b.first) return true;
+    return false;
+}
+
+void init(){
+    ll x, y;
+    vec(quang1) tmp;
+    lp(i, 1, k) {scanf("%lld %lld", &x, &y); tmp.push_back({x, y, i});}
+    tmp.push_back({1, 1, 0});
+    tmp.push_back({m, n, k + 1});
+    sort(tmp.begin(), tmp.end(), cpr);
+    lp(i, 1, k + 1){
+        if(tmp[i].first == tmp[i - 1].first) {
+            g[tmp[i - 1].index].push_back({tmp[i].second - tmp[i - 1].second, tmp[i].index, 0});
+            g[tmp[i].index].push_back({tmp[i].second - tmp[i - 1].second, tmp[i - 1].index, 0});
+        }
+    }
+    // lp(i, 0, k + 1) cerr << tmp[i].first << ' ' << tmp[i].second << ' ' << tmp[i].index << '\n';
+    sort(tmp.begin(), tmp.end(), cpr1);
+    lp(i, 1, k + 1){
+        if(tmp[i].second == tmp[i - 1].second) {
+            g[tmp[i - 1].index].push_back({tmp[i].first - tmp[i - 1].first, tmp[i].index, 1});
+            g[tmp[i].index].push_back({tmp[i].first - tmp[i - 1].first, tmp[i - 1].index, 1});
+        }
+    }
+}
+
+ll d[maxn] = {0}, c[maxn];
+
+void dijkstra(){
+    priority_queue<pp(ll, ll), vec(pp(ll, ll)), greater<pp(ll, ll)>> q;
+    lp(i, 1, k + 1) d[i] = INT_MAX, c[i] = -1;
+    c[0] = 0;
+    q.push({0, 0});
+    ll u, wu;
+    while(q.size()){
+        u = q.top().second;
+        wu = q.top().first;
+        q.pop();
+        if(wu != d[u]) continue;
+        if(wu == d[u] && u == k + 1) break;
+        for(quang v : g[u]){
+            if((v.stt != c[u]) + d[u] + v.val < d[v.p]) {d[v.p] = (v.stt != c[u]) + d[u] + v.val, c[v.p] = ((v.stt != c[u]) ? v.stt : c[u]); q.push({d[v.p], v.p});} 
+        }
+    }
+    if(d[k + 1] == INT_MAX) cout << -1;
+    else cout << d[k + 1];
+}
 
 int main(){
-    opt;
+    // opt;
     file;
-    cin >> m >> n >> k;
-    ll x, y;
-    hang[1].push_back(0); cot[1].push_back(0);
-    hang[n].push_back(k + 1); cot[n].push_back(k + 1);
-    lp(i, 1, k){
-        cin >> x >> y;
-
-    }
+    scanf("%lld %lld %lld", &m, &n, &k);
+    init();
+    dijkstra();
+    // cerr << clock() << '\n';
 }
