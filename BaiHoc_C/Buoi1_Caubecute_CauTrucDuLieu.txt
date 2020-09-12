@@ -19,8 +19,8 @@ Tập hợp các nút có các đường đi nối giữa chúng
 Đồ thị nhưng giữa 2 đỉnh bất kì chỉ tồn tại DUY NHẤT 1 đường đi 
 mỗi tầng có tối đa 2^(k-1) nút
 ** Cây nhị phân (1 nút cha đẻ ra 2 nút con) 
-** Cây nhị phân tìm kiếm (nút con trái < (<=) cha và nút con phải > cha) và cây Heap
-Cây heap dùng trong priority-queue
+** Cây nhị phân tìm kiếm (nút con trái < (<=) cha và nút con phải > cha) và cây Heap (nút cha >= hoặc <= 2 nút con)
+Cây heap dùng trong priority-queue(nút cha >= 2 nút con)
 Cây nhị phân tìm kiếm đc dùng trong map (nhưng đc cài lên 1 tầm cao mới)
 7, 8. Set, Hashmap
 Set giống cây nhị phân tìm kiếm phần tử trùng nhau tính là 1
