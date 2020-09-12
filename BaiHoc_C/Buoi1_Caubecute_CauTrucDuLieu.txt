@@ -24,5 +24,3 @@ Cây heap dùng trong priority-queue(nút cha >= 2 nút con)
 Cây nhị phân tìm kiếm đc dùng trong map (nhưng đc cài lên 1 tầm cao mới)
 7, 8. Set, Hashmap
 Set giống cây nhị phân tìm kiếm phần tử trùng nhau tính là 1
-
-
