@@ -13,36 +13,68 @@ void File(){
     freopen(ff".out", "w", stdout);
 }
 
-cll maxn = 1e5 + 7;
-ll a[maxn], n, k;
-
-bool check(ll t){
-    ll tmp = k * t, cnt = 0, m;
-    vec(ll) b(a + 1, a + 1 + n);
-    while(1){
-        m = min(b[0], t);
-        for(ll &v : b){
-            v -= m;
-        }
-    }
-    return 1;
-}
+cll maxn = 207;
+ll a[maxn], n, k, b[maxn] = {0};
 
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    File();
+    cout.tie(0);
+    // File();
     cin >> n >> k;
     lp(i, 1, n) cin >> a[i];
-    sort(a + 1, a + 1 + n);
-    ll l = 0, r = 1e5, mid, ans;
-    while(l <= r){
-        mid = (l + r) / 2;
-        if(check(mid)){
-            ans = mid;
-            l = mid + 1;
+    if(k == n){
+        cout << "YES\n" << n << endl;
+        lp(i, 1, n){
+            cout << i << ' ' << i << endl << -a[i] << endl;
         }
-        else r = mid - 1; 
+        return 0;
     }
-    cout << ans;
+    if(k == 1){
+        bool ok = 1;
+        ll s, d;
+        lp(i, 1, n) {
+            if(a[i] > 0) {
+                if(ok) s = a[i], ok = 0, d = i;
+                else s = __gcd(s, abs(a[i]));
+            }
+        }
+        if(ok) cout << "YES\n0";
+        else{
+            if(s <= n){
+                lp(i, d,  min(d + s - 1, n)){
+                    b[i] = a[i];
+                }
+            } 
+            lp(i, 1, n){
+                if(a[i] != b[i]){
+                    cout << "NO";
+                    return 0;
+                }
+            }
+            cout << "YES\n1\n"<< d << ' ' << d + s -1 << endl; 
+            lp(i, d, d + s -1){
+                cout << -b[i] << ' ';
+            }
+        }
+        return 0;
+    }
+    if(k == 2){
+        // em khong biet lam
+        return 0;
+    }
+    cout << "YES\n3\n";
+    cout << "1 " << (n - 1) << endl;
+    lp(i, 1, n - 1){
+        b[i] = (a[i] % n) * (n - 1);
+        a[i] += b[i];
+        cout << b[i] << ' ';
+    }
+    b[n] = -a[n];
+    a[n] += b[n];
+    cout << '\n' << n << ' ' << n << '\n' << b[n] << "\n1 " << n << endl;
+    lp(i, 1, n){
+        cout << -a[i] << ' ';
+    }
+    // doan nay em code hoi ngu :< 
 }
