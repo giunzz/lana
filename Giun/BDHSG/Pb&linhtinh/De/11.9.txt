@@ -1,0 +1,16 @@
+Cho n la day chua cac so tu nhien lien tiep
+
+k la so luong cap so sai vi tri
+
+n thuoc [2, 1000]
+k <= 10000
+
+in ra so luong day nhu v 
+ans mod 1e9 + 7
+
+vi du n = 4, k  =3
+
+day la 1 day thoa 
+1 4 3 2 -> (4, 3) (4, 2) (3, 2)
+
+4 1 2 3 -> (4, 1) (4, 2) (4, 3)
