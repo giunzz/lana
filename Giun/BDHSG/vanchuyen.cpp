@@ -13,22 +13,33 @@ void File(const string ff){
 }
 
 cll maxn = 3e5 + 7;
-ll n, k, xe[maxn];
+ll n, k;
 pp(ll, ll) h[maxn];
+map<ll, ll> xe;
 
 #define kl second
 #define gt first
+
+bool cpr(pp(ll, ll) &a, pp(ll, ll) &b){
+    return a.gt > b.gt || (a.gt == b.gt && a.kl < b.kl);
+}
 
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     File("f");
+    ll tmp, ans = 0;
     cin >> n >> k;
-    lp(i, 1, n) cin >> h[i].kl >> h[i].vt;
-    lp(i, 1, k) cin >> xe[i];
-    sort(xe + 1, xe + 1 + k);
-    sort(h + 1, h + 1 + n);
-    lpd(i, n, 1){
-
+    lp(i, 1, n) cin >> h[i].kl >> h[i].gt;
+    lp(i, 1, k) {cin >> tmp; ++xe[tmp];}
+    sort(h + 1, h + 1 + n, cpr);
+    // lp(i, 1, n){
+    //     cerr << h[i].kl << ' ' << h[i].gt << endl;
+    // }
+    lp(i, 1, n){
+        auto it = xe.lower_bound(h[i].kl);
+        if((*it).second) --(*it).second, ans += h[i].gt; 
+        if (!xe[(*it).first]) xe.erase((*it).first);
     }
+    cout << ans;
 }
