@@ -5,6 +5,7 @@
 
 using namespace std;
 
+<<<<<<< HEAD
 int n, m, q, u[200005], v[200005], r1, r2, r[200005], s1[200005];
 bool kt[200005];
 char s[200005];
@@ -73,3 +74,22 @@ int main(){
         cout << ans[i] << endl;
     }
 }
+=======
+ll a, n, b = LLONG_MAX;
+
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cin >> a >> n;
+    ll i = 0;
+    // while(1e18/n >= i){
+    //     b = min(b, a ^ (n * i++));
+    //     cerr << 1;
+    // }
+    ll tmp = 1e18/n * n;
+    // cerr << (a ^ 0);
+    cout << (a ^ tmp);
+    b = a ^ tmp;
+    cerr << endl << tmp;
+}
+>>>>>>> 362548bee5c79f88a3d7aa1a9f6456595f3586f4
