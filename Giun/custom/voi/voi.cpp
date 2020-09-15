@@ -28,6 +28,7 @@ pp(ll, ll) q = {-1, -1};
 bool d[maxn][maxn];
 
 void dfs(ll x, ll y, ll &dc){
+    if(dd == cnt) return;
     if(x == 0 || x > m) return;
     if(y == 0 || y > n) return;
     d[x][y] = 1;
@@ -42,6 +43,7 @@ int main(){
     opt;
     file;
     ll ma = INT_MIN, mi = INT_MAX, ans;
+    // scanf("%lld %lld", &m, &n);
     cin >> m >> n;
     lp(i, 1, m)
         lp(j, 1, n) {cin >> a[i][j]; ma = max(ma, a[i][j]);}

@@ -1,35 +1,45 @@
-Target: arrm 
+Target: move 
 Directory: c:\Users\tienp\Desktop\Hoc\Python\checker
-Test00: 0.702027s
+Test01: 0.350784s
 Accept
-Test01: 1.183100s
+Test02: 0.272830s
 Accept
-Test02: 0.656071s
+Test03: 0.301569s
 Accept
-Test03: 0.620298s
+Test04: 0.277899s
 Accept
-Test04: 1.512400s
+Test05: 0.293219s
 Accept
-Test05: 0.995003s
+Test06: 0.281826s
 Accept
-Test06: 1.174267s
+Test07: 0.325548s
 Accept
-Test07: 1.810445s
+Test08: 0.323373s
 Accept
-Test08: 1.736331s
+Test09: 0.388760s
 Accept
-Test09: 1.998051s
+Test10: 0.318843s
 Accept
-Test10: 1.614029s
+Test11: 0.342788s
 Accept
-Test11: 1.862165s
+Test12: 0.288560s
 Accept
-Test12: 1.811676s
+Test13: 0.255836s
 Accept
-Test13: 1.800241s
+Test14: 0.286823s
+Wrong Ans at line 1
+Test15: 1.098343s
 Accept
-Test14: 1.456495s
+Test16: 1.105756s
 Accept
-Test15: 0.810467s
+Test17: 1.081332s
+Wrong Ans at line 1
+Test18: 1.111235s
+Wrong Ans at line 1
+Test19: 1.070712s
 Accept
-AC: 16/16
+Test20: 1.139510s
+Wrong Ans at line 1
+Test21: 0.421987s
+Wrong Ans at line 1
+AC: 16/21

@@ -21,17 +21,19 @@ const string tenfile = "chal";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 cll maxn = 1e3 + 7;
-ll m, n , a[maxn][maxn];
-bool d[(int)1e6+1] = {0};
+ll m, n , a[maxn][maxn], d[(int)1e6+1] = {0};
 vec(ll) snt;
 
 void init(){
-    for(ll i = 2; i <= 5e5; i++){
+    for(ll i = 2; i <= 1e5 + 100; i++){
         if(!d[i]){
-            snt.push_back(i);
-            for(ll j = i * i; j <= 5e5; j += i) d[j] = 1;
+            // snt.push_back(i);
+            for(ll j = i * i; j <= 1e5 + 100; j += i) d[j] = 1;
         }
     }
+    for(int i = 2e5; i >= 2; i--) 
+        if(!d[i]) d[i] = i;
+        else d[i] = d[i + 1];
 }
 
 struct quang{
@@ -42,20 +44,24 @@ int main(){
     opt;
     file;
     init();
-    cin >> m >> n;
-    lp(i, 1, m){
-        lp(j, 1, n) cin >> a[i][j];
-    }
+    // cin >> m >> n;
+    scanf("%lld %lld", &m, &n);
+    // lp(i, 1, m){
+    //     lp(j, 1, n) 
+    // }
+    ll ans = LLONG_MAX;
     lp(i, 1, m){
         lp(j, 1, n){
-            ll tmp = lower_bound(snt.begin(), snt.end(), a[i][j]) - snt.begin();
-            f[i][j] = {snt[tmp] - a[i][j], snt[tmp] - a[i][j]};
-            f[i][j].doc += f[i - 1][j].doc;
-            f[i][j].ngang += f[i][j - 1].ngang;
+            // ll tmp = lower_bound(snt.begin(), snt.end(), a[i][j]) - snt.begin();
+            // f[i][j] = {d[a[i][j]] - a[i][j], d[a[i][j]] - a[i][j]};
+            scanf("%lld", &a[i][j]);
+            f[i][j].doc = f[i - 1][j].doc + d[a[i][j]] - a[i][j];
+            f[i][j].ngang = f[i][j - 1].ngang + d[a[i][j]] - a[i][j];
         }
+        if(ans > f[i][n].ngang) ans = f[i][n].ngang;
     }
-    ll ans = LLONG_MAX;
-    lp(i, 1, m) ans = min(ans, f[i][m].ngang);
-    lp(j, 1, n) ans = min(ans, f[m][j].doc);
+    for(int j = 1; j <= n; j++) 
+        if(ans > f[m][j].doc) ans = f[m][j].doc;
     cout << ans;
+    // cerr << clock();
 }

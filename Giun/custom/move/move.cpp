@@ -47,11 +47,13 @@ int main(){
             else{
                 f[i][j] = 0; continue;
             }
-            for(ll z = i - 1; z >= 1; z--){
-                if(j - (i - z - 1) < 0) break;
-                if(z < (j - (i - z - 1))) continue;
-                f[i][j] = min(f[i][j], kc(g[i], g[z]) + f[z][j - (i - z - 1)]);
-            }
+            // for(ll z = i - 1; z >= 1; z--){
+            //     if(j - (i - z - 1) < 0) break;
+            //     if(z < (j - (i - z - 1))) continue;
+            //     f[i][j] = min(f[i][j], kc(g[i], g[z]) + f[z][j - (i - z - 1)]);
+            // }
+            for(ll z = 0; z <= j; z++)
+                f[i][j] = min(f[i][j], kc(g[i], g[i - z -1]) + f[i - z - 1][j - z]);
         }
     }
     // lp(i, 1, n){
