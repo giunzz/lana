@@ -25,23 +25,29 @@ ll n, m, k, a[maxm] = {0}, f[maxm][maxk], s = 0;
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    File("f");
+    File("noise");
     cin >> n >> m >> k;
     ll tmp;
     lp(i, 1, n){
         cin >> tmp;
         ++a[tmp];
     }
+    // lp(i, 1, m) s += a[i] * (a[i] + 1) / 2;
     lp(i, 0, m)
         lp(j, 0, k) f[i][j] = LLONG_MAX;
     f[0][0] = 0;
     lp(i, 1, m){
         lp(j, 0, k){
+            // if(j == 0) f[i][j] = f[i - 1][j];
             lp(z, 0, j){
                 if(f[i - 1][z] == LLONG_MAX) break;
                 f[i][j] = min(f[i][j], f[i - 1][z] + loud(a[i], j - z));
             }
         }
     }
+    // lp(i, 0, m){
+    //     lp(j, 0, k) cerr << f[i][j] << ' ';
+    //     cerr << endl;
+    // }
     cout << f[m][k];
 }

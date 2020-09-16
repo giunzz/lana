@@ -1,45 +1,27 @@
-Target: move 
+Target: vanchuyen 
 Directory: c:\Users\tienp\Desktop\Hoc\Python\checker
-Test01: 0.350784s
+test1: TLE
+test10: TLE
+test11: 1.363602s
 Accept
-Test02: 0.272830s
+test12: 0.971715s
 Accept
-Test03: 0.301569s
+test13: 0.583818s
 Accept
-Test04: 0.277899s
+test14: 0.599824s
 Accept
-Test05: 0.293219s
+test2: TLE
+test3: 0.743780s
 Accept
-Test06: 0.281826s
+test4: 0.634206s
 Accept
-Test07: 0.325548s
-Accept
-Test08: 0.323373s
-Accept
-Test09: 0.388760s
-Accept
-Test10: 0.318843s
-Accept
-Test11: 0.342788s
-Accept
-Test12: 0.288560s
-Accept
-Test13: 0.255836s
-Accept
-Test14: 0.286823s
+test5: 0.371883s
 Wrong Ans at line 1
-Test15: 1.098343s
+test6: 0.563834s
 Accept
-Test16: 1.105756s
-Accept
-Test17: 1.081332s
+test7: 0.335900s
 Wrong Ans at line 1
-Test18: 1.111235s
+test8: 0.732676s
 Wrong Ans at line 1
-Test19: 1.070712s
-Accept
-Test20: 1.139510s
-Wrong Ans at line 1
-Test21: 0.421987s
-Wrong Ans at line 1
-AC: 16/21
+test9: TLE
+AC: 7/14
