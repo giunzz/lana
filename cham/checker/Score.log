@@ -1,23 +1,7 @@
-Target: Catgiay 
-Directory: g:\HocLapTrinh\cham\checker
-test01: 0.000000s
-Wrong Ans at line 1
-test02: 0.000000s
-Wrong Ans at line 1
-test03: 0.000000s
-Wrong Ans at line 1
-test04: 0.000000s
-Wrong Ans at line 1
-test05: 0.000000s
-Wrong Ans at line 1
-test06: 0.000000s
-Wrong Ans at line 1
-test07: 0.000000s
-Wrong Ans at line 1
-test08: 0.000000s
-Wrong Ans at line 1
-test09: 0.000000s
-Wrong Ans at line 1
-test10: 0.000000s
-Wrong Ans at line 1
-AC: 0/10
+Target: power3 
+Directory: G:\HocLapTrinh\cham\checker
+test000: 0.549351s
+Accept
+test001: 0.497693s
+Accept
+AC: 2/2

@@ -24,29 +24,3 @@ int main()
     }
     cout << ans;    
 }*/
-#include<bits/stdc++.h>
-using namespace std;
-#define ll long long
-ll n,b,k,ans= 0,a;
-int main()
-{
-	ios_base::sync_with_stdio(0);
-	cin.tie(0);
-	cin >> n >> k >> a >>b ;
-	freopen("giun.inp","r",stdin);
-	freopen("giun.out","w",stdout);
-	
-	while(n != 1)
-	{
-		cerr << 1 << endl;
-		if(n % k == 0) 
-		{
-			if (b < ((n - n/k)*a)) ans += b;
-			else ans += (n - n/k)*a, n = n/k;
-		}
-		else ans += n - n / k * k * a,n = n / k * k;
-        n--;
-	}
-	cout << ans;
-}
-
