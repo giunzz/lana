@@ -13,9 +13,10 @@ void File(const string ff){
 }
 
 inline ll loud(ll n, ll k){
+    // sau k lan duoi -> k + 1 nhom nguoi
     ++k;
-    ll nhom = n / k, du = n % k;
-    ll s = k * nhom * (nhom + 1) / 2 + du * (nhom + 1);
+    ll nhom = n / k, du = n % k; //a a (a + 1) (a + 1)           a
+    ll s = k * nhom * (nhom + 1) / 2 + du * (nhom + 1); // 1 + 2 + 3 + .. + a + (a + 1) = a*(a+1)/2 + (a+1)
     return s;
 }
 
