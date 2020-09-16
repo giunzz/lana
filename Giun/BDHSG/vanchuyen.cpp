@@ -33,9 +33,6 @@ int main(){
     lp(i, 1, n) cin >> h[i].kl >> h[i].gt;
     lp(i, 1, k) {cin >> tmp; ++xe[tmp];}
     sort(h + 1, h + 1 + n, cpr);
-    // lp(i, 1, n){
-    //     cerr << h[i].kl << ' ' << h[i].gt << endl;
-    // }
     xe[LLONG_MAX] = 1;
     lp(i, 1, n){
         auto it = xe.lower_bound(h[i].kl);
