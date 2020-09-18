@@ -8,5 +8,5 @@ int main(){
     struct stat buffer;
     if(!stat(fname".inp", &buffer))
         cout << 1;
-    else cout << 0;
+    else cout << 3;
 }
