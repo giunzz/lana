@@ -24,19 +24,19 @@ cll maxn = 1e3 + 7, maxk = 1e4 + 7;
 ll n, f[maxn][maxk] = {{0}}, k;
 
 int main(){
-    opt;
+    // opt;
     file;
     cin >> n >> k;
     f[1][0] = 1;
     lp(i, 2, n){
         lp(j, 0, k){
-            //lp(z, 0, i - 1){
-            //    if(j - z < 0) continue;
-            //    f[i][j] += f[i - 1][j - z] % MOD;
-            //}
+            // lp(z, 0, i - 1){
+            //     if(j - z < 0) continue;
+            //     f[i][j] = (f[i][j] + f[i - 1][j - z]) % MOD;
+            // }
             f[i][j] = f[i - 1][j] % MOD;
-            if(j > 0) f[i][j] += f[i][j - 1] % MOD;
-            if(i >= j) f[i][j] -= f[i - 1][j - i] % MOD;
+            if(j > 0) f[i][j] = (f[i][j] + f[i][j - 1]) % MOD;
+            if(i <= j) f[i][j] = (f[i][j] - f[i - 1][j - i]) % MOD;
         }
     }
     cout << (f[n][k] % MOD);
