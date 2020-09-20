@@ -30,6 +30,7 @@ int main()
     balabolo(file);
     fastscan(n) ; fastscan(t);
     int i = 0 ;
+    //lalalalala
     for (int i = 1 ; i <= n ; i++)
     {
         fastscan(a[i]) ; fastscan(b[i]) ;
