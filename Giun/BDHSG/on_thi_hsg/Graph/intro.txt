@@ -16,3 +16,5 @@ bfs
 	while(queue.size())
 		lấy u ra -> đánh dấu u -> xét con của u -> nếu con u chưa xét đẩy vào queue
 dfs như bfs nhưng dùng stack còn ko cài đệ quy
+
+Bao lồi
