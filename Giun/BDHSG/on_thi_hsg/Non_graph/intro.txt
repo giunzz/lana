@@ -1,0 +1,11 @@
+﻿MinMax dequeue
+Mo
+Kmp
+Fenwick tree -> segment tree
+fun with bits
+chat nhi phan ket qua
+xem lca rmq
+các ctdl trên vnoi
+những cái cơ bản như cộng dồn phải nhìn ra
+lưu ý set, map, priqueue, multi_set(map), unordered_(),.. (2 cái sau chưa cần vì qgia)
+hash -> (chưa cần)

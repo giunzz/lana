@@ -1,0 +1,18 @@
+﻿cay khung nho nhat kruskal, prim -> disjoint set
+dijkstra heap
+	mảng d là đg đi ngắn nhất từ root -> u với d[root] = 0
+	push {0, root} vào priority_queue
+	khi lấy trong priority ra 1 đỉnh u thì d[u] == first mới tính tiếp
+	các nút con của u thì tính min đến v
+	push ngược priority_queue
+bellman-ford trọng số âm 
+đg đi lớn nhất
+tô màu đồ thị
+**bfs, dfs(có qhd)
+
+bfs
+	dùng queue
+	push gốc chính vào
+	while(queue.size())
+		lấy u ra -> đánh dấu u -> xét con của u -> nếu con u chưa xét đẩy vào queue
+dfs như bfs nhưng dùng stack còn ko cài đệ quy

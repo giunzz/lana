@@ -1,0 +1,25 @@
+﻿template file .cpp bài làm
+	tv tổng
+	df ll, cll, vec, pp, fname, lp, (lpd),...
+	hàm file mở file
+		freopen with fname".inp" (file thường .out, bruce .ans)
+	trong main
+		ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+template file cs
+	dùng template của .cpp
+	hàm Rand(l, r) đc return l + ((ll)rand()*(RAND_MAX+1)^3 +
+				(ll)rand()*(RAND_MAX+1)^2 +
+				(ll)rand()*(RAND_MAX+1) +
+				(ll)rand()) % (r - l + 1);
+	hàm crtest(tránh dùng sinh trùng cmath) dùng ofstream co; co.open(...); ....; co.close(); system(..); system(..."_bruce");
+	hàm so trả về true tức 2 file sai dùng system("fc *tenfile*.out *tenfile*.ans /w");
+	trong main dùng srand((int)time(NULL));
+	ll cs = 0;
+	while(1)
+		cout << ++cs << endl;
+		crtest()
+		if (cham()) break;
+template file crfile
+	dùng template .cpp
+	nhập name;
+	system(("mkdir " + name + " && copy pb " + name + " && cd " + name + " && rename pb.* " + name + ".* && rename pb_bruce.* " + name + "_bruce.*").c_str()); //tao folder name -> copy pb vo -> cd vao -> rename *.cpp -> rename *_bruce.cpp
