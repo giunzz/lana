@@ -25,6 +25,10 @@ ll m, n , a[maxn][maxn], d[(int)1e6+1] = {0};
 vec(ll) snt;
 
 void init(){
+<<<<<<< HEAD
+=======
+    d[1] = 2;
+>>>>>>> 71dae57a442cd26f3ab066fd924a841fdd2985b9
     for(ll i = 2; i <= 1e5 + 100; i++){
         if(!d[i]){
             // snt.push_back(i);
@@ -41,11 +45,19 @@ struct quang{
 }f[maxn][maxn];
 
 int main(){
+<<<<<<< HEAD
     opt;
     file;
     init();
     // cin >> m >> n;
     scanf("%lld %lld", &m, &n);
+=======
+    // opt;
+    // file;
+    init();
+    cin >> m >> n;
+    // scanf("%lld %lld", &m, &n);
+>>>>>>> 71dae57a442cd26f3ab066fd924a841fdd2985b9
     // lp(i, 1, m){
     //     lp(j, 1, n) 
     // }
@@ -62,6 +74,17 @@ int main(){
     }
     for(int j = 1; j <= n; j++) 
         if(ans > f[m][j].doc) ans = f[m][j].doc;
+<<<<<<< HEAD
     cout << ans;
     // cerr << clock();
+=======
+    cout << ans << endl;
+    cerr << clock();
+    // cout<<endl;
+    // lp(i, 1, m){
+    //     lp(j, 1, n) cout << f[i][j].doc << ' ';
+    //     cout << endl;
+    // }
+
+>>>>>>> 71dae57a442cd26f3ab066fd924a841fdd2985b9
 }
