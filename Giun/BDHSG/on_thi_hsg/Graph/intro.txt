@@ -1,5 +1,23 @@
-﻿cay khung nho nhat kruskal, prim -> disjoint set
-dijkstra heap
+﻿cay khung nho nhat kruskal, prim -> disjoint set //tam xong
+	*kruskal
+		sort do dai canh lai tu be -> lon
+		bo tung canh vao cay theo disjoint set
+		*disjoint set
+		(co mang f[u] voi so duong la chi cha cua no, voi so am la root cua cay -f[u] bang so node trong cay)
+			kiem tra xem bo duoc canh (u, v) vao ko bang cay kiem ra x = root(u) co bang y = root(v) ko
+			ham root(u)
+				return f[u] < 0 : u ? root(f[u])
+			neu bang nhau -> u v chung cay ko them vao nx
+			nguoc lai noi cay co node it hon vao nhieu hon gia xu f[x] < f[y] f[x] += f[y], f[y] = x; 
+		*prim
+			duyet tu 1 dinh root, bo root vao priqueue {0, root}
+			danh dau root
+			duyet priqueue
+				lay top priqueue neu da danh dau bo qua
+				neu chua danh dau thi danh dau (co the mod de them nut cha neu can)
+				cong chi so first vao tong trong so
+				duyet cac canh truc tiep cua top them cac canh vao priqueue
+dijkstra heap  //tam xong
 	mảng d là đg đi ngắn nhất từ root -> u với d[root] = 0
 	push {0, root} vào priority_queue
 	khi lấy trong priority ra 1 đỉnh u thì d[u] == first mới tính tiếp
@@ -10,11 +28,26 @@ bellman-ford trọng số âm
 tô màu đồ thị
 **bfs, dfs(có qhd)
 
-bfs
+bfs //tam xong
 	dùng queue
 	push gốc chính vào
 	while(queue.size())
 		lấy u ra -> đánh dấu u -> xét con của u -> nếu con u chưa xét đẩy vào queue
-dfs như bfs nhưng dùng stack còn ko cài đệ quy
+dfs như bfs nhưng dùng stack còn ko cài đệ quy 
 
-Bao lồi
+Bao lồi //tam xong
+	tim diem co min y, neu min y == nhau tim min x
+	chuyen diem do ve p[1]
+	sort cac diem sao cho tao thanh tan goc giam dan //dua theo tan
+		dieu kien sort a.x / a.y >= b.x / b.y <=> a.x * b.y >= b.x * a.y return 1
+	goi pp la bao loi
+	pp1 = p1, pp2 = p2, k = 2
+	cho i chay tu 3 -> n
+		kiem tra 3 diem pp[k - 1] pp[k] va p[i] co queo trai ko neu ko --k (k > 1)
+		pp[++k] = i;
+		****ham kiem tra queo trai cua 3 diem a b c
+			vec u = (b.x - a.x, b.y - a.y), v = (c.x - b.x, c.y - b.y)
+			neu u.x * v.y - u.y * v.x >= 0 thi queo trai
+			nguoc lai queo phai
+
+topo, tarjan, liet ke khop, euler, hamilton, cau

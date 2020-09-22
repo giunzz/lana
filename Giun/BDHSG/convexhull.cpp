@@ -30,7 +30,7 @@ bool cpr(point p1, point p2){
     else return 0;
 }
 
-void cdOp(){
+void cdOp(){ //tim diem co min y nho nhat neu min y = nhau tim min x 
     lp(i, 2, n){
         if(p[i].y < p[1].y) swap(p[i], p[1]);
         else if(p[1].y == p[i].y && p[i].x < p[1].x) swap(p[i], p[1]);

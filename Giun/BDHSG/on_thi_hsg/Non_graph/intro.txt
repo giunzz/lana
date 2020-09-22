@@ -1,12 +1,55 @@
 ﻿MinMax dequeue
 Mo
+	sort truy van li, ri
+		s = sqrt(n)
+		neu li/s != lj/s return li/s < lj/s
+		nguoc lai return ri < rj
 Kmp
-Fenwick tree -> segment tree
+Fenwick tree -> segment tree //tam xong
+	*fen tree
+		*cap nhat 1 phan tu i thi while(i <= n) f[i] += vl, i += (i & -i);
+		*tong l -> r while(r >= l) neu (r & -r) > l thi sum += f[r], r -= (r & -r)
+					   nguoc lai sum += a[r--]
+	*segtree(cai tien)
+		t[2*n], a0, .., a(n - 1)
+		nhap t[i + n], build cay bang cay for i : n - 1 -> 0 t[i] = t[i * 2] + t[i * 2 + 1] hoac t[i] = t[i << 1] + t[i << 1 | 1];
+		gan 1 gia tri tai i (0 <= i < n)
+			for(t[i += n] = vl; i > 1; i >>= 1)
+				t[i >> 1] = t[i] + t[i ^ 1]; //i ^ 1 la nut con lai
+		lay tong l den bien r [l, r)
+			while(l < r)
+				neu l & 1 thi sum += t[l++]; vi l nam o nut le neu di ve cha cua l se ko bao gom trong doan l den r
+				neu r & 1 thi sum += t[--r]; vi r nam o nut le ma dang can tinh nut ben canh cua r neu di nguoc ve cha se chua luon nut r va ban no
+				l >>= 1, r >>= 1; // di ve cha
+	*segTlazy
+		(tu doc code)
 fun with bits
 chat nhi phan ket qua
 xem lca rmq
+day con tang dai nhat lcs
+dao nhan xau con chung
+	cho 2 xau a, b max_len(a) = 1e6, max_len(b) = 1e3
+	goi dp[i][k] = j tuc day con chung dai nhat cua a1 -> aj va b1 -> bi dung bang k
+	goi nextPos[i][c] = j la vi tri j nho nhat > i sao cho a[j] = c
+		xay dung
+			for c = 'a' -> 'z' for i = len(a) - 1 -> 0 nextPos[i][c] = (a[i + 1] == c) ? i + 1 : nextPos[i + 1][c];
+	set dp = -1;
+	dp[0][0] = 0;	
+	for i = 0 -> len(b) - 1 | for j = 0 -> i 
+		neu dp[i+1][j] = -1 hoac dp[i+1][j] > dp[i][j] dp[i + 1][j] = dp[i][j]
+		newvl = nextPos[dp[i][j]][b[i + 1]]
+		neu (dp[i + 1][j + 1] = -1 hoac dp[i+1][j+1] > newvl) va newvl > 0 dp[i+1][j+1] = newvl
 Sqrt Decomposition
 các ctdl trên vnoi
 những cái cơ bản như cộng dồn phải nhìn ra
-lưu ý set, map, priqueue, multi_set(map), unordered_(),.. (2 cái sau chưa cần vì qgia)
+lưu ý set, map, priqueue, multi_set(map), unordered_(),.. 
+set, map dung insert
+priqueue dung push
 hash -> (chưa cần)
+nhan ma tran A m * n cho B n * p
+	ra ma tran C m * p
+		for i 1 -> m
+			j 1 -> p
+			cij = 0
+				k 1 -> n
+					Cij += aik * bkj
