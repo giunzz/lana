@@ -1,22 +1,26 @@
 #include<bits/stdc++.h>
+
 using namespace std;
 
-int n, a[(int) 1e5],s = INT8_MIN;
-void  ma (int x)
+#define ll long long
+
+ll giun (ll l , ll h)
 {
-    if (x == 100000 + 1) return ;
-    s = max (s,a[x]);
-    cout << s << " " ;
-    ma (x+1);
+    return l+ ((ll) rand() * (RAND_MAX + 1 ) * (RAND_MAX + 1 ) * (RAND_MAX + 1 ) + 
+                (ll) rand() * (RAND_MAX + 1 ) * (RAND_MAX + 1 ) + 
+                (ll) rand() * (RAND_MAX + 1 ) +
+                rand() )  % (h-l+1);
 }
-int main(){
+
+
+ll giun (ll l , ll r )
+{
     
-   // freopen("giun.inp","r",stdin);
-   // freopen("giun.out","w",stdout);
-    //cin >> n;
-    for (int i = 1 ; i <= 100000 ; i++) a[i] = i;
-    ma(1);
-    cout <<endl;
-    cout << s ;
-    cout << endl << clock() << " s";
+}
+
+int main()
+{
+    srand(time(NULL));
+    freopen("giun.inp","w",stdout);
+        cout << giun(1,10000);
 }
