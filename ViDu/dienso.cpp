@@ -58,12 +58,10 @@ int duong = 0 , am = 0 , ans1 = 0 , ans2 = 0 ,n;
 string s;
 int main()
 {
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
     ios::sync_with_stdio(0);
     cin.tie(0);
     cin >> n >> s;
-    for (int i = 0 ; i < s.length() ; i++)
+    for (int i = 0 ; i < n ; i++)
     {
         if (s[i] == '>') duong ++ , ans1 += duong , am =0;
         else am++ , ans2 += am , duong = 0;
