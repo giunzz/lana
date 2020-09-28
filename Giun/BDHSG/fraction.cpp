@@ -63,11 +63,11 @@ int main(){
     reverse(b.begin(), b.end());
     b.push_back({0, 1});
     reverse(b.begin(), b.end());
-    // for(ps v : b){
-    //     cerr << v.tu << ' ' << v.mau << endl;
-    // }
-    // cerr << endl;
-    fenwick bit(n);
+    for(ps v : b){
+        cerr << v.tu << ' ' << v.mau << endl;
+    }
+    cerr << endl;
+    fenwick bit(2*n);
     lp(i, 1, n){
         // cerr << 1;
         ll tmp = lower_bound(b.begin(), b.end(), a[i]) - b.begin();
