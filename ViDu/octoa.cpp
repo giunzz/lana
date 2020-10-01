@@ -19,8 +19,8 @@ int main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    freopen("octoa.inp","r",stdin);
-    freopen("octoa.out","w",stdout);
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
     cin >> a;
     tp(a);
     d1 = d;
