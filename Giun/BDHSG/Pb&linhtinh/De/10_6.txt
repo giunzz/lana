@@ -1,7 +1,21 @@
-﻿Cho n soi day xich 
+﻿b1
+Cho n soi day xich 
 Moi day co L mac xich
 Cac mat xich co the mo ra dong lai
 Yeu cau noi cac soi day lai sao cho so mac xich mo ra dong lai la it nhat
 
 n <= 5e5
 L <= 1e5
+
+inp
+5
+3 4 5 6 7
+out
+3
+
+inp
+3
+1 1 1
+out
+1
+
