@@ -7,7 +7,11 @@
 #include <sys/stat.h>
 #define fname "b"
 
+<<<<<<< HEAD
 >>>>>>> a7296cb76eb2976b1feddcf3b90545372b53aa4f
+=======
+>>>>>>> a7296cb... sync
+>>>>>>> 6e5178e... sync
 using namespace std;
 
 const ll Max = 1e6 + 7;
@@ -67,5 +71,9 @@ int main(){
     long long a = (long long)1 << (long long)3;
     cout << a;
 >>>>>>> 1b5c812d903df17d42541c82c30e0fc279825697
+<<<<<<< HEAD
 >>>>>>> a7296cb76eb2976b1feddcf3b90545372b53aa4f
+=======
+>>>>>>> a7296cb... sync
+>>>>>>> 6e5178e... sync
 }

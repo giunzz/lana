@@ -32,7 +32,11 @@ void init(){
 >>>>>>> 71dae57a442cd26f3ab066fd924a841fdd2985b9
 =======
     d[1] = 2;
+<<<<<<< HEAD
 >>>>>>> a7296cb76eb2976b1feddcf3b90545372b53aa4f
+=======
+>>>>>>> a7296cb... sync
+>>>>>>> 6e5178e... sync
     for(ll i = 2; i <= 1e5 + 100; i++){
         if(!d[i]){
             // snt.push_back(i);
@@ -69,7 +73,11 @@ int main(){
     init();
     cin >> m >> n;
     // scanf("%lld %lld", &m, &n);
+<<<<<<< HEAD
 >>>>>>> a7296cb76eb2976b1feddcf3b90545372b53aa4f
+=======
+>>>>>>> a7296cb... sync
+>>>>>>> 6e5178e... sync
     // lp(i, 1, m){
     //     lp(j, 1, n) 
     // }
@@ -92,7 +100,11 @@ int main(){
     // cerr << clock();
 =======
 =======
+<<<<<<< HEAD
 >>>>>>> a7296cb76eb2976b1feddcf3b90545372b53aa4f
+=======
+>>>>>>> a7296cb... sync
+>>>>>>> 6e5178e... sync
     cout << ans << endl;
     cerr << clock();
     // cout<<endl;
@@ -104,5 +116,9 @@ int main(){
 <<<<<<< HEAD
 >>>>>>> 71dae57a442cd26f3ab066fd924a841fdd2985b9
 =======
+<<<<<<< HEAD
 >>>>>>> a7296cb76eb2976b1feddcf3b90545372b53aa4f
+=======
+>>>>>>> a7296cb... sync
+>>>>>>> 6e5178e... sync
 }
