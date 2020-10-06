@@ -1,0 +1,7 @@
+﻿Cho n soi day xich 
+Moi day co L mac xich
+Cac mat xich co the mo ra dong lai
+Yeu cau noi cac soi day lai sao cho so mac xich mo ra dong lai la it nhat
+
+n <= 5e5
+L <= 1e5

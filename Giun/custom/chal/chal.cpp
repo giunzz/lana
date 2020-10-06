@@ -26,9 +26,13 @@ vec(ll) snt;
 
 void init(){
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     d[1] = 2;
 >>>>>>> 71dae57a442cd26f3ab066fd924a841fdd2985b9
+=======
+    d[1] = 2;
+>>>>>>> a7296cb76eb2976b1feddcf3b90545372b53aa4f
     for(ll i = 2; i <= 1e5 + 100; i++){
         if(!d[i]){
             // snt.push_back(i);
@@ -46,6 +50,7 @@ struct quang{
 
 int main(){
 <<<<<<< HEAD
+<<<<<<< HEAD
     opt;
     file;
     init();
@@ -58,6 +63,13 @@ int main(){
     cin >> m >> n;
     // scanf("%lld %lld", &m, &n);
 >>>>>>> 71dae57a442cd26f3ab066fd924a841fdd2985b9
+=======
+    // opt;
+    // file;
+    init();
+    cin >> m >> n;
+    // scanf("%lld %lld", &m, &n);
+>>>>>>> a7296cb76eb2976b1feddcf3b90545372b53aa4f
     // lp(i, 1, m){
     //     lp(j, 1, n) 
     // }
@@ -75,9 +87,12 @@ int main(){
     for(int j = 1; j <= n; j++) 
         if(ans > f[m][j].doc) ans = f[m][j].doc;
 <<<<<<< HEAD
+<<<<<<< HEAD
     cout << ans;
     // cerr << clock();
 =======
+=======
+>>>>>>> a7296cb76eb2976b1feddcf3b90545372b53aa4f
     cout << ans << endl;
     cerr << clock();
     // cout<<endl;
@@ -86,5 +101,8 @@ int main(){
     //     cout << endl;
     // }
 
+<<<<<<< HEAD
 >>>>>>> 71dae57a442cd26f3ab066fd924a841fdd2985b9
+=======
+>>>>>>> a7296cb76eb2976b1feddcf3b90545372b53aa4f
 }
