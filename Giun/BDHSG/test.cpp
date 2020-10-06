@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+<<<<<<< HEAD
 #include <sys/stat.h>
 #define fname "b"
 
@@ -9,4 +10,13 @@ int main(){
     if(!stat(fname".inp", &buffer))
         cout << 1;
     else cout << 0;
+=======
+using namespace std;
+
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long a = (long long)1 << (long long)3;
+    cout << a;
+>>>>>>> 1b5c812d903df17d42541c82c30e0fc279825697
 }
