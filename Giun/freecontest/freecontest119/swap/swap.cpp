@@ -21,7 +21,7 @@ const string tenfile = "f";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 string s;
-vector<ll> q[111];
+deque<ll> q[111];
 
 int main(){
     opt;
