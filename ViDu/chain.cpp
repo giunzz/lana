@@ -7,8 +7,8 @@ int main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
+    freopen("chain.inp","r",stdin);
+    freopen("chain.out","w",stdout);
     cin >> n ;
     for (int i = 1 ; i <= n ; i++) cin >> l[i];
     sort(l+1,l+1+n);
