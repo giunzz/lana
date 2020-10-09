@@ -15,59 +15,53 @@ void file(const string s){
 }
 
 cll maxn = 407;
-ll n, res[maxn] = {0}, m;
-bool ok = 0, d[maxn] = {0}, tmp[maxn];
-vec(ll) g[maxn];
+ll n, m, t[maxn][maxn] = {0}, res[maxn];
+vec(ll) d[2][maxn];
 
-void init(){
+inline void init(){
     ll u, v;
+    cin >> n >> m;
     lp(i, 1, m){
         cin >> u >> v;
-        g[u].push_back(v);
-        g[v].push_back(u);
-        if(abs(u - v) + 1 == n) ok = 1;
+        t[u][v] = 1;
+        t[v][u] = 1;
+        d[0][u].push_back(v);
+        d[0][v].push_back(u);
     }
-}
-
-void bfs(){
-    d[1] = 1;
-    queue<ll> q;
-    q.push(1);
-    while(q.size()){
-        memset(tmp, 0, sizeof(tmp));
-        ll u = q.front();
-        q.pop();
-        for(ll v : g[u]){
-            tmp[v] = 1;
-        }
-        lp(i, 1, n) {if(!d[i] && !tmp[i]) res[i] = res[u] + 1, d[i] = 1, q.push(i);}
-    }
-}
-
-void bfs1(){
-    d[1] = 1;
-    queue<ll> q;
-    q.push(1);
-    while(q.size()){
-        ll u = q.front();
-        q.pop();
-        for(ll v : g[u]){
-            if(!d[v]){
-                res[v] = res[u] + 1;
-                q.push(v);
-                d[v] = 1;
+    lp(i, 1, n){
+        lp(j, i + 1, n){
+            if(!t[i][j]) {
+                d[1][i].push_back(j);
+                d[1][j].push_back(i);
             }
         }
     }
 }
 
+bool dd[maxn];
+
+ll dj(bool stt){
+    memset(dd, 0, sizeof(dd));
+    memset(res, 0, sizeof(res));
+    queue<ll> q;
+    ll u;
+    q.push(1);
+    dd[1] = 1;
+    while(q.size()){
+        u = q.front();
+        q.pop();
+        for(ll v : d[stt][u]){
+            if(dd[v]) continue;
+            dd[v] = 1;
+            res[v] = res[u] + 1;
+            q.push(v);
+        }
+    }
+    return res[n];
+}
+
 int main(){
-    file("f");
-    cin >> n >> m;
+    file("routes");
     init();
-    // cerr << ok;
-    if(ok) {bfs();}
-    else bfs1();
-    // lp(i, 1, n) cerr << res[i] << ' ';
-    cout << res[n];
+    cout << max(dj(0), dj(1));
 }
