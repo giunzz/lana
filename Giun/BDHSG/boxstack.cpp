@@ -54,37 +54,13 @@ ll solve(){
         f[i] += a[i].c;
         res = max(res, f[i]);
     }
-    // return res;
-    return f[n];
+    return res;
+    // return f[n];
 }
-
-// ll solve1(){
-//     ll res = 0;
-//     a[0].d = 0;
-//     lp(i, 0, n) f[i] = 0;
-//     f.resize(n + 1);
-//     lp(i, 1, n){
-//         lp(j, 0, i - 1){
-//             if(a[j].d <= a[i].d){
-//                 f[i] = max(f[i], f[j]);
-//             }
-//         }
-//         f[i] += a[i].c;
-//         res = max(res, f[i]);
-//     }
-//     return res;
-// }
 
 int main(){
     OF();
     cin >> n;
     init();
-    for(quang &x : a){
-        // cerr << 1;
-        cerr << x.c << ' ' << x.r << ' ' << x.d << '\n';
-    }
-    // ll tmp = solve();
-    // sort(a.begin() + 1, a.end(), cpr1);
-    // cout << max(tmp, solve1());
     cout << solve();
 }
