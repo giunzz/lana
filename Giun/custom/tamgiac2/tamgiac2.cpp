@@ -5,7 +5,7 @@
 #define lp(a, b, c) for(ll a = b; a <= c; ++a)
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
-#define Fname "f"
+#define Fname "tamgiac2"
 using namespace std;
 
 void OF(){
@@ -27,18 +27,18 @@ struct quang{
 };
 
 bool operator<(quang const &x, quang const &y){
-    if(x.a < y.a) return 1;
-    if(x.a == y.a && x.b < y.b) return 1;
-    return 0;
+    // if(x.a < y.a) return 1;
+    // return x.a == y.a && x.b < y.b;
+    return x.a * y.b < x.b * y.a;
 }
 
 bool operator==(quang const &x, quang const &y){
-    if(x.a == y.a && x.b == y.b) return 1;
-    return 0;
+    // return x.a == y.a && x.b == y.b;
+    return x.a * y.b == x.b * y.a;
 }
 
 ll n;
-vec(ll) r, sum[3];
+vec(ll) r, sum[2];
 vec(quang) l, o;
 map<quang, ll> cnt;
 
@@ -47,7 +47,7 @@ void init(){
     lp(i, 1, n){
         cin >> l[i].a >> l[i].b >> c;
         if(l[i].b < 0) l[i].dau(); 
-        l[i].rg();
+        // l[i].rg();
         quang tmp = {l[i].a, l[i].b};
         if(!cnt[tmp]++) o.push_back(tmp);
     }
@@ -66,11 +66,14 @@ int main(){
         r.push_back(res);
         sum[0].push_back(s += res);
     }
+    s = 0;
+    lp(i, 0, r.size() - 1){
+        res = sum[0].back() - sum[0][i];
+        sum[1].push_back(s += r[i] * res);
+    }
     res = 0;
     lp(i, 0, r.size() - 1){
-        lp(j, i + 1, r.size() - 2){
-            res += r[i] * r[j] * (sum[0].back() - sum[0][j]);
-        } 
+        res += r[i] * (sum[1].back() - sum[1][i]);
     }
     cout << res;
 }
