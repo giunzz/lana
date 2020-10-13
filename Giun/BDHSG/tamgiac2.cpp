@@ -5,7 +5,7 @@
 #define lp(a, b, c) for(ll a = b; a <= c; ++a)
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
-#define Fname "f"
+#define Fname "tamgiac2"
 using namespace std;
 
 void OF(){
@@ -38,32 +38,21 @@ bool operator==(quang const &x, quang const &y){
 }
 
 ll n;
+vec(ll) r, u;
 vec(quang) l, o;
 map<quang, ll> cnt;
-map<quang, bool> d;
+// map<quang, bool> d;
 
 void init(){
     lp(i, 1, n){
         cin >> l[i].a >> l[i].b >> l[i].c;
         if(l[i].b < 0) l[i].dau(); 
         l[i].rg();
-        if(!d[l[i]]){
-            d[l[i]] = 1;
-            quang tmp = {l[i].a, l[i].b, 0};
-            if(!cnt[tmp]++) o.push_back(tmp);
-            // cerr << tmp.a << ' ' << tmp.b << ' ' << tmp.c << ' ' << cnt[tmp] << '\n';
-        }
+            // d[l[i]] = 1;
+        quang tmp = {l[i].a, l[i].b, 0};
+        if(!cnt[tmp]++) o.push_back(tmp);
     }
-    // cerr <<'\n';
 }
-
-// bool cpr(quang &x, quang &y){
-//     return -x.a * y.b > -y.a * x.b;
-// }
-
-// ll solve(){
-    
-// }
 
 int main(){
     ios_base::sync_with_stdio(0);
@@ -72,7 +61,18 @@ int main(){
     cin >> n;
     l.resize(n + 1);
     init();
+    ll res = 0, s = 0;
     lp(i, 0, o.size() - 1){
-        
+        res = cnt[o[i]];
+        r.push_back(res);
+        s += res;
+        u.push_back(s);
     }
+    res = 0;
+    lp(i, 0, r.size() - 1){
+        lp(j, i + 1, r.size() - 2){
+            res += r[i] * r[j] * (u.back() - u[j]);
+        } 
+    }
+    cout << res;
 }
