@@ -5,7 +5,7 @@
 #define lp(a, b, c) for(ll a = b; a <= c; ++a)
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
-#define Fname "tamgiac2"
+#define Fname "f"
 using namespace std;
 
 void OF(){
@@ -14,26 +14,27 @@ void OF(){
 }
 
 struct quang{
-    ll a, b, c;
+    ll a, b;
     void dau(){
-        a *= -1, b *= -1, c *= -1;
+        a *= -1, b *= -1;
     }
     void rg(){
-        ll tmp = __gcd(__gcd(abs(a), abs(b)), abs(c));
+        ll tmp = __gcd(abs(a), abs(b));
         if(!tmp) tmp = 1;
-        a /= tmp, b /= tmp, c /= tmp;
+        if(!a || !b) tmp = max(abs(a), abs(b));
+        a /= tmp, b /= tmp;
     }
 };
 
 bool operator<(quang const &x, quang const &y){
     if(x.a < y.a) return 1;
     if(x.a == y.a && x.b < y.b) return 1;
-    if(x.a == y.a && x.b == y.b && x.c < y.c) return 1;
+    if(x.a == y.a && x.b == y.b) return 1;
     return 0;
 }
 
 bool operator==(quang const &x, quang const &y){
-    if(x.a == y.a && x.b == y.b && x.c == y.c) return 1;
+    if(x.a == y.a && x.b == y.b) return 1;
     return 0;
 }
 
@@ -44,12 +45,13 @@ map<quang, ll> cnt;
 // map<quang, bool> d;
 
 void init(){
+    ll c;
     lp(i, 1, n){
-        cin >> l[i].a >> l[i].b >> l[i].c;
+        cin >> l[i].a >> l[i].b >> c;
         if(l[i].b < 0) l[i].dau(); 
         l[i].rg();
             // d[l[i]] = 1;
-        quang tmp = {l[i].a, l[i].b, 0};
+        quang tmp = {l[i].a, l[i].b};
         if(!cnt[tmp]++) o.push_back(tmp);
     }
 }
