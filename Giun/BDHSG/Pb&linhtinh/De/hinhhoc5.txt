@@ -18,3 +18,5 @@ cho n điểm trong 1 mp Oxy
 đếm số lượng tam giác vuông tạo thành từ 3 điểm bất kì / tamgiacvuongss.cpp
 - sao cho các cạnh góc vuông song song với 2 trục tọa độ (n <= 3e3) / tamgiacvuongbk.cpp
 - tgiac vg bất kì (n <= 15e2)
+
+**2 duong // giao nhau he so goc
