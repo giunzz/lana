@@ -37,7 +37,7 @@ void Sinh(){
     ll n = 10;
     co << n << '\n';
     lp(i, 1, n){
-        co << Rand(-20, 20) << ' ' << Rand(-20, 20)<< ' ' << Rand(-20, 20)<< '\n';
+        co << Rand(-10, 10) << ' ' << Rand(-10, 10)<< ' ' << Rand(-10, 10)<< '\n';
     }
     co.close();
     st(name); st(nb);
