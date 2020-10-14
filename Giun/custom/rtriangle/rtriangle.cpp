@@ -34,7 +34,7 @@ struct quang{
     }
 };
 bool operator<(const quang &a, const quang &b){  //xa / ya && xb /yb
-    if(a.x * b.y == b.x * a.y) return(a.x - a.y < b.x - b.y);
+    if(a.x * b.y == b.x * a.y) return(a.x <= b.x  && a.y <= b.y);
     return a.x * b.y > b.x * a.y;
 }
 bool operator==(const quang &a, const quang&b){
@@ -70,7 +70,7 @@ int main(){
         }
         // cerr << i << ' ';
         sort(pt.begin() + 1, pt.end());
-        if(i == 1) lp(j, 1, n) cerr << pt[j].x << ' ' << pt[j].y << ' ' << pt[j].stt  << '\n';
+        // if(i == 2) lp(j, 1, n) cerr << pt[j].x << ' ' << pt[j].y << ' ' << pt[j].stt  << '\n';
         ++cnt[pt[2].stt][0];
         lp(j, 3, n){
             if(pt[j] == pt[j - 1]) 
