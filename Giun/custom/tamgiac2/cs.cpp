@@ -34,10 +34,10 @@ long long Rand(long long l, long long h)
 
 void Sinh(){
     co.open((ni).c_str());
-    ll n = 100;
+    ll n = 10;
     co << n << '\n';
     lp(i, 1, n){
-        co << Rand(-1e9, 1e9) << ' ' << Rand(-1e9, 1e9) << ' ' << Rand(-1e9, 1e9) << '\n';
+        co << Rand(-20, 20) << ' ' << Rand(-20, 20)<< ' ' << Rand(-20, 20)<< '\n';
     }
     co.close();
     st(name); st(nb);

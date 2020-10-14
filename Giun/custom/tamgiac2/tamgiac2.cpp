@@ -18,18 +18,18 @@ struct quang{
     void dau(){
         a *= -1, b *= -1;
     }
-    void rg(){
-        ll tmp = __gcd(abs(a), abs(b));
-        if(!tmp) tmp = 1;
-        if(!a || !b) tmp = max(abs(a), abs(b));
-        a /= tmp, b /= tmp;
-    }
+    // void rg(){
+    //     ll tmp = __gcd(abs(a), abs(b));
+    //     if(!tmp) tmp = 1;
+    //     if(!a || !b) tmp = max(abs(a), abs(b));
+    //     a /= tmp, b /= tmp;
+    // }
 };
 
 bool operator<(quang const &x, quang const &y){
     // if(x.a < y.a) return 1;
     // return x.a == y.a && x.b < y.b;
-    return x.a * y.b < x.b * y.a;
+    return -x.b * y.a < -y.b * x.a; //tan alpha = -xa/xb => cot alpha = -xb/xa  ?? -yb/ya
 }
 
 bool operator==(quang const &x, quang const &y){
@@ -46,7 +46,7 @@ void init(){
     ll c;
     lp(i, 1, n){
         cin >> l[i].a >> l[i].b >> c;
-        if(l[i].b < 0) l[i].dau(); 
+        if(l[i].a < 0) l[i].dau(); 
         // l[i].rg();
         quang tmp = {l[i].a, l[i].b};
         if(!cnt[tmp]++) o.push_back(tmp);
