@@ -23,10 +23,6 @@ https://codeforces.com/group/FLVn1Sc504/contest/274766/problem/L#
 dinit/ dicnit
 ford fulkerson
 
-<<<<<<< HEAD
-20 doan thang bao nhieu tam giac?
-=======
 20 doan thang bao nhieu tam giac?
 
 https://stackoverflow.com/questions/17333/what-is-the-most-effective-way-for-float-and-double-comparison
->>>>>>> ca8c0575587e81f424c5d9e3a82bdca8ec07fbf1
