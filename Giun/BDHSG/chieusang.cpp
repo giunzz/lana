@@ -13,10 +13,11 @@ void OF(){
     freopen(Fname ".out", "w", stdout);
 }
 
-cll maxn = 1e5 + 107;
+cll maxn = 1e5 + 107, MOD = 1e4 + 7;
 ll n;
 pp(ll, ll) f[maxn][2];
 vec(ll) g[maxn];
+bool d[maxn];
 
 inline void init(){
     ll u, v;
@@ -24,6 +25,19 @@ inline void init(){
         cin >> u >> v;
         g[u].push_back(v);
         g[v].push_back(u);
+    }
+}
+
+#define cnt first
+#define ways second
+
+void dfs(ll u){
+    ll tmp1 = 1, cnt_tmp1 = 0;
+    for(ll v : g[u]){
+        if(d[v]) continue;
+        d[v] = 1;
+        cnt_tmp1 += f[v][1].cnt;
+        tmp1 = (tmp1 * f[v][1].ways) % MOD;
     }
 }
 
@@ -40,6 +54,7 @@ int main(){
             lp(j, 0, 1){
                 f[i][j] = {0, 0};
             }
+            d[i] = 0;
         }
         init(); 
     }
