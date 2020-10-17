@@ -32,13 +32,21 @@ inline void init(){
 #define ways second
 
 void dfs(ll u){
-    ll tmp1 = 1, cnt_tmp1 = 0;
+    // cerr << u << ' ';
+    ll tmp1 = 1, cnt_tmp1 = 0, tmp0 = 1, cnt_tmp0 = 0;
     for(ll v : g[u]){
         if(d[v]) continue;
         d[v] = 1;
-        cnt_tmp1 += f[v][1].cnt;
-        tmp1 = (tmp1 * f[v][1].ways) % MOD;
+        dfs(v);
+        cnt_tmp1 += f[v][1].cnt, tmp1 = (tmp1 * f[v][1].ways) % MOD;
+        if(f[v][0].cnt < f[v][1].cnt) cnt_tmp0 += f[v][0].cnt, tmp0 = (tmp0 * f[v][0].ways) % MOD;
+        else if(f[v][0].cnt == f[v][1].cnt) cnt_tmp0 += f[v][0].cnt, tmp0 = (tmp0 * (f[v][0].ways + f[v][1].ways)) % MOD;
+        else cnt_tmp0 += f[v][1].cnt, tmp0 = (tmp0 * f[v][1].ways) % MOD;
     }
+    if(cnt_tmp1) f[u][0] = {cnt_tmp1, tmp1};
+    else f[u][0] = {0, 1};
+    if(cnt_tmp0) f[u][1] = {cnt_tmp0 + 1, tmp0};
+    else f[u][1] = {1, 1};
 }
 
 int main(){
@@ -56,6 +64,11 @@ int main(){
             }
             d[i] = 0;
         }
-        init(); 
+        init();
+        d[1] = 1;
+        dfs(1); 
+        if(f[1][0].cnt < f[1][1].cnt) cout << f[1][0].cnt << ' ' << f[1][0].ways << '\n';
+        else if(f[1][0].cnt == f[1][1].cnt) cout << f[1][0].cnt << ' ' << f[1][0].ways + f[1][1].ways << '\n';
+        else cout << f[1][1].cnt << ' ' << f[1][1].ways << '\n';
     }
 }
