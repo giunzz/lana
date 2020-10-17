@@ -14,7 +14,7 @@ void file(const string s){
     freopen((s + ".out").c_str(), "w", stdout);
 }
 
-cll maxn = 407;
+cll maxn = 4007;
 ll n, m, t[maxn][maxn] = {0}, res[maxn];
 vec(ll) d[2][maxn];
 
@@ -50,6 +50,7 @@ ll dj(bool stt){
     while(q.size()){
         u = q.front();
         q.pop();
+        if(res[n]) break;
         for(ll v : d[stt][u]){
             if(dd[v]) continue;
             dd[v] = 1;
@@ -61,7 +62,7 @@ ll dj(bool stt){
 }
 
 int main(){
-    file("routes");
+    file("f");
     init();
     cout << max(dj(0), dj(1));
 }

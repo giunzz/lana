@@ -34,4 +34,11 @@ int main(){
         ++cnt[a[i]];
     }
     a = cpress(a);
+<<<<<<< HEAD
 }
+=======
+                                                       
+}
+
+//hnoi
+>>>>>>> 0c03d663e8453417cb8f893c6da7b5a440d5583a
