@@ -6,11 +6,12 @@ main()
 {
    int gd = DETECT, gm, x, y, color, angle = 0;
    struct arccoordstype a, b;
-   initgraph(&gd, &gm, "C:\\TURBOC3\\BGI");
+   initgraph(&gd, &gm, "D:\GCC\\BGI");
    delay(2000);                                                                
    while(angle<=360)
    {
       setcolor(BLACK);
+      // selcet (')
       arc(getmaxx()/2,getmaxy()/2,angle,angle+2,100);
       setcolor(RED);
       getarccoords(&a);
