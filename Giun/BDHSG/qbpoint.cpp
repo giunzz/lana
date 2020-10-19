@@ -32,8 +32,14 @@ bool operator<(quang2 const &x, quang2 const &y){
     return 0;
 }
 
+bool operator>(quang2 const &x, quang2 const &y){
+    if(x.v > y.v) return 1;
+    if(x.v == y.v && x.m > y.m) return 1;
+    return 0;
+}
+
 ll n;
-vec(pp(pp(ll, ll), pp(ll, ll))) a;
+vec(pp(ll, ll)) a;
 map<quang2, ll> mp;
 
 #define x first
@@ -41,7 +47,8 @@ map<quang2, ll> mp;
 
 void xuly(pp(ll, ll) &vt){
     if(vt.x < 0) vt.x *= -1, vt.y *= -1;
-    else if(vt.x == 0 && vt.y) vt.y = 1;
+    if(vt.x == 0 && vt.y) vt.y = 1;
+    if(vt.y == 0 && vt.x) vt.x = 1;
     ll tmp = abs(__gcd(vt.x, vt.y));
     if(!tmp) tmp = 1;
     vt.x /= tmp, vt.y /= tmp;
@@ -60,14 +67,31 @@ int main(){
         lp(j, i + 1, a.size() - 1){
             pp(ll, ll) vt = {a[j].x - a[i].x, a[j].y - a[i].y};
             pp(double, double) mid = {(a[j].x + a[i].x) / 2.0, (a[j].y + a[i].y) / 2.0};
-            // cerr << i << ' ' << j << '\n';
+            cerr << i << ' ' << j << '\n';
             xuly(vt);
             quang2 tmp = {vt, mid};
             ++mp[tmp];
-            // cerr << '\t' << vt.x << ' ' << vt.y << '\n';
-            // cerr << '\t' << mid.x << ' ' << mid.y << '\n';
-            // cerr << '\t' << mp[tmp] << '\n';
+            cerr << '\t' << vt.x << ' ' << vt.y << '\n';
+            cerr << '\t' << mid.x << ' ' << mid.y << '\n';
+            cerr << '\t' << mp[tmp] << '\n';
         }
     }
-
+    cerr << '\n';
+    ll ans = 0;
+    lp(i, 0, a.size() - 1){
+        lp(j, i + 1, a.size() - 1){
+            cerr << i << ' ' << j << '\n';
+            pp(ll, ll) vtpt = {a[j].x - a[i].x, a[j].y - a[i].y};
+            if(vtpt.y) vtpt.y *= -1;
+            else vtpt.x *= -1;
+            pp(double, double) mid = {(a[j].x + a[i].x) / 2.0, (a[j].y + a[i].y) / 2.0};
+            xuly(vtpt);
+            quang2 tmp = {vtpt, mid};
+            ans += mp[tmp];
+            cerr << '\t' << vtpt.x << ' ' << vtpt.y << '\n';
+            cerr << '\t' << mid.x << ' ' << mid.y << '\n';
+            cerr << '\t' << mp[tmp] << '\n';
+        }
+    }
+    cout << ans;
 }
