@@ -5,7 +5,7 @@
 #define lpd(a, b, c) for(ll a = b; a >= c; --a)
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
-#define Fname "f"
+#define Fname "meeting"
 using namespace std;
 
 void OF(){
@@ -45,11 +45,16 @@ int main(){
     cin.tie(0); cout.tie(0);
     OF();
     cin >> n;
-    lp(i, 1, n){cin >> a[i].b >> a[i].e; a[i].id = i;}
-    sort(a + 1, a + 1 + n, cpr);
-    lp(i, 1, n) cerr << a[i].b << ' ' << a[i].e << '\n';
-    ll mi, vt, ee;
     lp(i, 1, n){
+        cin >> a[i].b >> a[i].e; 
+        a[i].id = i;
+    }
+    // cerr << 1;
+    sort(a + 1, a + 1 + n, cpr);
+    // lp(i, 1, n) cerr << a[i].b << ' ' << a[i].e << '\n';
+    ll ee;
+    lp(i, 1, n){
+        // cerr << 1;
         // mi = LLONG_MAX, vt = 0;
         // if(!res[a[i].id])
         //     res[a[i].id] = ++ans;
@@ -69,7 +74,7 @@ int main(){
         }
     }
     cout << ans << '\n';
-    lp(i, 1, n){
-        cout << res[i] << '\n';
-    }
+    // lp(i, 1, n){
+    //     cout << res[i] << '\n';
+    // }
 }
