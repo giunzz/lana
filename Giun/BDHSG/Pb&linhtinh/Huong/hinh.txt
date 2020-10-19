@@ -1,0 +1,25 @@
+﻿PTDT (pt chinh tac - Google)
+
+Tim khoang cach C toi duong thang qua AB
+SABC = 1/2AB*CH
+CH = 2SABC/AB (SABC tinh S theo hinh thang)
+
+Xac dinh C nam ben trai hay phai
+tinh S theo hinh thang xem so am o dau
+
+Bao dong
+Cho n diem
+Tim cach ve duong gap khuc khong tu cat  di qua n diem 
+Out: thu tu cac diem theo duong gap khuc
+Sort cac diem theo goc vs Ox 
+
+So sanh goc
+Xac dinh trai phai nam ben trai goc lon hon nguoc lai goc be hon
+
+Bài 1: Bộ 3 điểm thẳng hàng
+https://vn.spoj.com/problems/QBPOINT/fbclid=IwAR2A5LuFu8jVZfMOK0EKNYcuC8memK2hZM_bGaCexBK0m3YKQpc-_1Mjq6s
+
+
+Bài 2:Hình thoi
+https://vn.spoj.com/problems/HINHTHOI/fbclid=IwAR0XAzURJeQTnDVC9bSXJBPo7aFr7LTSkcfHyCGjI9KJA8fmaGP1Gf_-sWI
+
