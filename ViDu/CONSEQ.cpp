@@ -3,18 +3,26 @@ using namespace std;
 #define ll long long
 #define giuncute ios_base::sync_with_stdio(0), cin.tie(0);
 #pragma GCC optimize("Ofast")
-ll n , a[(ll) 1e6+7], f[(ll) 1e6+7]={0} ;
+#define ballolo freopen("giun.inp","r",stdin),freopen("giun.out","w",stdout)
+const ll MOD = 1e9+7;
+ll n , x,  f[(ll) 1e6+7]={0} ,  ans=0;
 int main()
 {
     giuncute;
+    ballolo;
     cin >> n ;
-    for (int i = 1 ; i <= n ; i++) cin >> a[i];
-    f[0] = 0;
+    f[0] = 1;
+    for (int i = 1 ; i <= n ; i++) 
+    {
+        cin >> x;
+        if (x > n) continue;
+        //cerr << f[x] + f[x-1] << " ";
+        f[x] = (f[x] + f[x-1]) % MOD;
+        cerr << f[x] << " ";
+    }
     for (int i = 1 ; i <= n ; i++)
     {
-        for (int j = 1 ;  j <= i ; j++)
-        {
-            if (a[if[i] = max (f[i-1])
-        }
+        ans = (ans + f[i]) % MOD;
     }
+    cout << ans;
 } 

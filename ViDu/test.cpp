@@ -1,27 +1,21 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
-int n, t[(int) 1e6], m;
-bool work (int time) {
-	int x = 0;
-	for (int i = 1; i <= n; i++) {
-		x += time / t[i];
-		if (t >= m) return true;
+
+const int MAX=1e6+5,MOD=1e9+7;
+int n,rs=0,f[MAX];
+
+int main() {
+	freopen("giun.inp","r",stdin),freopen("giun.out","w",stdout);
+	cin>>n;
+	f[0]=1;
+	int x;
+	for(int i=1;i<=n;i++) {
+		cin>>x;
+		if(x>n)
+			continue;
+		f[x]=(f[x]+f[x-1])%MOD;
 	}
-	return false;
+	for(int i=1;i<=n;i++)
+		rs=(rs+f[i])%MOD;
+	cout<<rs;
 }
-int main () {
-	scanf("%d%d", &n, &m);
-	for (int i = 1; i <= n; i++) scanf("%d", &t[i]);
-	int l = 1, r = 1e8, res, mid;
-	while (l <= r) {
-		mid = l + (r - l) / 2;
-		if (work (mid)) {
-			r = mid - 1;
-			res = mid;
-		}
-		else l = mid + 1;
-	}
-	printf("%d", res);
-	return 0;
-}
-// Debug giup' be'
