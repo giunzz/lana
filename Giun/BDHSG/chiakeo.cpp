@@ -13,22 +13,21 @@ void OF(){
     freopen(Fname ".out", "w", stdout);
 }
 
-int Phi(int n) { // = n (1-1/p1) ... (1-1/pn)
-    if (n == 0) return 0;
-    int ans = n;
-    for (int x = 2; x*x <= n; ++x) {
-        if (n % x == 0) {
-            ans -= ans / x;
-            while (n % x == 0) n /= x;
-        }
-    }
-    if (n > 1) ans -= ans / n;
-    return ans;
-}
+cll maxn = 107;
+ll n, a[maxn];
 
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-    // OF();
-    cerr << Phi(20);
+    OF();
+    cin >> n;
+    lp(i, 1, n) cin >> a[i];
+    sort(a + 1, a + 1 + n);   
+    for(ll s = 1; s <= n; ++s){
+        for(ll i = 1; i + s - 1 <= n; ++i){
+            for(ll j = i + 1; j <= i + s - 1; ++j){
+
+            }
+        }
+    }
 }
