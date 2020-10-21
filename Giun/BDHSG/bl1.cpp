@@ -60,12 +60,13 @@ ll getts(point p1, point p2, point p3){
 }
 
 void getS(ll k){
-    double S = 0;
+    ll S = 0;
     lp(i, 3, k){
         S += getts(pp[i], pp[i - 1], pp[1]);
     }
-    S /= 2.0;
-    cout << setprecision(1) << fixed << S;
+    cout << S/2;
+    if(S&1) cout << ".5";
+    else cout << ".0";
 }
 
 void outp(point p){

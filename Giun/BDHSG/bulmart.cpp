@@ -14,8 +14,8 @@ void OF(){
 }
 
 cll maxn = 5e3 + 7, maxst = maxn, maxgt = 1e3 + 7;
-ll n, m, gt, st; //guest, store
-bool d[maxn] = {0};
+ll n, m, gt, st, ans; //guest, store
+bool d[maxn];
 pp(ll, pp(ll, ll)) agt[maxn], ast[maxn];
 vec(ll) g[maxn];
 
@@ -29,6 +29,21 @@ vec(ll) g[maxn];
 
 bool cpr(pp(ll, pp(ll, ll)) const &x, pp(ll, pp(ll, ll)) const &y){
     return (x.gi < y.gi);
+}
+
+void bfs(ll r){
+    ans = 0;
+    queue<ll> q;
+    q.push(r);
+    while(q.size()){
+        ll u = q.front();
+        q.pop();
+        for(ll v : g[u]){
+            if(d[v]) continue;
+            d[v] = 1;
+            q.push(v);
+        }
+    }
 }
 
 void init(){
@@ -58,3 +73,5 @@ int main(){
     cin.tie(0); cout.tie(0);
     OF();
 }
+
+//vo bfs hoac cnp tim khoang cach loc cac cua hang trong khoang cach
