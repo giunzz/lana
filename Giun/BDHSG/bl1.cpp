@@ -16,7 +16,7 @@
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
-const string tenfile = "f";
+const string tenfile = "bl1";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 cll maxn = 1e6 + 7;
@@ -60,12 +60,13 @@ ll getts(point p1, point p2, point p3){
 }
 
 void getS(ll k){
-    double S = 0;
+    ll S = 0;
     lp(i, 3, k){
         S += getts(pp[i], pp[i - 1], pp[1]);
     }
-    S /= 2;
-    cout << setprecision(1) << fixed << S;
+    cout << S/2;
+    if(S&1) cout << ".5";
+    else cout << ".0";
 }
 
 void outp(point p){
