@@ -79,16 +79,21 @@ ii main(){
     lp(i, 1, n){
         cin >> p[i].x >> p[i].y;
     }
-    cdOp();
-    sort(p + 2, p + 1 + n, cpr);
-    ll k = 2;
-    pp[1] = p[1], pp[2] = p[2];
-    lp(i, 3, n){
-        while(!ccw(pp[k - 1], pp[k], p[i]) && k > 1) --k;
-        pp[++k] = p[i];
-    }
-    getS(k);
-    // lp(i,1 , k){
-    //     cout << pp[i].x << " " << pp[i].y << endl;
+
+    //Cach 2
+    
+
+    //Cach 1
+    // cdOp();
+    // sort(p + 2, p + 1 + n, cpr);
+    // ll k = 2;
+    // pp[1] = p[1], pp[2] = p[2];
+    // lp(i, 3, n){
+    //     while(!ccw(pp[k - 1], pp[k], p[i]) && k > 1) --k;
+    //     pp[++k] = p[i];
     // }
+    // getS(k);
+    // // lp(i,1 , k){
+    // //     cout << pp[i].x << " " << pp[i].y << endl;
+    // // }
 }
