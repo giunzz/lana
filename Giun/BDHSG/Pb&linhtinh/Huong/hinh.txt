@@ -22,4 +22,11 @@ https://vn.spoj.com/problems/QBPOINT
 
 Bài 2:Hình thoi
 https://vn.spoj.com/problems/HINHTHOI
+<<<<<<< HEAD
+=======
+
+bao loi
+b1 sap xep cac dinh theo thu tu tang cua hoanh do neu co nhieu hon 1 diem co gt hoanh do = nhau thi sx theo gt tung do
+b2 chon diem dau co hoanh do nho nhat diem cuoi co hoanh do lon nhat
+>>>>>>> abbcb4a... sync
 
