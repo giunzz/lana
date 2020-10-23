@@ -17,9 +17,16 @@ So sanh goc
 Xac dinh trai phai nam ben trai goc lon hon nguoc lai goc be hon
 
 Bài 1: Bộ 3 điểm thẳng hàng
-https://vn.spoj.com/problems/QBPOINT/fbclid=IwAR2A5LuFu8jVZfMOK0EKNYcuC8memK2hZM_bGaCexBK0m3YKQpc-_1Mjq6s
+https://vn.spoj.com/problems/QBPOINT
 
 
 Bài 2:Hình thoi
-https://vn.spoj.com/problems/HINHTHOI/fbclid=IwAR0XAzURJeQTnDVC9bSXJBPo7aFr7LTSkcfHyCGjI9KJA8fmaGP1Gf_-sWI
+https://vn.spoj.com/problems/HINHTHOI
+<<<<<<< HEAD
+=======
+
+bao loi
+b1 sap xep cac dinh theo thu tu tang cua hoanh do neu co nhieu hon 1 diem co gt hoanh do = nhau thi sx theo gt tung do
+b2 chon diem dau co hoanh do nho nhat diem cuoi co hoanh do lon nhat
+>>>>>>> abbcb4a... sync
 
