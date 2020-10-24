@@ -5,7 +5,7 @@
 #define lpd(a, b, c) for(ll a = b; a >= c; --a)
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
-#define Fname "f"
+#define Fname "bulmart"
 using namespace std;
 
 void OF(){
@@ -20,10 +20,12 @@ vec(pp(ll, ll)) str[maxn];
 
 void initG(){
     ll m;
-    cin >> n >> m;
+    scanf("%lld %lld", &n, &m);
+    // cin >> n >> m;
     ll u, v;
     while(m--){
-        cin >> u >> v;
+        scanf("%lld %lld", &u, &v);
+        // cin >> u >> v;
         g[u].push_back(v);
         g[v].push_back(u);
     }
@@ -34,14 +36,16 @@ void initG(){
 
 void initStr(){
     ll a, b, c;
-    cin >> nstr;
+    // cin >> nstr;
+    scanf("%lld", &nstr);
     lp(i, 1, nstr){
-        cin >> a >> b >> c;
+        scanf("%lld %lld %lld", &a, &b, &c);
+        // cin >> a >> b >> c;
         str[a].emplace_back(c, b);
     }
 }
 
-void initBfs(ll r, vec(ll) &x){
+inline void initBfs(ll &r, vec(ll) &x){
     vec(bool) ck(n + 1, 0);
     x.push_back(r);
     ck[r] = 1;
@@ -57,14 +61,14 @@ void initBfs(ll r, vec(ll) &x){
 
 ll b, t, r;
 
-void mg(pp(ll, ll) s, priority_queue<pp(ll, ll)> &q, ll const &need, ll const &tt){
+inline void mg(pp(ll, ll) &s, priority_queue<pp(ll, ll)> &q, ll const &need, ll const &tt){
     ll tmp = min(need - b, s.nb);
     q.push({s.cost, tmp});
     b += tmp;
     t += tmp * s.cost;
 }
 
-ll sol(ll pos, ll need, ll tt){
+inline ll sol(ll &pos, ll &need, ll &tt){
     ll i = 0;
     priority_queue<pp(ll, ll)> q; //nhung thang minh chon
     b = 0, t = 0, r = pos;
@@ -86,7 +90,7 @@ ll sol(ll pos, ll need, ll tt){
             }
             if(b == need && t <= tt) return minP[pos][bfs[pos][i]];
         }
-        if(b == need && t <= tt) return minP[pos][bfs[pos][i]];
+        // if(b == need && t <= tt) return minP[pos][bfs[pos][i]];
     }
     return -1;
 }
@@ -100,10 +104,13 @@ int main(){
     lp(i, 1, n)
         initBfs(i, bfs[i]);
     ll tcs, pos, need, mn;
-    cin >> tcs;
+    // cin >> tcs;
+    scanf("%lld", &tcs);
     while(tcs--){
-        cin >> pos >> need >> mn;
-        cout << sol(pos, need, mn) << '\n';
+        scanf("%lld %lld %lld", &pos, &need, &mn);
+        // cin >> pos >> need >> mn;
+        // cout << sol(pos, need, mn) << '\n';
+        printf("%lld\n", sol(pos, need, mn));
     }
 }
 
