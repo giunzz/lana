@@ -14,7 +14,7 @@ void OF(){
 }
 
 cll maxn = 2e5 + 7;
-ll n, k = 0, ans = 0, tt = 0, db[maxn] = {0};
+ll n, k = 0, ans = 0, tt = 0, db[maxn] = {0}, nd[maxn] = {0};
 bool dC[maxn] = {0}, d[maxn] = {0}; 
 vec(pp(ll, ll)) g[maxn], preg[maxn];
 
@@ -22,7 +22,7 @@ void init(){
     ll v, c;
     lp(u, 1, n){
         cin >> v >> c;
-        cerr << u  << ' ' << v << ' ' << c << '\n';
+        // cerr << u  << ' ' << v << ' ' << c << '\n';
         g[u].push_back({c, v});
         preg[v].push_back({c, u});
     }
@@ -51,7 +51,7 @@ pp(ll, ll) dfs(ll &u, ll const &r){
 
 void getCycle(ll &r){
     bool ok = 0;
-    ll mindb = LLONG_MAX;
+    ll mindb = LLONG_MAX, vt;
     // cerr << r << '\n';
     vl.clear();
     ll u = r;
@@ -63,6 +63,7 @@ void getCycle(ll &r){
         u = v.pos;
     }
     // cerr << ans << '\n';
+    mindb = 0;
     lp(i, 0, vl.size() - 1){
         // cerr << u << ' ';
         u = vl[i];
@@ -71,16 +72,28 @@ void getCycle(ll &r){
             db[u] = tmp.se;
             ans += tmp.fi;
         }
-        ll tmp1 = db[u] + g[vl[(i - 1 + vl.size()) % vl.size()]].back().cost;
+        // ll tmp1 = db[u] + g[vl[(i - 1 + vl.size()) % vl.size()]].back().cost;
         // cerr << u << ' ' << db[u] << '\n';
-        if(tmp1 < g[u].back().cost){
-            ans += g[u].back().cost - tmp1;
-            ok = 1;
-        }
+        // if(tmp1 < g[u].back().cost){
+        //     ans += g[u].back().cost - tmp1;
+        //     ok = 1;
+        // }
+        nd[u] = g[u].back().cost - db[u];
+        if(nd[u] > mindb) mindb = nd[u], vt = i;
+        cerr << u << ' ' << g[u].back().pos << ' ' << nd[u] << '\n';
     }
+    ll rt = u = vl[vt], tmp = vl[(vt - 1 + vl.size()) % vl.size()];
+    ans += g[u].back().cost, g[tmp].back().cost = g[u].back().cost = 0,
+    db[g[u].back().pos] += g[u].back().cost, u = g[u].back().pos;
+    // ans += 
+    // cerr << vl[vt];
+    // while(vt != vl.size()) 
     // cerr << mindb;
-    if(!ok) ans += mindb;
+    // if(!ok) ans += mindb;
     // cerr << '\n' << ans;
+    while(u != r){
+        tmp = g[u].back().cost - 
+    }
 }
 
 void findCycle(ll &r){
