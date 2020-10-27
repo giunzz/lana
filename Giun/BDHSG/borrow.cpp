@@ -14,8 +14,8 @@ void OF(){
 }
 
 cll maxn = 2e5 + 7;
-ll n, dC[maxn] = {0}, k = 0;
-bool d[maxn] = {0}; 
+ll n, k = 0, ans = 0, tt = 0;
+bool dC[maxn] = {0}, d[maxn] = {0}; 
 vec(pp(ll, ll)) g[maxn], preg[maxn];
 
 void init(){
@@ -31,12 +31,32 @@ void init(){
 #define pos second
 #define cost first
 
+ll res;
+vec(ll) vl;
+
+ll dfs(ll &u){
+    ll tmp = 0;
+    for(pp(ll, ll) &v : g[u]){
+        d[v.pos] = 1;
+        tmp = max
+    }
+}
+
 void getCycle(ll &r){
-    
+    vl.clear();
+    ll u = r;
+    while(!dC[u]){
+        pp(ll, ll) v = g[u];
+        vl.push_back(v.cost);
+        dC[u] = 1;
+        if(preg[u].size() > 1) dfs(u);
+        u = v.pos;
+    }
 }
 
 void findCycle(ll &r){
     ll u = r;
+    res = 0;
     // pp(ll, ll) v = g[u];
     // if(d[v.pos]){
     //     if(dC[v.pos]) return;
