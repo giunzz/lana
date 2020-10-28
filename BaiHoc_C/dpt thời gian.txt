@@ -1,0 +1,42 @@
+Đánh giá dpt về thời gian
+
+dpt O(1) vd kt tam giác , kt chẳn lẻ
+
+dpt O(logn) : for (int i = 1 ; i <= n ; i*= 2 )
+_ thuật toán tìm kiếm nhị phân
+_thêm xóa cấu trúc dữ liệu Heap hay cnp cân bằng
+
+dpt O(n) : tuyến tính
+for (int i = 1 ; i <= n ; i++)
+thuật toán tìm kiếm tuần tự
+thuật toán so khớp chuỗi trong vb
+thuật toán KMP (ss chuỗi vb )
+
+đpt tuyến tính logarit 0(n.logn)
+
+- thuật toán sx
+- thuật toán dijkstra tối ưu hàng đợi ưu tiên
+
+dpt đa thức O(n^c)
+gồm c vòng lập  tuyến tính lồng nhau
+vd thuật toán buble sort
+tìm khoảng cách Leverstein trong 2 chuỗi AND
+thuật toán floyd _ warshall
+
+<= 10 
+<= 
+<=
+<=
+
+quy tắt đánh gia đpt
+ quy tắt hằng số o(k.f(n)) = o(f(n)) với k hằng số nhỏ
+quy tắt cộng o(f(n)) + g(n) = max (O (fn), f(n))
+quy tắt
+
+đánh giá dpt ko gian
+ 
+dpt o(1) : dùng vài biến số lưu trữ
+dpt o(n) : dùng 1 hoặc nhiều mản
+
+
+
