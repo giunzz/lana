@@ -3,27 +3,29 @@ using namespace std;
 #define ll long long 
 #define giuncute ios_base::sync_with_stdio(0),cin.tie(0);
 #define ballolo freopen("SIEUNTO.inp","r",stdin) , freopen("SIEUNTO.out","w",stdout) ; 
-#pragma GCC optimize("Ofast")
-const ll nmax = 1e8 + 7;
-ll sang[nmax], n , x;
+ll  n , x;
 
-void xaysang()
+bool check (ll n)
 {
-    sang[0] = 1; sang[1] = 1;
-    for (int i = 2; i * i <= 1e8; i++)
-        if (!sang[i]) 
-           for (int j = i * 2; j <= 1e8; j += i) sang[j] = 1;
+    if (n < 2) return false;
+    else
+    {
+        for (int i = 2 ; i*i <= n ; i++)
+        {
+        if (n % i == 0) return false;
+        }
+    return true;
+    }
 }
-
-bool check (ll k)
+bool checkans (ll k)
 {
     while (k != 0)
     {
- //       cerr << k << " " <<  sang[k] << endl;
-        if (!sang[k]) k/=10;
+     //   cerr << k << " " <<  check(k) << endl;
+        if (check(k) == true) k/=10;
         else return false;
     }
- //   cerr << endl;
+    //cerr << endl;
     return true;
 }
 int main()
@@ -31,11 +33,10 @@ int main()
     giuncute;
     ballolo;
     cin >> n ;
-    xaysang();
     for (int i = 1 ; i <= n ; i++)
     {
         cin >> x;
-        if (check(x) == true) cout << 1;
+        if (checkans(x) == true) cout << 1;
         else cout << 0;
     }
 }
