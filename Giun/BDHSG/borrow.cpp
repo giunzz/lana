@@ -22,7 +22,7 @@ void init(){
     ll v, c;
     lp(u, 1, n){
         cin >> v >> c;
-        // cerr << u  << ' ' << v << ' ' << c << '\n';
+        cerr << u  << ' ' << v << ' ' << c << '\n';
         g[u].push_back({c, v});
         preg[v].push_back({c, u});
     }
@@ -78,21 +78,34 @@ void getCycle(ll &r){
         //     ans += g[u].back().cost - tmp1;
         //     ok = 1;
         // }
-        nd[u] = g[u].back().cost - db[u];
+        // nd[u] = max(g[u].back().cost - db[u], 0LL);
+        // if(db[u] >= g[u].back().cost) nd[u] = 0, db[u] -= g[u].back().cost;
+        nd[u] = g[u].back().cost;
         if(nd[u] > mindb) mindb = nd[u], vt = i;
-        cerr << u << ' ' << g[u].back().pos << ' ' << nd[u] << '\n';
+        // if(r == 2) cerr << u << ' ' << g[u].back().pos << ' ' << nd[u] << ' ' << db[u] << '\n';
     }
-    ll rt = u = vl[vt], tmp = vl[(vt - 1 + vl.size()) % vl.size()];
-    ans += g[u].back().cost, g[tmp].back().cost = g[u].back().cost = 0,
-    db[g[u].back().pos] += g[u].back().cost, u = g[u].back().pos;
-    // ans += 
+    // if(r == 2) cerr << ans << ' ';
+    u = vl[vt];
+    ll tmp = vl[(vt - 1 + vl.size()) % vl.size()], rt = tmp;
+    if(db[tmp] < g[tmp].back().cost) ans += max(nd[u] - db[tmp] - db[u], 0LL);
+    else ans += max(nd[u] - g[tmp].back().cost - db[u], 0LL);
+    // if(r == 2) cerr << rt << '\n';
+    nd[tmp] = nd[u] = 0, db[g[u].back().pos] += g[u].back().cost, u = g[u].back().pos;
+    // ans +=  
     // cerr << vl[vt];
     // while(vt != vl.size()) 
     // cerr << mindb;
     // if(!ok) ans += mindb;
     // cerr << '\n' << ans;
-    while(u != r){
-        tmp = g[u].back().cost - 
+    // if(r== 2)cerr << u << ' ' << db[u] << '\n';
+    while(u != rt){
+        // if(db[u] < nd[u]) tmp = nd[u] - db[u];
+        // else tmp = 0;
+        // ans += tmp;
+        if(db[u] < nd[u]) ans += nd[u] - db[u];
+        db[g[u].back().pos] += g[u].back().cost;
+        u = g[u].back().pos;
+        // if(r == 2) cerr << u << ' ' << db[u] << '\n';
     }
 }
 
@@ -108,6 +121,7 @@ void findCycle(ll &r){
     while(g[u].size()){
         pp(ll, ll) v = g[u].back();
         if(d[v.pos]){
+            // cerr << v.pos << ' ';
             getCycle(v.pos);
             break;
         }
@@ -123,7 +137,7 @@ int main(){
     cin >> n;
     init();
     lp(i, 1, n){
-        if(!d[i]) findCycle(i);
+        if(!d[i]) {findCycle(i); }
     }
     cout << ans;
 }
