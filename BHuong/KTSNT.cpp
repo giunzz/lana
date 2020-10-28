@@ -3,7 +3,7 @@ using namespace std;
 
 #define ll long long 
 #define giuncute ios_base::sync_with_stdio(0),cin.tie(0);
-#define ballolo freopen("giun.inp","r",stdin) , freopen("giun.inp","r",stdin) ; 
+#define ballolo freopen("KTSNT.inp","r",stdin) , freopen("KTSNT.out","w",stdout) ; 
 
 bool check (ll n)
 {

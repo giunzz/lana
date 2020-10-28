@@ -1,29 +1,29 @@
 #include<bits/stdc++.h>
-using namespace std;
-
+using namespace std; 
 #define ll long long 
 #define giuncute ios_base::sync_with_stdio(0),cin.tie(0);
-#define ballolo freopen("giun.inp","r",stdin) , freopen("giun.inp","r",stdin) ; 
+#define ballolo freopen("SIEUNTO.inp","r",stdin) , freopen("SIEUNTO.out","w",stdout) ; 
+#pragma GCC optimize("Ofast")
+const ll nmax = 1e8 + 7;
+ll sang[nmax], n , x;
 
-const int maxn = 1e7; 
-ll  n , sang[maxn+7] ={0} , x ; 
-
-
-void ss()
+void xaysang()
 {
-    sang[1] = 1 , sang[0] = 1 ;
-    for (int i = 2  ; i*i <= maxn ; i++)
-        if (!sang[i])
-            for (int j = i*2 ; j <= maxn ; j +=i) sang[j] = 1;
+    sang[0] = 1; sang[1] = 1;
+    for (int i = 2; i * i <= 1e8; i++)
+        if (!sang[i]) 
+           for (int j = i * 2; j <= 1e8; j += i) sang[j] = 1;
 }
 
 bool check (ll k)
 {
     while (k != 0)
     {
-        if (sang[k] == true) k/=10;
+ //       cerr << k << " " <<  sang[k] << endl;
+        if (!sang[k]) k/=10;
         else return false;
     }
+ //   cerr << endl;
     return true;
 }
 int main()
@@ -31,10 +31,11 @@ int main()
     giuncute;
     ballolo;
     cin >> n ;
+    xaysang();
     for (int i = 1 ; i <= n ; i++)
     {
         cin >> x;
         if (check(x) == true) cout << 1;
-        else cout << 1;
+        else cout << 0;
     }
 }
