@@ -36,20 +36,30 @@ struct quang{
     }
 };
 
+ll cnt(ll x, ll y){
+    ll tmp = 0;
+    while(x / y){
+        tmp += x / y;
+        y *= y;
+    }
+    return tmp;
+}
+
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-    priority_queue<quang, vec(quang), greater<quang>> q;
-    // OF();
-    // lp(i, 1, 75){
-    //     if(75 % i == 0) cout << i << ' ';
+    // priority_queue<quang, vec(quang), greater<quang>> q;
+    // // OF();
+    // // lp(i, 1, 75){
+    // //     if(75 % i == 0) cout << i << ' ';
+    // // }
+    // q.push(quang{1, 3});
+    // q.push(quang{2, 3});
+    // q.push(quang{1, 4});
+    // q.push(quang{1, 1});
+    // while(q.size()){
+    //     cerr << q.top().a << ' ' << q.top().b << '\n';
+    //     q.pop();
     // }
-    q.push(quang{1, 3});
-    q.push(quang{2, 3});
-    q.push(quang{1, 4});
-    q.push(quang{1, 1});
-    while(q.size()){
-        cerr << q.top().a << ' ' << q.top().b << '\n';
-        q.pop();
-    }
+    cerr << cnt(100, 5);
 }
