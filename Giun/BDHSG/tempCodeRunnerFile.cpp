@@ -1,4 +1,5 @@
 
-            cerr << '\t' << vt.x << ' ' << vt.y << '\n';
-            cerr << '\t' << mid.x << ' ' << mid.y << '\n';
-            cerr << '\t' << mp[tmp] << '\n
+                while(pq.size()){
+                    pp(quang, ll) tmp1 = pq.top();
+                    pq.pop();
+                    if(chose[tmp1.se] || tmp1
