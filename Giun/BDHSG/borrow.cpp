@@ -89,7 +89,7 @@ void getCycle(ll const &r){
     // }
 }
 
-ll process(ll &u, ll const &r){
+ll process(ll &u, ll const &r){     
     // cerr << u << '\n';
     pp(ll, ll) v = g[u].back();
     if(v.pos == r){
