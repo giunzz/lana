@@ -1,0 +1,53 @@
+#include<bits/stdc++.h>
+using namespace std;
+int dimen[105][105],f[105][105];
+int main(){
+	int n,m,k,i,j,x,y,z,t,l,q,ans;
+	cin>>n>>m>>q;
+	for(i=1;i<=n;i++){
+		for(j=1;j<=m;j++){
+			cin>>dimen[i][j];
+		}
+	}
+	while(q--){
+		cin>>x>>y>>z>>t;
+		f[x][y]=dimen[x][y];
+		ans=0;
+		for(i=x;i<=z;i++){
+			for(j=y;j<=t;j++){
+				if(i==x&&j==y){
+					continue;
+				}
+				if(i==z&&j==t){
+					continue;
+				}
+				else{
+					for(k=x;k<=z;k++){
+						for(l=y;l<=t;l++){
+							if(k==x&&l==y){
+								continue;
+							}
+							if(k==i&&l==j){
+								f[k][l]=-6969696;
+								continue;
+							}
+							if(k==x){
+								f[k][l]=f[k][l-1]+dimen[k][l];
+							}
+							else{
+								if(l==y){
+									f[k][l]=f[k-1][l]+dimen[k][l];
+								}
+								else{
+									f[k][l]=max(f[k-1][l],f[k][l-1])+dimen[k][l];
+								}
+							}
+						}
+					}
+					ans=max(ans,f[z][t]);
+				}
+			}
+		}
+		cout<<ans<<endl;
+	}
+}
