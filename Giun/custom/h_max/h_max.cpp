@@ -28,9 +28,9 @@ cll maxn = 1e5 + 7;
 ll n;
 line l[maxn];
 
-// bool cpr(line const &q, line const &p){
-//     return 
-// }
+bool cpr(line const &q, line const &p){
+    return -q.b * p.a < -p.b * q.a;
+}
 
 void init(){
     ll x, z, t;
@@ -48,5 +48,14 @@ int main(){
     file;
     cin >> n;
     init();
+    double ans = 0;
     sort(l + 1, l + 1 + n, cpr);
+    lp(i, 2, n){
+        ll d = l[i - 1].a * l[i].b - l[i].a * l[i - 1].b;
+        ll dy = -l[i - 1].a * l[i].c + l[i].a * l[i - 1].c;
+        double tmp = dy / d;
+        if(tmp - ans >= esf) ans = tmp;  
+    }
+    if(ans <= esf) cout << "-1";
+    else cout << setprecision(3) << fixed << ans;
 }

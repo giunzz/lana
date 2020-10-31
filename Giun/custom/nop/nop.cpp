@@ -40,6 +40,11 @@ void init(){
         }
         if(a[i].empty()) res[i] = -1;
     }
+    // lp(i, 1, n){
+    //     for(ll &v : a[i]){
+    //         cerr << i << '_' << p[i] << ' ' << v << '_' << p[v] << '\n';
+    //     }
+    // }
 }
 
 void bfs(ll r){
@@ -73,21 +78,35 @@ void bfs(ll r){
         // cerr << 1;
         if(res[u] == -1) continue;
         for(ll v : a[u]){
-            if(d[v]) continue;
-            d[v] = 1;
             if((p[v] & 1) ^ (p[u] & 1)){
                 res[u] = 1;
                 ll j = u, tmp = 1;
                 // cerr << 1;
-                while(j) {if(((p[v] & 1) ^ (p[j] & 1)) && res[j] > tmp) res[j] = tmp; j = pre[j], ++tmp;}
+                while(j) {if(((p[v] & 1) ^ (p[j] & 1)) && res[j] < 1) res[j] = tmp; j = pre[j], ++tmp;}
                 // cerr << 1;
             }
+            if(d[v]) continue;
+            d[v] = 1;
             pre[v] = u;
-            if(res[v] == -1) res[u] = -1;
+            if(res[v] == -1 && !res[u]) res[u] = -1;
             else q.push(v);
         }
     }
 }
+
+// void bfs_odd(ll r){
+//     queue<ll> q;
+//     q.push(r);
+//     d[r] = 1;
+//     while(q.size()){
+//         ll u = q.front();
+
+//     }
+// }
+
+// void bfs_even(ll r){
+
+// }
 
 int main(){
     opt;
@@ -95,7 +114,12 @@ int main(){
     cin >> n;
     init();
     lp(i, 1, n){
-        if(!res[i]) bfs(i);
+        if(!res[i]){
+            // if(res[i] & 1) bfs_odd(i);
+            // else bfs_even(i);
+            bfs(i);
+        }
         cout << res[i] << ' ';
+        // cerr << pre[i] << ' ';
     }
 }
