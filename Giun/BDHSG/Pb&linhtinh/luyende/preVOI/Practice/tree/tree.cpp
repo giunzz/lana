@@ -17,19 +17,31 @@
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
-const string tenfile = "f";
+const string tenfile = "tree";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 cll maxn = 5e3 + 7;
-ll n, a[maxn];
+ll n, a[maxn], cnt[maxn] = {0};
 vec(ll) g[maxn];
+bool d[maxn] = {0};
 
 void init(){
     ll u, v;
     lp(i, 1, n - 1){
         cin >> u >> v;
+        // cerr << u << ' ' << v << '\n';
         g[u].push_back(v);
         g[v].push_back(u);
+    }
+}
+
+void cnt_leaf(ll u){
+    if(g[u].size() == 1) cnt[u] = 1; 
+    else for(ll &v : g[u]){
+        if(d[v]) continue;
+        d[v] = 1;
+        cnt_leaf(v);
+        cnt[u] += cnt[v];
     }
 }
 
@@ -39,5 +51,7 @@ int main(){
     cin >> n;
     lp(i, 1, n) cin >> a[i];
     init();
-    dfs(1);
+    d[1] = 1;
+    cnt_leaf(1);
+    lp(i, 1, n) cerr << cnt[i] << ' ';
 }
