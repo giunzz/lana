@@ -31,19 +31,26 @@ int main(){
         cin >> a[i]; 
         a[i] += a[i - 1];
         if(i - k >= 0){
-            l[i] = max(l[i - k], a[i] - a[i - k]);
+            l[i] = max(l[i - 1], a[i] - a[i - k]);
         }
     }
-    lp(i, 1, n) cerr << l[i] << ' ';
-    lp(i, n - k + 1, 1){
-        r[i] = max(r[i + k], a[i + k - 1] - a[i - 1]);
+    // lp(i, 1, n) cerr << (a[i] - a[i - k]) << ' ';
+    lpd(i, n - k + 1, 1){
+        r[i] = max(r[i + 1], a[i + k - 1] - a[i - 1]);
     }
-    ll ans = 0;
+    // lp(i, 1, n) cerr << r[i] << ' ';
+    ll ans = LLONG_MAX;
+    // cerr << '\n';
     lp(i, k, n){
-        ll tmpL = l[i - k], tmpR = r[i + 1], sum = a[i] - a[i - k];
-        if(tmpL && tmpR && tmpL <= sum && tmpR <= sum) ans = max(ans, sum);
-        if(!tmpL && tmpR <= sum) ans = max(ans, sum); 
-        if(!tmpR && tmpL <= sum) ans = max(ans, sum); 
+        // cerr << (i - k + 1) << " -> " << i << '\n';
+        ll tmpL = l[i - k], tmpR = r[i + 1];// sum = a[i] - a[i - k];
+        // cerr << tmpL << ' ' << sum << ' ' << tmpR << '\n';
+        // if(tmpL && tmpR && tmpL <= sum && tmpR <= sum) ans = min(ans, max(tmpL, tmpR));
+        // if(!tmpL && tmpR <= sum) ans = min(ans, tmpR); 
+        // if(!tmpR && tmpL <= sum) ans = min(ans, tmpL); 
+        if(tmpL && tmpR) ans = min(ans, max(tmpL, tmpR));
+        if(!tmpL) ans = min(ans, tmpR); 
+        if(!tmpR) ans = min(ans, tmpL); 
     }
     cout << ans;
 }
