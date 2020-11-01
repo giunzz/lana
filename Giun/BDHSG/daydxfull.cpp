@@ -64,8 +64,8 @@ void trace(){
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    freopen("DAYDX.INP", "r", stdin);
-    freopen("DAYDX.OUT", "w", stdout);
+    freopen("f.INP", "r", stdin);
+    freopen("f.OUT", "w", stdout);
     enter();
     sol();
     cout << f[1][n] << "\n";

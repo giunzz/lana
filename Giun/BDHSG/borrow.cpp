@@ -13,16 +13,25 @@ void OF(){
     freopen(Fname ".out", "w", stdout);
 }
 
+struct quang{
+    ll db = 0, nd, sl = 0; 
+    bool operator<(const quang &a) const{
+        return sl < a.sl || (sl == a.sl && nd < a.nd);
+    }
+};
+
 cll maxn = 2e5 + 7;
-ll n, k = 0, ans = 0, tt = 0, db[maxn] = {0}, nd[maxn] = {0};
-bool dC[maxn] = {0}, d[maxn] = {0}; 
+ll n, k = 0, ans = 0;
+bool dC[maxn] = {0}, d[maxn] = {0}, chose[maxn] = {0}; 
 vec(pp(ll, ll)) g[maxn], preg[maxn];
+quang gc[maxn];
+priority_queue<pp(quang, ll)> pq;
 
 void init(){
     ll v, c;
     lp(u, 1, n){
         cin >> v >> c;
-        cerr << u  << ' ' << v << ' ' << c << '\n';
+        // cerr << u  << ' ' << v << ' ' << c << '\n';
         g[u].push_back({c, v});
         preg[v].push_back({c, u});
     }
@@ -35,7 +44,7 @@ void init(){
 #define se second
 
 ll res;
-vec(ll) vl, tg;
+vec(ll) vl;
 
 pp(ll, ll) dfs(ll &u, ll const &r){
     ll tmp = 0, tmp1 = 0;
@@ -49,80 +58,95 @@ pp(ll, ll) dfs(ll &u, ll const &r){
     return {tmp, tmp1};
 }
 
-void getCycle(ll &r){
-    bool ok = 0;
-    ll mindb = LLONG_MAX, vt;
-    // cerr << r << '\n';
+void getCycle(ll const &r){
     vl.clear();
     ll u = r;
     while(!dC[u]){
         pp(ll, ll) v = g[u].back();
         vl.push_back(u);
-        mindb = min(mindb, v.cost);
         dC[u] = 1;
         u = v.pos;
     }
-    // cerr << ans << '\n';
-    mindb = 0;
     lp(i, 0, vl.size() - 1){
-        // cerr << u << ' ';
         u = vl[i];
         if(preg[u].size() > 1){
             pp(ll, ll) tmp = dfs(u, u);
-            db[u] = tmp.se;
+            gc[u].db = tmp.se;
             ans += tmp.fi;
         }
-        // ll tmp1 = db[u] + g[vl[(i - 1 + vl.size()) % vl.size()]].back().cost;
-        // cerr << u << ' ' << db[u] << '\n';
-        // if(tmp1 < g[u].back().cost){
-        //     ans += g[u].back().cost - tmp1;
-        //     ok = 1;
-        // }
-        // nd[u] = max(g[u].back().cost - db[u], 0LL);
-        // if(db[u] >= g[u].back().cost) nd[u] = 0, db[u] -= g[u].back().cost;
-        nd[u] = g[u].back().cost;
-        if(nd[u] > mindb) mindb = nd[u], vt = i;
-        // if(r == 2) cerr << u << ' ' << g[u].back().pos << ' ' << nd[u] << ' ' << db[u] << '\n';
+        if(gc[u].db >= g[u].back().cost) gc[u].db -= g[u].back().cost, g[u].back().cost = 0;
+        ll prePos = vl[i? (i - 1) : (vl.size() - 1)];
+        gc[u].nd = g[u].back().cost - gc[u].db - g[prePos].back().cost;
+        if(i == vl.size() - 1){
+            u = vl[0];
+            prePos = vl[i];
+            gc[u].nd = g[u].back().cost - gc[u].db - g[prePos].back().cost;
+        }
+        // cerr << u << ' ' << gc[u].db << ' ' << gc[u].nd << '\n';
     }
-    // if(r == 2) cerr << ans << ' ';
-    u = vl[vt];
-    ll tmp = vl[(vt - 1 + vl.size()) % vl.size()], rt = tmp;
-    if(db[tmp] < g[tmp].back().cost) ans += max(nd[u] - db[tmp] - db[u], 0LL);
-    else ans += max(nd[u] - g[tmp].back().cost - db[u], 0LL);
-    // if(r == 2) cerr << rt << '\n';
-    nd[tmp] = nd[u] = 0, db[g[u].back().pos] += g[u].back().cost, u = g[u].back().pos;
-    // ans +=  
-    // cerr << vl[vt];
-    // while(vt != vl.size()) 
-    // cerr << mindb;
-    // if(!ok) ans += mindb;
-    // cerr << '\n' << ans;
-    // if(r== 2)cerr << u << ' ' << db[u] << '\n';
-    while(u != rt){
-        // if(db[u] < nd[u]) tmp = nd[u] - db[u];
-        // else tmp = 0;
-        // ans += tmp;
-        if(db[u] < nd[u]) ans += nd[u] - db[u];
-        db[g[u].back().pos] += g[u].back().cost;
-        u = g[u].back().pos;
-        // if(r == 2) cerr << u << ' ' << db[u] << '\n';
+    // if(r == 2) for(ll u : vl){
+    //     cerr << u << ' ' << gc[u].db << ' ' << gc[u].nd << '\n';
+    // }
+}
+
+ll process(ll &u, ll const &r){     
+    // cerr << u << '\n';
+    pp(ll, ll) v = g[u].back();
+    if(v.pos == r){
+        if(g[u].back().cost + gc[g[u].back().pos].db >= g[r].back().cost){
+            gc[u].sl = gc[r].sl + 1;
+        }
+        else{
+            gc[u].sl = 1;
+        }
+        pq.push({gc[u], u});
+        return 0;
     }
+    if(g[u].back().cost + gc[v.pos].db < g[v.pos].back().cost){
+        gc[u].sl = 1;
+        pq.push({gc[u], u});
+        return v.pos;
+    }
+    ll tmp = process(v.pos, r);
+    gc[u].sl = gc[v.pos].sl + 1;
+    pq.push({gc[u], u});
+    return tmp;
 }
 
 void findCycle(ll &r){
+    // while(pq.size()) pq.pop();
     ll u = r;
     res = 0;
-    // pp(ll, ll) v = g[u];
-    // if(d[v.pos]){
-    //     if(dC[v.pos]) return;
-    //     ++k;
-    //     selectCycle(v.pos);
-    // }
     while(g[u].size()){
         pp(ll, ll) v = g[u].back();
         if(d[v.pos]){
             // cerr << v.pos << ' ';
             getCycle(v.pos);
+            if(vl.size()){
+                ll tmp = vl[0];
+                while(tmp) tmp = process(tmp, vl[0]); 
+                if(v.pos == 2) for(ll &i : vl){
+                    cerr << i << ' ' << g[i].back().pos << ' ' << gc[i].db << ' ' << gc[i].nd << ' ' << gc[i].sl << '\n';
+                }
+
+                while(pq.size()){
+                    pp(quang, ll) tmp1 = pq.top();
+                    pq.pop();
+                    if(chose[tmp1.se] || tmp1.fi.db != gc[tmp1.se].db) continue;
+                    // cerr << tmp1.se << ' ' << tmp1.fi.sl << ' ' << tmp1.fi.nd << ' ' << tmp1.fi.db << '\n';
+                    ll tu = tmp1.se;
+                    if(gc[tu].db < g[tu].back().cost) ans += (g[tu].back().cost - gc[tu].db);
+                    while(gc[tu].sl != 1){
+                        chose[tu] = 1;
+                        tu = g[tu].back().pos;
+                    }
+                    ll tv = g[tu].back().pos;
+                    chose[tu] = 1;
+                    gc[tv].db += g[tu].back().cost;
+                    pq.push({gc[tv], tv});
+                }
+                // cerr << ans << ' ';
+            }
             break;
         }
         d[v.pos] = 1;
@@ -136,8 +160,9 @@ int main(){
     OF();
     cin >> n;
     init();
-    lp(i, 1, n){
-        if(!d[i]) {findCycle(i); }
-    }
+    lp(i, 1, n)
+        if(!d[i]){
+            findCycle(i); 
+        }
     cout << ans;
 }

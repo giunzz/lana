@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int maxmn = 1005, inf = -1e6 - 1;
+const long long maxmn = 1005, inf = LLONG_MIN;
 long long m, n, a[maxmn][maxmn], vt = 1, b[maxmn][maxmn], t[maxmn];
 
 //cach giai can set full cac canh 0 =-oo
@@ -8,8 +8,10 @@ long long m, n, a[maxmn][maxmn], vt = 1, b[maxmn][maxmn], t[maxmn];
 void sol(){
     for (int j = 1; j <= n; j++){
         for (int i = 1; i <= m; i++){
-            if (i == 1 && j == 1) continue;
-            b[i][j] = a[i][j] + max(b[i - 1][j - 1], max(b[i][j - 1], b[i + 1][j - 1]));
+            // if (i == 1 && j == 1) continue;
+            b[i][j] = max(b[i - 1][j - 1], max(b[i][j - 1], b[i + 1][j - 1]));
+            if(b[i][j] == inf) b[i][j] = a[i][j];
+            else b[i][j] += a[i][j];
         }
     }
     long long ma = b[1][n];
@@ -36,18 +38,22 @@ void trace(){
     int j = n, i = vt;
     while (j > 0){
         t[j] = i;
-        if (b[i][j] - b[i - 1][j - 1] == a[i][j]) --i, --j;
-        else if (b[i][j] - b[i][j - 1] == a[i][j]) --j;
-        else if (b[i][j] - b[i + 1][j - 1] == a[i][j]) ++i, --j;
+        if (b[i][j] - b[i - 1][j - 1] == a[i][j]) --i;
+        else if (b[i][j] - b[i + 1][j - 1] == a[i][j]) ++i;
+        --j;
     } 
-    for (i = 1; i <= n; i++) cout << t[i] << " ";
+    long long check = 0;
+    for (i = 1; i <= n; i++) {cout << t[i] << " "; check += a[t[i]][i];}
+    cerr << check;
 }
 
 int main(){
-    freopen("WTOE.INP", "r", stdin);
-    freopen("WTOE.OUT", "w", stdout);
+    ios::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    freopen("f.INP", "r", stdin);
+    freopen("f.OUT", "w", stdout);
     enter();
     sol();
-    //trace();
+    // trace();
     return 0;
 }

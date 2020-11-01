@@ -26,8 +26,10 @@ struct point{
 };
 
 bool cmp (point const &a, point const &b) {
-  return a.x < b.x || (a.x == b.x && a.y < b.y);
+    return a.x < b.x || (a.x == b.x && a.y < b.y);
 }
+
+//Xba*Ybc - Yba*Xbc > 0 thi a -> b -> c re phai
 
 bool cw(point a, point b, point c) { 
   return a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y) <= 0;
