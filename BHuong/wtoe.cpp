@@ -1,40 +1,59 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-#define ll long long 
-ll m, n, a[1005][1005], b[1005][1005]= {{0}} ,ans = 0;
+const long long maxmn = 1005, inf = LLONG_MIN;
+long long m, n, a[maxmn][maxmn], vt = 1, b[maxmn][maxmn], t[maxmn];
 
-int main()
-{
-ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
-    cin >> n >> m ;
-	for (int i = 1 ; i <= n ; i++)
-	{
-		for (int j = 1 ; j <= m ; j++) cin >> a[i][j];
-	}
-	for (int i = 1 ; i <= m ; i++) b[i][1] = a[i][1];
-    for (int j = 2 ; j <= n ; j++)
-	{
-		for (int i = 1 ; i <= m ; i++) 
-        {
-            b[i][j] = max(max(b[i-1][j-1], b[i][j-1]),b[i+1][j-1]) + a[i][j];
-            ans = max(ans,b[i][j]);
-        //    cerr << b[i][j] << " ";
+//cach giai can set full cac canh 0 =-oo
+
+void sol(){
+    for (int j = 1; j <= n; j++){
+        for (int i = 1; i <= m; i++){
+            // if (i == 1 && j == 1) continue;
+            b[i][j] = max(b[i - 1][j - 1], max(b[i][j - 1], b[i + 1][j - 1]));
+            if(b[i][j] == inf) b[i][j] = a[i][j];
+            else b[i][j] += a[i][j];
         }
-      //  cerr << endl;
-	}
-    /*cerr << endl;
-	for (int i = 1 ; i <= n ; i++)
-	{
-		for (int j = 1 ; j <= m ; j++)
-		{ 
-			cerr << b[i][j] << " ";
-		}
-		cerr << endl;
-	}*/
-    cout << ans;
-	
+    }
+    long long ma = b[1][n];
+    for (int i = 2; i <= m; i++){
+        if (ma < b[i][n]){
+            ma = b[i][n], vt = i;
+        }
+    }
+    cout << ma << endl;
+}
 
+void enter(){
+    cin >> m >> n;
+    for (int i = 0; i <= m; i++) b[i][0] = inf;
+    for (int i = 0; i <= n; i++) b[0][i] = inf; 
+    for (int i = 1; i <= m; i++){
+        for (int j = 1; j <= n; j++){
+            cin >> a[i][j];
+        }
+    }
+}
+
+void trace(){
+    int j = n, i = vt;
+    while (j > 0){
+        t[j] = i;
+        if (b[i][j] - b[i - 1][j - 1] == a[i][j]) --i;
+        else if (b[i][j] - b[i + 1][j - 1] == a[i][j]) ++i;
+        --j;
+    } 
+    long long check = 0;
+    for (i = 1; i <= n; i++) {cout << t[i] << " "; check += a[t[i]][i];}
+    cerr << check;
+}
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    freopen("wtoe.INP", "r", stdin);
+    freopen("wtoe.OUT", "w", stdout);
+    enter();
+    sol();
+    // trace();
+    return 0;
 }
