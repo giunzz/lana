@@ -61,5 +61,5 @@ int main(){
     //     cerr << q.top().a << ' ' << q.top().b << '\n';
     //     q.pop();
     // }
-    cerr << cnt(100, 5);
+    cerr << __gcd(-2, 6);
 }
