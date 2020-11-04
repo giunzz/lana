@@ -53,9 +53,9 @@ void dijkstra(ll const &r){
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-    #ifdef DEBUG
+    // #ifdef DEBUG
     OF();
-    #endif
+    // #endif
     cin >> n >> m;
     cin >> a[0].x >> a[0].y >> a[m + 1].x >> a[m + 1].y;
     a[0].z = 0, a[m + 1].z = m + 1;
