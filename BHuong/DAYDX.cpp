@@ -6,8 +6,8 @@ int main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
+    freopen("daydx.inp","r",stdin);
+    freopen("daydx.out","w",stdout);
     cin >> n ; 
     for (int i = 1 ; i <= n ; i++) cin >> a[i];
     for(int i =  1; i <= n; i++) f[i][i] = 1;
