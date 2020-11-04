@@ -12,8 +12,8 @@ int main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
+    freopen("chank.inp","r",stdin);
+    freopen("chank.out","w",stdout);
     cin >> n >> k ;
     cout << gt(n) / gt(n-k) ;
 }

@@ -19,6 +19,10 @@ int main()
     for (int i = 1 ; i <= 1000 ; i++)
     {
         if (g[i] == 2) cout << i << " ";
+        else if (g[i] > 2)
+        {
+            for (int j = 1 ; j <= g[i] ; j++) cout << i << " ";
+        }
     }
     cout << endl;
     for (int i = 1 ; i <= 1000 ; i++)
