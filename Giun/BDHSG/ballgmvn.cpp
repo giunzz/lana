@@ -19,11 +19,10 @@ const string tenfile = "f";
 #pragma GCC optimize("Ofast")
 
 struct pairhash{
-    size_t operator()(const pair<ll, ll> &x) const
-    {
+    size_t operator()(const pair<ll, ll> &x) const{
         return hash<ll>()(x.first) ^ hash<ll>()(x.second);
     }
-};
+}; 
 
 cll maxn = 2e3 + 8;
 ll n, pos;

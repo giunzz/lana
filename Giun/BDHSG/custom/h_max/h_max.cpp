@@ -30,15 +30,18 @@ line l[maxn];
 
 bool cpr(line const &q, line const &p){
     return -q.b * p.a < -p.b * q.a;
+    // return -q.b / q.a < -p.b / p.a;
 }
 
 void init(){
     ll x, z, t;
     lp(i, 1, n){
-        cin >> x >> z >> t;
+        cin >> x >> z >> t;  //(x - x0) / xvt = (y - y0) /yvt  (x - xi) / (z - x) = (y) / (t)
         l[i].a = t;
         l[i].b = x - z;
         l[i].c = - t * x;
+        ll tmp = __gcd(l[i].a, __gcd(l[i].b, l[i].c));
+        l[i].a /= tmp, l[i].b /= tmp, l[i].c /= tmp;
         if(l[i].a < 0) l[i].a *= -1, l[i].b *= -1, l[i].c *= -1; 
     }
 }
@@ -48,14 +51,14 @@ int main(){
     file;
     cin >> n;
     init();
-    double ans = 0;
+    double ans = -1;
     sort(l + 1, l + 1 + n, cpr);
     lp(i, 2, n){
         ll d = l[i - 1].a * l[i].b - l[i].a * l[i - 1].b;
         ll dy = -l[i - 1].a * l[i].c + l[i].a * l[i - 1].c;
-        double tmp = dy / d;
+        double tmp = (double)dy / (double)d;
         if(tmp - ans >= esf) ans = tmp;  
     }
-    if(ans <= esf) cout << "-1";
+    if(ans == -1) cout << "-1";
     else cout << setprecision(3) << fixed << ans;
 }
