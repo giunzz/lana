@@ -22,6 +22,6 @@ int main(){
     cin >> t;
     while(t--){
         cin >> a >> b;
-
+        
     }
 }
