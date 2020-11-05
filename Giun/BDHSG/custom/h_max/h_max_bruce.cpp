@@ -23,5 +23,6 @@ const string tenfile = "h_max";
 int main(){
     opt;
     file;
+    cin >> n;
     
 }

@@ -30,15 +30,9 @@ int main(){
     string tmp;
     lp(i, 0, t.size() - 2){
         tmp.push_back(s[i]);
-        // st.push_back(s[i]);
     }
     reverse(t.begin(), t.end());
     reverse(tmp.begin(), tmp.end());
-    // if(tmp == t) {
-    //     while(tmp.size()) {
-    //         st.pop_back(); tmp.pop_back();
-    //     }
-    // }
     lp(i, t.size() - 1, s.size() - 1){
         tmp = s[i] + tmp;
         if(tmp.size() < t.size()) continue;
@@ -49,9 +43,6 @@ int main(){
         }
         st.push_back(tmp.back());
         tmp.pop_back();
-        // if(tmp == t){
-
-        // }
     }
     while(st.size()) tmp += st.back(), st.pop_back();
     reverse(tmp.begin(), tmp.end());
