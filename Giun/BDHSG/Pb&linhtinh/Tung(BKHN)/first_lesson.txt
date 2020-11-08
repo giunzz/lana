@@ -1,0 +1,26 @@
+hợp nhất các đoạn thẳng
+    Cho n doan thang tren duong thang. tinh do dai hợp các đoạn đã cho
+    VD
+    INP
+    4
+    1 5
+    3 8
+    14 16
+    10 20
+    OUT
+    17
+    Giai thuat Klee
+    dung ifstream ofstream nhanh hơn freopen 3%s
+    
+    Dien tich tam giac ko tu cat
+    S = 1/2abs(zigma(i 1 -> n) xiy(i+1) - x(i+1)yi)
+    xn+1 trung x1, yn+1 trung y1
+
+    Dinh ly Pick (Da giac dien tich != 0, canh k cat, toa do dinh nguyen)
+    S = so diem trong co toa do nguyen + (So diem toa do nguyen tren canh) / 2.0 - 1
+    C/m tu hcn 1x1 -> hcn thuong -> tam giac vuong -> thuong -> da giac
+
+    Bao loi (Thuat Graham)
+
+    https://bomongiaitich.wordpress.com/2011/05/29/khai-ni%E1%BB%87m-h%E1%BB%99i-t%E1%BB%A5-d%E1%BB%81u-va-ham-weierstrass-ham-cantor/
+    
