@@ -21,27 +21,41 @@ vec(vec(ll)) ans;
 //tach ra bit tung vi tri bit push so i vao
 //chia de tri
 
+void cdt(ll l, ll r){
+    if(l > r) return;
+    ans.push_back(vec(ll)());
+    if(l == r) {
+        ans.back().push_back(l);
+        return;
+    }
+    ll mid  = (l + r) / 2;
+    lp(i, mid + 1, r) ans.back().push_back(i);
+    cdt(l, mid);
+    cdt(mid + 1, r);
+}
+
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     OF();
     cin >> n;
-    lp(i, 1, n - 1){
-        ll tmp = i;
-        bit.clear();
-        while(tmp){
-            bit.push_back(tmp & 1);
-            tmp >>= 1;
-        }
-        lp(j, 0, bit.size() - 1){
-            // cerr << i << ' ';
-            if(j + 1 >= ans.size())
-                ans.push_back(vec(ll)());
-            if(bit[j]){
-                ans[j].push_back(i + 1);
-            }
-        }
-    }
+    // lp(i, 1, n - 1){
+    //     ll tmp = i;
+    //     bit.clear();
+    //     while(tmp){
+    //         bit.push_back(tmp & 1);
+    //         tmp >>= 1;
+    //     }
+    //     lp(j, 0, bit.size() - 1){
+    //         // cerr << i << ' ';
+    //         if(j + 1 >= ans.size())
+    //             ans.push_back(vec(ll)());
+    //         if(bit[j]){
+    //             ans[j].push_back(i + 1);
+    //         }
+    //     }
+    // }
+    cdt(1, n);
     cout << ans.size() << '\n';
     for(vec(ll) &v : ans){
         cout << v.size() << ' ';
