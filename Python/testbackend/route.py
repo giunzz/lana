@@ -11,7 +11,7 @@ def helloword():
     #     log.write(current_time + ' test log\n')
     return 'Hello!'
     
-@app.route('/abc')
+@app.route('/abc/dc')
 def abc():
     # with open(directfilelog, 'a') as log:
     #     current_time = time.strftime("%H:%M:%S", time.localtime())
@@ -28,7 +28,7 @@ def adminpage(name):
 
 @app.route('/quang')
 def quang():
-    return redirect(url_for('abc'))
+    return redirect(url_for('abc/dc'))
 
 if __name__ == '__main__':
     # with open(directfilelog, 'w') as log:
