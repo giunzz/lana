@@ -36,3 +36,7 @@ tinh dien tich tam giac queo phai queo trai
 **quy uoc: nguoc chieu kim dong ho la duong, nguoc lai am
 
 unique xoa ky tu trung
+
+lam tron len a/b => (a + b - 1)/b
+
+kieu du lieu long double bac cao nhat
