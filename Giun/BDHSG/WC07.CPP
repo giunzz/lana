@@ -6,6 +6,7 @@
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
 #define Fname "f"
+// #define Fname "reinst"
 using namespace std;
 
 void OF(){
@@ -13,20 +14,23 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+ll n;
+string s;
+
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     OF();
-    ll t;
-    string a, b;
-    cin >> t;
-    while(t--){
-        cin >> a >> b;
-        ll ia = 0, ib = 0, na = a.size() - 1, nb = b.size() - 1;
-        a.push_back('a');
-        b.push_back('b');
-        while(ia <= na && ib <= nb){
-            
-        }
+    cin >> n >> s;
+    if(count(s.begin(), s.end(), '(') != n/2 || (n & 1)){
+        cout << "-1";
+        return 0;
     }
+    ll p = 0, b = 0, res = 0;
+    for(char &c : s){
+        p = b;
+        b += (c == '(') ? 1 : -1;
+        res += (p <= 0) && (b <= 0);
+    }
+    cout << res;
 }
