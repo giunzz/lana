@@ -17,13 +17,13 @@ void OF(){
 ll n, m;
 
 struct Node{
-    ll key = 0, pri = 0;
+    ll key, pri;
     Node *l = nullptr, *r = nullptr;
 };
 
 typedef Node* pNode;
 
-pNode get_newNode(ll val, ll pri){
+pNode get_newNode(ll &val, ll &pri){
     pNode res = new Node;
     res -> key = val, res -> pri = pri;
     return res;
@@ -89,7 +89,7 @@ int main(){
     cin >> n >> m;
     char c;
     ll a, b;
-    pNode root = new Node;
+    pNode root = nullptr;
     lp(i, 1, m){
         cin >> c >> a >> b;
         if(c == 'M') {
@@ -98,8 +98,10 @@ int main(){
         }
         else {
             pNode res = getNode(root, b, a);
+            // if(res != nullptr) cerr << res -> key << ' ' << res -> pri << '\n';
             if(res != nullptr && res -> key >= b && res -> pri <= a) cout << res -> key << '\n';
             else cout << -1 << '\n';
         }
+        if(root != nullptr) cerr << root -> key << ' ' << root -> pri << ' ' << i << '\n';
     }
 }

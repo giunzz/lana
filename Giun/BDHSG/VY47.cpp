@@ -16,7 +16,9 @@ void OF(){
 cll maxn = 307;
 ll n, m, a[maxn][maxn] = {{0}}, row[maxn][maxn] = {{0}}, col[maxn][maxn] = {{0}};
 
-void dfs()
+void dfs(pp(ll, ll) p){
+
+}
 
 int main(){
     ios_base::sync_with_stdio(0);
@@ -31,6 +33,6 @@ int main(){
         else row[i][j] = row[i][j - 1] + 1, col[i][j] = col[i - 1][j] + 1;
     }
     lp(i, 1, n){
-        dfs(make_pair(i, 1));
+        if(a[i][1]){dfs(make_pair(i, 1));}
     }
 }
