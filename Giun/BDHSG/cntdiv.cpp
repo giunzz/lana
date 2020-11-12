@@ -13,17 +13,15 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-cll maxn = 1e6 + 7;
-ll n, ct[maxn];
-bool d[maxn] = {0};
-vec(ll) snt, uc;
+cll maxn = 1e6 + 10;
+ll n, d[maxn] = {0}, ct[maxn];
+vec(ll) uc;
 
 void init(){
-    d[0] = d[1] = 1;
-    for(ll i = 2; i < maxn; ++i){
+    d[1] = 0;
+    for(ll i = 2; i * i < maxn; ++i){
         if(!d[i]){
-            snt.push_back(i);
-            for(ll j = i * i; j < maxn; j += i){d[j] = 1;}
+            for(ll j = i * i; j < maxn; j += i) d[j] = i; 
         }
     }
 }
@@ -31,60 +29,40 @@ void init(){
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-    // OF();    
+    // OF();
     init();
     ll cs;
     cin >> cs;
     while(cs--){
-        memset(ct, 0, sizeof(ct));
         cin >> n;
-        ll tt = n, tt1 = n + 1, tt2 = n + 2;
         uc.clear();
-        // uc.push_back(0);
-        for(ll &i : snt){
-            if(tt == 1 && tt1 == 1 && tt2 == 1) break;
-            if(tt % i == 0 || tt1 % i == 0 || tt2 % i == 0) uc.push_back(i);
-            else continue;
-            while(tt % i == 0){
-                ++ct[i];
-                tt /= i;
-            }
-            while(tt1 % i == 0){
-                ++ct[i];
-                tt1 /= i;
-            }
-            while(tt2 % i == 0){
-                ++ct[i];
-                tt2 /= i;
-            }
+        // memset(ct, 0, sizeof(ct));
+        ll tt = n, i = (d[tt] ? d[tt] : tt);
+        while(tt!=1){
+            if(!ct[i]++) uc.push_back(i);
+            tt /= i;
+            if(tt == 1) break;
+            i = (d[tt] ? d[tt] : tt);
         }
-        // tt = n+1;
-        // for(ll &i : snt){
-        //     if(tt == 1) break;
-        //     if(tt%i) continue;
-        //     while(tt % i == 0){
-        //         ++uc.back();
-        //         tt /= i;
-        //     }
-        //     uc.push_back(0);
-        // }
-        // tt = n + 2;
-        // while(tt%2 == 0) ++uc[0], tt/=2;
-        // for(ll &i : snt){
-        //     if(tt == 1) break;
-        //     if(tt%i) continue;
-        //     while(tt % i == 0){
-        //         ++uc.back();
-        //         tt /= i;
-        //     }
-        //     uc.push_back(0);
-        // }
-        // // for(ll i : uc) cerr << i << ' ';
-        // uc.pop_back();
+        tt = n + 1, i = (d[tt] ? d[tt] : tt);
+        while(i){
+            if(!ct[i]++) uc.push_back(i);
+            tt /= i;
+            if(tt == 1) break;
+            i = (d[tt] ? d[tt] : tt);
+        }
+        tt = n + 2, i = (d[tt] ? d[tt] : tt);
+        while(i){
+            if(!ct[i]++) uc.push_back(i);
+            tt /= i;
+            if(tt == 1) break;
+            i = (d[tt] ? d[tt] : tt);
+        }
         ll cnt = 1, cntt = 1;
         for(ll &i : uc){
             cnt *= (ct[i] + 1);
             cntt *= (ct[i] * 2 + 1);
+            ct[i] = 0;
         }
         cntt = (cntt + 1) / 2;
         cout << (cntt - cnt) << '\n';
