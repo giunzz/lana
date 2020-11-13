@@ -13,7 +13,7 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-cll maxn = 2e3 + 7;
+cll maxn = 5e3 + 7;
 ll n, c[maxn][maxn] = {{0}}, d[maxn*2], dd[2*maxn];
 vec(ll) a[2 * maxn];
 
@@ -21,7 +21,7 @@ bool visit(ll u, ll r){
     if(dd[u] != r) dd[u] = r;
     else return 0;
     for(ll v : a[u]){
-        if(!d[v] || visit(v, r)){
+        if(!d[v] || visit(d[v], r)){
             d[v] = u;
             return 1;
         }
@@ -42,14 +42,15 @@ int main(){
     cin.tie(0); cout.tie(0);
     // OF();
     cin >> n;
-    ll ma = 0;
+    ll ma = 0, ans = 0;
     lp(i, 1, n){
         lp(j, 1, n){
             cin >> c[i][j];
-            if(c[i][j] > ma) ma = c[i][j];
+            // if(c[i][j] > ma) ma = c[i][j];
+            // if(c[i][j] < ans) ans = c[i][j];
         }
     }
-    ll l = 0, r = ma, ans;
+    ll l = 1, r = 1e9;
     while(l <= r){
         ll mid = (l + r) / 2;
         lp(i, 1, n) a[i].clear(), a[i + n].clear();
