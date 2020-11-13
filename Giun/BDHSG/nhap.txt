@@ -1,4 +1,97 @@
-taxi
-bcdaif
-telmov
-6 bai hom nay
+#include <bits/stdc++.h>
+#define ll long long
+#define cll const ll
+#define lp(a, b, c) for(ll a = b; a <= c; ++a)
+#define lpd(a, b, c) for(ll a = b; a >= c; --a)
+#define vec(a) vector<a>
+#define pp(a, b) pair<a, b>
+#define Fname "f"
+using namespace std;
+
+void OF(){
+    freopen(Fname".inp", "r", stdin);
+    freopen(Fname".out", "w", stdout);
+}
+
+cll maxn = 5e3 + 7;
+ll n, k, f[maxn];
+bool dd[maxn]  ={0};
+pp(ll, ll) a[maxn];
+vec(pp(ll, ll)) g[maxn];
+vec(ll) gg[maxn];
+
+#define c first
+#define d second
+
+#define fi first
+#define se second.first.first
+#define th second.first.second
+#define fo second.second
+
+void init(){
+    ll u, v;
+    lp(i, 1, k){
+        cin >> u >> v;
+        gg[u].push_back({v});
+        gg[v].push_back({u});
+    }
+}
+
+vector<pp(ll, ll)> ff;
+
+void bfs(ll r){
+    ff.clear();
+    ff.resize(n + 1);
+    memset(dd, 0, sizeof(dd));
+    queue<ll> q;
+    q.push(r);
+    dd[r] = 1;
+    ff[r] = {0, 0};
+    while(q.size()){
+        ll u = q.front();
+        q.pop();
+        for(ll v : gg[u]){
+            if(dd[v]) continue;
+            dd[v] = 1;
+            ff[v] = {a[r].c, ff[u].second + 1};
+            if(ff[v].second > a[r].d) break;
+            g[r].push_back({ff[v].first, v});
+            q.push(v);
+        }
+    }
+}
+
+void dijkstra(ll r){
+    priority_queue<pp(ll, ll), vec(pp(ll, ll)), greater<pp(ll, ll)>> pq;
+    pq.push({0, r});
+    lp(i, 1, n) f[i] = LLONG_MAX;
+    f[r] = 0;
+    while(pq.size()){
+        pp(ll, ll) u = pq.top();
+        pq.pop();
+        if(f[u.second] != u.first) continue;
+        for(pp(ll, ll) v : g[u.second]){
+            ll tmp = u.first + v.first;
+            if(tmp < f[v.second]) f[v.second] = tmp, pq.push({f[v.second], v.second});
+        }
+    }
+}
+
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    // OF();
+    cin >> n >> k;
+    lp(i, 1, n){
+        cin >> a[i].c >> a[i].d;
+    }
+    init();
+    lp(i, 1, n){
+        bfs(i);
+        //for(pp(ll, ll) v : g[i]){
+        //    cerr << i << ' ' << v.second << ' ' << v.first << '\n';
+        //}
+    }
+    dijkstra(1);
+    cout << f[n];
+}
