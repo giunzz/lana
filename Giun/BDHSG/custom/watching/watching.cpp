@@ -37,7 +37,7 @@ int main(){
         // cerr << i << ' ' << tt << ' ' << tmp <<  '\n';
         while(a[!tt][tmp] <= a[tt][i] && tmp <= x[!tt]) ++tmp;
         if(tmp > x[!tt]){
-            ll ed = max(a[tt][i] - 1, a[!tt][tmp - 1] + k);
+            ll ed = max(a[tt][i], a[!tt][tmp - 1] + k);
             ans[!tt] += (t - ed);
             break;
         }

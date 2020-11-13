@@ -13,6 +13,21 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+template <typename T> inline void read(T &x){
+    x = 0; char c;
+    while(!isdigit(c = getchar()));
+    do
+    {
+        x = x * 10 + c - '0';
+    } while (isdigit(c = getchar()));
+    
+}
+
+template <typename T> inline void write(T x){
+    if(x > 9) write(x / 10);
+    putchar(x % 10 + '0');
+}
+
 struct quang{
     ll bg, ed, cs;
 };
@@ -21,41 +36,11 @@ cll maxn = 1e6 + 7;
 ll n, k, f[maxn];
 quang a[maxn];
 
-void fastscan(ll &number) 
-{ 
-    //variable to indicate sign of input number 
-    // bool negative = false; 
-    register ll c; 
-  
-    number = 0; 
-  
-    // extract current character from buffer 
-    c = getchar(); 
-    // if (c=='-') 
-    // { 
-    //     // number is negative 
-    //     negative = true; 
-  
-    //     // extract the next character from the buffer 
-    //     c = getchar(); 
-    // } 
-  
-    // Keep on extracting characters if they are integers 
-    // i.e ASCII Value lies from '0'(48) to '9' (57) 
-    for (; (c>47 && c<58); c=getchar()) 
-        number = number *10 + c - 48; 
-  
-    // if scanned input has a negative sign, negate the 
-    // value of the input number 
-    // if (negative) 
-    //     number *= -1; 
-}
-
 void init(){
     ll s, d, c;
     lp(i, 1, n){
         // cin >> s >> d >> c;
-        fastscan(s); fastscan(d); fastscan(c);
+        read(s); read(d); read(c);
         ll end = s + d + k - 1;
         a[i].bg = s;
         a[i].ed = end;
@@ -77,26 +62,19 @@ ll cnp(ll const &vl, ll r){
     return ans;
 }
 
-void write(ll x){
-    if(x > 9) write(x / 10);
-    putchar(x % 10 + '0');
-}
-
 int main(){
     // ios_base::sync_with_stdio(0);
     // cin.tie(0); cout.tie(0);
     // OF();
     // cin >> n >> k;
-    fastscan(n); fastscan(k);
+    read(n); read(k);
     init();
     sort(a + 1, a + 1 + n, cpr);
-    f[0] = 0;
     lp(i, 1, n){
         ll pos = cnp(a[i].bg, i - 1);
         if(pos == -1) f[i] = max(a[i].cs, f[i - 1]);
         else f[i] = max(f[i - 1], f[pos] + a[i].cs);
     }
     // cout << f[n];
-    // printf("%lld", f[n]);
     write(f[n]);
 }
