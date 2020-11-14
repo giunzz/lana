@@ -6,8 +6,7 @@ farm
 cobox
 icbus
 clopair
-cvrpopt
-archery
+archery (**)
 
 cap ghep
 luong

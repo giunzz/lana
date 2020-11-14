@@ -14,84 +14,90 @@ void OF(){
 }
 
 cll maxn = 17;
-ll n, k, q, a[maxn][maxn], d[maxn], kp[maxn] = {0}, cnt = 0, ans = LLONG_MAX, f[2000][maxn];
+ll n, k, q, a[maxn][maxn], d[maxn], kp[maxn] = {0}, cnt = 0, ans = LLONG_MAX;
 vec(ll) truck[7];
+vector<ll> city;
 
 ll countbito(ll u){
     if(u == 0) return 0;
     return (u & 1) + countbito(u >> 1);
 }
 
-ll dp(ll stt, ll ed, ll r, ll nped){
-    if(countbito(stt) <= 2) return a[0][ed];
-    ll ttmp = 0;
-    lp(i, 1, truck[r].size() - 1){
-        ll ii = truck[r][i], tmp = LLONG_MAX;
+ll dp(ll stt, ll ped){
+    // cerr << r << ' ' << stt << '\n';
+    ll ed = city[ped];
+    if(countbito(stt) == 1) return a[0][ed];
+    ll tmp = LLONG_MAX;
+    lp(i, 0, city.size() - 1){
+        ll ii = city[i];
         if(ed == ii) continue;
         if((1 << i) & stt){
-            tmp = min(tmp, dp(stt ^ (1 << nped), ii, r, i) + a[ii][ed]);
-            ttmp += tmp;
+            tmp = min(tmp, dp(stt ^ (1 << ped), i) + a[ii][ed]);
         }
-        else continue;
     }
-    return ttmp;
+    return tmp;
 }
 
 void gene(ll pos){
     if(n - pos + 1 < k - cnt) return;
     if(pos > n){
-        // memset(f, 0, sizeof(f));
+        // lp(i, 0, k - 1){
+        //     ll s = 0;
+        //     if(truck[i].empty()) return;
+        //     for(ll &j : truck[i]) s += d[j];
+        //     if(s > q) return;
+        // }
         ll a1 = 0;
-        lp(i, 0, k - 1){
-            for(ll v : truck[i]) cerr << v << ' ';
-            cerr << '\n';
-        }
-        // cerr << '\n';
-        lp(i, 0, k - 1){
-            ll ttmp = LLONG_MAX;
-            ll stt = (1 << truck[i].size()) - 1;
-            if(countbito(stt) == 2) {
-                a1 += a[truck[i][1]][0] + a[0][truck[i][1]];
-                cerr << a[truck[i][1]][0] + a[0][truck[i][1]] << ' ';
+        lp(r, 0, k - 1){
+            city.clear();
+            city = truck[r];
+            ll ct = city.size() - 1, stt = (1 << city.size()) - 1, opt = LLONG_MAX;
+            if(city.size() == 1){
+                a1 += a[city[0]][0] + a[0][city[0]];
                 continue;
             }
-            lp(j, 1, truck[i].size() - 1){
-                ll ii = truck[i][j], tmp = LLONG_MAX;
-                lp(z, 1, truck[i].size() - 1){
-                    ll jj = truck[i][z];    
-                    if(jj == ii) continue;
-                    tmp = min(dp(stt ^ (1 << j), jj, i, z) + a[jj][ii], tmp);
+            // cerr << city.size() << ' ' << stt << '\n';
+            lp(i, 0, ct){
+                ll ii = city[i], optcase = LLONG_MAX;
+                lp(j, 0, ct){
+                    if(i == j) continue;
+                    ll jj = city[j], tmp1 = dp(stt ^ (1 << i), j) + a[jj][ii];
+                    if(tmp1 < optcase) optcase = tmp1;
                 }
-                ttmp = min(ttmp, tmp + a[ii][0]);
+                // opt = min(opt, optcase + a[ii][0]);
+                if(optcase + a[ii][0] < opt) opt = optcase + a[ii][0];
             }
-            a1 += ttmp;
-            cerr << ttmp << ' ';
+            a1 += opt;
         }
-        cerr << '\n';
         ans = min(a1, ans);
         return;
     }
     lp(i, 0, k - 1){
-        if(!kp[i]++) ++cnt;
+        if(kp[i] + d[pos] > q) continue;
+        if(!kp[i]) ++cnt;
+        kp[i] += d[pos];
         truck[i].push_back(pos);
         gene(pos + 1);
         truck[i].pop_back();
-        if(!--kp[i]) --cnt;
+        kp[i] -= d[pos];
+        if(!kp[i]) --cnt;
     }
 }
 
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-    OF();
+    // OF();
     cin >> n >> k >> q;
     lp(i, 1, n) cin >> d[i];
     lp(i, 0, n){
         lp(j, 0, n){
             cin >> a[i][j]; // i -> j
+            // cerr << a[i][j] << ' ';
         }
+        // cerr << '\n';
     }
-    lp(i, 0, k -1) truck[i].push_back(0);
+    // lp(i, 0, k -1) truck[i].push_back(0);
     gene(1);
     cout << ans;
 }
