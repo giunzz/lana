@@ -20,8 +20,8 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-cll maxDg = 32;
-ll n, k, f[maxDg + 1][100];
+cll maxDg = 32, MOD = 1e9 + 7;
+ll n, k, f[maxDg + 1][100][100];
 vec(ll) bn;
 
 ll countbito(ll u){
@@ -31,16 +31,31 @@ ll countbito(ll u){
 
 ll sol(ll q, ll car, ll stt){
     if(q == maxDg){
+        cerr << q << ' ' << car << ' ' << stt <<'\n';
         return car == 0 && stt == (1 << (k - 1)) - 1;
     }
-    if(f[q][car] > -1) return f[q][car];
+    if(f[q][car][stt] > -1) return f[q][car][stt];
+    ll cnt = 0, num = (car << 1) | bn[q];
     lp(i, 0, (1 << k) - 1){
-        ll tmp = countbito(i);
-        if((tmp >> 1) != car || (tmp & 1) != bn[q]) continue;
-        lp(j, 0, k - 1){
-            
+        ll tmp = countbito(i), nstt = stt;
+        // if((tmp >> 1) != car || (tmp & 1) != bn[q]) continue;
+        ll tcar = num - tmp;
+        // cerr << tcar << ' ';
+        bool ok = 1;
+        if(tcar < 0) continue;
+        lp(j, 0, k - 2){
+            ll b1 = (i >> j) & 1, b2 = (i >> (j + 1)) & 1, tt = (stt >> j) & 1;
+            if(!tt){
+                if(b1 > b2) {ok = 0; break;}
+                if(b1 < b2){
+                    nstt = nstt | (1 << j);
+                }
+            }
         }  
+        if(ok) cnt = (cnt + sol(q + 1, tcar, nstt)) % MOD;
     }
+    f[q][car][stt] = cnt;
+    return cnt;
 }
 
 int main(){
@@ -53,5 +68,6 @@ int main(){
     while(n) bn.push_back(n & 1), n >>= 1;
     while(bn.size() <= maxDg) bn.push_back(0);
     reverse(bn.begin(), bn.end());
+    // for(ll i : bn) cerr << i;
     cout << sol(0, 0, 0);
 }

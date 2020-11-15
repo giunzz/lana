@@ -13,14 +13,9 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-cll maxn = 1e9 + 7;
-bool check[maxn];
-
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-    //OF();
-    check[(ll)1e8] = 1;
-    // cout << check[(ll)1e8] << ' ' << check[(ll)1e8 + 1];
-    cerr << (0 << 3) + 1;
+    OF();
+    
 }

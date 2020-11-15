@@ -1,0 +1,10 @@
+bai adstr
+    tinh(i, k) tai i va khop k ki tu dau
+    tinh them mang 2 chieu truy vet xau target r[i][j = 0 or 1] cho biet vi tri k gan nhat trong i doan dau va ket thuc = j
+    nhan ma tran
+    (f0, f1, .. , fi + 1)
+
+bai seed
+    cho fi, bit la i ky tu dau va trang thai bit cua len(s) ky tu dau
+    sub lon
+
