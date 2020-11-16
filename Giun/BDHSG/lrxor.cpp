@@ -14,12 +14,7 @@ void OF(){
 }
 
 cll maxn = 1e5 + 7, maxNode = 1e7 + 7, maPos = 30;
-ll n, trie[maxNode][2], Nnode;
-// bool lf[maxn];
-
-// struct trie{
-//     ll val, child[2] = {-1, -1};
-// };
+ll n, a[maxn], trie[maxNode][2], Nnode = 0;
 
 void push(ll num){
     ll cur = 0;
@@ -53,23 +48,23 @@ int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     // OF();
-    ll cs, num;
+    ll cs;
+    a[0] = 0;
     cin >> cs;
     while(cs--){
         Nnode = 0;
         memset(trie, -1, sizeof(trie));
-        // memset(lf, 0, sizeof(lf));
-        cin >> n;
+        cin >> n >> a[1];
+        push(0LL);
+        push(a[1]);
         ll ma = 0;
-        cin >> num;
-        push(num);
         lp(i, 2, n){
+            ll num;
             cin >> num;
-            // cerr << gt(num) << ' ';
-            ma = max(ma, gt(num));
-            push(num);
+            a[i] = num ^ a[i - 1];
+            ma = max(ma, gt(a[i]));
+            push(a[i]);
         }
-        if(n <= 1) cout << 0 << '\n';
-        else cout << ma << '\n';
+        cout << ma << '\n';
     }
 }

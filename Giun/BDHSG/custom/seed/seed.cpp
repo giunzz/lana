@@ -5,7 +5,7 @@
 #define lpd(a, b, c) for(ll a = b; a >= c; --a)
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
-#define Fname "f"
+#define Fname "seed"
 using namespace std;
 
 void OF(){
@@ -19,14 +19,20 @@ bool lf[maxn] = {0};
 string s;
 
 void push(ll num){
+    // cerr << num << ' ';
     ll cur = 0;
     lpd(i, s.size() - 1, 0){
         if(trie[cur][(num >> i) & 1] == -1){
+            // cerr << ((num >> i) & 1);
+            // lf[cur] = 0;
             trie[cur][(num >> i) & 1] = Nnode;
             Nnode++;
         }
         cur = trie[cur][(num >> i) & 1];
+        // cerr << ((num >> i) & 1);
     }
+    // cerr << num << ' ' << cur << '\n';
+    // cerr << '\n';
     lf[cur] = 1;
 }
 
@@ -41,7 +47,7 @@ void gene(ll pos, ll tt){
     ll ntt;
     if(s[pos] == '*'){
         lp(i, 0, 1){
-            ntt = tt | ((i * 1LL) << pos);
+            ntt = tt | ((i * 1LL) << (s.size() - 1 - pos));
             // cerr << (tt | (1 << pos)) << '\n';
             gene(pos + 1, ntt);
             // cerr << tt << ' ';
@@ -52,18 +58,21 @@ void gene(ll pos, ll tt){
 
 ll find_j(ll stt, ll v, ll cnt){
     ll sttp = (stt << 1LL) | v, ncnt = cnt + 1;
-    while(cnt){
+    // cerr << stt << ' ' << sttp << ' ' << cnt << '\n';
+    while(ncnt){
+        // cerr << 1;
         sttp = sttp & ~(1LL << (ncnt-- - 1));
-        bool ok = 0;
+        bool ok = 1;
         ll c = 0;
-        lpd(j, cnt - 1, 0){
-            if(trie[c][sttp & (1LL << j)] > -1){
-                c = trie[c][sttp & (1LL << j)];
+        lpd(j, ncnt - 1, 0){
+            if(trie[c][(sttp >> j) & 1LL] > -1){
+                c = trie[c][(sttp >> j) & 1LL];
             }
             else{
                 ok = 0;
                 break;
             }
+        // if(stt == 3) cerr << sttp << ' ' << ncnt << ' ' << c << ' ' << ok << '\n';
         }
         if(ok) return c;
     }
@@ -97,10 +106,14 @@ int main(){
     cin.tie(0); cout.tie(0);
     // OF();
     cin >> n >> s;
+    // cerr << s << '\n';
     lp(i, 0, s.size() - 1){
-        if(s[i] == '1') bs = bs | (1LL << i);
+        if(s[i] == '1'){
+            bs = bs | (1LL << (s.size() - 1 - i));
+            // cerr << i << ' ' << bs << '\n';
+        }
     }
-    // cerr << bs;
+    // cerr << bs << '\n';
     memset(trie, -1, sizeof(trie));
     memset(j, -1, sizeof(j));
     gene(0, bs);
@@ -108,5 +121,10 @@ int main(){
     // cerr << Nnode;
     dfs(0, 0, 0);
     // cerr << j[4][0];
+    // lp(i, 0, 5){
+    //     lp(z, 0, 1){
+    //         cerr << i << ' ' << z << ' ' << j[i][z] << '\n'; 
+    //     }
+    // }
     cout << (1LL << n) - sol(1, 0);
 }
