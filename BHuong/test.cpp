@@ -1,22 +1,57 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
+
 using namespace std;
-#define ll long long
-#define giuncute ios_base::sync_with_stdio(0), cin.tie(0);
-#pragma GCC optimize("Ofast")
-ll n , w, a[100000], b[100000], l[108][(int) 1e5+7] ={0};
+
+long n;
+string f[5000][5000];
+
+string plusTwoString(string a, string b)
+{
+	string st;
+	if(a.size() < b.size())
+	{
+		swap(a, b);
+	}
+	while(b.size() != a.size())
+	{
+		b = "0" + b;
+	}
+	long remainder = 0;
+	for(long i = a.size() - 1; i >= 0; i--)
+	{
+		remainder += long(a[i] - '0') + long(b[i] - '0');
+		st = char(remainder % 10 + long('0')) + st;
+		remainder /= 10;
+	}
+	return (remainder == 0 ? st : char(remainder % 10 + long('0')) + st);
+}
+
+void dp()
+{
+	for(long i = 1; i <= n; i++)
+	{
+		f[i][1] = "1";
+	}
+	for(long i = 1; i <= n; i++)
+	{
+		for(long j = 2; j <= i; j++)
+		{
+			f[i][j] = plusTwoString(f[i - j][j], f[i - j][j - 1]);
+		}
+	}
+	string sum = f[n][2];
+	for(long i = 3; i <= n; i++)
+	{
+		sum = plusTwoString(sum, f[n][i]);
+	}
+	cout << sum;
+}
+
 int main()
 {
-    giuncute;
-    cin >> n >> w;
-    for (ll i = 1 ; i <= n ; i++) cin >> a[i] >> b[i];
-    for (int i = 1 ; i <= n ; i++) l[0][i] = 0;
-    for (int i = 1 ; i <= n ; i++)
-    {
-        for (int j = 1 ; j <= w ; j++)
-        {
-            if (a[i] > j) l[i][j] = l[i-1][j];
-            else l[i][j] = max (l[i - 1][j] , l[i - 1][j  - a[i]]+b[i]);
-        }
-    }
-    cout << l[n][w];
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cin >> n;
+	dp();
+	return 0;
 }

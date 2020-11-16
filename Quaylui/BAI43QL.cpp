@@ -27,8 +27,8 @@ int main()
 {
     //balabalo;
     giuncute;
-    freopen("Bai43QL.inp","r",stdin);
-    freopen("Bai43QL.out","w",stdout);
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
     cin >> s;
     //sort ( s.begin() , s.end());
     huhu(0);
