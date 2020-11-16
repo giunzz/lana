@@ -14,8 +14,7 @@ void OF(){
 }
 
 cll maxn = 1e5 + 7;
-ll n, a[maxn];
-vec(ll) a[maxn];
+ll n, d[maxn], pre[maxn];
 
 // struct Node{
 //     vector<ll> next;
@@ -44,17 +43,39 @@ vec(ll) a[maxn];
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-    OF();
+    // OF();
     ll cs;
+    pre[0] = 0;
     cin >> cs;
     while(cs--){
         cin >> n;
         lp(i, 1, n){
-            cin >> a[i];
+            cin >> d[i];
         }
-        sort(a + 1, a + 1 + n, greater<ll>());
-        lp(i, 1, n){
-            push(a[i]);
+        sort(d + 1, d + 1 + n, greater<ll>());
+        // lp(i, 1, n) cerr << d[i] << ' ';
+        lp(i, 1, n) pre[i] = pre[i - 1] + d[i];
+        // cerr << pre[n];
+        if(pre[n] & 1){
+            cout << "NO\n";
+            continue;
+        } 
+        // lp(i, 1, n) cerr << pre[i] << ' ';
+        ll j = n, i =1;
+        bool ok = 1;
+        while(i <= n){
+            while(i < j && d[j] > i){
+                --j;
+            }
+            ll sum1 = pre[i], sum2 = i * (i - 1) + (pre[n] - pre[j]) + (j - i) * i;
+            if(sum1 > sum2){
+                cout << "NO\n";
+                ok = 0;
+                break;
+            }
+            if(j == i) j = i + 1;
+            ++i;
         }
+        if(ok) cout << "YES\n";
     }
 }

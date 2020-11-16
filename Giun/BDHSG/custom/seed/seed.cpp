@@ -90,14 +90,18 @@ void dfs(ll i, ll stt, ll cnt){
     }
 }
 
+vec(vec(ll)) f;
+
 ll sol(ll pos, ll node){
     if(pos > n) return 1;
+    if(f[pos][node] > -1) return f[pos][node];
     ll cnt = 0;
     lp(v, 0, 1){
         if(!lf[j[node][v]]){
             cnt += sol(pos + 1, j[node][v]);
         }
     }
+    f[pos][node] = cnt;
     return cnt;
 }
 
@@ -120,6 +124,9 @@ int main(){
     // cerr << lf[5];
     // cerr << Nnode;
     dfs(0, 0, 0);
+    f.resize(n + 3);
+    for(auto &v : f) v.resize(Nnode + 3);
+    lp(i, 0, n) lp(j, 0, Nnode) f[i][j] = -1;
     // cerr << j[4][0];
     // lp(i, 0, 5){
     //     lp(z, 0, 1){
