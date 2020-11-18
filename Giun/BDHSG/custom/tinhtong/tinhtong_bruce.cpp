@@ -24,6 +24,10 @@ ll a, b;
 int main(){
     opt;
     file;
-    cin >> a >> b;
-    cout << a + b;
+    ll cs;
+    cin >> cs;
+    while(cs--){
+        cin >> a >> b;
+        cout << (a + b) << '\n';
+    }
 }

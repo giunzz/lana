@@ -1,5 +1,13 @@
-(x - x0) ^ 2 + (y - y0) ^ 2 = r ^ 2
-voi x0 y0  = 0
-=> x ^ 2 + y ^ 2 = r ^ 2
+taxi
+bcdaif
+telmov
+candies
+farm
+cobox
+icbus
+clopair
+archery (**)
 
-x ^ 2 + y ^ 2 - 2xx0 - 2yy0 + x0 ^ 2 + y0 ^ 2 - r ^ 2 = 0
+cap ghep
+luong
+    

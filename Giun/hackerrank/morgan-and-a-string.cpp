@@ -22,6 +22,11 @@ int main(){
     cin >> t;
     while(t--){
         cin >> a >> b;
-        
+        ll ia = 0, ib = 0, na = a.size() - 1, nb = b.size() - 1;
+        a.push_back('a');
+        b.push_back('b');
+        while(ia <= na && ib <= nb){
+            
+        }
     }
 }

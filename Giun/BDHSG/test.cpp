@@ -1,7 +1,14 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
+#define ll long long
+#define cll const ll
+#define lp(a, b, c) for(ll a = b; a <= c; ++a)
+#define lpd(a, b, c) for(ll a = b; a >= c; --a)
+#define vec(a) vector<a>
+#define pp(a, b) pair<a, b>
+#define Fname "f"
 using namespace std;
 
+<<<<<<< HEAD
 int main() 
 {
 	//int T,i,lo,index_A = 0,index_B = 0,len_A,len_B;
@@ -66,4 +73,21 @@ int main()
 		cout<<endl;
 	}
 	return 0;
+=======
+void OF(){
+    freopen(Fname".inp", "r", stdin);
+    freopen(Fname".out", "w", stdout);
+}
+
+cll maxn = 1e9 + 7;
+bool check[maxn];
+
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    //OF();
+    check[(ll)1e8] = 1;
+    // cout << check[(ll)1e8] << ' ' << check[(ll)1e8 + 1];
+    cerr << (0 << 3) + 1;
+>>>>>>> de053ef99b29bf2fd491f2ff01d75fc8bc4e2171
 }

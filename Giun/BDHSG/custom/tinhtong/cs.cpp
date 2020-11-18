@@ -33,10 +33,15 @@ long long Rand(long long l, long long h)
 
 void sinh(){
     co.open((ni).c_str());
-    if(Rand(1,100)%2) co<<"-";
-    co<<Rand(1e3,1e18)<<" ";
-    if(Rand(1,100)%2)co<<"-";
-    co<<Rand(1e3,1e18);
+    // if(Rand(1,100)%2) co<<"-";
+    // co<<Rand(1e3,1e18)<<" ";
+    // // if(Rand(1,100)%2)co<<"-";
+    // co<<Rand(1e3,1e18);
+    ll t = 10;
+    co << t << '\n';
+    lp(i, 1, t){
+        co << Rand(1, 1e17) << ' ' << Rand(1, 1e17) << '\n';
+    }
     co.close();
     st(name); st(nb);
 }
@@ -55,7 +60,7 @@ int main(){
     ni = name + ".inp";
     na = name + ".ans";
     nb = name + "_bruce";
-    lp(i, 1, 1000){
+    lp(i, 1, 100){
         sinh();
         cham();
     }
