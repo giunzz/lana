@@ -25,24 +25,42 @@ ll sol(ll pos, ll car, bool ok1, bool ok2, bool ok3){
     if(pos == -1) return((car == 0 && ok1 && ok2 && ok3) ? 0 : -1);
     if(f[pos][car][ok1][ok2][ok3] > -1) return f[pos][car][ok1][ok2][ok3];
     ll cnt = -1;
-    quang res;
     lp(x, 0, 9) lp(y, 0, 9) lp(z, 0, 9){
         ll s = x + y + z;
         if((x > y && !ok2) || (y > z && !ok3)) continue;
         bool nok1 = x | ok1, nok2 = (x < y) | ok2, nok3 = (y < z) | ok3;
         lp(ncar, 0, 2){
             if((s + ncar) / 10 != car || (s + ncar) % 10 != n[pos] - '0') continue;
-            // quang nt = {t.n1 * 10 + x, t.n2 * 10 + y, t.n3 * 10 + z};
-            ll tmp = sol(pos - 1, ncar, nok1, nok2, nok3);
-            if(tmp > -1 && tmp + s > cnt){
-                cnt = tmp + s;
-                // res = nt;
+            ll tmp = sol(pos - 1, ncar, nok1, nok2, nok3); 
+            if(tmp > -1) cnt = max(cnt, tmp + s);
+        }
+    }
+    f[pos][car][ok1][ok2][ok3] = cnt;
+    return cnt;
+}
+
+bool trace(ll pos, ll car, bool ok1, bool ok2, bool ok3, quang &t){
+    if(pos == -1) return (ok1 & ok2 & ok3);
+    ll tmp = f[pos][car][ok1][ok2][ok3];
+    // bool ok = 0;
+    lp(x, 0, 9) lp(y, 0, 9) lp(z, 0, 9){
+        ll s = (x + y + z);
+        if((x > y && !ok2) || (y > z && !ok3)) continue;
+        bool nok1 = x | ok1, nok2 = (x < y) | ok2, nok3 = (y < z) | ok3;
+        lp(ncar, 0, 2){
+            if((s + ncar) / 10 != car || (s + ncar) % 10 != n[pos] - '0') continue;
+            if(tmp -  s == f[pos - 1][ncar][nok1][nok2][nok3]){
+                t = {t.n1 * 10 + x, t.n2 * 10 + y, t.n3 * 10 + z};
+                if(trace(pos - 1, ncar, nok1, nok2, nok3, t)) return 1;
+                else {
+                    t = {t.n1 / 10, t.n2 / 10, t.n3 / 10};
+                }
+                // ok = 1;
+                // return;
             }
         }
     }
-    // t = res;
-    f[pos][car][ok1][ok2][ok3] = cnt;
-    return cnt;
+    return 0;
 }
 
 vec(pp(ll, ll)) gt(ll num){
@@ -93,6 +111,8 @@ int main(){
             cout << ans << '\n';
             continue;
         }
+        trace(maxDg, 0, 0, 0, 0, t);
+        cerr << t.n1 << ' ' << t.n2 << ' ' << t.n3 << '\n';
         vec(pp(ll, ll)) ans1 = gt(t.n1), ans2 = gt(t.n2), ans3 = gt(t.n3);
         cout << ans1.size() << ' ' << ans2.size() << ' ' << ans3.size() << ' ';
         for(pp(ll, ll) i : ans1)
