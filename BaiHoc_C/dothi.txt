@@ -1,0 +1,5 @@
+(i - 1 + vector.size()) % vector.size()
+(i + 1) % vector.size()
+
+do phuc tap thoi gian cua dfs theo vector O(2|E|) |V|*(|V|-1)/2 = max E
+n <= 10^5, m <= 10^5
