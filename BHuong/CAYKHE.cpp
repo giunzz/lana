@@ -5,7 +5,6 @@ ll n , w, a[1008], b[1008], l[1008][1008] ={{0}};
 using namespace std;
 int main()
 {
-
     giuncute;
     freopen("CAYKHE.inp","r",stdin);
     freopen("CAYKHE.out","w",stdout);
