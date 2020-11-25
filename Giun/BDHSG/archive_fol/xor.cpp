@@ -1,41 +1,75 @@
 #include <bits/stdc++.h>
-#define ii int
 #define ll long long
-#define cii const int
-#define cll const long long
-#define opt ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0)
-#define lp(a, b, c) for(ll a = b; a <= c; a++)
-#define lpd(a, b, c) for(ll a = b; a >= c; a--)
-#define pp(a, b) pair<a, b>
+#define cll const ll
+#define lp(a, b, c) for(ll a = b; a <= c; ++a)
+#define lpd(a, b, c) for(ll a = b; a >= c; --a)
 #define vec(a) vector<a>
-#define vecite(a) vector<a>::iterator
-#define fi first
-#define se second
-#define mp(a, b) map<a, b>
-#define setE(a, b) fill_n(a, sizeof(a)/sizeof(a[0]), b)
-#define st(a) system((a).c_str());
+#define pp(a, b) pair<a, b>
+#define Fname "f"
 using namespace std;
-cll MOD = 1e9 + 7;
-const double esf = 1e-9;
-const string tenfile = "xor";
-#define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-ll t, l, r;
-
-inline ll fx(ll x){
-    if(x % 4 == 0) return x;
-    else if(x % 4 == 1) return 1;
-    else if(x % 4 == 2) return x + 1;
-    else return 0;    
+void OF(){
+    freopen(Fname".inp", "r", stdin);
+    freopen(Fname".out", "w", stdout);
 }
 
-ii main(){
-    opt;
-    file;
-    cin >> t;
-    ll tmp;
-    while(t--){
-        cin >> l >> r;
-        cout << (fx(r) ^ fx(l - 1)) << endl;
+cll maxn = 1e5 + 7, maxNode = 1e7 + 7, maPos = 30;
+ll n, trie[maxNode][2], Nnode;
+// bool lf[maxn];
+
+// struct trie{
+//     ll val, child[2] = {-1, -1};
+// };
+
+void push(ll num){
+    ll cur = 0;
+    lpd(i, maPos, 0){
+        int tmp = (num >> i) & 1;
+        if(trie[cur][tmp] == -1){
+            trie[cur][tmp] = ++Nnode;
+        }
+        cur = trie[cur][tmp];
+    }
+    // lf[cur] = 1;
+}
+
+ll gt(ll num){
+    ll cur = 0, res = 0;
+    lpd(i, maPos, 0){
+        ll tmp = (num >> i) & 1;
+        if(trie[cur][!tmp] != -1){
+            res = (res << 1) | (!tmp);
+            cur = trie[cur][!tmp];
+        }
+        else if(trie[cur][tmp] != -1){
+            res = (res << 1) | tmp;
+            cur = trie[cur][tmp];
+        }
+    }
+    return num ^ res;
+}
+
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    // OF();
+    ll cs, num;
+    cin >> cs;
+    while(cs--){
+        Nnode = 0;
+        memset(trie, -1, sizeof(trie));
+        // memset(lf, 0, sizeof(lf));
+        cin >> n;
+        ll ma = 0;
+        cin >> num;
+        push(num);
+        lp(i, 2, n){
+            cin >> num;
+            // cerr << gt(num) << ' ';
+            ma = max(ma, gt(num));
+            push(num);
+        }
+        if(n <= 1) cout << 0 << '\n';
+        else cout << ma << '\n';
     }
 }
