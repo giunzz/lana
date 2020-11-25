@@ -62,15 +62,15 @@ ll sol(ll pos, bool fl1, bool fl2, bool fl3, bool fl4, bool fl5, bool fl6){
                 }
                 // if(pos == 2 && !x && !y && z) cout << tmp << ' ' << z  << ' ' << nfl6 << '\n';
                 ll tg = x ^ y ^ z;
-                cerr 
-                    << pos<< "    "
-                    << nfl1 << ' ' 
-                    << nfl2 << ' ' 
-                    << nfl3 << "    " 
-                    << nfl4 << ' ' 
-                    << nfl5 << ' ' 
-                    << nfl6 << "    "
-                    << x << ' ' << y << ' ' << z << " -> " << tg << '\n';
+                // cerr 
+                //     << pos<< "    "
+                //     << nfl1 << ' ' 
+                //     << nfl2 << ' ' 
+                //     << nfl3 << "    " 
+                //     << nfl4 << ' ' 
+                //     << nfl5 << ' ' 
+                //     << nfl6 << "    "
+                //     << x << ' ' << y << ' ' << z << " -> " << tg << '\n';
                 // cerr << x << ' ' << y << ' ' << z << ' ' << pos << '\n';
                 // cerr << tg << ' ' << pos << '\n';
                 ll tp1 = sol(pos - 1, nfl1, nfl2, nfl3, nfl4, nfl5, nfl6);
@@ -83,18 +83,16 @@ ll sol(ll pos, bool fl1, bool fl2, bool fl3, bool fl4, bool fl5, bool fl6){
     return res;
 }
 
-void trace(ll pos, bool fl1, bool fl2, bool fl3, bool fl4, bool fl5, bool fl6){
+ll sol1(ll pos, bool fl1, bool fl2, bool fl3, bool fl4, bool fl5, bool fl6){
     ll tmp;
-    bool ok = 0;
-    if(pos == -1) return;// (fl1 == fl2 && fl2 == fl3 && fl3 == fl4 && fl4 == fl5 && fl5 == fl6 && fl1 == 1);
-    // cerr << dp[pos][fl1][fl2][fl3][fl4][fl5][fl6];
-    // if(dp[pos][fl1][fl2][fl3][fl4][fl5][fl6] != -1) return dp[pos][fl1][fl2][fl3][fl4][fl5][fl6];
+    if(pos == -1) return (fl1 == fl2 && fl2 == fl3 && fl3 == fl4 && fl4 == fl5 && fl5 == fl6 && fl1 == 1);
+    // cerr << dp[pos][fl1][fl2][fl3][fl4][fl5][fl6] << '\n';
+    if(dp[pos][fl1][fl2][fl3][fl4][fl5][fl6] != -1) return dp[pos][fl1][fl2][fl3][fl4][fl5][fl6];
     // cerr << 1;
-    ll res = 0;
-    ll nw = dp[pos][fl1][fl2][fl3][fl4][fl5][fl6];
+    ll res = LLONG_MAX;
     lp(x, 0, 1){
         // cerr << 1;
-        bool nfl1 = fl1, nfl2 = fl2, nfl3 = fl3, nfl4 = fl4, nfl5 = fl5, nfl6 = fl6;
+        bool nfl1 = fl1, nfl4 = fl4;
         if(!fl1 && (tmp = cp1(r[0].first, pos)) != x){
             if(x > tmp) nfl1 = 1;
             if(x < tmp) continue;
@@ -105,37 +103,47 @@ void trace(ll pos, bool fl1, bool fl2, bool fl3, bool fl4, bool fl5, bool fl6){
             if(x > tmp) continue;
         }
         lp(y, 0, 1){
-            if(!fl2 && (tmp = cp1(r[1].first, pos)) != x){
-                if(x > tmp) nfl2 = 1;
-                if(x < tmp) continue;
+            bool nfl2 = fl2, nfl5 = fl5;
+            if(!fl2 && (tmp = cp1(r[1].first, pos)) != y){
+                if(y > tmp) nfl2 = 1;
+                if(y < tmp) continue;
             }
-            if(!fl5 && (tmp = cp1(r[1].second, pos)) != x){
-                if(x < tmp) nfl5 = 1;
-                if(x > tmp) continue;
+            if(!fl5 && (tmp = cp1(r[1].second, pos)) != y){
+                if(y < tmp) nfl5 = 1;
+                if(y > tmp) continue;
             }
             lp(z, 0, 1){
-                if(!fl3 && (tmp = cp1(r[2].first, pos)) != x){
-                    if(x > tmp) nfl3 = 1;
-                    if(x < tmp) continue;
+                bool nfl3 = fl3, nfl6 = fl6;
+                if(!fl3 && (tmp = cp1(r[2].first, pos)) != z){
+                    if(z > tmp) nfl3 = 1;
+                    if(z < tmp) continue;
                 }
-                if(!fl6 && (tmp = cp1(r[2].second, pos)) != x){
-                    if(x < tmp) nfl6 = 1;
-                    if(x > tmp) continue;
+                if(!fl6 && (tmp = cp1(r[2].second, pos)) != z){
+                    if(z < tmp) nfl6 = 1;
+                    if(z > tmp) continue;
                 }
-                ll tg = x ^ y ^ z, tp1 = dp[pos - 1][nfl1][nfl2][nfl3][nfl4][nfl5][nfl6];
+                // if(pos == 2 && !x && !y && z) cout << tmp << ' ' << z  << ' ' << nfl6 << '\n';
+                ll tg = x ^ y ^ z;
+                // cerr 
+                //     << pos<< "    "
+                //     << nfl1 << ' ' 
+                //     << nfl2 << ' ' 
+                //     << nfl3 << "    " 
+                //     << nfl4 << ' ' 
+                //     << nfl5 << ' ' 
+                //     << nfl6 << "    "
+                //     << x << ' ' << y << ' ' << z << " -> " << tg << '\n';
+                // cerr << x << ' ' << y << ' ' << z << ' ' << pos << '\n';
                 // cerr << tg << ' ' << pos << '\n';
-                if(tp1 != -1 && ((tp1 >> pos) & 1) == tg && tp1 == nw ^ (tg << pos)){
-                    res = res ^ (tg << pos);
-                    trace(pos - 1, nfl1, nfl2, nfl3, nfl4, nfl5, nfl6);
-                    ok = 1;
-                }
-                if(ok) break;
-                // if(tp1 != -1) res = max(res, tp1 | (tg << pos));
+                ll tp1 = sol1(pos - 1, nfl1, nfl2, nfl3, nfl4, nfl5, nfl6);
+                if(tp1 && !pos) res = min(res, tg);
+                else if(tp1 != -1) res = min(res, tp1 | (tg << pos));
             }
-            if(ok) break;
         }
-        if(ok) break;
     }
+    if(res == LLONG_MAX) res = -1;
+    dp[pos][fl1][fl2][fl3][fl4][fl5][fl6] = res;
+    return res;
 }
 
 int main(){
@@ -145,13 +153,12 @@ int main(){
     lp(i, 0, 2) cin >> r[i].first >> r[i].second;
     lp(i, 0, 2) r[i].first--, r[i].second++;
     // lp(i, 0, 2) cerr << r[i].first << ' ' << r[i].second << '\n';
-    cerr << cp1(r[2].second, 1) << '\n';
+    // cerr << cp1(r[2].second, 1) << '\n';
     lp(i, 0, maxdg) lp(a, 0, 1) lp(b, 0, 1) lp(c, 0, 1) lp(d, 0, 1) lp(e, 0, 1) lp(f, 0, 1)
         dp[i][a][b][c][d][e][f] = -1;
     cout << sol(maxdg, 0, 0, 0, 0, 0, 0) << '\n';
-    trace(maxdg, 0, 0, 0, 0, 0, 0);
-    cout << ans << '\n';
     lp(i, 0, maxdg) lp(a, 0, 1) lp(b, 0, 1) lp(c, 0, 1) lp(d, 0, 1) lp(e, 0, 1) lp(f, 0, 1)
         dp[i][a][b][c][d][e][f] = -1;
+    cout << sol1(maxdg, 0, 0, 0, 0, 0, 0);
     
 }
