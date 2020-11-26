@@ -1,27 +1,33 @@
-Target: vanchuyen 
+Target: cake 
 Directory: c:\Users\tienp\Desktop\Hoc\Python\checker
-test1: TLE
-test10: TLE
-test11: 1.363602s
+test01: 0.267913s
 Accept
-test12: 0.971715s
+test02: 0.427874s
 Accept
-test13: 0.583818s
+test03: 0.239927s
 Accept
-test14: 0.599824s
+test04: 0.299910s
 Accept
-test2: TLE
-test3: 0.743780s
+test05: 0.243926s
 Accept
-test4: 0.634206s
+test06: 0.258159s
 Accept
-test5: 0.371883s
+test07: 0.256691s
 Wrong Ans at line 1
-test6: 0.563834s
+test08: 0.333462s
 Accept
-test7: 0.335900s
+test09: 0.336647s
+Accept
+test10: 0.316988s
 Wrong Ans at line 1
-test8: 0.732676s
-Wrong Ans at line 1
-test9: TLE
-AC: 7/14
+test11: 0.367453s
+Accept
+test12: 0.383891s
+Accept
+test13: 0.497871s
+Accept
+test14: 0.462595s
+Accept
+test15: 0.565229s
+Accept
+AC: 13/15
