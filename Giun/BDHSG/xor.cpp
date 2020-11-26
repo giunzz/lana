@@ -27,7 +27,7 @@ ll sol(ll pos, bool fl1, bool fl2, bool fl3, bool fl4, bool fl5, bool fl6){
     // cerr << dp[pos][fl1][fl2][fl3][fl4][fl5][fl6] << '\n';
     if(dp[pos][fl1][fl2][fl3][fl4][fl5][fl6] != -1) return dp[pos][fl1][fl2][fl3][fl4][fl5][fl6];
     // cerr << 1;
-    ll res = 0;
+    ll res = -2;
     lp(x, 0, 1){
         // cerr << 1;
         bool nfl1 = fl1, nfl4 = fl4;
@@ -75,7 +75,7 @@ ll sol(ll pos, bool fl1, bool fl2, bool fl3, bool fl4, bool fl5, bool fl6){
                 // cerr << tg << ' ' << pos << '\n';
                 ll tp1 = sol(pos - 1, nfl1, nfl2, nfl3, nfl4, nfl5, nfl6);
                 if(tp1 && !pos) res = max(res, tg);
-                else if(tp1 != -1) res = max(res, tp1 | (tg << pos));
+                else if(tp1 != -2) res = max(res, tp1 | (tg << pos));
             }
         }
     }
@@ -137,11 +137,11 @@ ll sol1(ll pos, bool fl1, bool fl2, bool fl3, bool fl4, bool fl5, bool fl6){
                 // cerr << tg << ' ' << pos << '\n';
                 ll tp1 = sol1(pos - 1, nfl1, nfl2, nfl3, nfl4, nfl5, nfl6);
                 if(tp1 && !pos) res = min(res, tg);
-                else if(tp1 != -1) res = min(res, tp1 | (tg << pos));
+                else if(tp1 != -2) res = min(res, tp1 | (tg << pos));
             }
         }
     }
-    if(res == LLONG_MAX) res = -1;
+    if(res == LLONG_MAX) res = -2;
     dp[pos][fl1][fl2][fl3][fl4][fl5][fl6] = res;
     return res;
 }
