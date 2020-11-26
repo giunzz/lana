@@ -26,5 +26,5 @@ int main(){
     }
     lp(i, 1, n - 1)
         b[i] = a[i + 1] - a[i], s[i] += b[i];
-    jk 
+     
 }
