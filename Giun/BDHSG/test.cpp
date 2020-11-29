@@ -9,29 +9,31 @@
 using namespace std;
 
 void OF(){
-    freopen(Fname".inp", "r", stdin);
-    freopen(Fname".out", "w", stdout);
+	freopen(Fname".inp", "r", stdin);
+	freopen(Fname".out", "w", stdout);
 }
 
-cll maxn = 1e9 + 7;
-bool check[maxn];
-// int a = 1, b = 2, x = b= a = 3;
+using point = pp(ll, ll);
 
-void dfs(ll u){
+#define x first
+#define y second
 
+int area(point a, point b, point c){
+	point ab = {b.x - a.x, b.y - a.y}, bc = {c.x - b.x, c.y - b.y};
+	return ab.x * bc.y - ab.y * bc.x;
+}
+
+int ccw(point a, point b, point c){
+	ll tmp = area(a, b, c);
+	if(tmp < 0) return -1;
+	else if(tmp > 0) return 1;
+	else return 0;
 }
 
 int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
-    //OF();
-	// int a, b, c;
-	// int a = 2.5;
-	stack<ll> a;
-	cout << a.size();
-	// bool b = 0;
-	// int x = a = b = 0;
-	// cout << a;
-	// cin >> a >> b >> c;
-	// cout << a << ' ' << b << ' ' << c;
+	ios_base::sync_with_stdio(0);
+	cin.tie(0); cout.tie(0);
+	OF();
+	point a = {2, 5}, b = {5, 7}, c = {4, 10};
+	cerr << ccw(a, b, c) << '\n' << abs(area(a, b, c)) / 2.0;
 }
