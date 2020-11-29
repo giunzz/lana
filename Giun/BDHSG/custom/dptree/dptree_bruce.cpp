@@ -40,11 +40,11 @@ int main(){
         cin >> tmp;
         g[tmp].push_back(i);
     }
-    lp(u, 1, n){
-        for(ll v : g[u]){
-            cerr << u << ' ' << v << '\n';
-        }
-    }
+    // lp(u, 1, n){
+    //     for(ll v : g[u]){
+    //         cerr << u << ' ' << v << '\n';
+    //     }
+    // }
     dfs(1);
     lp(i, 1, n) cout << dp[i] << ' ';
 }

@@ -34,12 +34,12 @@ long long Rand(long long l, long long h)
 
 void Sinh(){
     co.open((ni).c_str());
-    // ll n = Rand(100, 1e5);
-    ll n = 7;
+    ll n = Rand(100, 1e6);
+    // ll n = 7;
     co << n << '\n';
     lp(i, 2, n) co << Rand(1, i - 1) << ' ';
     co.close();
-    // st(name); 
+    st(name); 
     st(nb);
 }
 
@@ -57,9 +57,9 @@ int main(){
     ni = name + ".inp";
     na = name + ".ans";
     nb = name + "_bruce";
-    lp(i, 1, 1){
+    lp(i, 1, 10){
         Sinh();
-        // cham();
+        cham();
     }
     cout << "ac: " << ac << "/" << cs;
 }
