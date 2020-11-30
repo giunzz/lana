@@ -13,9 +13,10 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+using point = pp(ll, ll);
 cll maxn = 1e5 + 7;
 ll n, m, l, r; 
-pp(ll, ll) sh[maxn], cp[maxn];
+point sh[maxn], cp[maxn];
 
 #define x first
 #define y second
@@ -23,19 +24,19 @@ pp(ll, ll) sh[maxn], cp[maxn];
 #define lt -1
 #define ga 0
 
-inline ll area(pp(ll, ll) &a, pp(ll, ll) &b, pp(ll, ll) &c){
-    pp(ll, ll) vecab = {b.x - a.x, b.y - a.y}, vecbc = {c.x - b.x, c.y - b.y};
+inline ll area(point &a, point &b, point &c){
+    point vecab = {b.x - a.x, b.y - a.y}, vecbc = {c.x - b.x, c.y - b.y};
     return vecab.x * vecbc.y - vecbc.x *  vecab.y;
 }
 
-ll ccw(pp(ll, ll) a, pp(ll, ll) b, pp(ll, ll) c){
+ll ccw(point a, point b, point c){
     ll s = area(a, b, c);
     if(s > 0) return 1;
     if(!s) return 0;
     return -1;
 }
 
-vec(pp(ll, ll)) r;
+vec(point) r;
 
 void prc(){
     ll rq;
