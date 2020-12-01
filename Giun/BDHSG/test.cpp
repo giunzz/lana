@@ -33,7 +33,8 @@ int ccw(point a, point b, point c){
 int main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0); cout.tie(0);
-	OF();
-	point a = {2, 5}, b = {5, 7}, c = {4, 10};
-	cerr << ccw(a, b, c) << '\n' << abs(area(a, b, c)) / 2.0;
+	// OF();
+	// point a = {2, 5}, b = {5, 7}, c = {4, 10};
+	// cerr << ccw(a, b, c) << '\n' << abs(area(a, b, c)) / 2.0;
+	cout << (float)(0.1 + 0.2);
 }
