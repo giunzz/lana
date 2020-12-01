@@ -94,11 +94,28 @@ void fpfromtg1(ll t){
     }
 }
 
+inline bool checkpint(point &a, point &b, point &c, point &d){
+    ll abd = ccw(a, b, d), bcd = ccw(b, c, d), cad = ccw(c, a, d);
+    return abd == bcd && bcd == cad;
+}
+
+void getres0(ll t){
+    lp(i, 2, n) if(ccw(sh[opt[t].tu], cp[opt[t].dg], sh[i]) < 1 || checkpint(sh[opt[t].tu], cp[opt[t].dg], cp[tg[t]], sh[i])) res[i] = 1;
+}
+
+void getres1(ll t){
+    lp(i, 2, n) if(ccw(sh[opt[t].tu], cp[opt[t].dg], sh[i]) > -1 || checkpint(sh[opt[t].tu], cp[opt[t].dg], cp[tg[t]], sh[i])) res[i] = 1;
+}
+
+void getrestg(){
+    lp(i, 2, n) if(checkpint(cp[opt[0].dg], cp[opt[1].dg], sh[1], sh[i])) res[i] = 1;
+}
+
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     OF();
-    res[1] = 1;
+    // res[1] = 1;
     cin >> n;
     lp(i, 1, n){
         ll x, y;
@@ -119,11 +136,15 @@ int main(){
     // change();
     prc(); // find 2 tangent of sh1 to convex polygon
     opt[0] = {tg[0], 1}, opt[1] = {tg[1], 1};
-    lp(i, 0, 1) cerr << "island: " << cp[opt[i].dg].x << ' ' << cp[opt[i].dg].y << "    ship: " << sh[opt[i].tu].x << ' ' << sh[opt[i].tu].y << '\n';
-    cerr << "Processing....\n";
-    fpfromtg0(0);
-    fpfromtg1(1);
-    lp(i, 0, 1) cerr << "island: " << cp[opt[i].dg].x << ' ' << cp[opt[i].dg].y << "    ship: " << sh[opt[i].tu].x << ' ' << sh[opt[i].tu].y << '\n';
+    getrestg();
+    // lp(i, 0, 1) cerr << "island: " << cp[opt[i].dg].x << ' ' << cp[opt[i].dg].y << "    ship: " << sh[opt[i].tu].x << ' ' << sh[opt[i].tu].y << '\n';
+    // cerr << "Processing....\n";
+    fpfromtg0(0); fpfromtg1(1);
+    // lp(i, 0, 1) cerr << "island: " << cp[opt[i].dg].x << ' ' << cp[opt[i].dg].y << "    ship: " << sh[opt[i].tu].x << ' ' << sh[opt[i].tu].y << '\n';
+    getres0(0); getres1(1);
+    ll ans = 0;
+    lp(i, 1, n) if(res[i]) ++ans;
+    cout << ans;
 }
 
 /*
