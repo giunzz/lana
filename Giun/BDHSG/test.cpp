@@ -18,6 +18,8 @@ using point = pp(ll, ll);
 #define x first
 #define y second
 
+bool test[(int)1e9 + 9] = {0};
+
 int area(point a, point b, point c){
 	point ab = {b.x - a.x, b.y - a.y}, bc = {c.x - b.x, c.y - b.y};
 	return ab.x * bc.y - ab.y * bc.x;
@@ -36,5 +38,7 @@ int main(){
 	// OF();
 	// point a = {2, 5}, b = {5, 7}, c = {4, 10};
 	// cerr << ccw(a, b, c) << '\n' << abs(area(a, b, c)) / 2.0;
-	cout << (float)(0.1 + 0.2);
+	// cout << (float)(0.1 + 0.2);
+	test[(int)1e8] = 1;
+	cout << test[(int)1e8];
 }

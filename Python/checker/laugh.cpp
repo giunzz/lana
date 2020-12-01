@@ -16,7 +16,7 @@ void OF(){
 
 cll maxn = 1e3 + 7, maxs = 1e5 + 7, mod = 1e9 + 9;
 ll n, dp[maxs] = {0}, p[31];
-string s, a[maxn];
+string s;
 // unordered_map<string, bool> d;
 bool d[mod] = {0};
 

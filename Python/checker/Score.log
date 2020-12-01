@@ -1,33 +1,39 @@
-Target: cake 
+Target: laugh 
 Directory: c:\Users\tienp\Desktop\Hoc\Python\checker
-test01: 0.267913s
+test001: 0.329502s
 Accept
-test02: 0.427874s
+test002: 0.253965s
 Accept
-test03: 0.239927s
+test003: 0.268843s
 Accept
-test04: 0.299910s
+test004: 0.339789s
 Accept
-test05: 0.243926s
+test005: 0.464939s
 Accept
-test06: 0.258159s
+test006: 0.518233s
 Accept
-test07: 0.256691s
-Wrong Ans at line 1
-test08: 0.333462s
+test007: 0.664588s
 Accept
-test09: 0.336647s
+test008: 0.736543s
 Accept
-test10: 0.316988s
-Wrong Ans at line 1
-test11: 0.367453s
+test009: 0.269834s
 Accept
-test12: 0.383891s
+test010: 0.272790s
 Accept
-test13: 0.497871s
+test011: 0.249844s
 Accept
-test14: 0.462595s
+test012: 0.250844s
 Accept
-test15: 0.565229s
+test013: 0.442727s
 Accept
-AC: 13/15
+test014: 0.257776s
+Accept
+test015: 0.274831s
+Accept
+test016: 0.326786s
+Accept
+test017: TLE
+test018: TLE
+test019: TLE
+test020: TLE
+AC: 16/20
