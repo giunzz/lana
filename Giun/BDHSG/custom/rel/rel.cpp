@@ -15,14 +15,20 @@ void OF(){
 
 #define x first
 #define y second
-#define rt 1
-#define lt -1
-#define ga 0
+#define dg first
+#define tu second
 
 using point = pp(ll, ll); 
 cll maxn = 1e5 + 7;
-ll n, m, l, r, res[maxn] = {0}; 
+ll n, m, tg[2], rooty = 1e18, rootx = 1e18; 
 point sh[maxn], cp[maxn];
+pp(ll, ll) opt[2]; // 0 is right, 1 is left
+bool res[maxn] = {0};
+
+void change(){
+    lp(i, 1, n) sh[i].y -= rooty, sh[i].x -= rootx;
+    lp(i, 0, m - 1) cp[i].y -= rooty, cp[i].x -= rootx;
+}
 
 inline ll area(point &a, point &b, point &c){
     point vecab = {b.x - a.x, b.y - a.y}, vecbc = {c.x - b.x, c.y - b.y};
@@ -37,12 +43,54 @@ inline ll ccw(point a, point b, point c){
 }
 
 void prc(){
-    ll direction;
-    lp(i, 1, m){
-        ll pre = ccw(sh[1], cp[i], cp[i - 1]), next = ccw(sh[1], cp[i], cp[i + 1]);
+    lp(i, 0, m - 1){
+        ll pre = ccw(sh[1], cp[i], cp[(i - 1 + m) % m]), next = ccw(sh[1], cp[i], cp[(i + 1) % m]);
         if(pre * -1 == next) continue;
-        if(next == 1) r = i;
-        else if(pre == -1) l = i;
+        if(next == 1) tg[0] = i; //tg0 is the right tangent
+        else if(pre == -1) tg[1] = i; //tg1 is the left tangent
+    }
+}
+
+inline bool checkpoint(ll pos, ll t){
+    ll tmp = ccw(sh[1], cp[tg[t]], sh[pos]);
+    if(!tmp) return 1;
+    if(t) return tmp == 1;
+    else return tmp == -1;
+}
+
+void fpfromtg0(ll t){
+    ll j = opt[t].dg;
+    lp(i, 2, n){
+        if(checkpoint(i, t)){
+            // cerr << sh[i].x << ' ' << sh[i].y << '\n';
+            res[i] = 1;
+            ll next = (j + 1) % m, tmp;
+            while(ccw(sh[i], cp[j], cp[next]) < 1) j = next, next = (j + 1) % m;
+            ll pre = (j - 1 + m) % m;
+            if((tmp = ccw(sh[i], cp[j], cp[pre])) == -1) continue;
+            if(j != opt[t].dg)
+                opt[t] = {j, i};
+            else
+                if(ccw(sh[opt[t].tu], cp[j], sh[i]) == -1) opt[t].tu = i;
+        }
+    }
+}
+
+void fpfromtg1(ll t){
+    // cerr << tg[t] << '\n';
+    ll j = opt[t].dg;
+    lp(i, 2, n){
+        if(checkpoint(i, t)){
+            res[i] = 1;
+            ll next = (j - 1 + m) % m, tmp;
+            while(ccw(sh[i], cp[j], cp[next]) > -1) j = next, next = (j - 1 + m) % m;
+            ll pre = (j + 1) % m;
+            if((tmp = ccw(sh[i], cp[j], cp[pre])) == 1) continue;
+            if(j != opt[t].dg)
+                opt[t] = {j, i};
+            else
+                if(ccw(sh[opt[t].tu], cp[j], sh[i]) == 1) opt[t].tu = i;
+        }
     }
 }
 
@@ -50,22 +98,32 @@ int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     OF();
+    res[1] = 1;
     cin >> n;
     lp(i, 1, n){
         ll x, y;
         cin >> x >> y;
         sh[i] = {x, y};
+        // if(y < rooty) rooty = y, rootx = x;
+        // else if(y == rooty && x < rootx) rootx = x;
     }
+    // cerr << sh[n].x << ' ' << sh[n].y << '\n';
     cin >> m;
-    lp(i, 1, m){
+    lp(i, 0, m - 1){
         ll x, y;
         cin >> x >> y;
         cp[i] = {x, y};
+        // if(y < rooty) rooty = y, rootx = x;
+        // else if(y == rooty && x < rootx) rootx = x;
     }
-    cp[0] = cp[m], cp[m + 1] = cp[1];
+    // change();
     prc(); // find 2 tangent of sh1 to convex polygon
-    cerr << l << ' ' << r;
-
+    opt[0] = {tg[0], 1}, opt[1] = {tg[1], 1};
+    lp(i, 0, 1) cerr << "island: " << cp[opt[i].dg].x << ' ' << cp[opt[i].dg].y << "    ship: " << sh[opt[i].tu].x << ' ' << sh[opt[i].tu].y << '\n';
+    cerr << "Processing....\n";
+    fpfromtg0(0);
+    fpfromtg1(1);
+    lp(i, 0, 1) cerr << "island: " << cp[opt[i].dg].x << ' ' << cp[opt[i].dg].y << "    ship: " << sh[opt[i].tu].x << ' ' << sh[opt[i].tu].y << '\n';
 }
 
 /*
