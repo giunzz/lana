@@ -18,7 +18,8 @@ void OF(){
 #define dg first
 #define tu second
 
-using point = pp(ll, ll); 
+#define point pp(ll, ll)
+#define mp make_pair
 cll maxn = 1e5 + 7;
 ll n, m, tg[2], rooty = 1e18, rootx = 1e18; 
 point sh[maxn], cp[maxn];
@@ -31,7 +32,7 @@ void change(){
 }
 
 inline ll area(point &a, point &b, point &c){
-    point vecab = {b.x - a.x, b.y - a.y}, vecbc = {c.x - b.x, c.y - b.y};
+    point vecab = mp(b.x - a.x, b.y - a.y), vecbc = mp(c.x - b.x, c.y - b.y);
     return vecab.x * vecbc.y - vecbc.x *  vecab.y;
 }
 
@@ -69,7 +70,7 @@ void fpfromtg0(ll t){
             ll pre = (j - 1 + m) % m;
             if((tmp = ccw(sh[i], cp[j], cp[pre])) == -1) continue;
             if(j != opt[t].dg)
-                opt[t] = {j, i};
+                opt[t] = mp(j, i);
             else
                 if(ccw(sh[opt[t].tu], cp[j], sh[i]) == -1) opt[t].tu = i;
         }
@@ -87,7 +88,7 @@ void fpfromtg1(ll t){
             ll pre = (j + 1) % m;
             if((tmp = ccw(sh[i], cp[j], cp[pre])) == 1) continue;
             if(j != opt[t].dg)
-                opt[t] = {j, i};
+                opt[t] = mp(j, i);
             else
                 if(ccw(sh[opt[t].tu], cp[j], sh[i]) == 1) opt[t].tu = i;
         }
@@ -120,7 +121,7 @@ int main(){
     lp(i, 1, n){
         ll x, y;
         cin >> x >> y;
-        sh[i] = {x, y};
+        sh[i] = mp(x, y);
         // if(y < rooty) rooty = y, rootx = x;
         // else if(y == rooty && x < rootx) rootx = x;
     }
@@ -129,13 +130,13 @@ int main(){
     lp(i, 0, m - 1){
         ll x, y;
         cin >> x >> y;
-        cp[i] = {x, y};
+        cp[i] = mp(x, y);
         // if(y < rooty) rooty = y, rootx = x;
         // else if(y == rooty && x < rootx) rootx = x;
     }
     // change();
     prc(); // find 2 tangent of sh1 to convex polygon
-    opt[0] = {tg[0], 1}, opt[1] = {tg[1], 1};
+    opt[0] = mp(tg[0], 1), opt[1] = mp(tg[1], 1);
     getrestg();
     // lp(i, 0, 1) cerr << "island: " << cp[opt[i].dg].x << ' ' << cp[opt[i].dg].y << "    ship: " << sh[opt[i].tu].x << ' ' << sh[opt[i].tu].y << '\n';
     // cerr << "Processing....\n";
@@ -145,11 +146,10 @@ int main(){
     ll ans = 0;
     lp(i, 1, n) if(res[i]) ++ans;
     cout << ans;
-}
+}   
 
 /*
 https://geogebra.org/classic/rjhvxukk
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs
 https://nodejs.dev/learn
-https://onedrive.live.com/?authkey=%21ANfPeYx6k3o2AKA&id=A6081E19970D24F2%2124698&cid=A6081E19970D24F2
 */
