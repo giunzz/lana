@@ -37,6 +37,15 @@ void bfs(){
             }
             stt = nstt;
         }
+        // lp(h, 0, 3){ 
+        //     ll x = rx, y = ry;
+        //     lp(i, 1, s[stat]){
+        //         x += dx[h], y += dy[h];
+        //         if(a[x][y] != -1) break;
+        //         a[x][y] = stat;
+        //         q.push({x, y});
+        //     }
+        // }
         while(l[stt].size()) {q.push(l[stt].front()); l[stt].pop();}
     }
 }
@@ -61,12 +70,16 @@ int main(){
     //     lp(j, 1, m) cerr << a[i][j] << ' ';
     //     cerr << '\n';
     // }
-    lp(i, 1, p) q.push(t[i]);
-    bfs();
-    // lp(i, 1, n){
-    //     lp(j, 1, m) cerr << a[i][j] << ' ';
-    //     cerr << '\n';
+    // lp(i, 1, p){
+    //     cerr << t[i].first << ' ' << t[i].second<< '\n';
     // }
+    lp(i, 1, p) q.push(t[i]);
+    // lp(i, 1, p) cerr << s[i] << ' ';
+    bfs();
+    lp(i, 1, n){
+        lp(j, 1, m) cerr << a[i][j] << ' ';
+        cerr << '\n';
+    }
     lp(i, 1, n) lp(j, 1, m) if(a[i][j] > 0) ++res[a[i][j]];
     lp(i, 1, p) cout << res[i] << ' ';
 }
