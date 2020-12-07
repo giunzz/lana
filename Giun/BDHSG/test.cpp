@@ -32,6 +32,13 @@ int ccw(point a, point b, point c){
 	else return 0;
 }
 
+void test1(vec(string) a){
+	cerr << a.size() << '\n';
+	for(string i : a) cerr << i << ' ';
+}
+
+unordered_map<int, unordered_map<string, int>> ddd;
+
 int main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0); cout.tie(0);
@@ -39,6 +46,9 @@ int main(){
 	// point a = {2, 5}, b = {5, 7}, c = {4, 10};
 	// cerr << ccw(a, b, c) << '\n' << abs(area(a, b, c)) / 2.0;
 	// cout << (float)(0.1 + 0.2);
-	test[(int)1e8] = 1;
-	cout << test[(int)1e8];
+	// test[(int)1e8] = 1;
+	// cout << test[(int)1e8];
+	// test1({"Quang", "1223", "QQQQ"});
+	ddd[10]["abc"] = 1;
+	cerr << ddd[10]["abc"];
 }
