@@ -44,7 +44,7 @@ int main(){
         lp(j, 1, min(k, n)){
             ll tmp = c[j][k] * gt[j] * f[n][j], du = k - j, tmp1 = 1;
             // lp(i, 1, n) ans += tmp * ff[a[i]][du + 1] * gt[du];
-            lp(i, 1, n) tmp1 *= ff[a[i]][du + 1];
+            lp(i, 1, n) tmp1 *= ff[a[i]][du + 1] * gt[du];
             ans += tmp * tmp1 * gt[du];
             cerr << tmp << ' ';
         }
