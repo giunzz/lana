@@ -34,7 +34,7 @@ int main(){
         } 
     }
     lp(i, 1, 1000) lp(j, 1, i) ff[i][j] = (ff[i][j - 1] + f[i][j]) % MOD; 
-    lp(i, 1, 1000) lp(j, i + 1, 1000) ff[i][j] = f[i][i];
+    lp(i, 1, 1000) lp(j, i + 1, 1000) ff[i][j] = f[i][i] + 1;
     // cerr << c[5][10];
     cerr << f[2][2] << '\n';
     while(cs--){
@@ -42,10 +42,10 @@ int main(){
         lp(i, 1, n) cin >> a[i];
         ll ans = 0;
         lp(j, 1, min(k, n)){
-            ll tmp = c[j][k] * gt[j] * f[n][j], du = k - j, tmp1 = 1;
+            ll tmp = (((c[j][k] * gt[j]) % MOD) * f[n][j]) % MOD, du = k - j, tmp1 = 1;
             // lp(i, 1, n) ans += tmp * ff[a[i]][du + 1] * gt[du];
-            lp(i, 1, n) tmp1 *= ff[a[i]][du + 1] * gt[du];
-            ans += tmp * tmp1 * gt[du];
+            lp(i, 1, n) (tmp1 *= (ff[a[i]][du + 1] * gt[du]) % MOD) %= MOD;
+            (ans += tmp * tmp1) %= MOD;
             cerr << tmp << ' ';
         }
         cout << ans << '\n';
