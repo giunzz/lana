@@ -66,7 +66,10 @@ int main(){
     cin.tie(0); cout.tie(0);
     OF();
     EllysFlags tmp;
-    cerr << tmp.getMax({"WWGRWW",
- "WWWWWW",
- "WWRGWW"});
+    try{
+        cout << tmp.getMax({"WGWWR","GRGRG","RWGRW","GGWGR"});  
+    }
+    catch(const exception& e){
+        cerr << e.what() << '\n';
+    }
 }
