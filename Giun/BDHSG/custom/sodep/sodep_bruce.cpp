@@ -17,7 +17,7 @@
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
-const string tenfile = "f";
+const string tenfile = "sodep";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".ans").c_str(), "w", stdout)
 
 ll n;
@@ -33,10 +33,17 @@ bool check(ll i){
 
 int main(){
     opt;
-    // file;
+    file;
     cin >> n;
-    while(check(n)){
-        --n;
+    ll n1 = n, n2 = n;
+    while(check(n1)){
+        --n1;
     }
-    cout << n;
+    while(check(n2)){
+        ++n2;
+    }
+    if(n - n1 == n2 - n) cout << n1 << ' ' << n2;
+    else if(n - n1 > n2 - n) cout << n2;
+    else cout << n1;
+    // cout << n1 << '\n' << n2;
 }
