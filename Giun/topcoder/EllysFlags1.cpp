@@ -15,7 +15,7 @@ void OF(){
 
 class EllysFlags{
     private:
-    int maxMask = (1 << 20) + 7;
+    const int maxMask = (1 << 20) + 7;
     ll n, m;
     vec(vec(vec(ll))) f;
     vec(vec(ll)) b, e;
@@ -38,26 +38,30 @@ ll EllysFlags::sol(ll i, ll j, int mask){
         if(i > 0 and e[i - 1][j] == 3) ++e[i][j];
         if(j > 0 and e[i][j - 1] == 3) ++e[i][j];
         res = max(res, sol(i, j + 1, (mask >> 2) | (e[i][j] << ((m - 1) << 1))));
-    }
+    }   
     if(b[i][j] == 0 || b[i][j] == 2){
         ll tmp = 0;
         if(i > 0 and e[i - 1][j] != 3) tmp += e[i - 1][j];
         if(j > 0 and e[i][j - 1] != 3) tmp += e[i][j - 1];
-        res = max(res, (short)(sol(i, j + 1, (mask >> 2) | (e[i][j] << ((m - 1) << 1))) + tmp));
+        res = max(res, (ll)(sol(i, j + 1, (mask >> 2) | (e[i][j] << ((m - 1) << 1))) + tmp));
     }
     return f[i][j][mask] = res;
 }
 
 int EllysFlags::getMax(vec(string) a){
     this -> n = a.size(), this -> m = a.back().size();
-    f.assign(n + 7, vec(vec(ll))(m + 7, vec(ll)(maxMask, -1)));
-    b.assign(n + 7, vec(ll)(m + 7));
-    e.assign(n + 7, vec(ll)(m + 7, 0));
+    f.assign(n, vec(vec(ll))(m, vec(ll)(maxMask, -1)));
+    b.assign(n, vec(ll)(m));
+    e.assign(n, vec(ll)(m, 0));
     char t;
     lp(i, 0, n - 1) lp(j, 0, m - 1) 
         if((t = a[i][j]) == 'W'){b[i][j] = 0;} 
         else if(t == 'G'){b[i][j] = 1;}
         else b[i][j] = 2;
+    // lp(i, 0, n - 1){
+    //     lp(j, 0, m - 1) cerr << b[i][j] << ' ';
+    //     cerr << '\n';
+    // }
     return sol(0, 0, 0);
 }   
 
@@ -67,9 +71,19 @@ int main(){
     OF();
     EllysFlags tmp;
     try{
-        cout << tmp.getMax({"WGWWR","GRGRG","RWGRW","GGWGR"});  
-    }
-    catch(const exception& e){
+        cout << tmp.getMax({
+            "WWGGRGWGGW",
+            "WWRWRGWWRG",
+            "GGWRWRRWRW",
+            "WWRRWWWWGR",
+            "WWGWWGRWGR",
+            "WWGWRRWWWR",
+            "WRGWWGWGWW",
+            "WWRGWRWGGW",
+            "WWRRWWGWRW",
+            "WRGWRRRGWW"
+        });  
+    } catch(const exception& e){
         cerr << e.what() << '\n';
     }
 }
