@@ -19,8 +19,7 @@ string a, b, c;
 ll n, m;
 cll maxn = 501;
 // ll pos[maxn];
-ll dp[maxn][maxn];
-int dp1[maxn][maxn][maxn];  
+ll dp[maxn][maxn];  
 bool vs[maxn][maxn][maxn] = {{{0}}};
 
 void sub1(){
@@ -57,9 +56,10 @@ bool trace(ll i, ll j, ll k){
     ll nk = k;
     if(vs[i][j][k]) return 0;
     vs[i][j][k] = 1;
-    if(i == 0 && j == 0) return k;
+    // cerr << i << ' ' << j << ' ' << k << '\n';
+    if(i == 0 && j == 0) return k != 0;
     if(a[i] == b[j]){
-        if(j > 0 && dp[i][j] == dp[i][j - 1] + 1){
+        if(j && dp[i][j] == dp[i][j - 1] + 1){
             nk = k;
             if(nk > 0 && b[j] == c[k]) nk = k - 1;
             if(trace(i, j - 1, nk)){
@@ -67,7 +67,7 @@ bool trace(ll i, ll j, ll k){
                 return 1;
             }
         }
-        else if(i > 0 && dp[i][j] == dp[i - 1][j] + 1){
+        if(i && dp[i][j] == dp[i - 1][j] + 1){
             nk = k;
             if(nk > 0 && a[i] == c[k]) nk = k - 1;
             if(trace(i - 1, j, nk)){
@@ -75,7 +75,7 @@ bool trace(ll i, ll j, ll k){
                 return 1;
             }
         }
-        else{
+        if(i && j && dp[i][j] == dp[i - 1][j - 1] + 1){
             nk = k;
             if(nk > 0 && a[i] == c[k]) nk = k - 1;
             if(trace(i - 1, j - 1, nk)){
@@ -85,7 +85,7 @@ bool trace(ll i, ll j, ll k){
         }
     }
     else{
-        if(j > 0 && dp[i][j] == dp[i][j - 1] + 1){
+        if(j && dp[i][j] == dp[i][j - 1] + 1){
             nk = k;
             if(nk > 0 && b[j] == c[k]) nk = k - 1;
             if(trace(i, j - 1, nk)){
@@ -93,7 +93,7 @@ bool trace(ll i, ll j, ll k){
                 return 1;
             }
         }
-        else if(i > 0 && dp[i][j] == dp[i - 1][j] + 1){
+        if(i && dp[i][j] == dp[i - 1][j] + 1){
             nk = k;
             if(nk > 0 && a[i] == c[k]) nk = k - 1;
             if(trace(i - 1, j, nk)){
@@ -114,6 +114,11 @@ void sub(){
     lp(i, 0, m) dp[0][i] = i;
     // cerr << a << " " << b << '\n';
     sol();
+    lp(i, 1, n){
+        lp(j, 1, m) cerr << dp[i][j] << ' ';
+        cerr << '\n';
+    }
+    // cerr << dp[n][m];
     bool check = trace(n, m, c.size() - 1);
     // cerr << n << ' ' << m <<'\n';
     if(ans.empty() || !check) cout << los;
