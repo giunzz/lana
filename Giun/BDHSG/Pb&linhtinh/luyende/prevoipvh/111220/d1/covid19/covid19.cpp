@@ -97,6 +97,16 @@ void sub(){
     }
 }
 
+struct segmenttree{
+    vec(ll) st;
+    ll n;
+    segmenttree(ll _n){
+        this -> n = _n;
+        st.resize(4 * n + 1);
+    }
+    
+};
+
 int main(){
     file("covid19");
     ll cs;
