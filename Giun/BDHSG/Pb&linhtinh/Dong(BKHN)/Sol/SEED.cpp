@@ -96,7 +96,7 @@ long long go(long long i,long long ch)
     long long cur=cal(i,tries[i].p);
     long long ans=0;
     while(cur!=0&&tries[cur].child[ch]==-1)
-    {
+    {  
         cur=cal(cur,tries[cur].p);
     }
     if(tries[cur].child[ch]==-1)ans=0;else ans=tries[cur].child[ch];

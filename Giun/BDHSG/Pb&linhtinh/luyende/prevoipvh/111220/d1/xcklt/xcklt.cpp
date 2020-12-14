@@ -18,7 +18,6 @@ const string los = "TRETRAU";
 string a, b, c;
 ll n, m;
 cll maxn = 501;
-// ll pos[maxn];
 ll dp[maxn][maxn];  
 bool vs[maxn][maxn][maxn] = {{{0}}};
 
@@ -32,23 +31,11 @@ void sol(){
     lp(i, 1, n){
         lp(j, 1, m){
             if(a[i] == b[j]) dp[i][j] = min(dp[i - 1][j], min(dp[i][j - 1], dp[i - 1][j - 1])) + 1;
-            else{
+            else
                 dp[i][j] = min(dp[i - 1][j], dp[i][j - 1]) + 1;
-            }
-            // if(i == 1 && j == 2) cerr << dp[i][j - 1] << '\n';
         }
     }
 }
-
-// int sol1(){
-//     lp(i, 0, a[0].size() - 1) lp(j, 0, a[1].size() - 1) lp(k, 0, c.size() - 1){
-//         dp1[i][j][k] = max(dp1[i - 1][j][k], max(dp1[i - 1][j][k - 1], dp1[i - 1][j - 1][k]));
-//         dp1[i][j][k] = max(dp1[i][j][k], max(dp1[i][j - 1][k], dp1[i][j - 1][k - 1]));
-//         dp1[i][j][k] = max(dp1[i][j][k], dp1[i][j][k - 1]);
-//         if(a[0][i] == a[1][j] && a[1][j] == c[k]) 
-//             dp1[i][j][k] = max(dp1[i][j][k], dp1[i  - 1][j - 1][k - 1] + 1);
-//     }
-// }
 
 string ans;
 
@@ -56,7 +43,6 @@ bool trace(ll i, ll j, ll k){
     ll nk = k;
     if(vs[i][j][k]) return 0;
     vs[i][j][k] = 1;
-    // cerr << i << ' ' << j << ' ' << k << '\n';
     if(i == 0 && j == 0) return k != 0;
     if(a[i] == b[j]){
         if(j && dp[i][j] == dp[i][j - 1] + 1){
@@ -109,18 +95,10 @@ void sub(){
     a = "0" + a;
     b = "0" + b;
     c = "0" + c;
-    // lp(i, 0, n) lp(j, 0, m) dp[i][j] = INT_MAX;
     lp(i, 0, n) dp[i][0] = i;
     lp(i, 0, m) dp[0][i] = i;
-    // cerr << a << " " << b << '\n';
     sol();
-    lp(i, 1, n){
-        lp(j, 1, m) cerr << dp[i][j] << ' ';
-        cerr << '\n';
-    }
-    // cerr << dp[n][m];
     bool check = trace(n, m, c.size() - 1);
-    // cerr << n << ' ' << m <<'\n';
     if(ans.empty() || !check) cout << los;
     else cout << ans.size() << '\n' << ans;
 }

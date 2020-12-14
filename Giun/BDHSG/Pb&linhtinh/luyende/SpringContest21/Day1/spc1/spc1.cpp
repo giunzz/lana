@@ -31,7 +31,7 @@ int main(){
     lp(i, 1, 1000){
         lp(j, 1, i){
             f[i][j] = (f[i - 1][j] * j + f[i - 1][j - 1]) % MOD;
-        } 
+        }
     }
     lp(i, 1, 1000) lp(j, 1, i) ff[i][j] = (ff[i][j - 1] + f[i][j]) % MOD; 
     lp(i, 1, 1000) lp(j, i + 1, 1000) ff[i][j] = f[i][i] + 1;
