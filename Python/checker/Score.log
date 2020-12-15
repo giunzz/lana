@@ -1,39 +1,7 @@
-Target: laugh 
-Directory: c:\Users\tienp\Desktop\Hoc\Python\checker
-test001: 0.329502s
+Target: spc1 
+Directory: C:\Users\tienp\Desktop\Hoc\Python\checker
+Test00: 0.277395s
 Accept
-test002: 0.253965s
+Test01: 0.268138s
 Accept
-test003: 0.268843s
-Accept
-test004: 0.339789s
-Accept
-test005: 0.464939s
-Accept
-test006: 0.518233s
-Accept
-test007: 0.664588s
-Accept
-test008: 0.736543s
-Accept
-test009: 0.269834s
-Accept
-test010: 0.272790s
-Accept
-test011: 0.249844s
-Accept
-test012: 0.250844s
-Accept
-test013: 0.442727s
-Accept
-test014: 0.257776s
-Accept
-test015: 0.274831s
-Accept
-test016: 0.326786s
-Accept
-test017: TLE
-test018: TLE
-test019: TLE
-test020: TLE
-AC: 16/20
+AC: 2/2

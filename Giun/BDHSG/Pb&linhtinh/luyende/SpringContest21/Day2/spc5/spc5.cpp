@@ -14,7 +14,7 @@ void file(const string file){
     freopen((file + ".out").c_str(), "w", stdout);
 }
 
-cll maxn = 57, MOD = 1e9 + 7;
+cll maxn = 507, MOD = 1e9 + 7;
 string s;
 ll dp[maxn][maxn][maxn];
 
@@ -25,10 +25,14 @@ int main(){
     dp[0][0][0] = 1;
     while(cs--){
         cin >> s;
+        // cerr << s.size() << '\n';
+        ll cnt = 0;
+        for(char c : s) if(c == 'T') ++cnt;
+        // cerr << cnt;
         s = '*' + s;
         lp(i, 1, s.size() - 1){
-            lp(singleEye, 0, s.size() - 1){
-                lp(halfEye, 0, s.size() - 1){
+            lp(singleEye, 0, cnt){
+                lp(halfEye, 0, cnt){
                     dp[i][singleEye][halfEye] = 0;
                     if(s[i] == '_'){
                         if(halfEye) (dp[i][singleEye][halfEye] += dp[i - 1][singleEye + 1][halfEye - 1] * (singleEye + 1)) %= MOD;
