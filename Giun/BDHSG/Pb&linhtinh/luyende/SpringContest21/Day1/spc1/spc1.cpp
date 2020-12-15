@@ -13,7 +13,15 @@ void file(const string file){
 }
 
 cll MOD = 1e9 + 7, maxn = 1e3 + 7;
-ll n, k, a[maxn], f[maxn][maxn] = {{0}}, gt[maxn], c[maxn][maxn] = {{0}}, ff[maxn][maxn] = {{0}};
+ll n, k, a[maxn], f[maxn][maxn] = {{0}}, gt[maxn], c[maxn][maxn] = {{0}};
+
+ll poww(ll u, ll v){
+    if(!v) return 1;
+    ll tmp = poww(u, v / 2);
+    (tmp *= tmp) %= MOD;
+    if(v & 1) return (tmp * u) % MOD;
+    return tmp;
+}
 
 int main(){
     ios_base::sync_with_stdio(0);
@@ -33,20 +41,14 @@ int main(){
             f[i][j] = (f[i - 1][j] * j + f[i - 1][j - 1]) % MOD;
         }
     }
-    lp(i, 1, 1000) lp(j, 1, i) ff[i][j] = (ff[i][j - 1] + f[i][j]) % MOD; 
-    lp(i, 1, 1000) lp(j, i + 1, 1000) ff[i][j] = f[i][i] + 1;
-    // cerr << c[5][10];
-    cerr << f[2][2] << '\n';
     while(cs--){
         cin >> n >> k;
-        lp(i, 1, n) cin >> a[i];
+        ll s = 0;
+        lp(i, 1, n){cin >> a[i]; (s += a[i]) %= MOD;}
         ll ans = 0;
         lp(j, 1, min(k, n)){
-            ll tmp = (((c[j][k] * gt[j]) % MOD) * f[n][j]) % MOD, du = k - j, tmp1 = 1;
-            // lp(i, 1, n) ans += tmp * ff[a[i]][du + 1] * gt[du];
-            lp(i, 1, n) (tmp1 *= (ff[a[i]][du + 1] * gt[du]) % MOD) %= MOD;
-            (ans += tmp * tmp1) %= MOD;
-            cerr << tmp << ' ';
+            ll tmp = (((((c[j][k] * gt[j]) % MOD) * f[n][j]) % MOD) * poww(k - j + 1, s)) % MOD ;
+            (ans += tmp) %= MOD;
         }
         cout << ans << '\n';
     }

@@ -21,23 +21,26 @@ pp(ll, ll) p[4];
 bool ok[maxn][maxn][maxn][maxn];
 
 void sol1(ll x1, ll y1, ll x2, ll y2){
-    // cerr << x1 << ' ' << y1 << ' ' << x2 << ' ' << y2 << '\n';
-    // if(dp[x1][y1][x2][y2] != -1) return;
-    // if(dp[x1][y1][x2][y2] == 0) return 0;
-    // ll res = LLONG_MAX;
-    lp(i, 0, 3){
-        lp(j, 0, 3){
-            ll nx1 = x1 + dx[i], ny1 = y1 + dy[i], nx2 = x2 + dx[j], ny2 = y2 + dy[j];
-            if(a[nx1][ny1] == -1 || a[nx2][ny2] == -1) continue;
-            if(nx1 ==  x2 && ny1 == y2 && nx2 == x1 && ny2 == y1) continue;
-            if(nx1 == nx2 && ny1 == ny2) continue;
-            // if(ok[nx1][ny1][nx2][ny2]) continue;
-            // ok[nx1][ny1][nx2][ny2] = 1;
-            if(dp[nx1][ny1][nx2][ny2] <= dp[x1][y1][x2][y2] + 1) continue;
-            dp[nx1][ny1][nx2][ny2] = dp[x1][y1][x2][y2] + 1;
-            sol1(nx1, ny1, nx2, ny2);
-            // ok[nx1][ny1][nx2][ny2] = 0;
-            // if(tmp != -2) res = min(res, sol1(nx1, ny1, nx2, ny2));
+    queue<vec(ll)> q;
+    q.push({x1, y1, x2, y2});
+    while(q.size()){
+        x1 = q.front()[0], y1 = q.front()[1], x2 = q.front()[2], y2 = q.front()[3];
+        q.pop();
+        lp(i, 0, 3){
+            lp(j, 0, 3){
+                ll nx1 = x1 + dx[i], ny1 = y1 + dy[i], nx2 = x2 + dx[j], ny2 = y2 + dy[j];
+                if(a[nx1][ny1] == -1 || a[nx2][ny2] == -1) continue;
+                if(nx1 ==  x2 && ny1 == y2 && nx2 == x1 && ny2 == y1) continue;
+                if(nx1 == nx2 && ny1 == ny2) continue;
+                // if(ok[nx1][ny1][nx2][ny2]) continue;
+                // ok[nx1][ny1][nx2][ny2] = 1;
+                if(dp[nx1][ny1][nx2][ny2] <= dp[x1][y1][x2][y2] + 1) continue;
+                dp[nx1][ny1][nx2][ny2] = dp[x1][y1][x2][y2] + 1;
+                // sol1(nx1, ny1, nx2, ny2);
+                q.push({nx1, ny1, nx2, ny2});
+                // ok[nx1][ny1][nx2][ny2] = 0;
+                // if(tmp != -2) res = min(res, sol1(nx1, ny1, nx2, ny2));
+            }
         }
     }
     // if(res == LLONG_MAX) res = -2;
