@@ -17,7 +17,10 @@ int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     // OF();
-    ll n = 7;
-    n = n ^ (1 << 1);
-    cout << n;
+    for(ll i = 2; i * i <= 998244353; ++i){
+        if(998244353 % i == 0){
+            cerr << i;
+            break;
+        }
+    }
 }
