@@ -1,7 +1,33 @@
-Target: power3 
-Directory: G:\HocLapTrinh\cham\checker
-test000: 0.549351s
-Accept
-test001: 0.497693s
-Accept
-AC: 2/2
+Target: CAKE 
+Directory: g:\HocLapTrinh\cham\checker
+test01: 0.519854s
+Wrong Ans at line 1
+test02: 0.427934s
+Wrong Ans at line 1
+test03: 0.291494s
+Wrong Ans at line 1
+test04: 0.319377s
+Wrong Ans at line 1
+test05: 0.611817s
+Wrong Ans at line 1
+test06: 0.294136s
+Wrong Ans at line 1
+test07: 0.240153s
+Wrong Ans at line 1
+test08: 0.294556s
+Wrong Ans at line 1
+test09: 0.243722s
+Wrong Ans at line 1
+test10: 0.247798s
+Wrong Ans at line 1
+test11: 0.280027s
+Wrong Ans at line 1
+test12: 0.231468s
+Wrong Ans at line 1
+test13: 0.276280s
+Wrong Ans at line 1
+test14: 0.291578s
+Wrong Ans at line 1
+test15: 0.306675s
+Wrong Ans at line 1
+AC: 0/15

@@ -6,23 +6,20 @@ const ll maxn = 1e6;
 using namespace std;
 ll a[maxn+7],n , f[maxn+7]={0};
 vector<ll> g[maxn+7];
-
 void dfs (ll u)
 {
     for (int v : g[u])  dfs(v);
     for (int v : g[u]) f[u] += f[v]+1;
 }
-
 int main()
 {
     giuncute;
     freopen("giun.inp","r",stdin);
     freopen("giun.out","w",stdout);
     cin >> n;
-    for (int i = 1 ; i <= n ; i++) cin >> a[i], g[a[i]].push_back(i);
-    for (int i = 1 ; i <= n ; i++)
-    {
-        dfs(i);
-        cout << f[i] << " ";
-    }
+    cerr << n << " ";
+    for (int i = 2 ; i <= n ; i++) cin >> a[i], g[a[i]].push_back(i);
+    dfs(1);
+    cerr << 1 << " ";
+    for (int i = 1 ; i <= n ; i++) cout << f[i] << " ";
 }

@@ -14,8 +14,8 @@ inline ll dientich(ll xa , ll ya , ll xb , ll yb , ll xc , ll yc)
 int main()
 {
     giuncute;
-    freopen("cake.inp","r",stdin);
-    freopen("cake.out","w",stdout);
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
     cin >> n;
     for (int i = 1 ; i <= n ; i++) 
     {

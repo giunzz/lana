@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 // ko lien tiep
-int n , a[10007] , f[1009]={0},t , ma = 0, ans = 0;
+int n , a[10007] , f[1009]={0},t , ma = 0, ans = INT_MI
 
 int main()
 {
