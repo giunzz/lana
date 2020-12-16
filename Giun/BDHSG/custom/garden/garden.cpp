@@ -20,7 +20,8 @@ const double esf = 1e-9;
 const string tenfile = "garden";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-ll n, m, q;
+cll maxn = 507;
+ll n, m, q, dp[maxn][maxn] = {{0}}, dp1[maxn][maxn] = {{0}};
 vec(pp(ll, ll)) g;
 
 #define mp make_pair
@@ -33,17 +34,29 @@ int main(){
         char x;
         cin >> x;
         if(x == 'x'){
-            g.push_back(mp(i, j));
+            dp[i][j] = dp1[i][j] = i;
+            // g.push_back(mp(i, j));
         }
     }
+    lp(i, 1, n) lp(j, 1, n) dp[i][j] = dp[i][j] ? dp[i][j] : dp[i - 1][j];
+    lpd(i, n, 1) lp(j, 1, n) dp1[i][j] = dp1[i][j] ? dp1[i][j] : dp1[i + 1][j];
     cin >> q;
-    lp(i, 1, n){
+    lp(t, 1, q){
         ll x, y, ma = LLONG_MAX;
         cin >> x >> y;
-        for(pp(ll, ll) p : g){
-            ma = min(ma, (p.first - x) * (p.first - x) + (p.second - y) * (p.second - y));
+        lp(i, 1, m){
+            ll nx = dp[x][i], ny = i;
+            if(nx == 0) continue;
+            ma = min(ma, (nx - x) * (nx - x) + (ny - y) * (ny - y));
         }
+        lp(i, 1, m){
+            ll nx = dp1[x][i], ny = i;
+            if(nx == 0) continue;
+            ma = min(ma, (nx - x) * (nx - x) + (ny - y) * (ny - y));
+        }
+        dp[x][y] = x;
+        lp(i, x + 1, n) dp[i][y] = dp[i][y] ? dp[i][y] : dp[i - 1][y];
+        lpd(i, x - 1, 1) dp1[i][y] = dp1[i][y] ? dp1[i][y] : dp1[i + 1][y];
         cout << ma << '\n';
-        g.push_back(mp(x, y));
     }
 }
