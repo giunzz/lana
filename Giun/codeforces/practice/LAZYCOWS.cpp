@@ -15,7 +15,8 @@ void OF(){
 
 cll maxn = 1e3 + 7;
 ll n, k, b;
-pp(ll, ll) a[maxn];
+// pp(ll, ll) a[maxn];
+vec(ll) a[3];
 
 bool cpr(pp(ll, ll) &x, pp(ll, ll) &y){
     return x.second < y.second || (x.second == y.second && x.first < y.first);
@@ -26,7 +27,11 @@ int main(){
     cin.tie(0); cout.tie(0);
     OF();
     cin >> n >> k >> b;
-    lp(i, 1, n) cin >> a[i].first >> a[i].second;
-    sort(a + 1, a + 1 + n, cpr);
-
+    lp(i, 1, n){
+        ll x, y;
+        cin >> x >> y;
+        a[x].push_back(y);
+    }
+    lp(i, 1, 2) sort(a[i].begin(), a[i].end());
+    
 }
