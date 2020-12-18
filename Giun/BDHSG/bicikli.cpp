@@ -5,7 +5,7 @@
 #define lpd(a, b, c) for(ll a = b; a >= c; --a)
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
-#define Fname "bicikli"
+#define Fname "f"
 using namespace std;
 
 void OF(){
@@ -13,7 +13,31 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+cll maxn = 1e4 + 7, MOD = 1e10;
+ll n, m, dp[maxn] = {0};
+bool d[maxn] = {0};
+vec(ll) g[maxn];
 
+ll dfs(ll u){
+    if(u == 2) return dp[u] = 1;
+    if(dp[u]) return dp[u];
+    for(ll v : g[u]){
+        if(d[v])
+    }
+} 
+
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    OF();
+    cin >> n >> m;
+    lp(i, 1, m){
+        ll u, v;
+        cin >> u >> v;
+        g[u].push_back(v);
+    }
+    dfs(1);
+}
 
 // cll maxn = 1e4 + 7;
 // ll n, m, dp[maxn] = {0}, num[maxn] = {0}, low[maxn] = {0}, cnt = 0, tt[maxn] = {0}, co = 0;
