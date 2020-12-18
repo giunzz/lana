@@ -21,8 +21,20 @@ vec(ll) g[maxn];
 ll dfs(ll u){
     if(u == 2) return dp[u] = 1;
     if(dp[u]) return dp[u];
+    ll res = 0;
     for(ll v : g[u]){
-        if(d[v])
+        if(d[v]){
+            if(dp[v]){
+                if(dp[v] == -1){
+                    return dp[u] = dp[v];
+                } else if(dp[v] > 0){
+                    res += dp[v];
+                }
+            }
+            else{
+                
+            }
+        }
     }
 } 
 
