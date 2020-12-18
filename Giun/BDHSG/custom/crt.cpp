@@ -29,4 +29,3 @@ int main(){
     st("cd " + name + " && rename pb.* " + name + ".*");
     st("cd " + name + " && rename pb_bruce.cpp " + name + "_bruce.cpp");
 }
-
