@@ -5,7 +5,7 @@
 #define lpd(a, b, c) for(ll a = b; a >= c; --a)
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
-#define Fname "f"
+#define Fname "circle"
 using namespace std;
 
 void OF(){
@@ -15,7 +15,7 @@ void OF(){
 
 cll maxn = 1e5 + 7;
 ll n;
-unordered_map<ll, ll> update;
+map<ll, ll> update;
 pp(ll, ll) a[maxn];
 
 bool cpr(pp(ll, ll) &x, pp(ll, ll) &y){
