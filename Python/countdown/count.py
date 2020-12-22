@@ -8,8 +8,8 @@ import time, os, win32gui
 # hoursForTask = 0.005
 
 secForPrepare = 5
-minForPrepare = 10
-hoursForTask = 2
+minForPrepare = 0
+hoursForTask = 15.0/60.0
 
 def printMsgSec(msg, diff):
     os.system('cls')
@@ -40,10 +40,11 @@ hwnd = win32gui.GetForegroundWindow()
 win32gui.MoveWindow(hwnd, 0, 0, 355, 75, True)
 init()
 print(Fore.GREEN + '\a');
-# printMsgMin(str(minForPrepare) + msgPrepareByMin, minForPrepare)
-# printMsgSec(str(secForPrepare) + msgPrepareBySec, secForPrepare)
+printMsgMin(str(minForPrepare) + msgPrepareByMin, minForPrepare)
+printMsgSec(str(secForPrepare) + msgPrepareBySec, secForPrepare)
 printMsgMin(str(hoursForTask) + msgDoTasks, hoursForTask * 60)
 print('Time Ended!')
 for i in range(10):
     print('\a', end='')
+    time.sleep(1)
 print(Fore.RESET)

@@ -77,7 +77,7 @@ void dj(){
     }
     ll ans = LLONG_MAX;
     lp(i, 0, 31){
-        if(countbito(i) == l){
+        if(countbito(i) >= l){
             ans = min(ans, dp[n][i]);
         }
     }
