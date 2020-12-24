@@ -5,11 +5,11 @@ import time, os, win32gui
 # test
 # secForPrepare = 5
 # minForPrepare = 0.2
-# hoursForTask = 0.005
+# hoursForTask = 20
 
 secForPrepare = 5
 minForPrepare = 0
-hoursForTask = 15.0/60.0
+hoursForTask = 20.0/60.0
 
 def printMsgSec(msg, diff):
     os.system('cls')

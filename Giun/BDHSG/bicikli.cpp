@@ -13,30 +13,48 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-cll maxn = 1e4 + 7, MOD = 1e10;
-ll n, m, dp[maxn] = {0};
+cll maxn = 1e4 + 7, MOD = 1e9;
+ll n, m, dp[maxn] = {0}, cy[maxn] = {0};
 bool d[maxn] = {0};
 vec(ll) g[maxn];
+bool md = 0;
 
-ll dfs(ll u){
-    if(u == 2) return dp[u] = 1;
-    if(dp[u]) return dp[u];
+void mod(ll &t){
+    while(t >= MOD) t -= MOD, md = 1;
+}
+
+void dfs(ll u){
     ll res = 0;
     for(ll v : g[u]){
         if(d[v]){
-            if(dp[v]){
-                if(dp[v] == -1){
-                    return dp[u] = dp[v];
-                } else if(dp[v] > 0){
-                    res += dp[v];
+            if(!cy[v]){
+                cy[v] = -1;
+                queue<ll> q;
+                q.push(v);
+                while(q.size()){
+                    ll uu = q.front();
+                    q.pop();
+                    for(ll vv : g[uu])
+                        if(cy[vv] == -1) continue;
+                        else cy[vv] = -1, d[vv] = 1, q.push(vv);
                 }
+                break;
             }
-            else{
-                
-            }
+            else if(cy[v] == -1) continue;
         }
+        if(d[v] || dp[v]){
+            res += dp[v];
+            mod(res);
+            continue;
+        }
+        d[v] = 1;
+        dfs(v);
+        res += dp[v];
+        mod(res);
     }
-} 
+    if(cy[u] != -1) cy[u] = 1;
+    dp[u] = res;
+}
 
 int main(){
     ios_base::sync_with_stdio(0);
@@ -48,7 +66,16 @@ int main(){
         cin >> u >> v;
         g[u].push_back(v);
     }
+    dp[2] = 1;
     dfs(1);
+    // lp(i, 1, n) cerr << cy[i] << ' ' << i << '\n';
+    if(cy[2] == -1) cout << "inf";
+    else{
+        // cerr << (dp[1] > MOD);
+        string s = to_string(dp[1]);
+        if(md) while(s.size() < 9) s = '0' + s;
+        cout << s;
+    }
 }
 
 // cll maxn = 1e4 + 7;
