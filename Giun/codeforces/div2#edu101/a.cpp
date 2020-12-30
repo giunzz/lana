@@ -62,6 +62,6 @@ int main(){
         else {
             if(st_ch.size() & 1) cout << NO;
             else cout << YES;
-        }
+        }  
     }
 }
