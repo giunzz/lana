@@ -27,7 +27,7 @@ int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     file("spc1");
-    ll cs
+    ll cs;
     cin >> cs;
     a[0] = 0;
     f[0][0] = 1;
@@ -50,6 +50,6 @@ int main(){
             ll tmp = (((((c[j][k] * gt[j]) % MOD) * f[n][j]) % MOD) * poww(k - j + 1, s)) % MOD ;
             (ans += tmp) %= MOD;
         }
-        cout << ans << '\n';
+        cout << 0 << '\n';
     }
 } 
