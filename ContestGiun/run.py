@@ -90,18 +90,18 @@ def init():
 def run():
     wRunClient('Running')
     print('Running')
-    
-    try:
-        init()
-    except Exception as e: wRunClient(str(e))
-    else:
-        wRunClient('Init Success')
 
     try:
         getLocationGit()
     except Exception as e: wRunClient(str(e))
     else:
         wRunClient('Get location root folder: ' + locationGit)
+    
+    try:
+        init()
+    except Exception as e: wRunClient(str(e))
+    else:
+        wRunClient('Init Success')
     
     try:
         wRunClient('Trying connect server')
