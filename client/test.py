@@ -15,7 +15,7 @@ import time
 # os.system('git add . && git commit -m "sync" && git push -u origin quang')
 # subprocess.run(["cd",  "&& git add . && git commit -m \"sync\" && git push -u origin quang" % location], shell=True)
 
-with open(os.path.join(__location__, 'log\\temp.txt'), 'w') as wlog:
+with open(os.path.join(__location__, 'log\\temp.log'), 'w') as wlog:
     subprocess.run(["cd", location, "&&", "git", "add", ".", "&&", "git", "commit", "-m", "\"sync\"", "&&", "git", "push", "-u", "origin", "quang"], stdout=wlog, stderr=wlog, shell=True)
 
 # with open(os.path.join(__location__, 'test.txt'), 'w') as wlog:
