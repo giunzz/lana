@@ -28,7 +28,7 @@ int main(){
     cin.tie(0); cout.tie(0);
     file("pb");
     ll cs;
-    cin >> cs
+    cin >> cs;
     a[0] = 0;
     f[0][0] = 1;
     gt[0] = 1;
