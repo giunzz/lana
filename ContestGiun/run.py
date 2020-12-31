@@ -48,12 +48,12 @@ def statusConnect():
 def statusProb():
     global listProbs
     direcLog = joinPath(__location__, 'log')
-    # while not os.path.exists(joinPath(__location__, 'probs')) or len(os.listdir(joinPath(__location__, 'probs'))) == 0:
-    #     gitPull()
-    #     sleep(10)
-    while filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp.log')):
+    while not os.path.exists(joinPath(__location__, 'probs')) or len(os.listdir(joinPath(__location__, 'probs'))) == 0:
         gitPull()
         sleep(10)
+    # while filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp.log')):
+    #     gitPull()
+    #     sleep(10)
     readPing = open(joinPath(__location__, 'ping.txt'), 'r')
     listProbs = readPing.read().split()
     readPing.close()
