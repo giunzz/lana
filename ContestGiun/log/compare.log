@@ -1,11 +1,15 @@
 Comparing files C:\USERS\TIENP\DESKTOP\QUANG\HOC\CONTESTGIUN\TASKS\spc1.cpp and C:\USERS\TIENP\DESKTOP\QUANG\HOC\CONTESTGIUN\TEMP\SPC1.CPP
 ***** C:\USERS\TIENP\DESKTOP\QUANG\HOC\CONTESTGIUN\TASKS\spc1.cpp
     cin.tie(0); cout.tie(0);
-    file("pb");
-    ll cs;
-***** C:\USERS\TIENP\DESKTOP\QUANG\HOC\CONTESTGIUN\TEMP\SPC1.CPP
-    cin.tie(0); cout.tie(0);
     file("spc1");
     ll cs;
+    cin >> cs
+    a[0] = 0;
+***** C:\USERS\TIENP\DESKTOP\QUANG\HOC\CONTESTGIUN\TEMP\SPC1.CPP
+    cin.tie(0); cout.tie(0);
+    file("pb");
+    ll cs;
+    cin >> cs;
+    a[0] = 0;
 *****
 
