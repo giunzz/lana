@@ -77,9 +77,10 @@ def statusTasks():
 def waitGetRes():
     gitPull()
     direcLog = joinPath(__location__, 'log')
-    while filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp.log')):
-        gitPull()
-        sleep(10)
+    print(filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp.log')))
+    # while filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp.log')):
+    #     gitPull()
+    #     sleep(10)
 
 def run():
     wRunClient('Running')
@@ -108,7 +109,7 @@ def run():
         wRunClient('Received Problem and Start Contest')
         print('Start Contest')
 
-    timeDo = [19, 45]
+    timeDo = [20, 15]
     try:
         while datetime.now().hour < timeDo[0] or (datetime.now().hour == timeDo[0] and datetime.now().minute <= timeDo[1]):
             if statusTasks():
