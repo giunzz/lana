@@ -66,12 +66,14 @@ def statusTasks():
         # print(nameTask)
         splitTask = nameTask.split('.')
         if len(splitTask) == 2 and splitTask[1] == 'cpp' and splitTask[0] in listProbs:
-            if (nameTask in os.listdir(dirTemp)) and filecmp.cmp(joinPath(dirTasks, nameTask), joinPath(dirTemp, nameTask)):
+            wlog = open(joinPath(__location__, 'log\\compare.log'), 'w')
+            if (nameTask in os.listdir(dirTemp)) and not subprocess.run(['fc', joinPath(dirTasks, nameTask), joinPath(dirTemp, nameTask), '/w'], stdout=wlog, stderr=wlog, shell=True).returncode:
                 continue
             if not nameTask in os.listdir(dirTemp):
                 open(joinPath(dirTemp, nameTask), 'w')
             checkStatus = 1
             copyfile(joinPath(dirTasks, nameTask), joinPath(dirTemp, nameTask))
+            wlog.close()
     return checkStatus
 
 def waitGetRes():
