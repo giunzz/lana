@@ -47,7 +47,7 @@ def statusConnect():
 
 def statusProb():
     global listProbs
-    direcLog = joinPath(__location__, 'log')
+    # direcLog = joinPath(__location__, 'log')
     while not os.path.exists(joinPath(__location__, 'probs')) or len(os.listdir(joinPath(__location__, 'probs'))) == 0:
         gitPull()
         sleep(10)
@@ -66,8 +66,10 @@ def statusTasks():
         # print(nameTask)
         splitTask = nameTask.split('.')
         if len(splitTask) == 2 and splitTask[1] == 'cpp' and splitTask[0] in listProbs:
-            if nameTask in os.listdir(dirTemp) and filecmp.cmp(joinPath(dirTasks, nameTask), joinPath(dirTemp, nameTask)):
+            if (nameTask in os.listdir(dirTemp)) and filecmp.cmp(joinPath(dirTasks, nameTask), joinPath(dirTemp, nameTask)):
                 continue
+            if not nameTask in os.listdir(dirTemp):
+                open(joinPath(dirTemp, nameTask), 'w')
             checkStatus = 1
             copyfile(joinPath(dirTasks, nameTask), joinPath(dirTemp, nameTask))
     return checkStatus
@@ -107,17 +109,21 @@ def run():
         print('Start Contest')
 
     timeDo = [19, 30]
-    while datetime.now().hour < timeDo[0] or (datetime.now().hour == timeDo[0] and datetime.now().minute <= timeDo[1]):
-        if statusTasks():
-            wRunClient('Send tasks to server')
-            print('Detected tasks')
-            gitPush()
-            try:
-                waitGetRes()
-            except Exception as e: wRunClient(str(e))
-            else:
-                wRunClient('Received result')
-                print('Received result')
+    try:
+        while datetime.now().hour < timeDo[0] or (datetime.now().hour == timeDo[0] and datetime.now().minute <= timeDo[1]):
+            if statusTasks():
+                wRunClient('Send tasks to server')
+                print('Detected tasks')
+                gitPush()
+                try:
+                    waitGetRes()
+                except Exception as e: wRunClient(str(e))
+                else:
+                    wRunClient('Received result')
+                    print('Received result')
+    except Exception as e: wRunClient(str(e))
+    else:
+        wRunClient('Server Nice')
     wRunClient('End Contest and Off Server')
     print('End Contest')
 
