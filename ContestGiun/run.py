@@ -121,6 +121,7 @@ def run():
                 else:
                     wRunClient('Received result')
                     print('Received result')
+            sleep(10)
     except Exception as e: wRunClient(str(e))
     else:
         wRunClient('Server Nice')
