@@ -77,10 +77,10 @@ def statusTasks():
 def waitGetRes():
     gitPull()
     direcLog = joinPath(__location__, 'log')
-    print(filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp.log')))
-    # while filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp.log')):
-    #     gitPull()
-    #     sleep(10)
+    # print(filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp.log')))
+    while filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp.log')):
+        gitPull()
+        sleep(10)
 
 def run():
     wRunClient('Running')
