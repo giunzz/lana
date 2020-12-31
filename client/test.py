@@ -12,8 +12,10 @@ import time
 # time.sleep(10)
 
 
-os.system('git add . && git commit -m "sync" && git push -u origin quang >/dev/null 2>&1')
+# os.system('git add . && git commit -m "sync" && git push -u origin quang')
 # subprocess.run(["cd",  "&& git add . && git commit -m \"sync\" && git push -u origin quang" % location], shell=True)
+
+subprocess.run(["cd", location, "&&", "gts", "quang"], shell=True)
 
 # with open(os.path.join(__location__, 'test.txt'), 'w') as wlog:
 #     wlog.write('testttttttt')
