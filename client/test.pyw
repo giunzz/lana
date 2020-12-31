@@ -11,9 +11,8 @@ import time
 
 # time.sleep(10)
 
-tmp = filecmp.dircmp(os.path.join(__location__, 'tasks'), os.path.join(__location__, 'temp'))
 
-print(len(tmp.left_only))
+os.system('git add . && git commit -m "sync" && git push -u origin quang')
 
 # with open(os.path.join(__location__, 'test.txt'), 'w') as wlog:
 #     wlog.write('testttttttt')
