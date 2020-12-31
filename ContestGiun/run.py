@@ -127,7 +127,7 @@ def run():
         while datetime.now().hour < timeDo[0] or (datetime.now().hour == timeDo[0] and datetime.now().minute <= timeDo[1]):
             if statusTasks():
                 wRunClient('Send tasks to server')
-                print(datetime.now(), 'Detected tasks')
+                print(datetime.now(), ' Detected tasks')
                 gitPush()
                 try:
                     waitGetRes()
