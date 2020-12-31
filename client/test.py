@@ -11,12 +11,19 @@ import time
 
 # time.sleep(10)
 
+def joinPath(name1, name2):
+    return os.path.join(name1, name2)
 
 # os.system('git add . && git commit -m "sync" && git push -u origin quang')
 # subprocess.run(["cd",  "&& git add . && git commit -m \"sync\" && git push -u origin quang" % location], shell=True)
 
+temp = filecmp.cmp(os.path.join(__location__, 'log\\temp.log'), os.path.join(__location__, 'log\\examPull.log'), shallow=False)
+print(temp)
 
 
+with open(joinPath(__location__, 'log\\temp.log'), 'w') as wlog:
+    subprocess.run(["cd", locationGit, "&&", "git", "pull", "origin", "quang"], stdout=wlog, stderr=wlog, shell=True)
+    # wlog.close()
 
 
 

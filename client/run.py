@@ -7,6 +7,7 @@ from datetime import datetime
 __location__ = os.path.dirname(os.path.realpath(__file__))
 global locationGit
 listProbs = []
+examplePull = 'examPull.log'
 
 def joinPath(name1, name2):
     return os.path.join(name1, name2)
@@ -34,40 +35,92 @@ def gitPush():
 
 def statusConnect():
     open(joinPath(__location__, 'ping.txt'), 'w')
+    gitPush()
     while True:
-        gitPush()
+        gitPull()
         readPing = open(joinPath(__location__, 'ping.txt'), 'r')
         content = readPing.read().split()
+        readPing.close()
         if len(content):
             break
         sleep(10)
 
 def statusProb():
     global listProbs
-    while not os.path.exists(joinPath(__location__, 'probs')) or len(os.listdir(joinPath(__location__, 'probs'))) == 0:
+    direcLog = joinPath(__location__, 'log')
+    # while not os.path.exists(joinPath(__location__, 'probs')) or len(os.listdir(joinPath(__location__, 'probs'))) == 0:
+    #     gitPull()
+    #     sleep(10)
+    while filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp')):
         gitPull()
         sleep(10)
     readPing = open(joinPath(__location__, 'ping.txt'), 'r')
     listProbs = readPing.read().split()
+    readPing.close()
 
 def statusTasks():
-    cprTasksTemp = filecmp.dircmp(joinPath(__location__, 'tasks'), joinPath(__location__, 'temp'))
     dirTasks = joinPath(__location__, 'tasks')
     dirTemp = joinPath(__location__, 'temp')
     checkStatus = 0
-    for nameTask in cprTasksTemp.left_only:
+    for nameTask in os.listdir(dirTasks):
+        # print(nameTask)
         splitTask = nameTask.split('.')
-        if len(splitTask) == 2 and splitTask[1] == '.cpp' and splitTask[0] in listProbs:
+        if len(splitTask) == 2 and splitTask[1] == 'cpp' and splitTask[0] in listProbs:
+            if nameTask in os.listdir(dirTemp) and filecmp.cmp(joinPath(dirTasks, nameTask), joinPath(dirTemp, nameTask)):
+                continue
             checkStatus = 1
             copyfile(joinPath(dirTasks, nameTask), joinPath(dirTemp, nameTask))
     return checkStatus
 
+def waitGetRes():
+    gitPull()
+    direcLog = joinPath(__location__, 'log')
+    while filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp')):
+        gitPull()
+        sleep(10)
+
+def run():
+    wRunClient('Running')
+    print('Running')
+    
+    try:
+        getLocationGit()
+    except Exception as e: wRunClient(str(e))
+    else:
+        wRunClient('Get location root folder: ' + locationGit)
+    
+    try:
+        wRunClient('Trying connect server')
+        print('Connecting to server')
+        statusConnect()
+    except Exception as e: wRunClient(str(e))
+    else:
+        wRunClient('Connected to server')
+        print('Connected')
+    
+    try:
+        wRunClient('Waiting for server')
+        statusProb()
+    except Exception as e: wRunClient(str(e))
+    else:
+        wRunClient('Received Problem and Start Contest')
+        print('Start Contest')
+
+    timeDo = [18, 0]
+    while datetime.now().hour < timeDo[0] or (datetime.now().hour == timeDo[0] and datetime.now().minute <= timeDo[1]):
+        if statusTasks():
+            wRunClient('Send tasks to server')
+            print('Detected tasks')
+            gitPush()
+            try:
+                waitGetRes()
+            except Exception as e: wRunClient(str(e))
+            else:
+                wRunClient('Received result')
+                print('Received result')
+    wRunClient('End Contest and Off Server')
+    print('End Contest')
+
+
 if __name__ == "__main__":
-    print(0)
-    getLocationGit()
-    # print(locationGit)
-    print(1)
-    statusConnect()
-    print(2)
-    statusProb()
-    print(listProbs)
+    run()
