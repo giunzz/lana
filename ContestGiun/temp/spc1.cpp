@@ -26,8 +26,8 @@ ll poww(ll u, ll v){
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-    file("pb");
-    ll cs;
+    file("spc1");
+    ll cs
     cin >> cs;
     a[0] = 0;
     f[0][0] = 1;
