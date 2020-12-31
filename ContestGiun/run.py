@@ -82,10 +82,21 @@ def waitGetRes():
         gitPull()
         sleep(10)
 
+def init():
+    gitPull()
+    with open(joinPath(__location__, 'log\\examPull.log'), 'w') as wlog:
+        subprocess.run(["cd", locationGit, "&&", "git", "pull", "origin", "quang"], stdout=wlog, stderr=wlog, shell=True)
+
 def run():
     wRunClient('Running')
     print('Running')
     
+    try:
+        init()
+    except Exception as e: wRunClient(str(e))
+    else:
+        wRunClient('Init Success')
+
     try:
         getLocationGit()
     except Exception as e: wRunClient(str(e))
