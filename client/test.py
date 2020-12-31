@@ -1,4 +1,4 @@
-import os, subprocess
+import os, subprocess, filecmp
 
 __location__ = os.path.dirname(os.path.realpath(__file__))
 
@@ -10,9 +10,10 @@ location = 'C:\\Users\\tienp\\Desktop\\Hoc'
 import time
 
 # time.sleep(10)
-tmp = os.system('cd %s && git add . && git commit -m "sync" && git push -u origin quang' % location)
 
-print(tmp)
+tmp = filecmp.dircmp(os.path.join(__location__, 'tasks'), os.path.join(__location__, 'temp'))
+
+print(len(tmp.left_only))
 
 # with open(os.path.join(__location__, 'test.txt'), 'w') as wlog:
 #     wlog.write('testttttttt')

@@ -1,4 +1,5 @@
-import os
+import os, filecmp
+from distutils.dir_util import copy_tree
 from time import sleep
 from datetime import datetime
 
@@ -37,8 +38,15 @@ def statusConnect():
             break
         sleep(10)
 
-def statusProb():
-
+def statusTasks():
+    cprTasksTemp = filecmp.dircmp(joinPath(__location__, 'tasks'), joinPath(__location__, 'temp'))
+    dirTasks = joinPath(__location__, 'tasks')
+    dirTemp = joinPath(__location__, 'temp')
+    checkStatus = 0
+    if len(cprTasksTemp.left_only):
+        copy_tree(dirTasks, dirTemp)
+        checkStatus = 1
+    return checkStatus
 
 if __name__ == "__main__":
     # getLocationGit()
