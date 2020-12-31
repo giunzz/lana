@@ -51,7 +51,7 @@ def statusProb():
     # while not os.path.exists(joinPath(__location__, 'probs')) or len(os.listdir(joinPath(__location__, 'probs'))) == 0:
     #     gitPull()
     #     sleep(10)
-    while filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp')):
+    while filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp.log')):
         gitPull()
         sleep(10)
     readPing = open(joinPath(__location__, 'ping.txt'), 'r')
@@ -75,7 +75,7 @@ def statusTasks():
 def waitGetRes():
     gitPull()
     direcLog = joinPath(__location__, 'log')
-    while filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp')):
+    while filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp.log')):
         gitPull()
         sleep(10)
 
@@ -106,7 +106,7 @@ def run():
         wRunClient('Received Problem and Start Contest')
         print('Start Contest')
 
-    timeDo = [18, 0]
+    timeDo = [19, 30]
     while datetime.now().hour < timeDo[0] or (datetime.now().hour == timeDo[0] and datetime.now().minute <= timeDo[1]):
         if statusTasks():
             wRunClient('Send tasks to server')
