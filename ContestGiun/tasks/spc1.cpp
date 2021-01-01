@@ -50,6 +50,6 @@ int main(){
             ll tmp = (((((c[j][k] * gt[j]) % MOD) * f[n][j]) % MOD) * poww(k - j + 1, s)) % MOD ;
             (ans += tmp) %= MOD;
         }
-        cout << 0 << '\n';
+        cout << ahs << '\n'
     }
 } 
