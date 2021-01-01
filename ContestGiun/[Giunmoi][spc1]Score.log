@@ -1,7 +1,7 @@
 Target: spc1 
-Test00: 0.337365s
-Wrong Ans at line 1
-Test01: 0.433572s
-Wrong Ans at line 1
-AC: 0/2
-01/01/2021 09:53:29
+Test00: 0.439521s
+Accept
+Test01: 0.308597s
+Accept
+AC: 2/2
+01/01/2021 09:54:54
