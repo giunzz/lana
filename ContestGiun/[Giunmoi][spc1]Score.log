@@ -1,5 +1,7 @@
 Target: spc1 
-Test00: TLE
-Test01: TLE
-AC: 0/2
-01/01/2021 09:50:52
+Test00: 0.452162s
+Accept
+Test01: 0.308471s
+Accept
+AC: 2/2
+01/01/2021 09:52:04
