@@ -140,7 +140,7 @@ def run():
     else:
         wRunClient('Server Nice')
     wRunClient('End Contest and Off Server')
-    print('Yeuuuuuuuuuuuuu emmmmmmmmmmm luv you chut chut!!!!!!!!!! <333333')
+    print('Yeuuuuuuuuuuuuu emmmmmmmmmmm luv you chut chutttt!!!!!!!!!! <333333')
 
 
 if __name__ == "__main__":
