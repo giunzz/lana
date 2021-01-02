@@ -47,7 +47,6 @@ def statusConnect():
 
 def statusProb():
     global listProbs
-    # direcLog = joinPath(__location__, 'log')
     while not os.path.exists(joinPath(__location__, 'probs')) or len(os.listdir(joinPath(__location__, 'probs'))) == 0:
         gitPull()
         sleep(10)
@@ -137,8 +136,14 @@ def run():
     else:
         wRunClient('Server Nice')
     wRunClient('End Contest and Off Server')
-    print('Yeuuuuuuuuuuuuu emmmmmmmmmmm luv you chut chutttt!!!!!!!!!! <333333')
+    print('End Contest')
 
 
 if __name__ == "__main__":
+    print('Iuuu Giunnnn Cuteeeeeeeeeeeeee!!!!!!!!!!!!!!!!!!')
     run()
+    print('Yeuuuuuuuuuuuuu emmmmmmmmmmm luv you chut chutttt!!!!!!!!!! <333333')
+
+
+# Yeuuuuuuuuuuuuuuuu giunnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+# Made by Quang dap chaiii
