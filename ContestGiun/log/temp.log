@@ -1,0 +1,8 @@
+From https://github.com/giunzz/lana
+ * branch              quang      -> FETCH_HEAD
+   c2869205..f76c6657  quang      -> origin/quang
+Updating c2869205..f76c6657
+Fast-forward
+ ContestGiun/[Giunmoi][spc1]Score.log  | 8 ++++++--
+ ContestGiun/[Giunmoi][spc1]Status.log | 5 +++--
+ 2 files changed, 9 insertions(+), 4 deletions(-)

@@ -1,11 +1,3 @@
 Comparing files C:\USERS\TIENP\DESKTOP\QUANG\HOC\CONTESTGIUN\TASKS\spc1.cpp and C:\USERS\TIENP\DESKTOP\QUANG\HOC\CONTESTGIUN\TEMP\SPC1.CPP
-***** C:\USERS\TIENP\DESKTOP\QUANG\HOC\CONTESTGIUN\TASKS\spc1.cpp
-        }
-        cout << ans << '\n';
-    }
-***** C:\USERS\TIENP\DESKTOP\QUANG\HOC\CONTESTGIUN\TEMP\SPC1.CPP
-        }
-        cout << ahs << '\n'
-    }
-*****
+FC: no differences encountered
 
