@@ -1,4 +1,4 @@
-import os, filecmp, subprocess
+import os, filecmp, subprocess, colorama
 from distutils.dir_util import copy_tree
 from shutil import copyfile
 from time import sleep
@@ -138,9 +138,10 @@ def run():
 
 
 if __name__ == "__main__":
-    print('Iuuu Giunnnn Cuteeeeeeeeeeeeee!!!!!!!!!!!!!!!!!!')
+    colorama.init();
+    print(colorama.Fore.GREEN + 'Iuuu Giunnnn Cuteeeeeeeeeeeeee!!!!!!!!!!!!!!!!!!')
     run()
-    print('Yeuuuuuuuuuuuuu emmmmmmmmmmm luv you chut chutttt!!!!!!!!!! <333333')
+    print('Yeuuuuuuuuuuuuu emmmmmmmmmmm luv you chut chutttt!!!!!!!!!! <333333' + colorama.Fore.RESET)
 
 
 # Yeuuuuuuuuuuuuuuuu giunnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
