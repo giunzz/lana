@@ -59,7 +59,6 @@ def statusTasks():
     dirTemp = joinPath(__location__, 'temp')
     checkStatus = 0
     for nameTask in os.listdir(dirTasks):
-        # print(nameTask)
         splitTask = nameTask.split('.')
         if len(splitTask) == 2 and splitTask[1] == 'cpp' and splitTask[0] in listProbs:
             wlog = open(joinPath(__location__, 'log\\compare.log'), 'w')
@@ -75,7 +74,6 @@ def statusTasks():
 def waitGetRes():
     gitPull()
     direcLog = joinPath(__location__, 'log')
-    # print(filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp.log')))
     while filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp.log')):
         gitPull()
         sleep(10)
