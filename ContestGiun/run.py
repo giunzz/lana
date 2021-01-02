@@ -1,4 +1,5 @@
-import os, filecmp, subprocess
+#Giun cuteee iu bee cuteee iu beee banh baoooooooo
+import os, filecmp, subprocess, colorama
 from distutils.dir_util import copy_tree
 from shutil import copyfile
 from time import sleep
@@ -47,13 +48,9 @@ def statusConnect():
 
 def statusProb():
     global listProbs
-    # direcLog = joinPath(__location__, 'log')
     while not os.path.exists(joinPath(__location__, 'probs')) or len(os.listdir(joinPath(__location__, 'probs'))) == 0:
         gitPull()
         sleep(10)
-    # while filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp.log')):
-    #     gitPull()
-    #     sleep(10)
     readPing = open(joinPath(__location__, 'ping.txt'), 'r')
     listProbs = readPing.read().split()
     readPing.close()
@@ -63,7 +60,6 @@ def statusTasks():
     dirTemp = joinPath(__location__, 'temp')
     checkStatus = 0
     for nameTask in os.listdir(dirTasks):
-        # print(nameTask)
         splitTask = nameTask.split('.')
         if len(splitTask) == 2 and splitTask[1] == 'cpp' and splitTask[0] in listProbs:
             wlog = open(joinPath(__location__, 'log\\compare.log'), 'w')
@@ -79,7 +75,6 @@ def statusTasks():
 def waitGetRes():
     gitPull()
     direcLog = joinPath(__location__, 'log')
-    # print(filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp.log')))
     while filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp.log')):
         gitPull()
         sleep(10)
@@ -122,7 +117,7 @@ def run():
         wRunClient('Received Problem and Start Contest')
         print('Start Contest')
 
-    timeDo = [10, 0]
+    timeDo = [16, 35]
     try:
         while datetime.now().hour < timeDo[0] or (datetime.now().hour == timeDo[0] and datetime.now().minute <= timeDo[1]):
             if statusTasks():
@@ -144,4 +139,11 @@ def run():
 
 
 if __name__ == "__main__":
+    colorama.init();
+    print(colorama.Fore.GREEN + 'Iuuu Giunnnn Cuteeeeeeeeeeeeee!!!!!!!!!!!!!!!!!!')
     run()
+    print('Yeuuuuuuuuuuuuu emmmmmmmmmmm luv you chut chutttt!!!!!!!!!! <333333\n#1626794' + colorama.Fore.RESET)
+
+
+# Yeuuuuuuuuuuuuuuuu giunnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+# Made by Quang dap chaiii
