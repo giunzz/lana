@@ -142,7 +142,7 @@ if __name__ == "__main__":
     colorama.init();
     print(colorama.Fore.GREEN + 'Iuuu Giunnnn Cuteeeeeeeeeeeeee!!!!!!!!!!!!!!!!!!')
     run()
-    print('Yeuuuuuuuuuuuuu emmmmmmmmmmm luv you chut chutttt!!!!!!!!!! <333333' + colorama.Fore.RESET)
+    print('Yeuuuuuuuuuuuuu emmmmmmmmmmm luv you chut chutttt!!!!!!!!!! <333333\n#1626794' + colorama.Fore.RESET)
 
 
 # Yeuuuuuuuuuuuuuuuu giunnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
