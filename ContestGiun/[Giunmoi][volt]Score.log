@@ -1,102 +1,53 @@
 Target: volt 
-test01: 0.536260s
-Wrong Ans at line 1
-test02: 0.493383s
-Wrong Ans at line 1
-test03: 0.407940s
-Wrong Ans at line 1
-test04: 0.452240s
-Wrong Ans at line 1
-test05: 0.336792s
-Wrong Ans at line 1
-test06: 0.352188s
-Wrong Ans at line 1
-test07: 0.653697s
-Wrong Ans at line 1
-test08: 0.488743s
-Wrong Ans at line 1
-test09: 0.507793s
-Wrong Ans at line 1
-test10: 0.467859s
-Wrong Ans at line 1
-test11: 0.737477s
-Wrong Ans at line 1
-test12: 0.565440s
-Wrong Ans at line 1
-test13: 0.509906s
-Wrong Ans at line 1
-test14: 0.469080s
-Wrong Ans at line 1
-test15: 0.724118s
-Wrong Ans at line 1
-test16: 0.575996s
-Wrong Ans at line 1
-test17: 0.656297s
-Wrong Ans at line 1
-test18: TLE
-test19: 0.681730s
-Wrong Ans at line 1
-test20: 0.485588s
-Wrong Ans at line 1
-test21: 0.370981s
-Wrong Ans at line 1
-test22: 0.440832s
-Wrong Ans at line 1
-test23: 0.533225s
-Wrong Ans at line 1
-test24: 0.471515s
-Wrong Ans at line 1
-test25: 0.345452s
-Wrong Ans at line 1
-test26: 0.502604s
-Wrong Ans at line 1
-test27: 0.518167s
-Wrong Ans at line 1
-test28: 0.488159s
-Wrong Ans at line 1
-test29: 0.584510s
-Wrong Ans at line 1
-test30: 0.772784s
-Wrong Ans at line 1
-test31: 0.597301s
-Wrong Ans at line 1
-test32: 0.559656s
-Wrong Ans at line 1
-test33: 0.827134s
-Wrong Ans at line 1
-test34: 0.615122s
-Wrong Ans at line 1
-test35: 0.620377s
-Wrong Ans at line 1
-test36: 0.525124s
-Wrong Ans at line 1
-test37: 0.767527s
-Accept
-test38: 0.767532s
-Accept
-test39: 0.827727s
-Wrong Ans at line 1
-test40: 0.613622s
-Wrong Ans at line 1
-test41: 0.744540s
-Wrong Ans at line 1
-test42: 0.542053s
-Wrong Ans at line 1
-test43: 0.510351s
-Wrong Ans at line 1
-test44: 0.668579s
-Wrong Ans at line 1
-test45: 0.780625s
-Wrong Ans at line 1
-test46: 0.766528s
-Wrong Ans at line 1
-test47: 0.558330s
-Wrong Ans at line 1
-test48: 0.551529s
-Wrong Ans at line 1
-test49: 0.649524s
-Accept
-test50: 0.500694s
-Wrong Ans at line 1
-AC: 3/50
-03/01/2021 14:25:54
+test01: No File Output Found
+test02: No File Output Found
+test03: No File Output Found
+test04: No File Output Found
+test05: No File Output Found
+test06: No File Output Found
+test07: No File Output Found
+test08: No File Output Found
+test09: No File Output Found
+test10: No File Output Found
+test11: No File Output Found
+test12: No File Output Found
+test13: No File Output Found
+test14: No File Output Found
+test15: No File Output Found
+test16: No File Output Found
+test17: No File Output Found
+test18: No File Output Found
+test19: No File Output Found
+test20: No File Output Found
+test21: No File Output Found
+test22: No File Output Found
+test23: No File Output Found
+test24: No File Output Found
+test25: No File Output Found
+test26: No File Output Found
+test27: No File Output Found
+test28: No File Output Found
+test29: No File Output Found
+test30: No File Output Found
+test31: No File Output Found
+test32: No File Output Found
+test33: No File Output Found
+test34: No File Output Found
+test35: No File Output Found
+test36: No File Output Found
+test37: No File Output Found
+test38: No File Output Found
+test39: No File Output Found
+test40: No File Output Found
+test41: No File Output Found
+test42: No File Output Found
+test43: No File Output Found
+test44: No File Output Found
+test45: No File Output Found
+test46: No File Output Found
+test47: No File Output Found
+test48: No File Output Found
+test49: No File Output Found
+test50: No File Output Found
+AC: 0/50
+03/01/2021 14:41:48
