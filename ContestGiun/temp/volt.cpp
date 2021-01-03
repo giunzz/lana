@@ -8,8 +8,8 @@ int main()
 {
     giuncute;
     rtd.push_back(0);
-    freopen("volt.inp","r",stdin);
-    freopen("volt.out","w",stdout);
+    freopen("giun.inp","r",stdin);
+    freopen("g.out","w",stdout);
     cin >> n >> a >> b >> I;
     for (int i = 1 ; i < n ; i++)
     {
@@ -30,7 +30,9 @@ int main()
             rtd.push_back(1.0/(double)t);
         }
     }
+    for (int i = 1 ; i < (ll) rtd.size() ; i++) cerr << rtd[i] << " ";
     double rt = 0;
     for (int i = a ; i < b ; i++) rt += rtd[i];
-    cout << (int)(I*rt);
+
+    cout << (ll)(I*rt);
 }
