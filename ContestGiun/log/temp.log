@@ -1,0 +1,9 @@
+From https://github.com/giunzz/lana
+ * branch              quang      -> FETCH_HEAD
+   b70cbb55..b7ea9042  quang      -> origin/quang
+Updating b70cbb55..b7ea9042
+Fast-forward
+ ContestGiun/ping.txt                 |   4 +++-
+ ContestGiun/probs/ContestGiun #3.pdf | Bin 0 -> 93996 bytes
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+ create mode 100644 ContestGiun/probs/ContestGiun #3.pdf
