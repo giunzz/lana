@@ -117,7 +117,7 @@ def run():
         wRunClient('Received Problem and Start Contest')
         print('Start Contest')
 
-    timeDo = [13, 35]
+    timeDo = [14, 10]
     try:
         while datetime.now().hour < timeDo[0] or (datetime.now().hour == timeDo[0] and datetime.now().minute <= timeDo[1]):
             if statusTasks():
