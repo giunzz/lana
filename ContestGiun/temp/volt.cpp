@@ -8,8 +8,8 @@ int main()
 {
     giuncute;
     rtd.push_back(0);
-    freopen("giun.inp","r",stdin);
-    freopen("g.out","w",stdout);
+    freopen("volt.inp","r",stdin);
+    freopen("volt.out","w",stdout);
     cin >> n >> a >> b >> I;
     for (int i = 1 ; i < n ; i++)
     {
