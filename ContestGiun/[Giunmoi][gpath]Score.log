@@ -1,5 +1,78 @@
 Target: gpath 
-test00: 0.397619s
-Wrong Ans at line 8
-AC: 0/1
-03/01/2021 14:00:20
+test01: 0.440916s
+Wrong Ans at line 18
+test02: 0.273019s
+Wrong Ans at line 24
+test03: 0.285290s
+Wrong Ans at line 13
+test04: 0.313077s
+Accept
+test05: 0.318932s
+Accept
+test06: 0.269184s
+Wrong Ans at line 13
+test07: 0.316286s
+Accept
+test08: 0.316982s
+Accept
+test09: 0.316523s
+Accept
+test10: 0.493802s
+Accept
+test11: 0.557716s
+Wrong Ans at line 168
+test12: 0.442103s
+Accept
+test13: 0.370847s
+Accept
+test14: 0.376399s
+Accept
+test15: 0.313425s
+Wrong Ans at line 77
+test16: 0.355444s
+Wrong Ans at line 205
+test17: 0.483441s
+Accept
+test18: 0.308859s
+Wrong Ans at line 118
+test19: 0.329384s
+Wrong Ans at line 32
+test20: 0.570434s
+Wrong Ans at line 67
+test21: 0.347038s
+Accept
+test22: 0.335415s
+Accept
+test23: 0.348940s
+Wrong Ans at line 278
+test24: 0.351597s
+Accept
+test25: 0.366105s
+Accept
+test26: TLE
+test27: TLE
+test28: TLE
+test29: TLE
+test30: TLE
+test31: TLE
+test32: TLE
+test33: TLE
+test34: TLE
+test35: TLE
+test36: TLE
+test37: TLE
+test38: TLE
+test39: TLE
+test40: TLE
+test41: TLE
+test42: TLE
+test43: TLE
+test44: TLE
+test45: TLE
+test46: TLE
+test47: TLE
+test48: TLE
+test49: TLE
+test50: TLE
+AC: 14/50
+03/01/2021 14:18:52
