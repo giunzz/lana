@@ -1,0 +1,80 @@
+Target: ckn 
+test01: 0.368434s
+Accept
+test02: 0.313689s
+Accept
+test03: 0.268793s
+Accept
+test04: 0.315907s
+Accept
+test05: 0.377611s
+Accept
+test06: 0.313597s
+Accept
+test07: 0.424791s
+Accept
+test08: 0.298700s
+Accept
+test09: 0.267599s
+Accept
+test10: 0.314495s
+Accept
+test11: 0.378483s
+Accept
+test12: 0.329953s
+Accept
+test13: 0.316021s
+Accept
+test14: 0.330195s
+Accept
+test15: 0.281739s
+Accept
+test16: 0.315955s
+Accept
+test17: 0.362538s
+Accept
+test18: 0.267765s
+Accept
+test19: 0.301104s
+Accept
+test20: 0.375970s
+Accept
+test21: 0.267395s
+Accept
+test22: 0.269204s
+Accept
+test23: 0.330110s
+Accept
+test24: 0.267053s
+Accept
+test25: 0.252556s
+Accept
+test26: TLE
+test27: TLE
+test28: TLE
+test29: 0.545221s
+Accept
+test30: TLE
+test31: TLE
+test32: TLE
+test33: TLE
+test34: TLE
+test35: TLE
+test36: TLE
+test37: TLE
+test38: TLE
+test39: TLE
+test40: TLE
+test41: 0.519592s
+Wrong Ans at line 1
+test42: TLE
+test43: TLE
+test44: TLE
+test45: TLE
+test46: TLE
+test47: TLE
+test48: TLE
+test49: TLE
+test50: TLE
+AC: 26/50
+03/01/2021 14:24:08

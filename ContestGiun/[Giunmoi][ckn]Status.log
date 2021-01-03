@@ -1,0 +1,52 @@
+Target: ckn 
+test01: Run file Success!
+test02: Run file Success!
+test03: Run file Success!
+test04: Run file Success!
+test05: Run file Success!
+test06: Run file Success!
+test07: Run file Success!
+test08: Run file Success!
+test09: Run file Success!
+test10: Run file Success!
+test11: Run file Success!
+test12: Run file Success!
+test13: Run file Success!
+test14: Run file Success!
+test15: Run file Success!
+test16: Run file Success!
+test17: Run file Success!
+test18: Run file Success!
+test19: Run file Success!
+test20: Run file Success!
+test21: Run file Success!
+test22: Run file Success!
+test23: Run file Success!
+test24: Run file Success!
+test25: Run file Success!
+test26: Run file Success!
+test27: [WinError 87] The parameter is incorrect
+test28: Run file Success!
+test29: Run file Success!
+test30: invalid literal for int() with base 10: ''
+test31: invalid literal for int() with base 10: ''
+test32: invalid literal for int() with base 10: ''
+test33: [WinError 87] The parameter is incorrect
+test34: [WinError 5] Access is denied
+test35: invalid literal for int() with base 10: ''
+test36: invalid literal for int() with base 10: ''
+test37: Run file Success!
+test38: Run file Success!
+test39: invalid literal for int() with base 10: ''
+test40: invalid literal for int() with base 10: ''
+test41: Run file Success!
+test42: invalid literal for int() with base 10: ''
+test43: invalid literal for int() with base 10: ''
+test44: Run file Success!
+test45: invalid literal for int() with base 10: ''
+test46: invalid literal for int() with base 10: ''
+test47: Run file Success!
+test48: invalid literal for int() with base 10: ''
+test49: invalid literal for int() with base 10: ''
+test50: Run file Success!
+03/01/2021 14:24:08

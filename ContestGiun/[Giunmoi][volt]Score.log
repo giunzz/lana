@@ -1,0 +1,102 @@
+Target: volt 
+test01: 0.536260s
+Wrong Ans at line 1
+test02: 0.493383s
+Wrong Ans at line 1
+test03: 0.407940s
+Wrong Ans at line 1
+test04: 0.452240s
+Wrong Ans at line 1
+test05: 0.336792s
+Wrong Ans at line 1
+test06: 0.352188s
+Wrong Ans at line 1
+test07: 0.653697s
+Wrong Ans at line 1
+test08: 0.488743s
+Wrong Ans at line 1
+test09: 0.507793s
+Wrong Ans at line 1
+test10: 0.467859s
+Wrong Ans at line 1
+test11: 0.737477s
+Wrong Ans at line 1
+test12: 0.565440s
+Wrong Ans at line 1
+test13: 0.509906s
+Wrong Ans at line 1
+test14: 0.469080s
+Wrong Ans at line 1
+test15: 0.724118s
+Wrong Ans at line 1
+test16: 0.575996s
+Wrong Ans at line 1
+test17: 0.656297s
+Wrong Ans at line 1
+test18: TLE
+test19: 0.681730s
+Wrong Ans at line 1
+test20: 0.485588s
+Wrong Ans at line 1
+test21: 0.370981s
+Wrong Ans at line 1
+test22: 0.440832s
+Wrong Ans at line 1
+test23: 0.533225s
+Wrong Ans at line 1
+test24: 0.471515s
+Wrong Ans at line 1
+test25: 0.345452s
+Wrong Ans at line 1
+test26: 0.502604s
+Wrong Ans at line 1
+test27: 0.518167s
+Wrong Ans at line 1
+test28: 0.488159s
+Wrong Ans at line 1
+test29: 0.584510s
+Wrong Ans at line 1
+test30: 0.772784s
+Wrong Ans at line 1
+test31: 0.597301s
+Wrong Ans at line 1
+test32: 0.559656s
+Wrong Ans at line 1
+test33: 0.827134s
+Wrong Ans at line 1
+test34: 0.615122s
+Wrong Ans at line 1
+test35: 0.620377s
+Wrong Ans at line 1
+test36: 0.525124s
+Wrong Ans at line 1
+test37: 0.767527s
+Accept
+test38: 0.767532s
+Accept
+test39: 0.827727s
+Wrong Ans at line 1
+test40: 0.613622s
+Wrong Ans at line 1
+test41: 0.744540s
+Wrong Ans at line 1
+test42: 0.542053s
+Wrong Ans at line 1
+test43: 0.510351s
+Wrong Ans at line 1
+test44: 0.668579s
+Wrong Ans at line 1
+test45: 0.780625s
+Wrong Ans at line 1
+test46: 0.766528s
+Wrong Ans at line 1
+test47: 0.558330s
+Wrong Ans at line 1
+test48: 0.551529s
+Wrong Ans at line 1
+test49: 0.649524s
+Accept
+test50: 0.500694s
+Wrong Ans at line 1
+AC: 3/50
+03/01/2021 14:25:54
