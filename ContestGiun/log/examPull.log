@@ -1,3 +1,9 @@
 From https://github.com/giunzz/lana
  * branch              quang      -> FETCH_HEAD
-Already up to date.
+error: Your local changes to the following files would be overwritten by merge:
+	ContestGiun/log/examPull.log
+	ContestGiun/log/status.log
+	ContestGiun/log/temp.log
+Please commit your changes or stash them before you merge.
+Updating 47f48fba..c481e405
+Aborting
