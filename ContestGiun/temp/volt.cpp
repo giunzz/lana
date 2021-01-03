@@ -30,9 +30,7 @@ int main()
             rtd.push_back(1.0/(double)t);
         }
     }
-    for (int i = 1 ; i < (ll) rtd.size() ; i++) cerr << rtd[i] << " ";
     double rt = 0;
     for (int i = a ; i < b ; i++) rt += rtd[i];
-
     cout << (ll)(I*rt);
 }

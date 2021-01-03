@@ -1,13 +1,10 @@
 Comparing files G:\GITANH\CONTESTGIUN\TASKS\volt.cpp and G:\GITANH\CONTESTGIUN\TEMP\VOLT.CPP
 ***** G:\GITANH\CONTESTGIUN\TASKS\volt.cpp
-    rtd.push_back(0);
-    freopen("volt.inp","r",stdin);
-    freopen("volt.out","w",stdout);
-    cin >> n >> a >> b >> I;
+    }
+    double rt = 0;
 ***** G:\GITANH\CONTESTGIUN\TEMP\VOLT.CPP
-    rtd.push_back(0);
-    freopen("giun.inp","r",stdin);
-    freopen("g.out","w",stdout);
-    cin >> n >> a >> b >> I;
+    }
+    for (int i = 1 ; i < (ll) rtd.size() ; i++) cerr << rtd[i] << " ";
+    double rt = 0;
 *****
 
