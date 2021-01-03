@@ -61,7 +61,7 @@ def statusTasks():
     checkStatus = 0
     for nameTask in os.listdir(dirTasks):
         splitTask = nameTask.split('.')
-        if len(splitTask) == 2 and splitTask[1] == 'cpp' and splitTask[0] in listProbs:
+        if len(splitTask) == 2 and splitTask[1] == 'cpp' and splitTask[0].lower() in listProbs:
             wlog = open(joinPath(__location__, 'log\\compare.log'), 'w')
             if (nameTask in os.listdir(dirTemp)) and not subprocess.run(['fc', joinPath(dirTasks, nameTask), joinPath(dirTemp, nameTask), '/w'], stdout=wlog, stderr=wlog, shell=True).returncode:
                 continue
@@ -75,9 +75,16 @@ def statusTasks():
 def waitGetRes():
     gitPull()
     direcLog = joinPath(__location__, 'log')
-    while filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp.log')):
+    while True:
+        wlog = open(joinPath(__location__, 'log\\compare.log'), 'w')
+        if subprocess.run(['fc', joinPath(direcLog, examplePull), joinPath(direcLog, 'temp.log'), '/w'], stdout=wlog, stderr=wlog, shell=True).returncode:
+            wlog.close()
+            break
+        wlog.close()
         gitPull()
-        sleep(10)
+    # while filecmp.cmp(joinPath(direcLog, examplePull), joinPath(direcLog, 'temp.log')):
+    #     gitPull()
+    #     sleep(10)
 
 def init():
     gitPull()
