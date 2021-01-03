@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 From https://github.com/giunzz/lana
  * branch              quang      -> FETCH_HEAD
 error: Your local changes to the following files would be overwritten by merge:
@@ -7,3 +8,5 @@ error: Your local changes to the following files would be overwritten by merge:
 Please commit your changes or stash them before you merge.
 Updating 47f48fba..c481e405
 Aborting
+=======
+>>>>>>> c481e405efa7438842c0f495b84558002f78f8ab

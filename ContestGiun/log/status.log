@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 01/01/2021 09:44:44 ---> Running
 01/01/2021 09:44:44 ---> Get location root folder: C:\Users\tienp\Desktop\Quang\Hoc
 01/01/2021 09:44:53 ---> Init Success
@@ -35,3 +36,5 @@
 03/01/2021 11:24:56 ---> Get location root folder: G:\GitAnh
 03/01/2021 11:25:07 ---> Init Success
 03/01/2021 11:25:07 ---> Trying connect server
+=======
+>>>>>>> c481e405efa7438842c0f495b84558002f78f8ab
