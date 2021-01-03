@@ -1,28 +1,29 @@
 #include <bits/stdc++.h>
-#define giuncute ios_base::sync_with_stdio(0), cin.tie(0);
+#define ll long long
+#define giuncute ios_base::sync_with_stdio(0),cin.tie(0);
 using namespace std;
+int n , m;
 
-int t , n , ans ;
-string s;
+inline bool check(int x)
+{
+    int s = 1;
+    for (int i = 2 ; i < x ;i++)
+    {
+        if (x%i == 0) s += i;
+        if (s > x) return true;
+    }
+    return false;
+}
+
 int main()
 {
-    //freopen("giun.inp","r",stdin);
-    //freopen("giun.out","w",stdout);
-    cin >> t;
-    while (t--)
+    giuncute;
+    cin >> n >> m ;
+    int ans = 0;
+    if (n < 12) n = 12;
+    for (int i = n ; i <= m ; i++)
     {
-      cin >> n >> s; 
-      ans = 0;
-      int du = 0;
-      for (int i = 0 ; i < n ; i++)
-      {
-        if (s[i] == '(') du++;
-        else
-        {
-            du--;
-            if (du < 0) du = 0 , ans++;
-        }
-      }
-      cout << ans << endl;
+        if (check(i) == true)  ans++;
     }
+    cout << ans;
 }
