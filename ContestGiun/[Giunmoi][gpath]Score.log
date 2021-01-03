@@ -1,53 +1,53 @@
 Target: gpath 
-test01: 0.440916s
-Wrong Ans at line 18
-test02: 0.273019s
-Wrong Ans at line 24
-test03: 0.285290s
-Wrong Ans at line 13
-test04: 0.313077s
+test01: 0.356821s
 Accept
-test05: 0.318932s
+test02: 0.300240s
 Accept
-test06: 0.269184s
-Wrong Ans at line 13
-test07: 0.316286s
+test03: 0.309993s
 Accept
-test08: 0.316982s
+test04: 0.312307s
 Accept
-test09: 0.316523s
+test05: 0.295097s
 Accept
-test10: 0.493802s
+test06: 0.308044s
 Accept
-test11: 0.557716s
-Wrong Ans at line 168
-test12: 0.442103s
+test07: 0.322282s
 Accept
-test13: 0.370847s
+test08: 0.297973s
 Accept
-test14: 0.376399s
+test09: 0.309989s
 Accept
-test15: 0.313425s
-Wrong Ans at line 77
-test16: 0.355444s
-Wrong Ans at line 205
-test17: 0.483441s
+test10: 0.309955s
 Accept
-test18: 0.308859s
-Wrong Ans at line 118
-test19: 0.329384s
-Wrong Ans at line 32
-test20: 0.570434s
-Wrong Ans at line 67
-test21: 0.347038s
+test11: 0.431816s
 Accept
-test22: 0.335415s
+test12: 0.313355s
 Accept
-test23: 0.348940s
-Wrong Ans at line 278
-test24: 0.351597s
+test13: 0.328956s
 Accept
-test25: 0.366105s
+test14: 0.305560s
+Accept
+test15: 0.322240s
+Accept
+test16: 0.310435s
+Accept
+test17: 0.297008s
+Accept
+test18: 0.314302s
+Accept
+test19: 0.315584s
+Accept
+test20: 0.294367s
+Accept
+test21: 0.312655s
+Accept
+test22: 0.293336s
+Accept
+test23: 0.316619s
+Accept
+test24: 0.324320s
+Accept
+test25: 0.304285s
 Accept
 test26: TLE
 test27: TLE
@@ -74,5 +74,5 @@ test47: TLE
 test48: TLE
 test49: TLE
 test50: TLE
-AC: 14/50
-03/01/2021 14:18:52
+AC: 25/50
+03/01/2021 15:13:39
