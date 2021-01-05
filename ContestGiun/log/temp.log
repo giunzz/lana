@@ -1,0 +1,8 @@
+From https://github.com/giunzz/lana
+ * branch              quang      -> FETCH_HEAD
+   3a6c2b93..fe9d5b07  quang      -> origin/quang
+Updating 3a6c2b93..fe9d5b07
+Fast-forward
+ ContestGiun/[Giunmoi][gpath]Score.log  | 76 +++++++++++++++++-----------------
+ ContestGiun/[Giunmoi][gpath]Status.log |  2 +-
+ 2 files changed, 39 insertions(+), 39 deletions(-)
