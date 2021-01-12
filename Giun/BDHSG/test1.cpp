@@ -2,9 +2,9 @@
 using namespace std;
 
 int main(){
-    int i = 0;
-    for(int i = 1; i <= 3; ++i) cout << i << " ";
-    cout << '\n' << i;
+    int b[] = {1, 2,342 , 2,4,43};
+    // int a = min(*b);
+    cout << a;
 }
 
 /*
