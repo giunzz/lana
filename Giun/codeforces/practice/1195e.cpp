@@ -31,8 +31,30 @@ int main(){
     cin >> n >> m >> _a >> _b >> g0 >> x >> y >> mod;
     vec(vec(ll)) adj(n + 1, vec(ll)(m + 1));
     lp(i, 1, n) lp(j, 1, m) adj[i][j] = g0, g0 = (g0 * x + y) % mod;
+    // lp(i, 1, n){
+    //     lp(j, 1, m) cerr << adj[i][j] << ' ';
+    //     cerr << '\n';
+    // }
+    deque<pp(ll, ll)> q;
     lp(i, 1, n){
-        lp(j, 1, m) cerr << adj[i][j] << ' ';
-        cerr << '\n';
+        q.clear();
+        lp(j, 1, m){
+            while(q.size() && q.front().first <= j - _b) q.pop_front();
+            while(q.size() && q.back().second >= adj[i][j]) q.pop_back();
+            q.push_back({j, adj[i][j]});
+            adj[i][j] = q.front().second;
+        }
     }
+    lp(j, 1, m){
+        q.clear();
+        lp(i, 1, n){
+            while(q.size() && q.front().first <= i - _a) q.pop_front();
+            while(q.size() && q.back().second >= adj[i][j]) q.pop_back();
+            q.push_back({i, adj[i][j]});
+            adj[i][j] = q.front().second;
+        }
+    }
+    ll ans = 0;
+    lp(i, _a, n) lp(j, _b, m) ans += adj[i][j];
+    cout << ans;
 }
