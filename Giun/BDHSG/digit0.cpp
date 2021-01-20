@@ -37,6 +37,7 @@ int main(){
     #ifndef ONLINE_JUDGE
     OF();
     #endif
+    //test
     cin >> s;
     for(char c : s){
         ++cnt[c];
