@@ -50,4 +50,4 @@ int main()
     }
     cout << min(calc2(n)-count2 , calc5(n) -count5);    
 }
-//testtt
+//testttttt
