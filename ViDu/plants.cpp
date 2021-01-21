@@ -7,8 +7,8 @@ int a[109] , l[109] = {0} , lmax , n ,ans;
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    freopen("input.txt","r",stdin);
-    freopen("output.txt","w",stdout);
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
     cin >> n ;
     for (int i = 1 ; i <= n ; i++) cin >> a[i];
     l[1] = 1;
@@ -19,7 +19,7 @@ int main(){
             if ( a[i] > a[j] ) lmax = max(lmax,l[j]);
         }
         l[i] = lmax + 1;
-    }222
+    }
     for (int i = 1 ; i <= n ; i++) ans = max (ans , l[i]);
     cout << ans ; 
     return 0;

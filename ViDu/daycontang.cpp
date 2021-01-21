@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+366#include<bits/stdc++.h>
 using namespace std;
 // ko lien tiep
 int n , a[10007] , f[1009]={0},t , ma = 0, ans = INT_MI
