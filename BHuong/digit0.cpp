@@ -9,21 +9,25 @@ inline ll POW (int x , int n) //  x^n
     if (n % 2 ) return baby*baby*x;
     return baby*baby;
 }
-inline int calc (int n )
+inline int calc5 (int n )
 {
     int t = 1 , k = 0;
     while ( POW(5,t) <= n )
     {
-        k += n / POW(5,t);
         t++;
     }
+    return k ;
+        k += n / POW(5,t);
+}
+inline int calc2 (int n)
+{
     int t1 = 1 , k1 = 0;
     while ( POW(2,t1) <= n )
     {
-        k1 += n / POW(2,t);
+        k1 += n / POW(2,t1);
         t1++;
     }
-    return min(k1,k);
+    return k1;
 }
 string  a;
 int dd[300]={0};
@@ -35,15 +39,15 @@ int main()
     cin >> a;
     int n = a.size()  ;
     for (int i = 0 ; i < a.size() ; i++) dd[a[i]]++;
-    int count1 = calc(n) , count2 = 0;
+    int count5 = 0,  count2 = 0;
     for (int i = 'a' ; i <= 'z' ; i++)
     {
         if (dd[i] != 0) 
         {
-            count2 += calc(dd[i]);
+            count2  += calc2(dd[i]) ;
+            count5  += calc5(dd[i]); 
         }
     }
-    if (!count2) cout << 0;
-    else cout << count1/count2;
+    cout << min(calc2(n)-count2 , calc5(n) -count5);    
 }
 //testtt
