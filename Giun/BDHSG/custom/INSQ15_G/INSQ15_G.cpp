@@ -6,7 +6,7 @@
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
 #define EACHCASE lpd(cs, read(), 1)
-#define Fname "f"
+#define Fname "INSQ15_G"
 using namespace std;
 
 ll read(){
@@ -24,7 +24,7 @@ ll n, m, p;
 map<pp(ll, ll), ll> cnt;
 vec(pp(ll, ll)) point;
 
-#define ONLINE_JUDGE
+// #define ONLINE_JUDGE
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
@@ -41,8 +41,8 @@ int main(){
     for(pp(ll, ll) p : point){
         if(((p.first + p.second) & 1) != ((1 + m) & 1)) ans ^= cnt[p];
     }
-    if(ans) cout << "YES\n";
-    else cout << "NO\n";
+    if(ans) cout << "Yes\n";
+    else cout << "No\n";
 }
 
 //https://www.codechef.com/problems/INSQ15_G
