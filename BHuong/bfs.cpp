@@ -1,17 +1,16 @@
 #include<bits/stdc++.h>
 using namespace std;
-
 int  m , n , u, v , s , f , trace[5007]={0} , dd[5007]={0};
 vector<int>g[5007];
-deque<int> dq;
+queue<int> dq;
 void bfs()
 {
     dd[s] = 1 ;
-    dq.push_back(s);
+    dq.push(s);
     while (!dq.empty())
     {
         u = dq.front();
-        dq.pop_front();
+        dq.pop();
         cout << u << " ";
         for (int v : g[u])
         {
@@ -19,7 +18,7 @@ void bfs()
             {
                 dd[v] = 1;
                 trace[v] = u ;
-                dq.push_back(v);
+                dq.push(v);
             }
         }
     }
