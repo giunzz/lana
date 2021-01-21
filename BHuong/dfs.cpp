@@ -3,8 +3,8 @@ using namespace std;
 
 int  m , n , u, v , dd[5007]={0} , s , f , trace[5007]={0};
 vector<int>g[5007];
-stack<int> sk;
-/*void dfs (int u)
+//stack<int> sk;
+void dfs (int u)
 {
     cout << u << " ";
     dd[u] = 1;
@@ -12,8 +12,8 @@ stack<int> sk;
     {
         if (!dd[v]) trace[v] = u ,dfs(v);
     }
-}*/
-void dfs()
+}
+/*void dfs()
 {
     cout << s << " ";
     dd[s] = 1 , sk.push(s);
@@ -33,7 +33,7 @@ void dfs()
             }
         }
     }
-}
+}*/
 
 int main()
 {

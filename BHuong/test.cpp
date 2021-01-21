@@ -1,29 +1,51 @@
 #include <bits/stdc++.h>
-#define ll long long
-#define giuncute ios_base::sync_with_stdio(0),cin.tie(0);
 using namespace std;
-int n , m;
+#define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
+#define ll long long 
+vector<int> a[(int) 1e5+7];
+ll  cnt = 0 ,low[(int) 1e5+7], num[(int) 1e5+7], ans = 0, n , m , f[(int)1e5+7]={0};
 
-inline bool check(int x)
+void check (ll u)
 {
-    int s = 1;
-    for (int i = 2 ; i < x ;i++)
-    {
-        if (x%i == 0) s += i;
-        if (s > x) return true;
-    }
-    return false;
+    for (int v : a[u])  check(v);
+    for (int v : a[u]) f[u] += f[v]+1;
 }
-
-int main()
+void dfs(int u, int p) 
 {
-    giuncute;
-    cin >> n >> m ;
-    int ans = 0;
-    if (n < 12) n = 12;
-    for (int i = n ; i <= m ; i++)
-    {
-        if (check(i) == true)  ans++;
+    num[u] = low[u] = cnt++;
+    for(int v : a[u]) {
+        if (num[v] == -1) 
+		{
+            dfs(v, u);
+            if (low[v] > num[u]) 
+			{
+				cerr << u << " " << low[u] << " " << v << " " << num[v] << endl;
+                memset(f, 0, sizeof f);
+                check(u); check(v);
+                for (int i = 1 ; i <= u ; i++) cerr << f[u] << " ";
+                ll nga = f[u] + f[v];
+				ans = max(ans,nga);
+			}
+            low[u] = min(low[u], low[v]);
+        } 
     }
-    cout << ans;
+}
+int main() {
+	freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
+    cin >> n >> m;
+    for(int i = 1; i <= m; i++) 
+	{         
+        int u, v; cin >> u >> v;
+        a[u].push_back(v);
+        a[v].push_back(u);
+    }
+    memset(num, -1, sizeof num);
+    memset(low, 0, sizeof low);
+    for(int u = 1; u <= n; u++)
+	{
+        if (num[u] == -1) dfs(u, u);
+	}
+	cout << ans;
+    return 0;
 }
