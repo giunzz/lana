@@ -46,3 +46,4 @@ int main()
     if (!count2) cout << 0;
     else cout << count1/count2;
 }
+//testtt
