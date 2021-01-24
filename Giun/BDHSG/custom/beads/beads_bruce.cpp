@@ -17,11 +17,21 @@ ll read(){
 
 void OF(){
     freopen(Fname".inp", "r", stdin);
-    freopen(Fname".out", "w", stdout);
+    freopen(Fname".ans", "w", stdout);
 }
 
 cll maxn = 1e5 + 7;
-ll n, a[maxn], b[maxn], ba[maxn], bb[maxn], ans = 0;
+ll n, a[maxn], inc[maxn] = {0}, decr[maxn] = {0}, binc[maxn], bdec[maxn], ans = 0;
+
+ll getDec(ll u){
+    ll i = 1, j = n, res = -1;
+    while(i <= j){
+        ll mid = (i + j) >> 1;
+        if(bdec[mid] <= u) res = mid, j = mid - 1;
+        else i = mid + 1;
+    }
+    return res;
+}
 
 int main(){
     ios_base::sync_with_stdio(0);
@@ -30,16 +40,15 @@ int main(){
     OF();
     #endif
     cin >> n;
-    lpd(i, n, 1){cin >> a[i]; b[i] = -a[i];}
+    lpd(i, n, 1) cin >> a[i];
     ans = 1;
-    ba[1] = a[1], bb[1] = b[1];
-    lp(i, 2, n) ba[i] = bb[i] = INT_MAX;
+    binc[1] = bdec[1] = a[1];
+    lp(i, 2, n) binc[i] = INT_MAX, bdec[i] = INT_MIN;
     lp(i, 2, n){
-        ll up = lower_bound(ba + 1, ba + 1 + n, a[i]) - ba, 
-            down = lower_bound(bb + 1, bb + 1 + n, b[i]) - bb;
+        ll up = lower_bound(binc + 1, binc + 1 + n, a[i]) - binc, 
+            down = getDec(a[i]);
         ans = max(ans, up + down - 1);
-        ba[up] = a[i];
-        bb[down] = b[i];
+        binc[up] = bdec[down] = a[i];
     }
     cout << ans;
 }
