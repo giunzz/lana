@@ -25,16 +25,13 @@ int main()
     for (int i = 1 ; i <= n ; i++)
     {
         getline(cin, s);
-        int  ans = 0 ,x1 , x2;
-
+        int  ans = 0 ,x1 , x2 ,  ok = 0;
         for (int j = 0 ; j < s.length() ; j++)
         {
-            if (checknum(s[i]) == true)
+            if (checknum(s[j]) == true)
             {
-                while (s[i])
-                int t = atoi(&s[i]);
-                a.push(t);
-                while (s[i+1] != ' ') i++;
+                int t = t *10 + stoi(s[j]);
+                ok = 1;
             }
             else if (checkdau(s[i] == true))
             {
@@ -45,6 +42,7 @@ int main()
                 if (s[i] == '/') ans = x2 / x1;
                 a.push(ans);
             }
+            else if (ok == 1 && s[])
         }
         cout << a.top() << endl;
     }

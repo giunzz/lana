@@ -3,52 +3,45 @@ using namespace std;
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
 #define ll long long 
 const ll maxn = 1e4+7;
-struct edge
+ll p[maxn]  , m ,n;
+struct giun
 {
-    int u , v , w; 
-};
-bool cmp (edge &a , edge &b)
-{
-    return (a.w < b.w);
-}
-int cha[maxn] ={0} , hang[maxn]={0};
+    int u , v , w;
+} a[maxn];
 
-int find (int u)
+bool cmp (giun &x , giun &y)
 {
-    if (cha[u] != u) cha = find(cha[u]);
-    return cha[u];
+    return (x.w < y.w);
 }
-
-bool check (int u , int v)
+ll get(int u)
 {
-    u = find(u) , v = find(v);
-    if (u == v) return false;
-    if (hang[u] == hang[v]) hang[u]++;
-    if (hang[u] < hang[v]) cha[u] = v;
-    else cha[v] = u;
-    return true;
+    if (p[u] == u) return u;
+    return p[u] = get(p[u]);
 }
-
+bool ghep(giun& a){
+    ll x = get(a.u), y = get(a.v);
+    if(x == y) return 0;
+    if(y < x) swap(x, y);
+    p[x] += p[y];
+    p[y] = x;
+    return 1;
+}
 int main()
 {
-    giuncute;
     freopen("giun.inp","r",stdin);
     freopen("giun.out","w",stdout);
-    int m , n;
-    cin >> n >> m; // n dinh m canh
-    vector<edge> g(m);
-    for (edge &x :g) cin >> x.u >> x.v >> x.w;
-    sort(g.begin(), g.end() , cmp);
-    for (int i = 0 ; i < g.size() ; i++)
+    cin >> n >> m ;// n dinh m canh
+    for (int i = 1 ; i <= m ; i++) cin >> a[i].u >> a[i].v >> a[i].w;
+    sort (a+1 , a+1+m , cmp);
+    //for (int i = 1  ; i <= m ; i++) cerr << a[i].u << " " << a[i].v << " " <<  a[i].w << endl;
+    ll ans = 0 , cnt = 0 ;
+    for (int i = 1 ; i <= m ; i++ )
     {
-        cerr << g[i].u << " " << g[i].v << " " << g[i].w << endl;
+        if(ghep(a[i]) && cnt != n - 1)
+        {
+            ++cnt;
+            ans += a[i].w;
+        }
     }
-    int ans = 0;
-    for (int i = 1 ; i <= n ; i++) cha[i] = i , hang[i] = 0;
-    for (edge &x : g)
-    {
-        if (check(x.u, x.v)) ans += x.w;
-    }
-    cout << ans;6
+    cout << ans;
 }
-

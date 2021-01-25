@@ -15,9 +15,9 @@ inline int calc5 (int n )
     while ( POW(5,t) <= n )
     {
         t++;
+        k += n / POW(5,t);
     }
     return k ;
-        k += n / POW(5,t);
 }
 inline int calc2 (int n)
 {
