@@ -20,13 +20,13 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-cll maxn = 1e4 + 7;
+cll maxn = 1e5 + 7;
 ll n, a[3][maxn], cnt[3][maxn] = {{0}}, pos[maxn];
 bool del[maxn] = {0};
 
 int main(){
     ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
+    cin.tie(0); cout.tie(0);6
     #ifndef ONLINE_JUDGE
     OF();
     #endif

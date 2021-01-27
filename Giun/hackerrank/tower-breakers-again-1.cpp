@@ -20,12 +20,34 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-void init(){
+cll maxn = 1e5 + 7;
+ll g[maxn] = {0};
 
+void init(){
+    g[1] = 0;
+    lp(i, 2, 1e5){
+        unordered_set<ll> s;
+        for(ll j = 1; j * j <= i; ++j){
+            if(!(i % j)){
+                ll fi = j, se = i / j;
+                if(fi & 1) s.insert(g[se]);
+                if(se & 1) s.insert(g[fi]);
+            }
+        }
+        ll mex = 0;
+        while(s.find(mex) != s.end()) ++mex;
+        g[i] = mex;
+    }
 }
 
 void sol(){
-    
+    ll n, ans = 0;
+    cin >> n;
+    lp(i, 1, n){
+        ans ^= g[read()];
+    }
+    if(ans) cout << "1\n";
+    else cout << "2\n";
 }
 
 // #define ONLINE_JUDGE PMQ
