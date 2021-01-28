@@ -6,7 +6,7 @@
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
 #define EACHCASE lpd(cs, read(), 1)
-#define Fname "digit0"
+#define Fname "f"
 using namespace std;
 
 ll read(){
@@ -37,7 +37,6 @@ int main(){
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    //test
     cin >> s;
     for(char c : s){
         ++cnt[c];
