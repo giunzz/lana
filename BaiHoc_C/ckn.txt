@@ -1,0 +1,8 @@
+a^m dong du vs a (mod m)
+a^(m - 1) dong du vs 1 (mod m)
+a^(m - 2) dong du vs a^(-1) mod m
+
+a / b  = a * b ^ (-1)
+
+(a / b) mod m = (a mod m) * (b ^ -1) mod m
+ = ((a mod m) * (b ^ (m - 2)) mod m)) mod m
