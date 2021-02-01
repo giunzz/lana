@@ -6,7 +6,13 @@
 #define vec(a) vector<a> 
 #define pp(a, b) pair<a, b>
 #define EACHCASE lpd(CASE, read(), 1)
+#define Fname "f"
 using namespace std;
+
+void openFile(){
+    freopen(Fname".inp", "r", stdin);
+    freopen(Fname".out", "w", stdout);
+}
 
 inline ll read(){
     ll tmp;
@@ -48,6 +54,7 @@ int main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
+    // openFile();
     init();
     lp(i, 1, 15) {
         lp(j, 1, 15) cout << g[i][j] << ' ';
