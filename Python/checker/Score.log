@@ -1,103 +1,31 @@
-Target: volt 
-Directory: c:\Users\tienp\Desktop\Hoc\Python\checker
-test01: 0.394757s
+Target: tank 
+Directory: C:\Users\tienp\Desktop\Quang\Hoc\Python\checker
+test1: 0.499856s
 Accept
-test02: 0.719051s
+test10: 0.379899s
 Accept
-test03: 0.339553s
+test11: 0.380224s
 Accept
-test04: 0.407184s
+test12: 0.615892s
 Accept
-test05: 0.248264s
+test13: 0.361558s
 Accept
-test06: 0.273140s
+test14: 0.394679s
 Accept
-test07: 0.340289s
+test2: 0.350238s
 Accept
-test08: 0.358685s
+test3: 0.472326s
 Accept
-test09: 0.396587s
+test4: 0.339539s
 Accept
-test10: 0.398118s
+test5: 0.360096s
 Accept
-test11: 0.748931s
+test6: 0.360471s
 Accept
-test12: 0.464761s
+test7: 0.491980s
 Accept
-test13: 0.398250s
+test8: 0.391545s
 Accept
-test14: 0.543262s
+test9: 0.394102s
 Accept
-test15: 0.402467s
-Accept
-test16: 0.443661s
-Accept
-test17: 0.666868s
-Accept
-test18: 0.401760s
-Accept
-test19: 0.441410s
-Accept
-test20: 0.490156s
-Accept
-test21: 0.358401s
-Accept
-test22: 0.550208s
-Accept
-test23: 0.431158s
-Accept
-test24: 0.444945s
-Accept
-test25: 0.237740s
-Accept
-test26: 0.452950s
-Accept
-test27: 0.450187s
-Accept
-test28: 0.684424s
-Accept
-test29: 0.427587s
-Accept
-test30: 0.553460s
-Accept
-test31: 0.900070s
-Accept
-test32: 0.425474s
-Accept
-test33: 0.466999s
-Accept
-test34: 0.682815s
-Accept
-test35: 0.445680s
-Accept
-test36: 0.455023s
-Accept
-test37: 0.390276s
-Accept
-test38: 0.389153s
-Accept
-test39: 0.521679s
-Accept
-test40: 0.467062s
-Accept
-test41: 0.409327s
-Accept
-test42: 0.450902s
-Accept
-test43: 0.494740s
-Accept
-test44: 0.414884s
-Accept
-test45: 0.816788s
-Accept
-test46: 0.490521s
-Accept
-test47: 0.496670s
-Accept
-test48: 0.691787s
-Accept
-test49: 0.411983s
-Accept
-test50: 0.400036s
-Accept
-AC: 50/50
+AC: 14/14
