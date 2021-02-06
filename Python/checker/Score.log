@@ -1,31 +1,23 @@
-Target: tank 
+Target: suka 
 Directory: C:\Users\tienp\Desktop\Quang\Hoc\Python\checker
-test1: 0.499856s
+test1: 0.295753s
 Accept
-test10: 0.379899s
+test10: 0.337188s
 Accept
-test11: 0.380224s
+test2: 0.303747s
 Accept
-test12: 0.615892s
+test3: 0.295314s
 Accept
-test13: 0.361558s
+test4: 0.520004s
 Accept
-test14: 0.394679s
+test5: 0.311739s
 Accept
-test2: 0.350238s
+test6: 0.295753s
 Accept
-test3: 0.472326s
+test7: 0.326682s
 Accept
-test4: 0.339539s
+test8: 0.350583s
 Accept
-test5: 0.360096s
+test9: 0.429484s
 Accept
-test6: 0.360471s
-Accept
-test7: 0.491980s
-Accept
-test8: 0.391545s
-Accept
-test9: 0.394102s
-Accept
-AC: 14/14
+AC: 10/10
