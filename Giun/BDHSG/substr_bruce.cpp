@@ -1,3 +1,4 @@
+// #define ONLINE_JUDGE HND
 #include <bits/stdc++.h>
 #define ll long long
 #define cll const ll
@@ -20,9 +21,12 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+cll maxn = 1e5 + 7, maxk = 1e5 + 7;
 ll n, k;
 
-void
+void sol(){
+    
+}
 
 int main(){
     ios_base::sync_with_stdio(0);
