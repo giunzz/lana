@@ -1,23 +1,43 @@
-Target: suka 
+Target: benefact 
 Directory: C:\Users\tienp\Desktop\Quang\Hoc\Python\checker
-test1: 0.295753s
+test00: 0.305105s
 Accept
-test10: 0.337188s
+test01: 0.273623s
 Accept
-test2: 0.303747s
+test02: 0.295772s
 Accept
-test3: 0.295314s
+test03: 0.297453s
 Accept
-test4: 0.520004s
+test04: 0.314546s
 Accept
-test5: 0.311739s
+test05: 0.325754s
 Accept
-test6: 0.295753s
+test06: 0.310462s
 Accept
-test7: 0.326682s
+test07: 0.320654s
 Accept
-test8: 0.350583s
+test08: 0.311323s
 Accept
-test9: 0.429484s
+test09: 0.334956s
 Accept
-AC: 10/10
+test10: 0.633644s
+Accept
+test11: 0.495080s
+Accept
+test12: 0.550492s
+Accept
+test13: 0.394639s
+Accept
+test14: 0.693128s
+Accept
+test15: 0.753633s
+Accept
+test16: 0.608848s
+Accept
+test17: 0.496751s
+Accept
+test18: 0.506552s
+Accept
+test19: 1.488681s
+Accept
+AC: 20/20

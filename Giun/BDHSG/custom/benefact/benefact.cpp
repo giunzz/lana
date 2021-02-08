@@ -1,4 +1,9 @@
-#include <bits/stdc++.h>
+// #include <bits/stdc++.h>
+#include <cstdio>
+#include <ctime>
+#include <iostream>
+#include <climits>
+#include <vector>
 #define ll long long
 #define cll const ll
 #define lp(a, b, c) for(ll a = b; a <= c; ++a)
@@ -11,7 +16,7 @@ using namespace std;
 
 ll read(){
     ll tmp;
-    cin >> tmp;
+    scanf("%lld", &tmp);
     return tmp;
 }
 
@@ -29,35 +34,33 @@ void dfs(ll u){
     ll max1, max2;
     max1 = max2 = INT_MIN;
     for(pp(ll, ll) i : g[u]){
-        ll v = i.first, w = i.second;
-        if(d[v]) continue;
-        d[v] = 1;
-        dfs(v);
-        ll tot = dp[v] + w;
+        if(d[i.first]) continue;
+        d[i.first] = 1;
+        dfs(i.first);
+        ll tot = dp[i.first] + i.second;
         if(tot > max1) max2 = max1, max1 = tot;
         else if(tot > max2) max2 = tot;
     }
     if(max1 == INT_MIN) return;
     dp[u] = max1;
-    if(max2 != INT_MIN) ans = max(ans, max1 + max2);
+    if(max1 + max2 > ans) ans = max1 + max2;
 }
 
 void sol(){
-    cin >> n;
+    ll u, v, w;
+    scanf("%lld", &n);
     lp(i, 1, n) g[i].clear(), dp[i] = d[i] = 0; ans = INT_MIN;
     lp(i, 1, n - 1){
-        ll u, v, w;
-        cin >> u >> v >> w;
+        scanf("%lld %lld %lld", &u, &v, &w);
         g[u].push_back({v, w});
         g[v].push_back({u, w});
     }
+    d[1] = 1;
     dfs(1);
-    cout << ans << '\n';
+    printf("%lld\n", ans);
 }
 
 int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
     #ifndef ONLINE_JUDGE
     OF();
     #endif
