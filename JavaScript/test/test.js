@@ -3,26 +3,27 @@ var app = express();
 
 // var things = require('./things')
 
-var express = require('express');
-var app = express();
-var path = require ('path');
-app.set('view engine', 'pug');
-app.set('views', path.join(__dirname + '\\views'));
+// var express = require('express');
+// var app = express();
+// var path = require ('path');
+// app.set('view engine', 'pug');
+// app.set('views', path.join(__dirname + '\\views'));
 
 // app.use(function(req, res, next){
 //     console.log("START");
 //     // next();
 // });
 
-// app.get('/', function(req, res){
-//     res.send("Hello world!");
-// });
-app.get('/dynamic_view', function(req, res){
-    res.render('dynamic', {
-        name: "TutorialsPoint", 
-        url:"http://www.tutorialspoint.com"
-    });
+app.get('/', function(req, res){
+    res.send("Hello world!");
 });
+
+// app.get('/dynamic_view', function(req, res){
+//     res.render('dynamic', {
+//         name: "TutorialsPoint", 
+//         url:"http://www.tutorialspoint.com"
+//     });
+// });
 
 // app.all('/', function(req, res){
 //     res.send("Post request detected");
