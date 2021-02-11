@@ -24,8 +24,8 @@
 // }
 
 // int main(void) {
-//     freopen("f.inp", "r", stdin);
-//     freopen("f.out", "w", stdout);
+//     freopen("bitree.inp", "r", stdin);
+//     freopen("bitree.out", "w", stdout);
 //    depth[0] = 0; // inicijalizacija, stablo ima samo jedan element
 //    sol[0] = t = 1;
 

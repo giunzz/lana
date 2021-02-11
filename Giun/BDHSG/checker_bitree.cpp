@@ -42,7 +42,7 @@ ifstream getOut(Fname".out");
 void buildtree(ll u){
     if(u >= (1LL << n)) return;
     getOut >> g[u];
-    if(d[g[u]]) ans = 0;
+    if(d[g[u]] || g[u] > node) ans = 0;
     d[g[u]] = 1;
     buildtree(u << 1);
     buildtree(u << 1 | 1);
@@ -70,6 +70,7 @@ int main(){
     getInp.close();
     node = (1LL << n) - 1;
     buildtree(1);
+    lp(i, 1, node) if(!d[i]) ans = 0;
     dfs(1, 0);
     cerr << ans;
 }
