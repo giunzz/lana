@@ -6,3 +6,5 @@ a / b  = a * b ^ (-1)
 
 (a / b) mod m = (a mod m) * (b ^ -1) mod m
  = ((a mod m) * (b ^ (m - 2)) mod m)) mod m
+
+ // 

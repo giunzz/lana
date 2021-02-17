@@ -6,12 +6,11 @@ using namespace std;
 ll n , a[(int)2e5+7]  , s1 = 0 , s2 = 0 , kq = 0;
 int main()
 {
-    giuncute;
-    //freopen("giun.inp","r",stdin);
-    //freopen("giun.out","w",stdout);
+    ios::sync_with_stdio(false); cin.tie(0);
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
     cin >> n;
     for (int i = 1; i <= n ; i++) cin >> a[i],s1 += a[i];
-    sort(a+1,a+1+n);
     for (int i = 1 ; i <= n ; i++)
     {
         s2 += a[i]*(i-1)-kq;

@@ -2,8 +2,8 @@
 using namespace std;
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
 #define ll long long 
-const ll maxn = 1e4+7;
-ll p[maxn]  , m ,n;
+const ll maxn = 1e6+7;
+ll p[maxn]  , m ,n , size[maxn] ;
 struct giun
 {
     int u , v , w;
@@ -21,19 +21,20 @@ ll get(int u)
 bool ghep(giun& a){
     ll x = get(a.u), y = get(a.v);
     if(x == y) return 0;
-    if(y < x) swap(x, y);
-    p[x] += p[y];
+    if( size[x] < size[y]) swap(x, y);
+    size[x] += size[y];
     p[y] = x;
     return 1;
 }
 int main()
 {
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
+    giuncute;
+  //  freopen("giun.inp","r",stdin);
+  //  freopen("giun.out","w",stdout);
     cin >> n >> m ;// n dinh m canh
     for (int i = 1 ; i <= m ; i++) cin >> a[i].u >> a[i].v >> a[i].w;
+    for (int i = 1 ; i <= m ; i++) p[i] = i , size[i] = 1;
     sort (a+1 , a+1+m , cmp);
-    //for (int i = 1  ; i <= m ; i++) cerr << a[i].u << " " << a[i].v << " " <<  a[i].w << endl;
     ll ans = 0 , cnt = 0 ;
     for (int i = 1 ; i <= m ; i++ )
     {
