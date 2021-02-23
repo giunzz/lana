@@ -34,15 +34,30 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-#define ONLINE_JUDGE
+cll MOD = 1e9 + 7, mxn = 1e3 + 7;
+ll dp[mxn][mxn] = {{0}};
+
+void init(){
+    lp(i, 1, 1000) dp[i][1] = 1;
+    lp(i, 1, 1000){
+        lp(j, 2, i){
+            dp[i][j] = (dp[i - 1][j] * j + dp[i - 1][j - 1]) % MOD;
+        }
+    }
+}
+
+void sol(){
+    ll n, ans = 0;
+    cin >> n;
+    lp(i, 1, n) (ans += dp[n][i]) %= MOD;
+    cout << ans << '\n';
+}
+
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    string s = "abc", x = "acb";
-    s.insert(1, x);
-    cerr << s;
-    // cin >> s;
-    // for(int i = 0; i < s.size(); i++) cout << s[i] << ' ';
+    init();
+    EACHCASE sol();
 }
