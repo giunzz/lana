@@ -1,62 +1,43 @@
-//#include <bits/stdc++.h>
-#include<iostream>
-#include<map>
-#include <stdio.h>
-#include<algorithm>
+#include<bits/stdc++.h>
 using namespace std;
-int n , ans = 0;
-struct po
+const string tenfile = "giun";
+#define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
+#define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
+#define ll long long
+ll n , a[30] , s[30] ={0} , k , ok = 0 ;
+void check()
 {
-    int x,y;
-}a[(int) 6e3+7];
-
-bool operator<(po const A , po const C)
-{
-    return A.x < C.x || (A.x == C.x && A.y < C.y);
+    ll  l = k , r = 0;
+    for (int i = 1 ; i <= n ; i++)
+    {
+        if (s[i] == 1) l += a[i];
+        if (s[i] == 2) r += a[i];
+    }
+    if (l == r) 
+    {
+        cout << "YES";
+        ok = 1;
+    }
 }
-map <po,bool> dd;
 
-void fastscan(int &number) 
-{ 
-    bool negative = false; 
-    register int c; 
-    number = 0; 
-    c = getchar(); 
-    if (c=='-') 
-    { 
-        negative = true; 
-        c = getchar(); 
-    }   
-    for (; (c>47 && c<58); c=getchar()) 
-        number = number *10 + c - 48; 
-    if (negative) 
-        number *= -1; 
-} 
+void quaylui(int i)
+{
+    if (ok == 1) return;
+    for (int j = 1 ; j <= 3 ; j++)
+    {
+        s[i] = j;
+        if (i == n ) check();
+        else quaylui(i+1);
+    }
+}
 
 int main()
 {
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
-    fastscan(n);
-    //cin >> n ;
-    for (int i = 1 ; i <= n ; i++) 
-    {
-        fastscan(a[i].x);
-        fastscan(a[i].y);
-        //cin >> x[i] >> y[i];
-        dd[a[i]] = 1;
-    }
-    sort (a+1,a+1+n);   
-    for (int i = 1 ; i <= n ; i++)
-    {
-        for (int j = i + 1 ; j <= n ; j++)
-        {
-            if ( a[i].x < a[j].x && a[i].y < a[j].y  ) 
-            {
-                po p1 = {a[j].x , a[i].y} , p2 = {a[i].x , a[j].y};
-                if ( dd[p1] & dd[p2]) ans++;
-            }
-        }
-    }
-    cout << ans;
+    balabalo;
+    giuncute;
+    cin >> n ; 
+    for (int i = 1 ; i <= n ; i++)  cin >> a[i];
+    quaylui(1);
+    if (ok == 0 ) cout << "NO";
+    return 0;
 }

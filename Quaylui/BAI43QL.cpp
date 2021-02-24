@@ -4,7 +4,6 @@ const string tenfile = "bai43ql";
 #define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
 #define ll long long
-#pragma GCC optimize("Ofast")
 string S,X;
 bool C[30]={false};
 ll n;
@@ -16,7 +15,7 @@ void Try (int i)
         {
             X[i]=S[j];
             C[j]=true;
-            if(i==n-1) cout<<X<<'\n';
+            if(i==n-1) cout<<X<<endl;
             else Try(i+1);
             C[j]=false;
         }
@@ -26,7 +25,6 @@ int main()
 {   
     balabalo;
     giuncute;
-    ios_base::sync_with_stdio(0) , cout.tie(0);
     cin>> S;
     n=S.length();
     X=S;

@@ -9,6 +9,7 @@ vector <int> ans[15];
 
 void backtrack(int x)
 {
+    
     if(x > n)
     {
         int ok = 0;
