@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+//giun
 int main() 
 {
     freopen("bai49ql.inp","r",stdin);
