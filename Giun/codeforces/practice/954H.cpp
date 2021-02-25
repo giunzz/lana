@@ -34,15 +34,17 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-#define ONLINE_JUDGE
+cll maxn = 5e3 + 7, MOD = 1e9 + 7;
+ll n, a[maxn], dp[maxn][maxn] = {{0}}, numNode[maxn] = {0};
+
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    string s = "abc", x = "acb";
-    s.insert(1, x);
-    cerr << s;
-    // cin >> s;
-    // for(int i = 0; i < s.size(); i++) cout << s[i] << ' ';
+    cin >> n;
+    lp(i, 1, n - 1) cin >> a[i];
+    a[n] = 0, numNode[1] = 1;
+    lp(i, 2, n) (numNode[i] = numNode[i - 1] * a[i - 1]) %= MOD;
+    lp(i, 1, n) cerr << numNode[i] << '\n';
 }
