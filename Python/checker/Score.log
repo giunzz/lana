@@ -1,43 +1,23 @@
-Target: benefact 
-Directory: C:\Users\tienp\Desktop\Quang\Hoc\Python\checker
-test00: 0.305105s
+Target: sum 
+Directory: C:\Users\tienp\Desktop\Hoc\Python\checker
+test1: 0.109372s
 Accept
-test01: 0.273623s
+test10: 2.812417s
 Accept
-test02: 0.295772s
+test2: 0.109374s
 Accept
-test03: 0.297453s
+test3: 0.124998s
 Accept
-test04: 0.314546s
+test4: 1.946571s
 Accept
-test05: 0.325754s
+test5: 2.249935s
 Accept
-test06: 0.310462s
+test6: 2.562425s
 Accept
-test07: 0.320654s
+test7: 2.921789s
 Accept
-test08: 0.311323s
+test8: 2.984286s
 Accept
-test09: 0.334956s
+test9: 2.765812s
 Accept
-test10: 0.633644s
-Accept
-test11: 0.495080s
-Accept
-test12: 0.550492s
-Accept
-test13: 0.394639s
-Accept
-test14: 0.693128s
-Accept
-test15: 0.753633s
-Accept
-test16: 0.608848s
-Accept
-test17: 0.496751s
-Accept
-test18: 0.506552s
-Accept
-test19: 1.488681s
-Accept
-AC: 20/20
+AC: 10/10

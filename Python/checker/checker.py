@@ -39,7 +39,7 @@ def runfile():
     global timeStart, timeEnd
     os.chdir(dirFolderTest)
     timeStart = datetime.now()
-    os.system('start /wait cmd /c %s' % joinPath(dirFolderTest, nameTargetExe))
+    os.system('start /min /wait cmd /c %s' % joinPath(dirFolderTest, nameTargetExe))
     timeEnd = datetime.now()
 
 def kill():
@@ -50,7 +50,11 @@ def processingRun():
     try:
         thread1 = Thread(target=runfile)
         thread1.start()
-        time.sleep(timeLimit + 1.0)
+        # time.sleep(timeLimit + 1.0)
+        maxLimit = timeLimit + 1.0
+        while float((datetime.now() - timeStart).total_seconds()) < maxLimit and thread1.is_alive():
+            pass
+
         if thread1.is_alive():
             kill()
     except Exception as e: print(e)
