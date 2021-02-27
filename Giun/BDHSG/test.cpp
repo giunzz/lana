@@ -6,7 +6,7 @@
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
 #define EACHCASE lpd(cs, read(), 1)
-#define Fname "bitree"
+#define Fname "f"
 using namespace std;
 
 ll read(){
@@ -26,15 +26,5 @@ int main(){
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    system("g++ "Fname".cpp -o "Fname);
-    system("g++ checker_"Fname".cpp -o checker_"Fname);
-    lp(i, 1, 15){
-        cerr << "Test " << i << ": ";
-        ofstream putInp(Fname".inp");
-        putInp << i;
-        putInp.close();
-        system("bitree");
-        system("checker_bitree");
-        cerr << '\n';
-    }
+
 }

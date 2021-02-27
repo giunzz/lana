@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Target: sum 
 Directory: C:\Users\tienp\Desktop\Hoc\Python\checker
 test1: 0.118945s
@@ -14,3 +15,48 @@ test7: TLE
 test8: TLE
 test9: TLE
 AC: 3/10
+=======
+Target: benefact 
+Directory: C:\Users\tienp\Desktop\Quang\Hoc\Python\checker
+test00: 0.887999s
+Accept
+test01: 0.946152s
+Accept
+test02: 0.744001s
+Accept
+test03: 0.503998s
+Accept
+test04: 0.924554s
+Accept
+test05: 0.488000s
+Accept
+test06: 0.567996s
+Accept
+test07: 0.528000s
+Accept
+test08: 0.619776s
+Accept
+test09: 0.462180s
+Accept
+test10: 1.144000s
+Accept
+test11: 0.751999s
+Accept
+test12: 1.048000s
+Accept
+test13: 0.600002s
+Accept
+test14: 1.314833s
+Accept
+test15: 1.280001s
+Accept
+test16: 1.096002s
+Accept
+test17: 0.951996s
+Accept
+test18: 0.992000s
+Accept
+test19: 1.963382s
+Accept
+AC: 20/20
+>>>>>>> aac31429e1347c0348fa81057a790b6ed13bcae7
