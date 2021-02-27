@@ -2,7 +2,7 @@
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0) , cout.tie(0)
 #define ll long long
 using namespace std;
-int n , a[5][10005] ,  f[10005][(1 << 4) + 5] , ma  = INT_MIN;
+int n , a[10005][5] ,  f[10005][(1 << 4) + 5] , ma  = INT_MIN;
 void blablalolo()
 {
     freopen("giun.inp","r",stdin);
@@ -33,31 +33,31 @@ void dp ()
         {
             int sum = 0 , opt = INT_MIN;
             if (check(j) == false) continue;
-            for (int bit = 0 ; bit < 3 ; bit++)
+            for (int bit = 0 ; bit < 4 ; bit++)
                 if ( j & (1<<bit)) sum += a[i][bit];
             for (int last = 0 ; last < (1 << 4) ; last++)
             {
-                if (check(last) == false || (last&j) != 0 ) continue;
+                if (check(last) == false || (last&j)) continue;
                 opt = max(opt,f[i-1][last]);
             }
             f[i][j] = opt+sum;
             ans = max(ans,f[i][j]);
-            cerr << opt << " " << sum << endl;
-
+            // cerr << opt << " " << sum << endl;
+ 
         }
     }
-    cout << ans+ans/3-1;
-
+    cout << ans;
+ 
 }
 int ok = 0;
 int main()
 {
     giuncute;
-    blablalolo();
+    // blablalolo();
     cin >> n ;
-    for (int i = 1 ; i <= n ; i++)
+    for (int j = 0 ; j < 4  ; j++)
     {
-        for (int j = 0 ; j < 3  ; j++)
+    	for (int i = 1 ; i <= n ; i++)
         {
             cin >> a[i][j];
             ma = max(ma,a[i][j]);
@@ -66,11 +66,3 @@ int main()
     if (ma <= 0) cout << ma ;
     else dp();
 }
-
-
-// con cac
-
-
-
-
-
