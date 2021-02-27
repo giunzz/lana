@@ -68,7 +68,7 @@ int main(){
     ni = name + ".inp";
     na = name + ".ans";
     nb = name + "_bruce";
-    lp(i, 1, 10){
+    lp(i, 1, 100){
         Sinh();
         cham();
     }
