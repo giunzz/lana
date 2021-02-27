@@ -5,7 +5,7 @@ from createFile import delFile
 from datetime import datetime
 from threading import Thread
 
-nameTarget = ''
+nameTarget = 'matkhau'
 direction = os.path.dirname(os.path.realpath(__file__))
 dirFolderTest = ''
 nameTargetExe = nameTargetCpp = nameTargetInp = nameTargetOut = ''
@@ -23,6 +23,7 @@ def createVariables(name, time):
     nameTargetInp = nameTarget + '.inp'
     nameTargetOut = nameTarget + '.out'
     timeLimit = time
+    return nameTarget
 
 def joinPath(name1, name2):
     return os.path.join(name1, name2)
@@ -57,8 +58,9 @@ def processingRun():
     else:
         print('Run file Success!')
     thread1.join()
-    if float((timeEnd - timeStart).total_seconds()) > timeLimit:
+    if float((timeEnd - timeStart).seconds) > timeLimit:
         checknonTLE = False
+    time.sleep(0.5)
     return checknonTLE
 
 def Checker(name, time):
@@ -82,7 +84,7 @@ def Checker(name, time):
                 wLog("No File Output Found\n")
                 delFile(dirFolderTest, nameTargetExe, nameTargetOut, nameAns)
                 continue
-            wLog('%fs\n' % float((timeEnd - timeStart).total_seconds()))
+            wLog('%fs\n' % float((timeEnd - timeStart).seconds))
             reqCheck = cS.checkSol(dirFolderTest, nameAns, nameTargetOut)
             if reqCheck == 'Accept':
                 cntAC += 1

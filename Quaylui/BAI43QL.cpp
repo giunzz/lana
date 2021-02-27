@@ -1,35 +1,33 @@
 #include<bits/stdc++.h>
 using namespace std;
-const string tenfile = "bai43QL";
+const string tenfile = "bai43ql";
 #define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
-
-string s , ans;
-int a[300] ={0};
-
-void huhu( int vt )
+#define ll long long
+string S,X;
+bool C[30]={false};
+ll n;
+void Try (int i)
 {
-    for (int i = 0 ; i < (int) s.length()  ; i++)
+    for(int j=0;j<n;j++)
     {
-        if ( a[s[i]]  == 0)
+        if(!C[j])
         {
-            ans.push_back(s[i]);
-            a[s[i]] = 1;
-            if ( vt == s.length() - 1 ) cout << ans << endl;
-            else huhu ( vt + 1);
-            //ans.pop_back();
-            a[s[i]] = 0;
+            X[i]=S[j];
+            C[j]=true;
+            if(i==n-1) cout<<X<<endl;
+            else Try(i+1);
+            C[j]=false;
         }
     }
 }
-
 int main()
-{
-    //balabalo;
+{   
+    balabalo;
     giuncute;
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
-    cin >> s;
-    //sort ( s.begin() , s.end());
-    huhu(0);
+    cin>> S;
+    n=S.length();
+    X=S;
+    Try(0);
+return 0;
 }
