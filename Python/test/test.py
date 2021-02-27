@@ -1,2 +1,2 @@
-s = int(input())
-print(s)
+s = "abc"
+print(s.find('bc'))
