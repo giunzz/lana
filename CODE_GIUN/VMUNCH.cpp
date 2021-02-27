@@ -33,7 +33,7 @@ void bfs (pl node , pl nodefi)
             {
                 q.push(pl(x,y)) ;
                 visited[x][y] = 1 ;
-                //ans[x][y] = ans[u.first][u.second]+1;
+                ans[x][y] = ans[u.first][u.second]+1;
             }
         }
     }
