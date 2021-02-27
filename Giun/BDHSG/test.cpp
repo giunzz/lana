@@ -23,8 +23,9 @@ void OF(){
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-    #ifndef ONLINE_JUDGE
-    OF();
-    #endif
+    // #ifndef ONLINE_JUDGE
+    // OF();
+    // #endif
+    cerr << (int)1e5+7;
 
 }

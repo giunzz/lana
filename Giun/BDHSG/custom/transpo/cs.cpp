@@ -48,8 +48,11 @@ void Sinh(){
     lp(i, n, m){
         ll u = Rand(1, n), v = Rand(1, n);
         while(u == v || mp[{u, v}]) u = Rand(1, n), v = Rand(1, n);
+        mp[{u, v}] = mp[{v, u}] = 1;
         co << per[u] << ' ' << per[v] << ' ' << Rand(1, 1e9) << '\n'; 
     }
+    mp.clear();
+    per.clear();
     co.close();
     st(name); st(nb);
 }
@@ -68,7 +71,7 @@ int main(){
     ni = name + ".inp";
     na = name + ".ans";
     nb = name + "_bruce";
-    lp(i, 1, 100){
+    lp(i, 1, 20){
         Sinh();
         cham();
     }
