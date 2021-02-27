@@ -57,7 +57,7 @@ int main()
     cin >> n ;
     for (int j = 0 ; j < 4  ; j++)
     {
-        for (int i = 1 ; i <= n ; i++)
+    	for (int i = 1 ; i <= n ; i++)
         {
             cin >> a[i][j];
             ma = max(ma,a[i][j]);
