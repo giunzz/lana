@@ -1,6 +1,5 @@
 // #include <bits/stdc++.h>
 #include <cstdio>
-#include <vector>
 #include <string>
 #define ii int
 #define ll int
@@ -15,8 +14,6 @@ using namespace std;
 const string tenfile = "sum";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
-string s;
-
 struct node{
     ll lazy = 0, dg[10] = {0};
 };
@@ -27,12 +24,14 @@ void inc(ll *d, ll val){
     lp(i, 0, 9) d[(i + val) % 10] = tmp[i];
 }
 
+cll maxn = 25e4;
+string s;
+node st[maxn * 4 + 7];
+
 struct segment{
-    vec(node) st;
     ll n;
     segment(ll _n){
         this -> n = _n;
-        this -> st.resize(4 * n + 7);
     }
     void build(ll id, ll l, ll r){
         if(l == r){

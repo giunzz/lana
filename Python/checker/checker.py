@@ -57,6 +57,7 @@ def processingRun():
 
         if thread1.is_alive():
             kill()
+            time.sleep(0.5)
     except Exception as e: print(e)
     else:
         print('Run file Success!')
