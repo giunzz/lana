@@ -15,14 +15,14 @@ getObjOfDir = os.listdir(direction)
 logFile = 'Score.log'
 cntAC = cntTest = timeLimit = 0
 
-def createVariables(name, time):
+def createVariables(name, Time):
     global nameTarget, nameTargetCpp, nameTargetExe, nameTargetInp, nameTargetOut, timeLimit
     nameTarget = name
     nameTargetExe = nameTarget + '.exe'
     nameTargetCpp = nameTarget + '.cpp'
     nameTargetInp = nameTarget + '.inp'
     nameTargetOut = nameTarget + '.out'
-    timeLimit = time
+    timeLimit = Time
 
 def joinPath(name1, name2):
     return os.path.join(name1, name2)
@@ -39,7 +39,7 @@ def runfile():
     global timeStart, timeEnd
     os.chdir(dirFolderTest)
     timeStart = datetime.now()
-    os.system('start /wait cmd /c %s' % joinPath(dirFolderTest, nameTargetExe))
+    os.system('start /min /wait cmd /c %s' % joinPath(dirFolderTest, nameTargetExe))
     timeEnd = datetime.now()
 
 def kill():
@@ -50,10 +50,14 @@ def processingRun():
     try:
         thread1 = Thread(target=runfile)
         thread1.start()
-        time.sleep(timeLimit + 1.0)
+        # time.sleep(timeLimit + 1.0)
+        maxLimit = timeLimit + 1.0
+        while float((datetime.now() - timeStart).total_seconds()) < maxLimit and thread1.is_alive():
+            pass
+        time.sleep(0.2)
         if thread1.is_alive():
             kill()
-    except Exception as e: print(e)
+    except Exception as e: print(str(e))
     else:
         print('Run file Success!')
     thread1.join()
@@ -61,9 +65,9 @@ def processingRun():
         checknonTLE = False
     return checknonTLE
 
-def Checker(name, time):
+def Checker(name, Time):
     global cntTest, dirFolderTest, cntAC
-    createVariables(name, time)
+    createVariables(name, Time)
     print("Target: %s \nDirectory: %s" % (nameTarget, direction))  
     with open(joinPath(direction, logFile), 'w') as writeLog:
         writeLog.write("Target: %s \nDirectory: %s\n" % (nameTarget, direction))
@@ -90,6 +94,7 @@ def Checker(name, time):
             delFile(dirFolderTest, nameTargetExe, nameTargetOut, nameAns)
     wLog('AC: %d/%d' % (cntAC, cntTest))
     os.remove(joinPath(direction, nameTargetExe))
+    time.sleep(1.0)
 
 if __name__ == "__main__":
     Checker('test', 1.0)

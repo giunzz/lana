@@ -1,18 +1,16 @@
 Target: sum 
 Directory: C:\Users\tienp\Desktop\Hoc\Python\checker
-test1: 0.167672s
+test1: 0.118945s
 Accept
 test10: TLE
-test2: 0.151652s
+test2: 0.119982s
 Accept
-test3: 0.143287s
+test3: 0.207957s
 Accept
-test4: 1.634786s
-Accept
-test5: 1.763351s
-Accept
+test4: TLE
+test5: TLE
 test6: TLE
 test7: TLE
 test8: TLE
 test9: TLE
-AC: 5/10
+AC: 3/10

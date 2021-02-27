@@ -54,10 +54,9 @@ def processingRun():
         maxLimit = timeLimit + 1.0
         while float((datetime.now() - timeStart).total_seconds()) < maxLimit and thread1.is_alive():
             pass
-
+        time.sleep(0.2)
         if thread1.is_alive():
             kill()
-            time.sleep(0.5)
     except Exception as e: print(str(e))
     else:
         print('Run file Success!')
