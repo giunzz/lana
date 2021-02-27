@@ -1,1 +1,3 @@
 .gitignore
+gt.exe
+gts.exe
