@@ -61,5 +61,3 @@ int main()
     }
     cout << cnp() ;
 }
-
-
