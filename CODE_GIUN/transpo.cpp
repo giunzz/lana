@@ -38,8 +38,8 @@ inline ll cnp ()
 int main()
 {
     giuncute;
-    freopen("transpo.inp","r",stdin);
-    freopen("transpo.out","w",stdout);
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
     cin >> n >> m ;
     for (int i = 1 ; i <= n ; i++)
     {

@@ -1,0 +1,7 @@
+Target: PREOLP3 
+Directory: G:\HocLapTrinh\cham\checker
+Test00: 0.268832s
+Accept
+Test01: 0.348109s
+Wrong Ans at line 25
+AC: 1/2
