@@ -1,31 +1,31 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long
-#define pl pair<ll,ll> 
+#define pl pair<int ,int> 
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0) , cout.tie(0)
-ll m,n,u,v,w , wmax = INT_MIN , wmin = INT_MAX;
-ll visited[(int)1e5+7] , ans = 0;
+int m,n,u,v,w , wmax = INT_MIN , wmin = INT_MAX;
+bool visited[(int)1e5+7] , ans = 0;
 vector<pl> g[(int) 1e5+7];
 
-void dfs(ll mid , ll u)
+void dfs(int mid , int u)
 {
     visited[u] = 1;
     for (pl v : g[u])
         if (!visited[v.first] &&  v.second >= mid) dfs(mid,v.first);
 }
-bool check (ll mid )
+bool check (int mid )
 {
     for (int i = 1 ; i <= 100000 ; i++) visited[i] = 0;
     dfs(mid,1);
     if (visited[n] == 1) return true;
     else return false;
 }
-inline ll cnp ()
+inline int cnp ()
 {
-    ll l = wmin , r = wmax ;
+    int l = wmin , r = wmax ;
     while (l <= r)
     {
-        ll mid = (l+r)/2;
+        int mid = (l+r)/2;
         if (check(mid) == true)
         {   
             ans = max(ans,mid);

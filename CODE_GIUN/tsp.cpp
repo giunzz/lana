@@ -9,9 +9,21 @@ void blablalolo()
     freopen("giun.inp","r",stdin);
     freopen("giun.out","w",stdout);
 }
+void quaylui(int vt)
+{
+    for (int i = 1 ; i <= n ; i++)
+    {
+        if ()
+        
+    }
+}
 int main()
 {
     giuncute;
     blablalolo();
+    cin >> n;
+    for (int i = 1 ; i <= n ; i++)
+        for (int j = 1 ; j <= n ; j++) cin >> c[i][j];
+    
 
 }
