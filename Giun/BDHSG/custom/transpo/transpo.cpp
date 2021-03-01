@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long
-#define pl pair<int, ll> 
+#define pl pair<int, int> 
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0) , cout.tie(0)
 ll m,n,wmax = INT_MIN , wmin = INT_MAX;
 bool visited[(int)1e5+7] = {0}; ll ans = 0;
