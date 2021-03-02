@@ -1,14 +1,12 @@
 #include<bits/stdc++.h>
-#define giuncute ios_base::sync_with_stdio(0) , cin.tie(0) , cout.tie(0)
-#define ll long long 
 using namespace std;
+#define ll long long
+#define giuncute ios_base::sync_with_stdio(0) , cin.tie(0), cout.tie(0)
+#pragma GCC optimize("Ofast")
+int n , d = 0;
+string ans, x;
+vector<string> a;
 
-int n , c[30][30] ;
-void blablalolo()
-{
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
-}
 bool check(string x , int l)
 {
 
@@ -18,31 +16,27 @@ bool check(string x , int l)
     }
     return true;
 }
-ll countC = 0;
-void TRY (int vt)
+void TRYY (int vt)
 {
     for (int i = 'A' ; i <= 'C' ; i++)
     {
-        ans.push_back(i);
-        if (check (ans,vt))
-        {
-            if (ans[ans.length()-1] == 'C') countC ++;
-            if (countC < CC) CC = countC;
-            if (ans.length() == n ) 
+            ans.push_back(i);
+            if ( check(ans, vt) == true)
             {
-                a.push_back(ans);
+                if ( ans.length() == n ) a.push_back(ans);
+                else TRYY (vt + 1);
+                ans.pop_back();
             }
-            else 
-            {
-                if (countC TRY (vt+1);
-        }
+            else ans.pop_back();
     }
 }
 int main()
 {
     giuncute;
-    blablalolo();
+    freopen("tudep1.inp","r",stdin);
+    freopen("tudep1.out","w",stdout);
     cin >> n ;
-    TRY(1);
+    TRYY(1);
+    cout << (int)a.size() << endl;
+    for (int i = 0 ; i < (int) a.size() ; i++) cout << a[i] << endl;
 }
-

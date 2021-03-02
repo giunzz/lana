@@ -33,8 +33,8 @@ void TRYY (int vt)
 int main()
 {
     giuncute;
-    freopen("tudep1.inp","r",stdin);
-    freopen("tudep1.out","w",stdout);
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
     cin >> n ;
     TRYY(1);
     cout << (int)a.size() << endl;

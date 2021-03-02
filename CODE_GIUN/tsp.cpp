@@ -3,18 +3,30 @@
 #define ll long long 
 using namespace std;
 
-int n , c[30][30] ;
+int n , x[30]={0}  , sum = 0  , A[300][300]={{0}} ,ans = INT_MAX , dd[300]={0};
 void blablalolo()
 {
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
+    freopen("tsp.inp","r",stdin);
+    freopen("tsp.out","w",stdout);
 }
-void quaylui(int vt)
+void checkans()
 {
-    for (int i = 1 ; i <= n ; i++)
+    if (A[x[n]][1] != 0 && sum + A[x[n]][1] < ans ) ans = sum + A[x[n]][1];
+}
+inline void quaylui (int vt)
+{
+    for (int i = 2 ; i <= n ; i++)
     {
-        if ()
-        
+        if (dd[i] == 0 && A[x[vt-1]][i] != 0)
+        {
+            x[vt] = i;
+            sum += A[x[vt-1]][i];
+            dd[i] = 1;
+            if (vt == n)checkans();
+            else if ( sum < ans) quaylui(vt+1);
+            sum -= A[x[vt-1]][i];
+            dd[i] = 0;
+        }
     }
 }
 int main()
@@ -23,7 +35,8 @@ int main()
     blablalolo();
     cin >> n;
     for (int i = 1 ; i <= n ; i++)
-        for (int j = 1 ; j <= n ; j++) cin >> c[i][j];
-    
-
+        for (int j = 1 ; j <= n ; j++) cin >> A[i][j];
+    x[1] = 1;
+    quaylui(2);
+    cout << ans ;
 }

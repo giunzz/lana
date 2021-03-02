@@ -19,7 +19,7 @@ int main(){
             if ( a[i] > a[j] ) lmax = max(lmax,l[j]);
         }
         l[i] = lmax + 1;
-    }222
+    }
     for (int i = 1 ; i <= n ; i++) ans = max (ans , l[i]);
     cout << ans ; 
     return 0;

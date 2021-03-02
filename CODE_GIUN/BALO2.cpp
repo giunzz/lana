@@ -8,7 +8,6 @@ ll n , w, a[1008], b[1008], l[1008][1008] ={{0}};
 using namespace std;
 int main()
 {
-
     giuncute;
     freopen("balo2.inp","r",stdin);
     freopen("balo2.out","w",stdout);
@@ -23,5 +22,16 @@ int main()
             else l[i][j] = max (l[i - 1][j] , l[i - 1][j - a[i]] + b[i]);
         }
     }   
-    cout << l[n][w] << endl;
+    int i = n , j = w , ans = 0;
+    while (i != 0 && j != 0 )
+    {
+        if (a[i] <= j && l[i][j] == l[i-1][j-a[i]] + b[i])  
+        {
+            ans += a[i];
+            j = j-a[i] ;
+            i--;
+        }
+        else i--;
+    }
+    cout << ans << " " << l[n][w] ;
 }

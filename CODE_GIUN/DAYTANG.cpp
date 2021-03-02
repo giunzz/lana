@@ -2,24 +2,23 @@
 
 using namespace std;
 
-int  n, a [(int) 1e6+8] , vt = 0  ;
+int  n, a [(int) 1e6+8] , t = 1 , ans = 1;
 
-int main(){
+int main()
+{
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    freopen("Daytang.inp","r",stdin);
-    freopen("Daytang.out","w",stdout);
-   // freopen("input.txt","r",stdin);
-    //freopen("output.txt","w",stdout);
+    freopen("daytang.inp","r",stdin);
+    freopen("daytang.out","w",stdout);
     cin >> n ;
     for (int i = 1 ; i <= n ; i++) cin >> a[i];
-    for (int i = 1 ; i < n ; i++){
-        if (a[i] < a[i + 1]) vt = 0;
-        else {
-            vt = i +1 ; 
-            break ;
-        }
+    
+    for (int i = 2 ; i <= n ; i++)
+    {
+        if (a[i] >= a[i-1]) t++;
+        else t = 1 ;
+        ans = max(ans,t);
     }
-    cout << vt;
+    cout << ans;
     return 0;
 }
