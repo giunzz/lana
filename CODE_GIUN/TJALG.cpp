@@ -2,7 +2,7 @@
 using namespace std;
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0) , cout.tie(0)
 int N,M,u,v , visited[(int)1e5+7]={0} , cnt = 0 , low[(int)1e5+7]={0} , ans = 0;
-vector<int>G[(int) 1e5+7] , pre;
+vector<int>G[(int) 1e5+7];
 stack<int> a;
 void DFS (int u)
 {
@@ -19,18 +19,12 @@ void DFS (int u)
     }
     if (visited[u] == low[u])
     {
-        cerr << u << " ";
-        pre.push_back(u);
         ans++;
         do {
             v = a.top();
             a.pop();
             visited[v] = low[v] = INT_MAX;
             } while (u != v);
-    }
-    for (int i = 0 ; i < (int) pre.size() ; i++)
-    {
-        
     }
 }
 int main()
