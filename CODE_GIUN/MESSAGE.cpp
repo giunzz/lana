@@ -2,52 +2,18 @@
 using namespace std;
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0) , cout.tie(0)
 int N,M,u,v , visited[(int)1e5+7]={0} , cnt = 0 , low[(int)1e5+7]={0} , ans = 0;
-int dd[(int) 1e5+7]={0};
-vector<int>G[(int) 1e5+7] , pre;
+int dd[(int) 1e5+7]={0} , lt[(int) 1e5+7]={0};
+vector<int>G[(int) 1e5+7] ;
+pair<int,int> TPLT[(int)1e5+7];
 stack<int> a;
-
-void DFS (int u)
-{
-    cerr << u << " ";
-    for (int v : G[u])
-    {
-        cerr << v << " " << dd[v] << endl;
-        if (dd[v] != u) ans--;
-        DFS(v);
-    }
-    for (int v : g[u])
-    {
-        DFS(v);
-        if (!visited[v])
-        {
-            ans--;
-        }
-    }
-}
-
-void check (int u)
-{
-    if (!visted[u] )
-    for (int v : G[u])
-    {
-        if (!visited[v]) low[v] = min(low[u], low[v]);
-        else check(v) , low[u] = min(low[u],num[v]);
-        while (u !v)
-        {
-            st.pop();
-            st.tope(;)
-        }
-    }
-}
-
 void TARJAN (int u)
 {
     visited[u] = low[u] = ++cnt ;
     a.push(u);
-    for (int v : G[u]) 
+    for (int v : G[u])
     {
         if (visited[v]) low[u] = min(low[u],visited[v]);
-        else 
+        else
         {
             TARJAN(v);
             low[u] = min(low[u],low[v]);
@@ -55,27 +21,35 @@ void TARJAN (int u)
     }
     if (visited[u] == low[u])
     {
-        //cerr << u << " ";
-        pre.push_back(u);
         ans++;
         do {
             v = a.top();
             a.pop();
             visited[v] = low[v] = INT_MAX;
-            dd[v] = u;
+            lt[v] = ans;
             } while (u != v);
     }
 }
 int main()
 {
+    int tin = 0 ;
     giuncute;
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
+    //freopen("giun.inp","r",stdin);
+    //freopen("giun.out","w",stdout);
     cin >> N >> M;
-    for (int i = 1 ; i <= M ; i++) cin >> u >> v , G[u].push_back(v);
+    for (int i = 1 ; i <= M ; i++) cin >> u >> v , G[u].push_back(v) , TPLT[i].first= u , TPLT[i].second = v;
     for (int i = 1 ; i <= N ; i++)
         if (!visited[i] ) TARJAN(i);
-    cerr << ans << endl;
-    for (int i = 0 ; i < (int) pre.size() ; i++) DFS(pre[i]);
-    cout << ans;
+    for (int i = 1 ; i <= M ; i++)
+    {
+        u = TPLT[i].first ;
+        v = TPLT[i].second;
+        if (lt[u] != lt[v]) dd[lt[v]] = 1;
+    }
+    for (int i = 1 ; i <= ans ; i++)
+    {
+        if (dd[i] == 0) tin++;
+    }
+    cout << tin << endl;
+
 }

@@ -47,8 +47,8 @@ ll cnp(){
 int main()
 {
     giuncute;
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
+    freopen("chanbo.inp","r",stdin);
+    freopen("chanbo.out","w",stdout);
     cin >> n >> c;
     for (int i = 1; i <= n ; i++) cin >> x[i];
     sort(x+1,x+1+n);

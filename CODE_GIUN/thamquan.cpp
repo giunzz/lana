@@ -3,10 +3,10 @@
 #include <cmath>
 #include <algorithm>
 using namespace std;
-const long maxn = 2005;
+const long maxn = 1e5+7;
 const long oo = 1e9;
 long m, n,s,t, G[maxn][maxn], L[maxn], Tr[maxn]={0};
-bool C[maxn] = {false}, vn = false;
+bool C[maxn] = {false};
 void Init(){
 	for (int i=1;i<=n;i++) L[i]=oo;
 	L[s]=0;
@@ -22,7 +22,7 @@ int MinLab(){
 	}
 	return v;
 }
-void Dijsktra(){
+void Dijsktra(int x){
 	int u,v;
 	do {
 		u = MinLab();
@@ -36,21 +36,21 @@ void Dijsktra(){
 				}
 			}
 		} 
-	} while (u != t);
+	} while (u != x);
 }
-void Trace(int u){
-	if (Tr[u]==0) {
-		cout << u;
-		return;
-	}
+long ans ;
+void Trace(int u)
+{
+	if (Tr[u]==0) return;
 	Trace(Tr[u]);
-	cout << " " << u;
+    ans = min(ans,G[u][Tr[u]]);
 }
 int main(){
-	//freopen("DIJSKTRA.INP","r",stdin);
-	//freopen("DIJSKTRA.OUT","w",stdout);
-	cin >> n >> m >> s >> t;
+	freopen("Thamquan.INP","r",stdin);
+	freopen("thamquan.OUT","w",stdout);
+	cin >> n >> m >>  t;
 	int u,v, val;
+    s = 1;
 	for (int i=1;i<=n;i++){
 		for (int j=1;j<=n;j++){
 			G[i][j]=oo;
@@ -61,10 +61,13 @@ int main(){
 		G[u][v] = G[v][u] = val;
 	}
 	Init();
-	Dijsktra();
-	if (vn) cout << -1;
-	else {
-		cout << L[t] << endl;
-		Trace(t);
-	}
+	Dijsktra(n);
+    int x;
+    for (int i = 1 ; i <= t ; i++)
+    {
+        cin >> x ;
+        ans = INT8_MAX;
+        Trace(x);
+        cout <<  ans << endl ;
+    }
 }
