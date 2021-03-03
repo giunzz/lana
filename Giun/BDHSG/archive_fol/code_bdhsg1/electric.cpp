@@ -35,12 +35,14 @@ void init(){
 #define fi second.first
 #define se second.second
 
-inline ll Get(ll u){
+inline ll Get(ll u)
+{
     if(dsu[u] < 0) return u;
     return Get(dsu[u]);
 }
 
-bool Merge(pp(ll, pp(ll, ll)) e){
+bool Merge(pp(ll, pp(ll, ll)) e)
+{
     ll u, v;
     if((u = Get(e.fi)) == (v = Get(e.se))) return 0;
     if(dsu[u] > dsu[v]) swap(u, v);
@@ -49,7 +51,8 @@ bool Merge(pp(ll, pp(ll, ll)) e){
     return 1;
 }
 
-void initT(){
+void initT()
+{
     ll cnt = 0;
     sort(edge.begin(), edge.end());
     for(auto &e : edge){
