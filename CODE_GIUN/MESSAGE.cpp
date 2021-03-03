@@ -15,6 +15,29 @@ void DFS (int u)
         if (dd[v] != u) ans--;
         DFS(v);
     }
+    for (int v : g[u])
+    {
+        DFS(v);
+        if (!visited[v])
+        {
+            ans--;
+        }
+    }
+}
+
+void check (int u)
+{
+    if (!visted[u] )
+    for (int v : G[u])
+    {
+        if (!visited[v]) low[v] = min(low[u], low[v]);
+        else check(v) , low[u] = min(low[u],num[v]);
+        while (u !v)
+        {
+            st.pop();
+            st.tope(;)
+        }
+    }
 }
 
 void TARJAN (int u)
