@@ -34,30 +34,19 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-cll MOD = 998244353, mxn = 20;
-ll n, m, a[mxn][mxn], sum = 0, ans = 0;
+cll mxn = 1e3 + 7;
+ll n, a[mxn];
+unordered_map<ll, unordered_map<ll, ll>> mp;
 
-ll Pow(ll u, ll v){
-    if(!v) return 1;
-    ll tmp = Pow(u, v >> 1);
-    (tmp *= tmp) %= MOD;
-    if(v & 1) return (tmp * u) % MOD;
-    return tmp;
-}
-
-void sol(ll u, ll v, ll val, ll p){
-    bool ok = 1;
-    ll cnt = 0;
-    lp(i, 1, n) lp(j, 1, m) if(a[i][j] < a[u][v]) ++cnt;
-    lp(i, 1, n) lp(j, 1, m){
-        if(a[i][j] < a[u][v]){
-            ok = 0;
-            sol(i, j, val + (u - i) * (u - i) + (v - j) * (v - j), p * cnt);
-        }
-    }
-    if(ok){
-        (ans += val * Pow(p, MOD - 2)) %= MOD;
-    }
+inline ll sol(ll pos, ll jump){
+    // cerr << pos << ' ' << jump << ' ' <<'\n';
+    if(pos == n) return a[pos];
+    ll getRes = mp[pos][jump];
+    if(getRes) return getRes;
+    ll tmp = 1e15, njump = jump + 1;
+    if(pos - jump >= 1 && jump) tmp = min(sol(pos - jump, jump), tmp);
+    if(pos + njump <= n) tmp = min(sol(pos + njump, njump), tmp);
+    return mp[pos][jump] = tmp + a[pos];
 }
 
 int main(){
@@ -65,10 +54,8 @@ int main(){
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    cin >> n >> m;
-    lp(i, 1, n) lp(j, 1, m) cin >> a[i][j];
-    ll r, c;
-    cin >> r >> c;
-    sol(r, c, 0, 1);
-    cout << ans % MOD;
+    cin >> n;
+    lp(i, 1, n) cin >> a[i];
+    ll ans = LLONG_MAX;
+    cout << sol(1, 0) - a[1];
 }
