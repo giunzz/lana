@@ -1,16 +1,43 @@
-Target: sum 
-Directory: C:\Users\tienp\Desktop\Hoc\Python\checker
-test1: 0.118945s
+Target: BEAUTARR 
+Directory: C:\Users\tienp\Desktop\Quang\Hoc\Python\checker
+test000: 0.215934s
 Accept
-test10: TLE
-test2: 0.119982s
+test001: 0.284117s
 Accept
-test3: 0.207957s
+test002: 0.911398s
 Accept
-test4: TLE
-test5: TLE
-test6: TLE
-test7: TLE
-test8: TLE
-test9: TLE
-AC: 3/10
+test003: 0.303238s
+Accept
+test004: 0.337094s
+Accept
+test005: 0.725209s
+Accept
+test006: 0.246000s
+Accept
+test007: 0.892055s
+Accept
+test008: 0.696277s
+Accept
+test009: 0.361996s
+Accept
+test010: 1.052399s
+Accept
+test011: 0.720002s
+Accept
+test012: 1.288653s
+Accept
+test013: 1.609165s
+Accept
+test014: 1.217606s
+Accept
+test015: 1.446502s
+Accept
+test016: 1.505386s
+Accept
+test017: 1.576282s
+Accept
+test018: 1.223714s
+Accept
+test019: 1.601192s
+Accept
+AC: 20/20

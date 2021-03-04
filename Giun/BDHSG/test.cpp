@@ -26,6 +26,9 @@ int main(){
     // #ifndef ONLINE_JUDGE
     // OF();
     // #endif
-    cerr << (int)1e5+7;
-
+    string s, s1;
+    getline(cin, s);
+    s1 = s;
+    reverse(s1.begin(), s1.end());
+    cout << s1;
 }

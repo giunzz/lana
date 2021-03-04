@@ -28,7 +28,7 @@ bool check (ll const &mid )
 }
 inline ll cnp ()
 {
-    ll l = wmin , r = wmax ;
+    ll l = wmin , r = wmax;
     while (l <= r)
     {
         ll mid = (l+r)/2;
@@ -61,5 +61,3 @@ int main()
     }
     cout << cnp() ;
 }
-
-

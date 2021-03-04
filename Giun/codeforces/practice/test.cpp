@@ -1,52 +1,74 @@
-#include<bits/stdc++.h>
-using namespace std;
+#include <bits/stdc++.h>
 #define ll long long
-#define pl pair<ll,ll>
-#define giuncute ios_base::sync_with_stdio(0) , cin.tie(0) , cout.tie(0)
-ll R,C , a[200][200]  , visited[200][200]={{0}} , dp[200][200]={{0}};
-ll dx[] = {1,-1,0,0};
-ll dy[] = {0,0,1,-1};
-char x ;
-pl start , fi;
-void bfs (pl start , pl fi)
-{
-    queue<pl> q;
-    visited[start.first][start.second] =  1;
-    q.push(start);
-    while (!q.empty())
+#define cll const ll
+#define lp(a, b, c) for(ll a = b; a <= c; ++a)
+#define lpd(a, b, c) for(ll a = b; a >= c; --a)
+#define vec(a) vector<a>
+#define pp(a, b) pair<a, b>
+#define EACHCASE lpd(cs, read(), 1)
+#define Fname "f"
+using namespace std;
+
+template <typename T> inline void Read(T &x){
+    x = 0; char c;
+    while(!isdigit(c = getchar()));
+    do
     {
-        pl u = q.front();
-       // cerr << u.first << " " << u.second << endl;
-        q.pop();
-        for (int i = 0 ; i < 4 ; i++)
-        {
-            ll x = u.first + dx[i];
-            ll y = u.second + dy[i];
-            if (1 <= x && x <= R && 1 <= y && y <= C && !visited[x][y])
-            {
-                q.push({x,y});
-                dp[x][y] = dp[u.first][u.second]+1;
-                visited[x][y] = 1;
-            }
-        }
-    }
-    cout << dp[fi.first][fi.second];
+        x = x * 10 + c - '0';
+    } while (isdigit(c = getchar()));
 }
-int main()
-{
-    giuncute;
-    freopen("f.inp","r",stdin);
-    freopen("f.out","w",stdout);
-    cin >> R >> C;
-    for (int i = 1 ; i <= R ; i++)
-    {
-        for (int j = 1 ; j <= C ; j++)
-        {
-            cin >> x;
-            if (x == 'B') start.first = i , start.second = j;
-            else if (x == 'C') fi.first = i , fi.second = j;
-            else if (x == '*') visited[i][j] = 1;
+
+ll read(){
+    ll tmp;
+    cin >> tmp;
+    return tmp;
+}
+
+void giuncute(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+}
+
+void OF(){
+    freopen(Fname".inp", "r", stdin);
+    freopen(Fname".out", "w", stdout);
+}
+
+cll MOD = 998244353, mxn = 20;
+ll n, m, a[mxn][mxn], sum = 0, ans = 0;
+
+ll Pow(ll u, ll v){
+    if(!v) return 1;
+    ll tmp = Pow(u, v >> 1);
+    (tmp *= tmp) %= MOD;
+    if(v & 1) return (tmp * u) % MOD;
+    return tmp;
+}
+
+void sol(ll u, ll v, ll val, ll p){
+    bool ok = 1;
+    ll cnt = 0;
+    lp(i, 1, n) lp(j, 1, m) if(a[i][j] < a[u][v]) ++cnt;
+    lp(i, 1, n) lp(j, 1, m){
+        if(a[i][j] < a[u][v]){
+            ok = 0;
+            sol(i, j, val + (u - i) * (u - i) + (v - j) * (v - j), p * cnt);
         }
     }
-    bfs(start,fi);
+    if(ok){
+        (ans += val * Pow(p, MOD - 2)) %= MOD;
+    }
+}
+
+int main(){
+    giuncute();
+    #ifndef ONLINE_JUDGE
+    OF();
+    #endif
+    cin >> n >> m;
+    lp(i, 1, n) lp(j, 1, m) cin >> a[i][j];
+    ll r, c;
+    cin >> r >> c;
+    sol(r, c, 0, 1);
+    cout << ans % MOD;
 }

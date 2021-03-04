@@ -1,2 +1,1 @@
-s = "abc"
-print(s.find('bc'))
+print(len(input().split(' ')))

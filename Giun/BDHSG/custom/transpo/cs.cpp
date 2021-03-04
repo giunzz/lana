@@ -34,10 +34,11 @@ long long Rand(long long l, long long h)
 
 void Sinh(){
     co.open((ni).c_str());
-    ll n = Rand(1e4, 1e5), m = Rand(n - 1, min((ll)2e5, n * (n - 1) / 2));
+    ll n = Rand(1e5, 1e5), m = Rand(n - 1, min((ll)2e5, n * (n - 1) / 2));
     vec(ll) per(n + 1);
     lp(i, 1, n) per[i] = i;
     random_shuffle(per.begin() + 1, per.end());
+    // for(ll i : per) cerr << i << ' ';
     map<pp(ll, ll), bool> mp;
     co << n << ' ' << m << '\n';
     lp(v, 2, n){
@@ -57,10 +58,11 @@ void Sinh(){
     st(name); st(nb);
 }
 
-void cham(){
+bool cham(){
     ++cs;
     ll vl = st("fc " + no + " " + na + " /w");
     if(!vl) ++ac;
+    return vl;
 }   
 
 int main(){
@@ -69,11 +71,11 @@ int main(){
     // cin >> name;
     no = name + ".out";
     ni = name + ".inp";
-    na = name + ".ans";
+    na = name + ".ans";   
     nb = name + "_bruce";
     lp(i, 1, 20){
         Sinh();
-        cham();
+        if(cham()) break;
     }
     cout << "ac: " << ac << "/" << cs;
 }
