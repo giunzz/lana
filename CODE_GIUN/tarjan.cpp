@@ -1,35 +1,44 @@
-#include <bits/stdc++.h>
-#define vec(type) vector<type>
-#define pp(type) pair<type, type>
+#include<bits/stdc++.h>
 using namespace std;
-
-vec(vec(int)) g;
-int n, m, num[107], low[107] = {INT_MAX};
-bool d[107] = {0};
-
-void enter(){
-    int u, v;
-    cin >> n >> m;
-    g.resize(n + 1);
-    for(int i = 1; i <= m; i++){
-        cin >> u >> v;
-        g[u].push_back(v);
-        g[v].push_back(u);
+#define giuncute ios_base::sync_with_stdio(0) , cin.tie(0) , cout.tie(0)
+int N,M,u,v , visited[(int)1e5+7]={0} , cnt = 0 , low[(int)1e5+7]={0} , ans = 0;
+int dd[(int) 1e5+7]={0} , lt[(int) 1e5+7]={0};
+vector<int>G[(int) 1e5+7] ;
+pair<int,int> TPLT[(int)1e5+7];
+stack<int> a;
+void TARJAN (int u)
+{
+    visited[u] = low[u] = ++cnt ;
+    a.push(u);
+    for (int v : G[u])
+    {
+        if (visited[v]) low[u] = min(low[u],visited[v]);
+        else
+        {
+            TARJAN(v);
+            low[u] = min(low[u],low[v]);
+        }
+    }
+    if (visited[u] == low[u])
+    {
+        ans++;
+        do {
+            v = a.top();
+            a.pop();
+            visited[v] = low[v] = INT_MAX;
+            lt[v] = ans;
+            } while (u != v);
     }
 }
+int main()
+{
+    giuncute;
+    //freopen("giun.inp","r",stdin);
+    //freopen("giun.out","w",stdout);
+    cin >> N >> M;
+    for (int i = 1 ; i <= M ; i++) cin >> u >> v , G[u].push_back(v) , TPLT[i].first= u , TPLT[i].second = v;
+    for (int i = 1 ; i <= N ; i++)
+        if (!visited[i] ) TARJAN(i);
+    cout << ans << endl;
 
-void dfs(int u){
-    int v;
-    for (int i = 1; i <= g[u].size(); i++){
-        v = g[u][i];
-    }
-}
-
-int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    freopen("input.inp", "r", stdin);
-    freopen("output.txt", "w", stdout);
-    enter();
-    dfs(1);
 }

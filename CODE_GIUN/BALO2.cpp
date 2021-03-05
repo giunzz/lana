@@ -19,7 +19,7 @@ int main()
         for (int j = 1 ; j <= w ; j++)
         {
             if (a[i] > j) l[i][j] = l[i-1][j];
-            else l[i][j] = max (l[i - 1][j] , l[i - 1][j - a[i]] + b[i]);
+            else l[i][j] = max (l[i - 1][j] , l[i - 1][j - a[i]] + b[i]);z
         }
     }   
     int i = n , j = w , ans = 0;

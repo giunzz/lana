@@ -9,7 +9,8 @@ int main()
     freopen("BOTTLES.out","w",stdout);
     cin >> n;
     for (int i = 1 ; i <= n ; i++) cin >> a[i];
-    f[1] = a[1] , f[2] = a[1] + a[2] , f[3] = max(a[1]+a[2],max(a[2]+a[3], a[1]+a[3]));
+    f[1] = a[
+        1] , f[2] = a[1] + a[2] , f[3] = max(a[1]+a[2],max(a[2]+a[3], a[1]+a[3]));
     for (int i = 4 ; i <= n ; i++) 
         f[i] = max(f[i - 1] , max( f[i - 2] + a[i], f[i - 3] + a[i - 1] + a[i]));
     int i = n;
