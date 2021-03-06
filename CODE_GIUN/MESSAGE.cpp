@@ -1,10 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0) , cout.tie(0)
-int N,M,u,v , visited[(int)1e5+7]={0} , cnt = 0 , low[(int)1e5+7]={0} , ans = 0;
-int dd[(int) 1e5+7]={0} , lt[(int) 1e5+7]={0};
-vector<int>G[(int) 1e5+7] ;
-pair<int,int> TPLT[(int)1e5+7];
+const int maxn = 1e6+7;
+int N,M,u,v , visited[maxn]={0} , cnt = 0 , low[maxn]={0} , ans = 0;
+int dd[maxn]={0} , lt[maxn]={0};
+vector<int>G[maxn] ;
+pair<int,int> TPLT[maxn];
 stack<int> a;
 void TARJAN (int u)
 {
