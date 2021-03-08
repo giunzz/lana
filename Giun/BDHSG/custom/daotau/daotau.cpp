@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <unordered_map>
+#include <queue>
 #define ll long long
 #define cll const ll
 #define lp(a, b, c) for(ll a = b; a <= c; ++a)
@@ -9,7 +10,7 @@
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
 #define EACHCASE lpd(cs, read(), 1)
-#define Fname "f"
+#define Fname "daotau"
 using namespace std;
 
 void OF(){
@@ -23,7 +24,7 @@ vec(pp(ll, ll)) e;
 unordered_map<ll, ll> dp;
 
 inline ll cnp(cll *eq, ll l, ll r, ll d, ll val){
-    ll res;
+    ll res = 0;
     while(l * d <= r * d){
         ll mid = (l + r) / 2;
         if(eq[0] * mid * mid + eq[1] * mid + eq[2] < val) res = mid, l = mid + d;
@@ -42,17 +43,45 @@ inline ll Find(ll t){
     return res;
 }
 
-ll sol(ll t){
-    if(dp[t] || t == 1) return dp[t];
-    ll pos = Find(t);
-    if(pos == -1)
-        return dp[t] = t - 1;
-    if(e[pos].first == t)
-        return dp[t] = sol(e[pos].second) + 1;
-    ll res = sol(e[pos].second) + t - e[pos].first + 1;
-    if(pos != e.size() - 1 && t - e[pos + 1].second > e[pos + 1].first - t + 1)
-        res = min(res, sol(e[pos + 1].second) + e[pos + 1].first - t + 1);
-    return dp[t] = res;
+ll sol(){
+    priority_queue<pp(ll, ll), vec(pp(ll, ll)), greater<pp(ll, ll)>> q;
+    q.push({-1, n});
+    dp[n] = -1, dp[1] = 1e18;
+    while(q.size()){
+        ll u = q.top().second, cu = q.top().first;
+        q.pop();
+        if(dp[u] != cu) continue;
+        if(u == 1) break;
+        if(cu == -1) cu = 0;
+        ll pos = Find(u);
+        if(dp[1] > cu + u - 1){
+            dp[1] = cu + u - 1;
+            q.push({dp[1], 1});
+        }
+        if(e[pos].first == u){
+            if(!dp[e[pos].second] || dp[e[pos].second] > cu + 1){
+                dp[e[pos].second] = cu + 1;
+                q.push({dp[e[pos].second], e[pos].second});
+            }
+        } else{
+            ll v1, v2;
+            if(pos != -1){
+                v1 = e[pos].first, v2 = e[pos].second;
+                if(!dp[v2] || dp[v2] > cu + u - v1 + 1){
+                    dp[v2] = cu + u - v1 + 1;
+                    q.push({dp[v2], v2});
+                }
+            }
+            if(pos != e.size() - 1){
+                v1 = e[pos + 1].first, v2 = e[pos + 1].second;
+                if(!dp[v2] || dp[v2] > cu + v1 - u + 1){
+                    dp[v2] = cu + v1 - u + 1;
+                    q.push({dp[v2], v2});
+                }
+            }
+        }
+    }
+    return dp[1];
 }
 
 int main(){
@@ -97,6 +126,6 @@ int main(){
         }
     }
     sort(e.begin(), e.end());
-    printf("%lld", sol(n));
+    printf("%lld", sol());
     // cerr << clock();
 }

@@ -17,7 +17,7 @@
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
-const string tenfile = "test";
+const string tenfile = "daotau";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 ofstream co;
@@ -32,31 +32,43 @@ long long Rand(long long l, long long h)
                 rand()) % (h - l + 1);
 }
 
+cll mxn = 1e6 + 7, dx[] = {0, 1, 0, -1}, dy[] = {1, 0, -1, 0};
+unordered_map<ll, unordered_map<ll, ll>> mtx;
+bool g[mxn] = {0};
+
+void init(){
+    ll x = 0, y = 0, d = 0;
+    lp(i, 1, 1e6){
+        mtx[x][y] = i;
+        lp(del, 0, 3) 
+            if(mtx[x + dx[del]][y + dy[del]] && mtx[x][y] - mtx[x + dx[del]][y + dy[del]] > 1){
+                g[i] = 1;
+            }
+        if(i != 1 && !mtx[x + dx[(d + 1) % 4]][y + dy[(d + 1) % 4]]) (++d) %= 4;
+        x += dx[d], y += dy[d];
+    }
+}
+
+unordered_map<ll, bool> d;
 void Sinh(){
     co.open((ni).c_str());
-    ll n = Rand(3, 17), m = min(Rand(n - 1, n * (n - 1) / 2), (ll)1e5);
-    map<pp(ll, ll), bool> d;
-    co << n << '\n';
-    lp(i, 2, n){
-        ll v = Rand(1, i - 1);
-        d[{i, v}] = d[{v, i}] = 1;
-        co << i << ' ' << v << ' ' << Rand(1, 1e3) << '\n';
-
-    }
-    lp(i, 1, m - (n - 1)){
-        ll u = Rand(1, n), v = Rand(1, n);
-        while(u == v || d[{u, v}]) u = Rand(1, n), v = Rand(1, n);
-        d[{u, v}] = d[{v, u}] = 1;
-        co << u << ' ' << v << ' ' << Rand(1, 1e3) << '\n';
+    ll n = Rand(2, 1e6), k = Rand(1, 1e5);
+    co << n << endl << k << endl;
+    lp(i, 1, k){
+        ll u = Rand(4, 1e6);
+        while(!g[u] || d[u]) u = Rand(4, 1e6);
+        d[u] = 1;
+        co << u << '\n';
     }
     co.close();
     st(name); st(nb);
 }
 
-void cham(){
+bool cham(){
     ++cs;
     ll vl = st("fc " + no + " " + na + " /w");
     if(!vl) ++ac;
+    return vl;
 }   
 
 int main(){
@@ -67,9 +79,11 @@ int main(){
     ni = name + ".inp";
     na = name + ".ans";
     nb = name + "_bruce";
-    lp(i, 1, 20){
+    init();
+    lp(i, 1, 100){
+        cerr << "Test " << i << endl;
         Sinh();
-        cham();
+        if(cham()) break;
     }
     cout << "ac: " << ac << "/" << cs;
 }
