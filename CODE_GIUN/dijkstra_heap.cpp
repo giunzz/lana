@@ -21,6 +21,7 @@ void DIJKSTRA (int startnode)
         u = pq.top().first ; // đỉnh u hiện tại đang thăm
         int dis_u = pq.top().second; // Dis_u là khoảng cách ngắn nhất từ 1 đến u lúc hiện tại
         pq.pop();
+        if(MINF[u] != dis_u) continue;
         for (pi v : G[u])
         {
             if (MINF[v.first] > dis_u + v.second ) 
