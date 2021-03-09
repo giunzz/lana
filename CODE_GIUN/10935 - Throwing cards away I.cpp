@@ -1,16 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 int main()
 {
-    int n , x;
+    int n, x;
     queue<int> q;
-    ios_base::sync_with_stdio(0),cin.tie(0);
-    while (cin >> n,n)
+    ios_base::sync_with_stdio(false);
+	cout.tie();cin.tie(0);
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
+	while (cin >> n)
 	{
-        for (int i = 1; i <= n; i++) q.push(i);
+	    for (int i = 1; i <= n; i++) q.push(i);
+	    cout << "Discarded cards: ";
         if (n != 1)
         {
-            cout << "Discarded cards: ";
             while (q.size() > 1)
             {
                 cout << q.front();
@@ -20,10 +24,11 @@ int main()
                 if (!q.empty()) cout << ", ";
                 q.push(x);
             }
+            cout << endl;
         }
-        else cout << "Discarded cards:";
-        cout <<endl << "Remaining card: " << q.front() << endl;
+        cout << "Remaining card: " << q.front() << endl;
         q.pop();
 	}
+    return 0;
 }
 
