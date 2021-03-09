@@ -58,12 +58,12 @@ int main(){
         ll u = q.front();
         q.pop();
         if(u == n) break;
-        if(!vst[u - 1]){
+        if(!vst[u - 1] && u - 1 >= 1){
             q.push(u - 1);
             vst[u - 1] = 1;
             dp[u - 1] = dp[u] + 1;
         } 
-        if(!vst[u + 1]){
+        if(!vst[u + 1] && u + 1 <= 1e6){
             q.push(u + 1);
             vst[u + 1] = 1;
             dp[u + 1] = dp[u] + 1;

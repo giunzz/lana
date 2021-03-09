@@ -1,73 +1,49 @@
 #include <bits/stdc++.h>
-
+#define ll long long
+#define cll const ll
+#define lp(a, b, c) for(ll a = b; a <= c; ++a)
+#define lpd(a, b, c) for(ll a = b; a >= c; --a)
+#define vec(a) vector<a>
+#define pp(a, b) pair<a, b>
+#define EACHCASE lpd(cs, read(), 1)
+#define Fname "f"
 using namespace std;
-#define oo INT_MAX
-#define lap(i,a,b) for (long i=a; i<=b; i++)
-ifstream inp ("DIJKSTRA.INP");
-int n;
-int a[1000][1000],fre[1000],len[1000],pre[1000];
-void Solve(int u)
-{
-    fre[u] = false;
-    lap(i,1,n)
-    {
-        if (a[u][i] != oo && u!=i && fre[i] == true)
-        {
-            if (len[i] == oo )
-            {
-                len[i] = len[u] + a[u][i];
-                pre[i] = u;
-            }
-            if ((len[u] + a[u][i]) < len[i])
-            {
-                len[i] = len[u] + a[u][i];
-                pre[i] = u;
-            }
-            // cerr << /*u << " " <<*/ i << " " << len[i] << endl;
-            Solve(i);
-            fre[i] = true;
-        }
-    }
-}
-void nhap()
-{
-    cin >> n;
-    lap(i,1,n)
-    {
-        len[i] = oo;
-        fre[i] = true;
-        lap(j,1,n)
-        {
-            a[i][j] = oo;
-            if (i == j)
-                a[i][j] = 0;
-        }
-    }
-    while (!cin.eof())
-    {
-        int x,y,length;
-        cin >> x >> y >> length;
-        a[x][y] = length;
-        a[y][x] = length;
-        // cerr << x << y << length << endl;
-    }
-}
-void Out()
-{
-    lap(i,1,n)
-        cout << len[i] << endl;
-}
-int main()
-{
-    ios_base::sync_with_stdio(0);
-    cin.tie(); cout.tie();
-    freopen("test.INP","r",stdin);
-    freopen("test.OUT","w",stdout);
-    nhap();
-    pre[1] = 1;
-    len[1] = 0;
-    Solve(1);
-    Out();
 
-    return 0;
+template <typename T> inline void Read(T &x){
+    x = 0; char c;
+    while(!isdigit(c = getchar()));
+    do
+    {
+        x = x * 10 + c - '0';
+    } while (isdigit(c = getchar()));
+}
+
+ll read(){
+    ll tmp;
+    cin >> tmp;
+    return tmp;
+}
+
+void giuncute(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+}
+
+void OF(){
+    freopen(Fname".inp", "r", stdin);
+    freopen(Fname".out", "w", stdout);
+}
+
+int main(){
+    giuncute();
+    #ifndef ONLINE_JUDGE
+    OF();
+    #endif
+    vec(ll) a{1, 3, 2, 5, 2, 4, 3, 2, 1};
+    vec(ll)::iterator it;
+    // it = remove(a.begin(), a.end(), 2);
+    // a.resize(distance(a.begin(), remove(a.begin(), a.end(), 2)));
+    a.erase(remove(a.begin(), a.end(), 2), a.end());
+    for(auto i : a) cerr << i << ' ';
+    // for(vec(ll)::iterator i = a.begin(); i != it; i++) cerr << *i << " ";
 }

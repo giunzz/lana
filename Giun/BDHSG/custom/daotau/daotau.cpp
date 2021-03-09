@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <unordered_map>
 #include <queue>
+#include<iostream>
 #define ll long long
 #define cll const ll
 #define lp(a, b, c) for(ll a = b; a <= c; ++a)
@@ -19,9 +20,9 @@ void OF(){
 }
 
 cll mxk = 1e5 + 7, upright[] = {4, -2, 1}, upleft[] = {4, 0, 1}, downleft[] = {4, -2, 1}, downright[] = {4, -4, 2};
-ll n, k, b[mxk];
+ll n, k, b[mxk], nt[mxk] = {0};
 vec(pp(ll, ll)) e;
-unordered_map<ll, ll> dp;
+unordered_map<ll, ll> dp, hs;
 
 inline ll cnp(cll *eq, ll l, ll r, ll d, ll val){
     ll res = 0;
@@ -46,19 +47,20 @@ inline ll Find(ll t){
 ll sol(){
     priority_queue<pp(ll, ll), vec(pp(ll, ll)), greater<pp(ll, ll)>> q;
     q.push({-1, n});
-    dp[n] = -1, dp[1] = 1e18;
+    dp[n] = -1, dp[1] = 1e16;
     while(q.size()){
         ll u = q.top().second, cu = q.top().first;
         q.pop();
         if(dp[u] != cu) continue;
+        // fprintf(stderr, "%lld %lld\n", cu, u);
         if(u == 1) break;
         if(cu == -1) cu = 0;
-        ll pos = Find(u);
+        ll pos = nt[hs[u]];
         if(dp[1] > cu + u - 1){
             dp[1] = cu + u - 1;
             q.push({dp[1], 1});
         }
-        if(e[pos].first == u){
+        if(pos != -1 && e[pos].first == u){
             if(!dp[e[pos].second] || dp[e[pos].second] > cu + 1){
                 dp[e[pos].second] = cu + 1;
                 q.push({dp[e[pos].second], e[pos].second});
@@ -126,6 +128,16 @@ int main(){
         }
     }
     sort(e.begin(), e.end());
+    ll j = e.size() - 1;
+    lpd(i, e.size() - 1, 0){
+        hs[e[i].second] = i;
+        while(j != -1 && e[j].first > e[i].second) --j;
+        nt[i] = j;
+    }
+    if(!hs[n]){
+        hs[n] = e.size();
+        nt[e.size()] = Find(n);
+    }
     printf("%lld", sol());
     // cerr << clock();
 }

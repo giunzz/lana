@@ -49,16 +49,18 @@ void init(){
     }
 }
 
+ll cnt = 0;
+vec(ll) num;
 unordered_map<ll, bool> d;
 void Sinh(){
     co.open((ni).c_str());
-    ll n = Rand(2, 1e6), k = Rand(1, 1e5);
+    ll n = Rand(2, 100), k = Rand(1, 10);
     co << n << endl << k << endl;
     lp(i, 1, k){
-        ll u = Rand(4, 1e6);
-        while(!g[u] || d[u]) u = Rand(4, 1e6);
-        d[u] = 1;
-        co << u << '\n';
+        // ll u = Rand(4, 1e6);
+        // while(!g[u] || d[u]) u = Rand(4, 1e6);
+        // d[u] = 1;
+        co << num[i] << '\n';
     }
     co.close();
     st(name); st(nb);
@@ -80,8 +82,11 @@ int main(){
     na = name + ".ans";
     nb = name + "_bruce";
     init();
-    lp(i, 1, 100){
+    lp(i, 1, 100) if(g[i]) num.push_back(i);
+    // cerr << cnt;
+    lp(i, 1, 200){
         cerr << "Test " << i << endl;
+        random_shuffle(num.begin(), num.end());
         Sinh();
         if(cham()) break;
     }
