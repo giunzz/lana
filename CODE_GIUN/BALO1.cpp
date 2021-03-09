@@ -1,10 +1,8 @@
 #include<bits/stdc++.h>
 #define ll long long
-#define ll long long
 #define giuncute ios_base::sync_with_stdio(0), cin.tie(0);
 #pragma GCC optimize("Ofast")
-ll n , w, a[1000], b[1000], l[108][(int) 1e5+7] ={0};
-
+ll n , w, a[3008], b[3008], l[3008][3008] ={{0}};
 using namespace std;
 int main()
 {
@@ -13,7 +11,7 @@ int main()
     freopen("balo1.out","w",stdout);
     cin >> n >> w;
     for (ll i = 1 ; i <= n ; i++) cin >> a[i] ;
-    for (int i = 1 ; i <= n ; i++) l[0][i] = 0;
+    //for (int i = 1 ; i <= n ; i++) l[0][i] = 0;
     for (int i = 1 ; i <= n ; i++)
     {
         for (int j = 1 ; j <= w ; j++)

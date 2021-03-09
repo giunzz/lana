@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int maxn = 205;
+const int maxn = 10007;
 const double oo = 1e9;
 double X[maxn],Y[maxn], L[maxn][maxn]={{0}}, D[maxn][maxn]={{0}};
 int n, G[maxn][maxn]={{0}};

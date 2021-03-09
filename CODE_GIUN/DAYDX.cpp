@@ -1,48 +1,39 @@
 #include<bits/stdc++.h>
-using namespace std; 
-#define ll long long
-ll f[1007][1007] ={{0}}, a[1007], n ;
+using namespace std;
+const int maxn=10007;
+#define giuncute ios_base::sync_with_stdio(0), cin.tie(0);
+int A[maxn],L[maxn][maxn]={{0}},n,C[maxn],i,j;
+
 int main()
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    freopen("daydx.inp","r",stdin);
-    freopen("daydx.out","w",stdout);
-    cin >> n ; 
-    for (int i = 1 ; i <= n ; i++) cin >> a[i];
-    for(int i =  1; i <= n; i++) f[i][i] = 1;
-    for (int len = 1 ; len <= n ; len++)
-    {
-        for (int i = 1 ; i <= n ; i++)
+    giuncute;
+	freopen("DAYDX.INP","r",stdin);
+	freopen("DAYDX.OUT","w",stdout);
+	cin >> n;
+	for(i=1;i<=n;i++) cin >> A[i];
+	for(i=1;i<=n;i++) L[i][i]=1;
+	for(i=n-1;i>=1;i--){
+		for(j=i+1;j<=n;j++){
+			if(A[i]==A[j]) L[i][j]=L[i+1][j-1]+2;
+			else L[i][j]=max(L[i+1][j],L[i][j-1]);
+		}
+	}
+	cout << L[1][n] << endl;
+	i=1, j=n;
+	do{
+		if(A[i]==A[j])
         {
-            int j = i + len;
-            if (j > n) break;
-            if (a[i]== a[j]) f[i][j] = f[i+1][j-1] + 2;
-            else f[i][j] = max(max(f[i+1][j] , f[i][j-1]), f[i + 1][j - 1]);
-            // cerr << f[i][j] << " ";
-        }
-        // cerr << endl;
-    }
-    cout << f[1][n] << endl;
-    ll i = 1, j = n;
-    vector<ll> ans;
-    while (i < j)
-    {
-        // if(i == j) ans.push_back(i), --j;
-        if(f[i][j] == f[i + 1][j - 1]) i++, j--;
-        else if (f[i][j] == f[i+1][j-1]+2 && a[i] == a[j]) {
-            ans.push_back(i); 
-            ans.push_back(j); 
-            i++,j--;
-        }
-        else if(f[i][j] == f[i+1][j]) i++;
-        else j--;
-        // cerr << i << " " << j << endl;
-    }
-    if(i == j) ans.push_back(i);
-    sort(ans.begin(), ans.end());
-    // cerr << ans.size();
-    // for (int i = 0 ; i < ans.size() ; i++) cerr << ans[i] << " ";
-    for(int i = 0; i < ans.size(); i++) cout << a[ans[i]] << ' ';
-    // for(int i = ans.size() - 1 + (f[1][n] & 1); i >= 0; i++) cout << ans[i] << ' ';
+			C[i]=C[j]=true;
+			i+=1;
+			j-=1;
+		} 
+        else 
+        {
+			if(L[i][j-1]>L[i+1][j]) j-=1;
+			else i+=1;
+		}
+	} while (i<=j);
+	for (i=1;i<=n;i++)
+		if(C[i]==true) cout << A[i] << " ";
+return 0;
 }
