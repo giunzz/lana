@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <unordered_map>
 #include <queue>
-#include<iostream>
 #define ll long long
 #define cll const ll
 #define lp(a, b, c) for(ll a = b; a <= c; ++a)
@@ -52,7 +51,6 @@ ll sol(){
         ll u = q.top().second, cu = q.top().first;
         q.pop();
         if(dp[u] != cu) continue;
-        // fprintf(stderr, "%lld %lld\n", cu, u);
         if(u == 1) break;
         if(cu == -1) cu = 0;
         ll pos = nt[hs[u]];
@@ -139,5 +137,4 @@ int main(){
         nt[e.size()] = Find(n);
     }
     printf("%lld", sol());
-    // cerr << clock();
 }

@@ -54,7 +54,7 @@ vec(ll) num;
 unordered_map<ll, bool> d;
 void Sinh(){
     co.open((ni).c_str());
-    ll n = Rand(2, 100), k = Rand(1, 10);
+    ll n = Rand(2, 1e6), k = Rand(1, 1e5);
     co << n << endl << k << endl;
     lp(i, 1, k){
         // ll u = Rand(4, 1e6);
@@ -82,9 +82,9 @@ int main(){
     na = name + ".ans";
     nb = name + "_bruce";
     init();
-    lp(i, 1, 100) if(g[i]) num.push_back(i);
+    lp(i, 1, 1e6) if(g[i]) num.push_back(i);
     // cerr << cnt;
-    lp(i, 1, 200){
+    lp(i, 1, 20){
         cerr << "Test " << i << endl;
         random_shuffle(num.begin(), num.end());
         Sinh();
