@@ -6,7 +6,8 @@ char v;
 int main()
 {
     giuncute;
-  
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
     while (cin >> p >> c )
     {
         deque<int> q;

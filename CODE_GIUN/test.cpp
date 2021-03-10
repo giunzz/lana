@@ -1,29 +1,23 @@
-#include <bits/stdc++.h>
+#include <cstdio>
+#include <queue>
 using namespace std;
 int main()
 {
-    int n , x;
-    queue<int> q;
-    ios_base::sync_with_stdio(0),cin.tie(0);
-    while (cin >> n,n)
-	{
-        for (int i = 1; i <= n; i++) q.push(i);
-        if (n != 1)
-        {
-            cout << "Discarded cards: ";
-            while (q.size() > 1)
-            {
-                cout << q.front();
-                q.pop();
-                x = q.front();
-                q.pop();
-                if (!q.empty()) cout << ", ";
-                q.push(x);
-            }
+    int N, x;
+    while (scanf("%d", &N) && N) {
+        priority_queue<int, vector<int>, greater<int>> PQ;
+        for (int i = 0; i < N; ++i) {
+            scanf("%d", &x);
+            PQ.push(x);
         }
-        else cout << "Discarded cards:";
-        cout <<endl << "Remaining card: " << q.front() << endl;
-        q.pop();
-	}
+        int cost = 0;
+        while (PQ.size() != 1) {
+            x = PQ.top(); PQ.pop();
+            x += PQ.top(); PQ.pop();
+            cost += x;
+            PQ.push(x);
+        }
+        printf("%d\n", cost);
+    }
+    return 0;
 }
-

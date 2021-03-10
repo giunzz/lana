@@ -3,7 +3,7 @@
 #include <cmath>
 #include <algorithm>
 using namespace std;
-const long maxn = 1e5+7;
+const long maxn = 1e4+7;
 const long oo = 1e9;
 long m, n,s,t, G[maxn][maxn], L[maxn], Tr[maxn]={0};
 bool C[maxn] = {false};
@@ -46,7 +46,7 @@ void Trace(int u)
     ans = min(ans,G[u][Tr[u]]);
 }
 int main(){
-	freopen("Thamquan.INP","r",stdin);
+	freopen("thamquan.INP","r",stdin);
 	freopen("thamquan.OUT","w",stdout);
 	cin >> n >> m >>  t;
 	int u,v, val;

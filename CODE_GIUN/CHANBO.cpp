@@ -3,23 +3,9 @@ using namespace std;
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
 #define ll long long 
 
-ll n , c, x[(int) 1e5+7] , ans= 0 ;
-
-
-// ll cnp(int n)
-// {
-//     int r = n ;
-//     int l = 1;
-//     while (r >= l)
-//     {
-//         int mid = (l+r)/2;
-//         if (x[mid]-x[mid-1] > x[mid+1]-x[mid]) ans = max(ans,x[mid]-x[mid-1]),r = mid - 1;
-//         if (x[mid]-x[mid-1] < x[mid+1]-x[mid]) ans = max(ans,x[mid+1]-x[mid]) ,l = mid + 1;
-//     }
-//     return ans;
-// }
-
-bool check(ll dis){
+ll n , c, x[(int) 1e6+7] , ans= 0 ;
+bool check(ll dis)
+{
     vector<ll> dp(n + 1, 0);
     ll j = 1, res = 0;
     for(ll i = 1; i <= n; i++){
@@ -31,11 +17,13 @@ bool check(ll dis){
     return res >= c;
 }
 
-ll cnp(){
+ll cnp()
+{
     ll l = 1, r = x[n] - x[1], ans;
     while(l <= r){
         ll mid = (l + r) / 2;
-        if(check(mid)){
+        if(check(mid) )
+        {
             ans = mid;
             l = mid + 1;
         }

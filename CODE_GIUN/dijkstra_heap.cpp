@@ -38,17 +38,17 @@ void TRY (int u )
 {
     if (trace[u] == 0) 
     {
-        cout << u << " ";
+        cout << u << " " << G[u][trace[u]].second << "|";
         return ;
     }
     TRY(trace[u]);
-    cout << u << " ";
+    cout << u << " "<< G[u][trace[u]].second << "|";
 }
 int main()
 {
     giuncute;
-    freopen("giun1.inp","r",stdin);
-    freopen("giun1.out","w",stdout);
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
     cin >> N >> M;
     for (int i = 1; i <= M ;  i++)
     {
@@ -59,7 +59,7 @@ int main()
     DIJKSTRA(1);
     for (int i = 1 ; i <= N ; i++) 
     {
-        cout << MINF[i] << " ";
+ //       cout << MINF[i] << " ";
         TRY(i);
         cout << endl;
     }
