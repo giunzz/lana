@@ -1,0 +1,3 @@
+11 116 
+
+11 -> W W W B W B B -> (swap(W, B)) B B B W B W W -> (reverse) W W B W B B B

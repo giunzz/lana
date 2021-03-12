@@ -1,43 +1,43 @@
-Target: BEAUTARR 
+Target: neckl 
 Directory: C:\Users\tienp\Desktop\Quang\Hoc\Python\checker
-test000: 0.215934s
+test00: 0.263780s
 Accept
-test001: 0.284117s
+test01: 0.327728s
 Accept
-test002: 0.911398s
+test02: 0.303747s
 Accept
-test003: 0.303238s
+test03: 0.287760s
 Accept
-test004: 0.337094s
+test04: 0.351708s
+Wrong Ans at line 1
+test05: 0.407659s
 Accept
-test005: 0.725209s
+test06: 0.303748s
 Accept
-test006: 0.246000s
+test07: 0.335719s
 Accept
-test007: 0.892055s
+test08: 0.559533s
 Accept
-test008: 0.696277s
+test09: 0.287761s
+Wrong Ans at line 1
+test10: 0.335720s
+Wrong Ans at line 1
+test11: 0.311740s
+Wrong Ans at line 1
+test12: 0.343713s
 Accept
-test009: 0.361996s
+test13: 0.495585s
+Wrong Ans at line 1
+test14: 0.271773s
+Wrong Ans at line 1
+test15: 0.503582s
 Accept
-test010: 1.052399s
+test16: 0.279767s
 Accept
-test011: 0.720002s
+test17: 0.511573s
+Wrong Ans at line 1
+test18: 0.511573s
+Wrong Ans at line 1
+test19: 0.415654s
 Accept
-test012: 1.288653s
-Accept
-test013: 1.609165s
-Accept
-test014: 1.217606s
-Accept
-test015: 1.446502s
-Accept
-test016: 1.505386s
-Accept
-test017: 1.576282s
-Accept
-test018: 1.223714s
-Accept
-test019: 1.601192s
-Accept
-AC: 20/20
+AC: 12/20
