@@ -1,23 +1,40 @@
-#include <cstdio>
-#include <queue>
+#include<bits/stdc++.h>
 using namespace std;
-int main()
-{
-    int N, x;
-    while (scanf("%d", &N) && N) {
-        priority_queue<int, vector<int>, greater<int>> PQ;
-        for (int i = 0; i < N; ++i) {
-            scanf("%d", &x);
-            PQ.push(x);
-        }
-        int cost = 0;
-        while (PQ.size() != 1) {
-            x = PQ.top(); PQ.pop();
-            x += PQ.top(); PQ.pop();
-            cost += x;
-            PQ.push(x);
-        }
-        printf("%d\n", cost);
-    }
-    return 0;
+const int N=200000;
+int n;
+char s[N];
+bool check(int t) {
+	int lt=0, rt=0;
+	for (int i=1; i<=n; i++)
+	if (s[i]=='*' && lt==0 && i>rt) lt=i;
+	else
+	if (s[i]=='P') {
+		int tmp=lt>0?i-lt:0;
+		//cout<<"lt= "<<lt<<" "<< "i= "<<i<<endl;
+		if (tmp>t) return 0;
+		rt=max((t-tmp)/2,t-2*tmp)+i;
+		lt=0;
+	}
+	if (lt) return 0;
+	return 1;
+}
+
+int main() {
+	freopen("giun.inp","r",stdin);
+	freopen("giun.out","w",stdout);
+	scanf("%d", &n);
+	scanf("%s", s+1);
+	int l=1, r=2*n;
+	while (l<r)
+	{
+	    	//cout<<"sdhgf"<<endl;
+		int mid=(l+r)/2;
+         cerr << l << " " << r << " " << mid << endl;
+		int x=check(mid);
+		//cout<<x<<endl;
+		if (x) r=mid; else l=mid+1;
+	}
+
+	printf("%d",l);
+	return 0;
 }
