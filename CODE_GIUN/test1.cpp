@@ -1,43 +1,72 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-const string tenfile = "giun";
-#define balabalo freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
-#define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
-#define ll long long
-ll n , a[30] , s[30] ={0} , k , ok = 0 ;
-void check()
-{
-    ll  l = k , r = 0;
-    for (int i = 1 ; i <= n ; i++)
-    {
-        if (s[i] == 1) l += a[i];
-        if (s[i] == 2) r += a[i];
-    }
-    if (l == r) 
-    {
-        cout << "YES";
-        ok = 1;
-    }
+const int maxn = 205;
+const float oo = 1e9;
+float X[maxn],Y[maxn], L[maxn][maxn]={{0}}, D[maxn][maxn]={{0}};
+int n, G[maxn][maxn]={{0}};
+
+float kc(int i, int j){
+	return sqrt(pow(X[j]-X[i],2) + pow(Y[j]-Y[i],2));
 }
 
-void quaylui(int i)
-{
-    if (ok == 1) return;
-    for (int j = 1 ; j <= 3 ; j++)
-    {
-        s[i] = j;
-        if (i == n ) check();
-        else quaylui(i+1);
-    }
+void Trace(int d, int c){
+	if (c-d<3) return;
+
+	if (G[d][c]-d>=2) {
+		cout << d << " " << G[d][c] << endl;
+		Trace(d,G[d][c]);
+	}
+
+	if (c-G[d][c]>=2){
+		cout << G[d][c] << " " << c << endl;
+		Trace(G[d][c],c);
+	}
 }
 
-int main()
-{
-    balabalo;
-    giuncute;
-    cin >> n ; 
-    for (int i = 1 ; i <= n ; i++)  cin >> a[i];
-    quaylui(1);
-    if (ok == 0 ) cout << "NO";
-    return 0;
+int main(){
+	
+	freopen("giun.INP","r",stdin);
+	freopen("giun.OUT","w",stdout);
+	cin >> n;
+	for (int i=1;i<=n;i++){
+		cin >> X[i] >> Y[i];
+	}
+	
+	int i,j,k,v;
+	//Tính D
+	for (i=1; i<=n; i++){
+		for (j=i; j<=n; j++){
+			if (j-i > 1) {
+				D[i][j]=D[j][i]=kc(i,j);
+			}
+			else {
+				D[i][j]=D[j][i]=0;
+			}
+		}
+	}
+	//Tính L
+	float minl = oo,t;
+	for (i=n; i>=1; i--){
+		for (j=i-1; j<=n; j++){
+			if (j-i<3) L[i][j]=0;
+			else {
+				v=0;
+				minl = oo;
+				for (k=i+1;k<j; k++){
+					t=L[i][k]+L[k][j] + D[i][k] + D[k][j];
+					if (t > 0 && t < minl){
+						minl = t;
+						v=k;
+					}
+				}
+				if (v!=0){
+					L[i][j]=minl;
+					G[i][j]=v;
+				}
+			}
+		}
+	}
+	printf("%0.4f\n",L[1][n]);
+	Trace(1,n);
+	return 0;
 }

@@ -8,7 +8,8 @@ bool check(ll dis)
 {
     vector<ll> dp(n + 1, 0);
     ll j = 1, res = 0;
-    for(ll i = 1; i <= n; i++){
+    for(ll i = 1; i <= n; i++)
+    {
         while(x[i] - x[j + 1] >= dis) ++j;
         if(x[i] - x[j] >= dis) dp[i] = dp[j] + 1;
         else dp[i] = 1;
