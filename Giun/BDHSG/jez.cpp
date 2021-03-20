@@ -76,24 +76,29 @@ void cntCell(){
     } else if(k){
         res += cheo, k -= cheo * tot; //ko tru k
         if(k) ++res, --k;
+        else k = tot - 1;
         if(~res & 1){ // chan
             ll last = res - 1;
             x = {(last < c) ? 0 : res - c, (last < c) ? last : c - 1};
-            y = {x.first + num - 1, x.second - num + 1}; 
+            y = {x.first + k, x.second - k}; 
             // cerr << '\t';
         } else{
             ll last = res - 1;
             y = {(last < r) ? last : r - 1, (last < r) ? 0 : res - r};
             x = {y.first - k, y.second + k}; 
         }   
-        cerr << x.first << ' ' << x.second << '\n' << y.first << ' ' << y.second << '\n' << k << ' ' << res;
+        cerr << x.first << ' ' << x.second << '\n' << y.first << ' ' << y.second << '\n' << res;
+        k = 0;
         // cerr << k << ' ' << res << ' ' << cheo;
     }
 
-    --tot;
     //cong thuc tong cua tot -> 1
-
-    //xet cheo giam
+    if(k){
+        --tot;
+        //xet cheo giam
+        //so dau la tot -> tot - i + 1 (i: 1 -> tot) => tong = (2tot - i) * (i + 1) / 2;
+        ll l = 0, r = 
+    }
 
 }
 
