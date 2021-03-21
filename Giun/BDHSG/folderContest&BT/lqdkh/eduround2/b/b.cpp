@@ -42,6 +42,8 @@ int main(){
     OF();
     #endif
     cin >> n;
+    lp(i, 1, n){
+        sum += read() - i;
 
 }
 
@@ -103,4 +105,5 @@ int main(){
 //         else res = min(res, val1), r = mid2 - 1;
 //     }
 //     cout << res;
-// 
+// }
+
