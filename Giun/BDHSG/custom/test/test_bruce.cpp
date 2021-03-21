@@ -1,26 +1,56 @@
-#include <bits/stdc++.h>
-#define ii int
-#define ll long long
-#define cii const int
-#define cll const long long
-#define opt ios_base::sync_with_stdio(0); cin.tie(0)
-#define lp(a, b, c) for(ll a = b; a <= c; a++)
-#define lpd(a, b, c) for(ll a = b; a >= c; a--)
-#define pp(a, b) pair<a, b>
-#define vec(a) vector<a>
-#define vecite(a) vector<a>::iterator
-#define fi first
-#define se second
-#define mp(a, b) map<a, b>
-#define setE(a, b) fill_n(a, sizeof(a)/sizeof(a[0]), b)
-#define st(a) system((a).c_str());
+#include <stdio.h>
+#include <iostream>
+#include <vector>
+#include <queue>
 using namespace std;
-cll MOD = 1e9 + 7;
-const double esf = 1e-9;
-const string tenfile = "f";
-#define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".ans").c_str(), "w", stdout)
 
-int main(){
-    opt;
-    file;
+const int oo = 1000111000;
+typedef pair<int, int> ii;
+
+vector<ii> a[2309];
+int n, m;
+
+int d[2309];
+
+void dijkstra() {
+    priority_queue<ii, vector<ii>, greater<ii>> pq;
+    for (int i = 1; i <= n; i++)
+        d[i] = oo;
+    d[1] = 0;
+    pq.push(ii(0, 1));
+
+    while (pq.size()) {
+        int u = pq.top().second;
+        int du = pq.top().first;
+        pq.pop();
+        if (du != d[u])
+            continue;
+
+        for (int i = 0; i < a[u].size(); i++) {
+            int v = a[u][i].second;
+            int uv = a[u][i].first;
+            if (d[v] > du + uv) {
+                d[v] = du + uv;
+                pq.push(ii(d[v], v));
+            }
+        }
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    freopen("test.inp", "r", stdin);
+    freopen("test.ans", "w", stdout);
+    int p, q, m, w;
+    cin >> n;
+    while (!cin.eof()) {
+        // scanf("%d%d%d", &p, &q, &w);
+        cin >> p >> q >> w;
+        a[p].push_back(ii(w, q));
+        a[q].push_back(ii(w, p));
+    }
+    dijkstra();
+    for (int i = 1; i <= n; i++)
+        printf("%d\n", d[i]);
 }
