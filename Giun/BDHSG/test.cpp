@@ -1,35 +1,43 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
+#define ll long long
+#define cll const ll
+#define lp(a, b, c) for(ll a = b; a <= c; ++a)
+#define lpd(a, b, c) for(ll a = b; a >= c; --a)
+#define vec(a) vector<a>
+#define pp(a, b) pair<a, b>
+#define EACHCASE lpd(cs, read(), 1)
+#define Fname "f"
 using namespace std;
 
-int main(){
-    string s;
-    getline(cin,s);
-    while(s.find("anh")!=-1)
+template <typename T> inline void Read(T &x){
+    x = 0; char c;
+    while(!isdigit(c = getchar()));
+    do
     {
-        int vt = s.find("anh");
-        s.erase(vt,3);
-        s.insert(vt,"em");
-    }
-    cout<<s;
-    return 0;
+        x = x * 10 + c - '0';
+    } while (isdigit(c = getchar()));
 }
 
-// #include<bits/stdc++.h>
-// using namespace std;
+ll read(){
+    ll tmp;
+    cin >> tmp;
+    return tmp;
+}
 
-// int main(){
-//     string a, s, t;
-//     getline(cin, a);
-//     getline(cin, s);
-//     getline(cin, t);
-//     while((int)a.find(s) != -1){
-//         int pos = a.find(s);
-//         a.erase(pos, s.size());
-//         a.insert(pos, "*");
-//     }
-//     // cout << a;
-//     for(int i = 0; i < a.size(); ++i){
-//         if(a[i] == '*') cout << t;
-//         else cout << a[i];
-//     }
-// }
+void giuncute(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+}
+
+void OF(){
+    freopen(Fname".inp", "r", stdin);
+    freopen(Fname".out", "w", stdout);
+}
+
+int main(){
+    giuncute();
+    #ifndef ONLINE_JUDGE
+    OF();
+    #endif
+    cerr << abs(INT_MIN);
+}
