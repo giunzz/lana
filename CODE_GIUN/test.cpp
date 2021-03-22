@@ -1,58 +1,51 @@
-#include <bits/stdc++.h>
-#define ll long long
-#define cll const ll
-#define lp(a, b, c) for(ll a = b; a <= c; ++a)
-#define lpd(a, b, c) for(ll a = b; a >= c; --a)
-#define vec(a) vector<a>
-#define pp(a, b) pair<a, b>
-#define EACHCASE lpd(cs, read(), 1)
-#define Fname "giun"
-using namespace std;
-
-template <typename T> inline void Read(T &x){
-    x = 0; char c;
-    while(!isdigit(c = getchar()));
-    do
-    {
-        x = x * 10 + c - '0';
-    } while (isdigit(c = getchar()));
+#include<bits/stdc++.h>
+#define R register
+#define N 1000201
+ 
+int z,f,a[N],b[N];
+ 
+inline void solve(){
+	z=-1,f=-1;
+	R int n;
+	scanf("%d",&n);
+	for(R int i=1;i<=n;++i) scanf("%d",&a[i]);
+	for(R int i=1;i<n;++i){
+		R int qwq=a[i+1]-a[i];
+		if(qwq>0){
+			if(z==-1) z=qwq;
+			else if(qwq!=z){
+				printf("-1\n");
+				return ;
+			}
+		} else{
+			qwq=-qwq;
+			if(f==-1) f=qwq;
+			else if(qwq!=f){
+				printf("-1\n");
+				return;
+			}
+		}
+	}
+	if(f==-1||z==-1) return (void)printf("0\n");
+	R int m=z+f;
+	b[1]=a[1];
+	if(a[1]>=m){
+		printf("-1\n");
+		return;
+	}
+	for(R int i=2;i<=n;++i){
+		b[i]=(b[i-1]+z)%m;
+		if(b[i]!=a[i]){
+			printf("-1\n");
+			return;
+		}
+	}
+	printf("%d %d\n",m,z);
+	
 }
-
-void giuncute(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
-}
-
-void OF(){
-    freopen(Fname".inp", "r", stdin);
-    freopen(Fname".out", "w", stdout);
-}
-
-cll mxn = 507;
-ll n, dp[mxn][mxn] = {{0}};
-string s;
-
 int main(){
-    giuncute();
-    OF();
-    cin >> n >> s;
-    lp(i, 0, n - 1) dp[i][i] = 1;
-    lp(len, 2, n){
-        lp(i, 0, n - 1){
-            ll j = i + len - 1;
-            cerr << i << " "<< j << endl;
-            if(j >= n) break;
-            dp[i][j] = dp[i + 1][j] + 1;
-            cerr << dp[i][j] << " ";
-            lp(x, i + 1, j)
-                if(s[i] == s[x]) dp[i][j] = min(dp[i][j], dp[i + 1][x - 1] + dp[x][j]);
-        }
-        cerr << endl;
-    }
-    for (int i = 0 ; i < n ; i++)
-    {
-        for (int j = 0 ; j < n ; j++) cerr << dp[i][j] << " ";
-        cerr << endl;
-    }
-    cout << dp[0][n - 1];
+	R int T;
+	std::cin>>T;
+	while(T--)
+		solve();
 }

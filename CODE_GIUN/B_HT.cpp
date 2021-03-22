@@ -31,8 +31,8 @@ ll min_f(ll left, ll right)
 int main()
 {
     giuncute;
-    //freopen("giun.inp","r",stdin);
-    //freopen("giun.out","w",stdout);
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
     cin >> n ;
     for (int i = 1 ; i <= n ; i++) 
     {
