@@ -1,7 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long
-ll   MOD = 1e9+7;
 ll n , MOD = 1e9+7, f[(int) 1e6+7] , inf[(int)1e6+7]   , t;
 ll POW (int a,int b)
 {
@@ -15,14 +14,31 @@ ll C (int n , int k)
 {
     return ((f[n]*inf[k]) % MOD*inf[n-k]) % MOD;
 }
-
+ll B2 (int x )
+{
+    ll a = 0 , b = 1;
+    if (x == 1 || x == 2) return x-1;
+        else 
+        {
+            for (int i = 3 ; i <= x ; i++)
+            {
+                ll tmp = ((i-1)*(a+b)) % 1000000007  ;
+                a = b;
+                b = tmp ;
+            }
+        }
+    return b;
+}
 int main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    freopen("ckn.inp","r",stdin);
-    freopen("ckn.out","w",stdout);
-    cin  >> n ;
+    freopen("SC3.inp","r",stdin);
+    freopen("SC3.out","w",stdout);
+    cin >> t ;
+    while (t--)
+    {
+        cin  >> n ;
     ll m = 1;
     for (int i = 1 ; i <= n/2 ; i++) m *= i;
     f[1] = 1 ;
@@ -32,6 +48,6 @@ int main()
         f[i] = (f[i-1]*i) % MOD;
         inf[i] = POW(f[i],MOD-2) % MOD;
     }
-    // a/b % M = (a*b^M-2)%M;
-    cout << C(n,n/2) *m *m;
+    cout << (C(n,n/2) *m * B2(n/2)) %MOD << endl;
+    }
 }
