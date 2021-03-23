@@ -22,7 +22,7 @@ ll B2 (int x )
         {
             for (int i = 3 ; i <= x ; i++)
             {
-                ll tmp = ((i-1)*(a+b)) % 1000000007  ;
+                ll tmp = ((i-1)*(a+b)) % MOD ;
                 a = b;
                 b = tmp ;
             }
@@ -33,14 +33,14 @@ int main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    freopen("SC3.inp","r",stdin);
-    freopen("SC3.out","w",stdout);
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
     cin >> t ;
     while (t--)
     {
         cin  >> n ;
     ll m = 1;
-    for (int i = 1 ; i <= n/2 ; i++) m *= i;
+    for (int i = 1 ; i <= n/2 ; i++) m = (m * i) % MOD;
     f[1] = 1 ;
     inf[1] = 1;
     for (int i = 2 ; i <= n ; i++) 
@@ -48,6 +48,6 @@ int main()
         f[i] = (f[i-1]*i) % MOD;
         inf[i] = POW(f[i],MOD-2) % MOD;
     }
-    cout << (C(n,n/2) *m * B2(n/2)) %MOD << endl;
+    cout << (C(n,n/2) % MOD *m% MOD * B2(n/2) % MOD) %MOD << endl;
     }
 }
