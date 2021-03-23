@@ -1,0 +1,47 @@
+đồ thị là mô hình dùng để biểu diễn một tập các đối tượng và mối quan hệ giữa các đối tượng
+
+Kí hiệu G <V,E>
+2/ Khái niệm
+a) cạnh liên thuộc , đỉnh kề , bậc
++) Xét đồ thị G = <V,E>
+định v thuộc V thì cạnh c được gọi là cạnh liên thuộc của 2 đỉnh u , v
+cạnh e = (u,v) và u dgl đỉnh kề của v và ngược lại
++) Bậc cuả đỉnh u kí hiệu Deg (u) : là số cạnh liên thuộc của y . Nó cũng là số đỉnh kề với u
+*bậc lẻ số đỉnh lề với u là số lẻ
+
+* Định lý 1 : Trong đồ thị G <V,E>
+thì tổng v thuộc V = 2 |E|
+Hệ quả : Trong đồ thị vô hướng tổng các đỉnh bậc lẻ là số chẵn .
+* Đinh lý 2 : Trong đồ thị có hướng tổng tất cả các bán bậc vào của đỉnh bằng tổng tất cả
+		bán bậc ra của đỉnh và bằng số cạnh
+	Tổng DEG+(v) = tổng Deg-(v) = |E|
+b) Đường đi và chu trình 
+-Một dãy p , p1, p2 , p 3 ,.., pk. Mỗi cạnh xuất hiện môt lần
+trong đó (p1,pi-1) thuộc E (0 <i < k) thì dãy p0 , p1 , p2,...,pk đgl một đường đi dơn .
+-Một đường đi đơn có đỉnh đầu po và đỉnh cuối pk (k >= 3) trùng nhau thì dgl một chu trình
+c) Một số khái niệm khác
++) Đồ thị vô hướng liên thông là đồ thị mà bất kì 2 đỉnh nào đều có đường đi giữa chúng
++) Đồ thị có hướng có 2 khái niệm liên thông
+	* Liên thông mạnh : bất kì 2 đỉnh nào đều đó đường đi
+	* Liên thông yếu : Phiên bảo vô hướn của nó là liên thông 
+- Đồ thị vô hướng đầy đủ là đồ thị mà tất cả mọi cặp đỉnh đều có cạnh nối giữa chúg
+* đồ thị vô hướng đầy đủ có n đỉnh thì n * (n-1) / 2 cạnh bậc n-1
+- Cây là đồ thị ko có chu trình 
+
+--------------------
+ Biểu diễn đồ thị
+1 ) Ma trận kề với G < V,E> , |V| = n 
+- Đánh số thứ tự các đỉnh từ 1 đến n 
+_ Dùng ma trận A nxn để biểu diễn đồ thị 
+	Aij = { 1 nếu có cạnh (i,j) 
+	      { 0 nếu ko có cạnh (i,j)
+Mỗi cạnh có trọng số thì Aij trọng số của cạnh
+
+* Nếu G là vô hướng thì ma trận A đối xứng qua đường chéo chính Aij = Aji
+ưu điểm nhược điểm ...
+2 ) Danh sách cạnh 
+Đối với G <V, E> , |v| = n , | E | = m ;
+thì ta có thể dùng một danh sách có m phần tử mỗi phaafn tử lad 1 cặp số (u,v) để biểu diễn
+* Ưu điểm : Tiết kiệm bộ nhớ với đồ thị thưa
+	  : Dễ  trong phép duyệt cạnh
+* Nhuocj điểm  khó duyệt đỉnh , khó kiểm tra tính kề
