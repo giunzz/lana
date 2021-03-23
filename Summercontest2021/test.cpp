@@ -1,34 +1,42 @@
-#include <iostream>
+#include <bits/stdc++.h>
+#define ll long long
+#define cll const ll
+#define giuncute  ios_base::sync_with_stdio(0),cin.tie(0); cout.tie(0);
+cll maxn = 100007;
 using namespace std;
- 
-int countDer(int n)
+ll n , k , c, type[maxn] , cost[maxn] , t , l[maxn][55] , test = 0 ;
+struct giun
 {
- 
-    // base case
-    if (n == 1 or n == 2) {
-        return n - 1;
-    }
- 
-    // Variable for just storing
-    // previous values
-    int a = 0;
-    int b = 1;
- 
-    // using above recursive formula
-    for (int i = 3; i <= n; ++i) {
-        int cur = (i - 1) * (a + b);
-        a = b;
-        b = cur;
-    }
- 
-    // Return result for n
-    return b;
+    ll tp , cs;
+} a[maxn];
+bool cmp (giun &x , giun &y)
+{
+    return (x.tp < y.tp);
 }
- 
-// Driver Code
 int main()
 {
- 
-    cout << "Count of Dearrangements is " << countDer(4);
-    return 0;
+    giuncute;
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
+    cin >> t;
+    while (t--)
+    {
+        ll quang = 0;
+        queue<int> q;
+        map <int,int> d;
+        cin >> n >> k >> c;
+        for (int i = 1 ; i <= n ; i++) cin >> type[i] , test = max(test,type[i]) ;
+        for (int i = 1 ; i <= n ; i++)
+        {
+            cin >> cost[i] ;
+            if ()
+        for (int i = 1 ; i <= n ; i++) a[i].tp = type[i] , a[i].cs = cost[i];
+        if (test < k) cout << "FRIENDSHIP" << endl;
+        else 
+        {
+            for (int i = 1 ; i <= n ; i++)
+            {}
+
+        }
+    }
 }
