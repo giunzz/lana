@@ -4,15 +4,7 @@
 #define giuncute  ios_base::sync_with_stdio(0),cin.tie(0); cout.tie(0);
 cll maxn = 100007;
 using namespace std;
-ll n , k , c, type[maxn] , cost[maxn] , t , l[maxn][55] , test = 0 ;
-struct giun
-{
-    ll tp , cs;
-} a[maxn];
-bool cmp (giun &x , giun &y)
-{
-    return (x.tp < y.tp);
-}
+ll n , k , c, type[maxn] ,  t  , test = 0 , need[maxn] , cost[maxn];
 int main()
 {
     giuncute;
@@ -21,52 +13,34 @@ int main()
     cin >> t;
     while (t--)
     {
-        ll quang = 0;
-        stack<ll> q;
-        map <int,int> d;
         cin >> n >> k >> c;
-        for (int i = 1 ; i <= n ; i++) cin >> type[i] , test = max(test,type[i]) ;
-        for (int i = 1 ; i <= n ; i++) cin >> cost[i] ;
-        for (int i = 1 ; i <= n ; i++) a[i].tp = type[i] , a[i].cs = cost[i];
-        if (test < k) cout << "FRIENDSHIP" << endl;
-        else 
+        for (int i = 1 ; i <= k ; i++) need[i] = INT_MAX;
+        for (int i = 1 ; i <= n ; i++) cin >> type[i];
+        for (int i = 1 ; i <= n ; i++) 
         {
-            sort (a+1,a+1+n, cmp);
-            q.push(a[1].cs) ;
-            ll need = a[1].tp ;
-            for (int i = 2 ; i <= n ; i++)
+            cin >> cost[i] ;
+            need[type[i]] = min(need[type[i]], cost[i]);
+        }
+        for (int i = 1 ; i <= k ; i++) 
+            if (need[i] != INT_MAX) c-= need[i];
+        cerr << c << " ";
+        if (c < 0 ) cout << "FRIENDSHIP" << endl;
+        else if (c == 0) cout << "NOT FRIENDSHIP BUT NOT LOVE" << endl;
+        else if (c > 0)
+        {
+            ll ok = 0 ;
+            for (int i = 1 ; i <= n ; i++)
             {
-                if (a[i].tp > k) break;
-
-                if (need == a[i].tp)
+                if (need[type[i]] != cost[i]) c -= cost[i];
+                if (cost >= 0)
                 {
-                    ll u = min (q.top(), a[i].cs ) ;
-                    q.pop() , q.push(u);
-                    
+                    ok = 1;
+                    cout << "LOVE" << endl ;
+                    break;
                 }
-                if (need != a[i].tp) q.push(a[i].cs) , need = a[i].tp ;
-                d[i] = 1;
+                else c += cost[i];
             }
-            while (!q.empty())
-            {
-                quang += q.top() , q.pop() ;
-            }
-            if (quang == c) cout << "NOT FRIENDSHIP BUT NOT LOVE" << endl;
-            if (quang > c) cout << "FRIENDSHIP" << endl;
-            else if (quang < c) 
-            {
-                int bla = 0 ;
-                for (int i = 1 ; i <= n ; i++)
-                {
-                    if (d[i] == 0 && quang + a[i].cs < c )
-                    {
-                        cout << "LOVE" << endl ;
-                        bla = 1;
-                        break;
-                    }
-                }
-                if (bla == 0) cout << "NOT FRIENDSHIP BUT NOT LOVE" << endl;
-            }
+            if (ok == 0) cout << "NOT FRIENDSHIP BUT NOT LOVE" << endl;
         }
     }
 }
