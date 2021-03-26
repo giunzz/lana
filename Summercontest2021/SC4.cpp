@@ -28,7 +28,6 @@ int main()
         test = 0;
         for (int i = 1 ; i <= 50 ; i++) need[i].first = INT_MAX;
         for (int i = 1 ; i <= n ; i++) cin >> type[i] , test = max(test,type[i]);
-         //cerr << test << endl;
         for (int i = 1 ; i <= n ; i++) 
         {
             cin >> cost[i] ;
@@ -36,12 +35,7 @@ int main()
         }
         sort(need+1,need+1+50,cmp);
         for (int i = 1 ; i <= k ; i++) 
-        {
-            c-= need[i].first , dd[need[i].second] = 1;
-        }
-        cout <<  1;
-        cerr << c << endl;
-        cerr << test << " " << k ;
+            if (need[i].first != INT_MAX) c-= need[i].first , dd[need[i].second] = 1;
         if (c < 0 || test < k) cout << "FRIENDSHIP" << endl;
         else if (c == 0) cout << "NOT FRIENDSHIP BUT NOT LOVE" << endl;
         else if (c > 0)

@@ -40,8 +40,25 @@ Mỗi cạnh có trọng số thì Aij trọng số của cạnh
 * Nếu G là vô hướng thì ma trận A đối xứng qua đường chéo chính Aij = Aji
 ưu điểm nhược điểm ...
 2 ) Danh sách cạnh 
-Đối với G <V, E> , |v| = n , | E | = m ;
+ xĐối với G <V, E> , |v| = n , | E | = m ;
 thì ta có thể dùng một danh sách có m phần tử mỗi phaafn tử lad 1 cặp số (u,v) để biểu diễn
 * Ưu điểm : Tiết kiệm bộ nhớ với đồ thị thưa
 	  : Dễ  trong phép duyệt cạnh
 * Nhuocj điểm  khó duyệt đỉnh , khó kiểm tra tính kề
+3) Danh sách kề
+* Sử dụng 2 mảng 1 chiều 
+- H1, H2,..., Hn trong đó mỗi phần tử là một đỉnh lưu trữ chỉ số của các đỉnh lân cận 
+- A1,A2, ..., An danh sách casc đỉnh 
+ * Đỉnh kề với đỉnh u trong H là các đỉnh từ A[h[u-1]+ 1] đến đỉnh A[h[u]]
+------------------------------------------
+PHÉP DUYỆT ĐỒ THỊ
+1) Duyêt theo chieedu sâu (DFS) 
+Thuật toán 
+b1 : Thăm đỉnh u 
+b2 : với mọi đỉnh u 
+2) Duyệt theo chiều rộng (BFS) 
+Thuật toán 
+b1: xuất phát từ đỉnh u 
+b2: Thăm đỉnh u 
+b3 : thăm các đỉnh v kề với u nếu v chưa thăm
+b4: thăm các đỉnh còn lại chưa thăm 
