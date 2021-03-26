@@ -28,7 +28,7 @@ int main()
         test = 0;
         for (int i = 1 ; i <= 50 ; i++) need[i].first = INT_MAX;
         for (int i = 1 ; i <= n ; i++) cin >> type[i] , test = max(test,type[i]);
-        //cerr << test << endl;
+         //cerr << test << endl;
         for (int i = 1 ; i <= n ; i++) 
         {
             cin >> cost[i] ;
