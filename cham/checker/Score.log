@@ -1,2 +1,4 @@
-Target: PREOLP3 
-Directory: g:\HocLapTrinh\cham\checker
+Target: SC4 
+Directory: G:\HocLapTrinh\cham\checker
+Test00: TLE
+AC: 0/1

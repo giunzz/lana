@@ -19,8 +19,8 @@ int main()
     giuncute;
     giun need[100];
     ll dd[maxn] = {0};
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
+    freopen("sc4.inp","r",stdin);
+    freopen("sc4.out","w",stdout);
     cin >> t;
     while (t--)
     {
