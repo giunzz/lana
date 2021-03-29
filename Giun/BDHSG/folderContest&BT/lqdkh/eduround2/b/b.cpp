@@ -6,7 +6,7 @@
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
 #define EACHCASE lpd(cs, read(), 1)
-#define Fname "f"
+#define Fname "b"
 using namespace std;
 
 template <typename T> inline void Read(T &x){
@@ -34,7 +34,8 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-ll n, sum = 0;
+cll mxn = 2e5 + 7;
+ll n, sum = 0, a[mxn];
 
 int main(){
     giuncute();
@@ -42,9 +43,11 @@ int main(){
     OF();
     #endif
     cin >> n;
-    lp(i, 1, n){
-        sum += read() - i;
-
+    lp(i, 1, n) a[i] = read() - i;
+    nth_element(a + 1, a + 1 + (n / 2), a + n + 1);
+    ll x = a[n / 2 + 1];
+    lp(i, 1, n) sum += abs(a[i] - x);
+    cout << sum;
 }
 
 // #include <bits/stdc++.h>
