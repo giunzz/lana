@@ -18,9 +18,10 @@ bool cmp (giun &x , giun &y)
 int main()
 {
     giuncute;
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
+    freopen("chuyen01.inp","r",stdin);
+    freopen("chuyen01.out","w",stdout);
     cin >> n ;
+    int dem = 1;
     for (int i = 1 ; i <= n ; i++)
     {
         for (int j = 1 ; j <= n ; j++)
@@ -29,14 +30,16 @@ int main()
             if (t != 0  && dd[i][j] == 0) 
             { 
                 dd[i][j] =  1 , dd[j][i] = 1;
-                cerr << i <<" " <<  j << " " << t << endl;
-                g[i].u = i , g[i].v = j , g[i].w = t;
+               // cerr << i <<" " <<  j << " " << t << endl;
+                g[dem].u = i , g[dem].v = j , g[dem].w = t;
                 //g[j].push_back(make_pair(t,i));
+            dem++;
             }
         }
     }
-    sort(g+1,g+1+n,cmp);
-    for (int i = 1; i <= n ;i++) 
+    dem--;
+    sort(g+1,g+1+dem,cmp);
+    for (int i = 1; i <= dem ;i++) 
     {
         cout << g[i].u << " " << g[i].v << " " << g[i].w << endl;
     }
