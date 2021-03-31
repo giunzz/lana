@@ -1,43 +1,61 @@
-#include <bits/stdc++.h>
-#define ll long long
-#define cll const ll
-#define lp(a, b, c) for(ll a = b; a <= c; ++a)
-#define lpd(a, b, c) for(ll a = b; a >= c; --a)
-#define vec(a) vector<a>
-#define pp(a, b) pair<a, b>
-#define EACHCASE lpd(cs, read(), 1)
-#define Fname "f"
+#include<bits/stdc++.h>
 using namespace std;
 
-template <typename T> inline void Read(T &x){
-    x = 0; char c;
-    while(!isdigit(c = getchar()));
-    do
-    {
-        x = x * 10 + c - '0';
-    } while (isdigit(c = getchar()));
+int Min(int a[], int n){
+    int res =  1e6;
+    for(int i = 1; i <= n; ++i){
+        res = min(res, a[i]);
+    }
+    return res;
 }
 
-ll read(){
-    ll tmp;
-    cin >> tmp;
-    return tmp;
+#define point pp(ll, ll)
+#define X first
+#define Y second
+
+point getvector(point a, point b){
+    return {b.X - a.X, b.Y - a.Y};
 }
 
-void giuncute(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
+ll area(point a, point b, point c){
+    point ba = getvector(b, a), bc = getvector(b, c);
+    return ba.X * bc.Y - ba.Y * bc.X;
 }
 
-void OF(){
-    freopen(Fname".inp", "r", stdin);
-    freopen(Fname".out", "w", stdout);
+#define point pp(ll, ll)
+#define X first
+#define Y second
+
+point getvector(point a, point b){
+    return {b.X - a.X, b.Y - a.Y};
+}
+
+ll area(point a, point b, point c){
+    point ba = getvector(b, a), bc = getvector(b, c);
+    return ba.X * bc.Y - ba.Y * bc.X;
 }
 
 int main(){
+<<<<<<< HEAD
+    int b[10], m;
+    cin >> m;
+    for(int i = 1; i <= m; ++i) cin >> b[i];
+    cout << Min(b, m);
+=======
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    cerr << abs(INT_MIN);
+<<<<<<< HEAD
+<<<<<<< HEAD
+    
+>>>>>>> 13a6ce689109a891d46ecbc2404059ebb495755f
+=======
+    point a = {4, 6}, b = {6, 4}, c = {7, 4};
+    cerr << area(a, b, c);
+>>>>>>> ec6431b24522386091bc17b0ee3e6e1995030402
+=======
+    point a = {4, 6}, b = {6, 4}, c = {7, 4};
+    cerr << area(a, b, c);
+>>>>>>> ec6431b24522386091bc17b0ee3e6e1995030402
 }

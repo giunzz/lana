@@ -1,4 +1,82 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
+#define ll long long
+#define cll const ll
+#define lp(a, b, c) for(ll a = b; a <= c; ++a)
+#define lpd(a, b, c) for(ll a = b; a >= c; --a)
+#define vec(a) vector<a>
+#define pp(a, b) pair<a, b>
+#define Fname "d"
+using namespace std;
+
+inline ll read(){
+    ll tmp;
+    cin >> tmp;
+    return tmp;
+}
+
+cll mxn = 1e5 + 7;
+ll n, m, direct[mxn], p[mxn] = {0}, cnt[mxn] = {0};
+vec(ll) g[mxn];
+vec(pp(ll, ll)) e;
+unordered_map<ll, unordered_map<ll, ll>> mp;
+
+void dfs(ll u){
+    direct[u] = 1;
+    for(ll v : g[u]){
+        if(p[v]) continue;
+        p[v] = u;
+        dfs(v);
+        direct[u] ^= direct[v];
+    }
+}
+
+void drc(ll u){
+    for(ll v : g[u]){
+        if(v == p[u]) continue;
+        if(p[v] == u){
+            drc(v);
+            cnt[u] ^= cnt[v];
+        }
+        else{
+            if(!mp[u][v]){
+                cnt[u] ^= 1;
+                e.push_back({u, v});
+                mp[u][v] = mp[v][u] = 1;
+            }
+        }
+    }
+    direct[u] ^= cnt[u];
+    if(u == 1) return;
+    if(direct[u]) e.push_back({p[u], u});
+    else e.push_back({u, p[u]});
+}
+
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    freopen(Fname".inp", "r", stdin);
+    freopen(Fname".out", "w", stdout);
+    cin >> n >> m;
+    lp(i, 1, m){
+        ll u, v;
+        cin >> u >> v;
+        g[u].push_back(v);
+        g[v].push_back(u);
+    }
+    p[1] = -1;
+    dfs(1);
+    drc(1);
+    if(direct[1]){
+       cout << "YES\n";
+       for(pp(ll, ll) i : e){
+        cout << i.first << ' ' << i.second << '\n';
+       }
+    }
+    else cout << "NO\n";
+}
+
+
+/*#include <bits/stdc++.h>
 #define ll long long
 #define cll const ll
 #define lp(a, b, c) for(ll a = b; a <= c; ++a)
@@ -37,7 +115,7 @@ bool d[mxn] = {0};
 void dfs1(ll u, ll p){
     for(ll v : g[u]){
         if(v == p) continue;
-        dfs1(v, u); 
+        dfs1(v, u);
     }
     if(u == 1) return;
     if(~dg[u] & 1) ++dg[p], res.push_back({p, u});
@@ -69,6 +147,6 @@ int main(){
     else{
         cout << "YES\n2 1\n2 3\n4 3\n4 1"; //cai nay e cout test 1
     }
-}
+}*/
 
 //hic nay em code ngu
