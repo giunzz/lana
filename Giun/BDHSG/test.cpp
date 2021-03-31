@@ -43,6 +43,6 @@ int main(){
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    point a = {4, 6}, b = {6, 4}, c = {5, 2};
+    point a = {4, 6}, b = {6, 4}, c = {10, 2};
     cerr << area(a, b, c);
 }
