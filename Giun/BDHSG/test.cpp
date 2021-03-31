@@ -34,10 +34,12 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+list 
+
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    cerr << abs(INT_MIN);
+    
 }
