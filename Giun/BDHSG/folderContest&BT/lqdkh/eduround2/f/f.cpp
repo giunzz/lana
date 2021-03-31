@@ -26,6 +26,7 @@ void OF(){
 cll MOD = 1e9 + 7, mxn = 502, mxm = 2e4 + 3;
 ll n, m, dp[mxn][mxn] = {{0}}, rta[mxm], cnt[mxn][mxn] = {{0}}; // i -> i + 1 -> j
 vec(point) g, p;
+bool onseg[mxn][mxn] = {{0}};
 
 void inp(){
     cin >> n >> m;
@@ -69,6 +70,7 @@ int main(){
         lp(j, 0, m - 1){
             while(rta[j] < n && !ccw(g[i], p[j], g[rta[j]])) ++rta[j];
             ++cnt[i][rta[j]];
+            if(straight(g[i], p[j], g[rta[j] - 1])) onseg[i][rta[j] - 1] = 1;
         }
         lp(j, i + 1, n - 1) cnt[i][j] += cnt[i][j - 1];
     }
@@ -77,8 +79,7 @@ int main(){
         ll j = i + dis;
         if(j >= n) break;
         if(straight(g[i], g[i + 1], g[j])) dp[i][j] = 1;
-        else lp(k, i + 1, j - 1)
-            if(~(cnt[i][j] - cnt[i][k] - cnt[k][j]) & 1) (dp[i][j] += (dp[i][k] * dp[k][j]) % MOD) %= MOD;
+        else lp(k, i + 1, j - 1) if((~(cnt[i][j] - cnt[i][k] - cnt[k][j]) & 1) && !(onseg[i][k] | onseg[i][j] | onseg[k][j])) (dp[i][j] += (dp[i][k] * dp[k][j]) % MOD) %= MOD;
     }
     cout << dp[0][n - 1];
 }
