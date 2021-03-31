@@ -67,10 +67,10 @@ int main(){
     dfs(1);
     drc(1);
     if(direct[1]){
-       cout << "YES\n";
-       for(pp(ll, ll) i : e){
-        cout << i.first << ' ' << i.second << '\n';
-       }
+        cout << "YES\n";
+        for(pp(ll, ll) i : e){
+            cout << i.first << ' ' << i.second << '\n';
+        }
     }
     else cout << "NO\n";
 }

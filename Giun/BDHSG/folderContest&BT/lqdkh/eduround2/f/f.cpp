@@ -50,13 +50,22 @@ void inp(){
     }
 }
 
+inline point getvector(point const &a, point const &b){
+    return {b.X - a.X, b.Y - a.Y};
+}
+
+inline ll area(point a, point b, point c){
+    point ba = getvector(b, a), bc = getvector(b, c);
+    return ba.X * bc.Y - ba.Y * bc.X;
+}
+
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
     inp();
-    
+
 
     /*lp(dis, 1, n - 1){
         ll u = 0, v = 0;
