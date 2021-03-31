@@ -34,12 +34,24 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-list 
+#define point pp(ll, ll)
+#define X first
+#define Y second
+
+point getvector(point a, point b){
+    return {b.X - a.X, b.Y - a.Y};
+}
+
+ll area(point a, point b, point c){
+    point ba = getvector(b, a), bc = getvector(b, c);
+    return ba.X * bc.Y - ba.Y * bc.X;
+}
 
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    
+    point a = {4, 6}, b = {6, 4}, c = {7, 4};
+    cerr << area(a, b, c);
 }

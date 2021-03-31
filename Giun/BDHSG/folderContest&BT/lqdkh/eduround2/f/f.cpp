@@ -36,21 +36,7 @@ cll MOD = 1e9 + 7, mxn = 502;
 ll n, m, dp[mxn][mxn] = {{0}};
 vec(point) g, p;
 
-void xoay(){
-    vec(point) tmp;
-    ll mi = 1e8, pos;
-    lp(i, 0, n - 1)
-        if(g[i].X < mi) mi = g[i].X, pos = i;
-    lp(i, pos, n - 1) tmp.push_back(g[i]);
-    lp(i, 0, pos - 1) tmp.push_back(g[i]);
-    g = tmp;
-}
-
-int main(){
-    giuncute();
-    #ifndef ONLINE_JUDGE
-    OF();
-    #endif
+void inp(){
     cin >> n >> m;
     lp(i, 1, n){
         ll u, v;
@@ -62,9 +48,17 @@ int main(){
         cin >> u >> v;
         p.push_back({u, v});
     }
-    xoay();
-    sort(p.begin(), p.end());
-    lp(dis, 1, n - 1){
+}
+
+int main(){
+    giuncute();
+    #ifndef ONLINE_JUDGE
+    OF();
+    #endif
+    inp();
+    
+
+    /*lp(dis, 1, n - 1){
         ll u = 0, v = 0;
         lp(i, 0, n - 1){
             ll j = i + dis;
@@ -72,5 +66,5 @@ int main(){
             
             lp(k, )
         }
-    }
+    }*/
 }
