@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+#define ll long long
+#define cll const ll
+#define giuncute  ios_base::sync_with_stdio(0),cin.tie(0); cout.tie(0);
+cll maxn = 100007;
+using namespace std;
+ll n , m , u , v , visited[maxn] ={0};
+vector<ll> G[maxn];
+void dfs (ll u)
+{
+    visited[u] = 1;
+    for (ll v : G[u]) 
+    {
+        if (!visited[v]) cout << v << " " ,dfs(v);
+    }
+}
+int main()
+{
+    giuncute;
+    freopen("duyet01.inp","r",stdin);
+    freopen("duyet01.out","w",stdout);
+    cin >>n >> m ;
+    for(int i = 1 ; i <= m ; i++)
+    {
+        cin >> u >> v;
+        G[u].push_back(v);
+        G[v].push_back(u);
+    }
+    cout << 1 << " ";
+    dfs(1);
+}
