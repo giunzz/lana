@@ -34,10 +34,32 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+cll mxn = 2e3 + 7;
+string s;
+ll n, dp[mxn][mxn] = {0};
+
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    cout << 1;
+    cin >> s;
+    n = s.size();
+    lp(i, 0, mxn - 1) lp(j, 0, mxn - 1) dp[i][j] = 1e18;
+    if(s[0] == '(') dp[0][1] = 0;
+    else dp[0][1] = 1;
+    lp(i, 0, n - 2){
+        lp(num, 0, i + 1){
+            if(dp[i][num] == 1e18) continue;
+            if(s[i + 1] == '('){
+                if(num) dp[i + 1][num - 1] = min(dp[i + 1][num - 1], dp[i][num] + 1);
+                dp[i + 1][num + 1] = min(dp[i + 1][num + 1], dp[i][num]);
+            }
+            else{
+                if(num) dp[i + 1][num - 1] = min(dp[i + 1][num - 1], dp[i][num]);
+                dp[i + 1][num + 1] = min(dp[i + 1][num + 1], dp[i][num] + 1);
+            } 
+        }
+    }
+    cout << dp[n - 1][0];
 }

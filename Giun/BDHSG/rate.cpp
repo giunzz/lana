@@ -34,10 +34,25 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+cll mxn = 3e5 + 7;
+ll n, k, a[mxn], s[mxn];
+double med = 0, res = 0;
+
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    cout << 1;
-}
+    cin >> n >> k;
+    lp(i, 1, n){cin >> a[i]; s[i] = s[i - 1] + a[i];}
+    res = med = s[k] / (k * 1.0);
+    ll i = 1, j = k;
+    while(j <= n){
+        ll ni = i;
+        ++j;
+        while(j - ni >= k && (s[j] - s[ni]) * (j - ni + 1) > (s[j] - s[ni - 1]) * (j - ni)) ++ni;
+        i = ni;
+        res = max(res, (s[j] - s[i - 1]) / ((j - i + 1) * 1.0));
+    }
+    cout << fixed << setprecisio    n(6) << res;
+}   

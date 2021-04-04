@@ -65,7 +65,7 @@ void loang(){
         }
         swap(q[1], q[0]);
     }
-    if(k >= abs(s.first - t.first) + abs(s.second - t.second)){
+    if(k >= abs(s.first - t.first) + abs(s.second - t.second) - 2){
         cout << -1;
         return;
     }
@@ -92,5 +92,6 @@ int main(){
         else if(c == 'G') t = {i, j};
         else if(c == 'S') tg.push_back(make_pair(i, j));
     }
+
     loang();
 }

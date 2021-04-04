@@ -9,6 +9,15 @@
 #define Fname "f"
 using namespace std;
 
+template <typename T> inline void Read(T &x){
+    x = 0; char c;
+    while(!isdigit(c = getchar()));
+    do
+    {
+        x = x * 10 + c - '0';
+    } while (isdigit(c = getchar()));
+}
+
 ll read(){
     ll tmp;
     cin >> tmp;
@@ -25,8 +34,8 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-cll mxm = 1e3 + 3;
-ll n, m, dp[(1 << 10) + 3][mxm] = {{0}};
+ll n, m;
+string ma, mi;
 
 int main(){
     giuncute();
@@ -34,16 +43,16 @@ int main(){
     OF();
     #endif
     cin >> n >> m;
-    lp(mask, 0, (1 << n) - 1){
-        bool ok = 0;
-        lp(bit, 0, n - 2){
-            if(((mask >> bit) & 1) + ((mask >> (bit + 1)) & 1) == 0) ok = 1;
-        }
-        if(ok) continue;
-        ll nmask = (1 << n) - 1;
-        lp(bit, 0, n - 2){
-            if(((mask >> bit) & 1) + ((mask >> (bit + 1)) & 1) == 2) mask ^= (1 << bit);
-        }
-        if(((mask >> (n - 1)) & 1)) mask ^= w
+    while(m){
+        if(m > 9) m -= 9, ma.push_back('9');
+        else ma.push_back(m + '0'), m = 0;
     }
+    while(ma.size() < n) ma.push_back('0');
+    mi = ma;
+    reverse(mi.begin(), mi.end());
+    if(mi[0] == '0'){
+        mi[0] = '1';
+        lp(i, 1, n - 1) if(mi[i] != '0'){--mi[i]; break;}
+    }
+    cout << mi << ' ' << ma;
 }
