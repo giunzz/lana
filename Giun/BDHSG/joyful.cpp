@@ -97,7 +97,7 @@ int main(){
             ++i;
         }
         set<segment>::iterator it, it1;
-        while(j < ty.size() && ty[j].first.first < ev[i + 1].x){
+        while(j < ty.size() && (ty[j].first.first < ev[i + 1].x || (ty[j].first.first == ev[i + 1].x && ev[i + 1].tt == -1))){
             it = sweep.lower_bound({ty[j].first, ty[j].first});
             it1 = sweep.upper_bound({ty[j].second, ty[j].second});
             cerr << sweep.size();
