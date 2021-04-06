@@ -79,12 +79,14 @@ int main(){
         if(Oy(tmp)) ty.push_back(tmp);
         else tx.push_back(tmp);
     }
+    // for(segment i : tx) cerr << i.first.first << ' ' << i.first.second << ' ' << i.second.first << ' ' << i.second.second << '\n';
     lp(i, 0, tx.size() - 1){
         ev.push_back({tx[i].first.first, 1, i});
         ev.push_back({tx[i].second.first, -1, i});
     }   
     sort(ty.begin(), ty.end(), cmp);
     sort(ev.begin(), ev.end(), cmp1);
+    // for(event i : ev) cerr << i.x << ' ' << i.tt << ' ' << i.id << '\n';
     where.resize(tx.size());
     ll j = 0;
     while(j < ty.size() && ty[j].first.first < ev[0].x) ++j;
@@ -98,10 +100,11 @@ int main(){
         while(j < ty.size() && ty[j].first.first < ev[i + 1].x){
             it = sweep.lower_bound({ty[j].first, ty[j].first});
             it1 = sweep.upper_bound({ty[j].second, ty[j].second});
-            ans += distance(it, it1);
+            cerr << sweep.size();
+            ans += distance(it, --it1);
             ++j;
         }
-        if(ev[i].id == -1) sweep.erase(where[ev[i].id]);
+        if(ev[i].tt == -1) sweep.erase(where[ev[i].id]);
     }
     cout << ans;
 }
