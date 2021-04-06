@@ -62,3 +62,36 @@ b1: xuất phát từ đỉnh u
 b2: Thăm đỉnh u 
 b3 : thăm các đỉnh v kề với u nếu v chưa thăm
 b4: thăm các đỉnh còn lại chưa thăm 
+-----------------------------------------
+BÀI TOÁN TÌM ĐƯỜNG ĐI NGẮN NHẤT
+
+1) Bài toán
+ 	Cho đồ thị G = < V,E> , |V| = n , |E| = m  và hai đỉnh s, t;
+	Yêu cầu : Hãy tìm đường đi có tổng trọng số nhỏ nhất từ s đến t
+2)  Thuật toán Floyd
+Gọi Dij la tong trog so be nhat cua duong di tu i -> j . Neu ko co đường đi i -> j thì Dij = oo
+
+vd gọi pij là đỉnh trung gian đến đường đi đó đỉnh i đến đỉnh j trên đường i -> j . Nếu pij = 0 thì i và j là 2 đỉnh kề nhau 
+
+* Ý nghĩa Nếu tồn tại một đỉnh k trên đường đi từ i -> j mà tổng đường đi từ i đến k và từ k đến j nhỏ hơn đường đi từ i -> j hay cập nhật lại Dij = Dik + Dkj , Pij = k ;
+* Thuật toán 
+	B1 : Khơi tạo : Dij = 	{ oo Nếu i,j ko kề nhau
+			      	{ Gij Nếu i , j kề nhau
+				{ 0 Nếu i trùng j
+			Pij = 0 . Nếu i ,j  là cạnh
+	B2 : Vập nhật lại trọng số và đường đi 
+		for( k = 1 -> n)
+			for (i = 1 -> n )
+				for (j = 1 -> n ) 
+					if (Dik + Dkj < Dij) Dij = Dik + Dkj , Pij = k ;
+	B3 : Tìm đường đi từ s đến t 
+		Void Path (int i , int j )
+		{
+			if ( pij == 0 ) return n ;
+			else 
+			{
+				path(i , pij) 
+				cout << pij << " ";
+				path(pij,j);
+			}
+		}
