@@ -39,5 +39,7 @@ int main(){
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    cout << 1;
+    set<ll> s;
+    s.insert(2); s.insert(1); s.insert(3);
+    cout << distance(s.find(1), s.find(2));
 }

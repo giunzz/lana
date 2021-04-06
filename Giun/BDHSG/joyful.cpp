@@ -89,20 +89,19 @@ int main(){
     ll j = 0;
     while(j < ty.size() && ty[j].first.first < ev[0].x) ++j;
     lp(i, 0, ev.size() - 1){
-        if(ev[i].id == -1){
-            sweep.erase(where[ev[i].id]);
-        } else while(i < ev.size() - 1 && ev[i + 1].tt == 1 && ev[i + 1].x == ev[i].x){
+        if(ev[i].tt == 1){
             set<segment>::iterator it = sweep.lower_bound(tx[ev[i].id]);
             where[ev[i].id] = sweep.insert(it, tx[ev[i].id]);
             ++i;
         }
         set<segment>::iterator it, it1;
         while(j < ty.size() && ty[j].first.first < ev[i + 1].x){
-                it = sweep.lower_bound({ty[j].first, ty[j].first});
-                it1 = sweep.upper_bound({ty[j].second, ty[j].second});
-                ans += distance(it, it1);
-                ++j;
-            }
+            it = sweep.lower_bound({ty[j].first, ty[j].first});
+            it1 = sweep.upper_bound({ty[j].second, ty[j].second});
+            ans += distance(it, it1);
+            ++j;
+        }
+        if(ev[i].id == -1) sweep.erase(where[ev[i].id]);
     }
     cout << ans;
 }
