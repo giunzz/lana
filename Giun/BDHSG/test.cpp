@@ -31,7 +31,7 @@ void giuncute(){
 
 void OF(){
     freopen(Fname".inp", "r", stdin);
-    freopen(Fname".out", "w", stdout);
+    freopen(Fname".ans", "w", stdout);
 }
 
 int main(){
@@ -39,7 +39,11 @@ int main(){
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    set<ll> s;
-    s.insert(2); s.insert(1); s.insert(3);
-    cout << distance(s.find(1), s.find(2));
+    ll n, res = 0;
+    cin >> n;
+    lp(i, 0, n){
+        ll tmp = i;
+        while(tmp) res += tmp % 10, tmp /= 10;
+    }
+    cout << res;
 }
