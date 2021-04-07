@@ -34,21 +34,21 @@ void floy()
         }
     }
 }
-
 int main()
 {
     giuncute;
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
+    freopen("floyd.inp","r",stdin);
+    freopen("floyd.out","w",stdout);
     cin >> N >> M >> S >> T;
     ll x, y, l;
+    for(int i = 1; i<=N; ++i) 
+        for(int j = 1; j<=N; ++j) d[i][j] = 1e17;
     for (int i = 1 ; i <= M ; i++)
     {
         cin >> x >> y >> l;
-        dt[x][y] = l; 
-        dt[y][x] = l;
-    }
-    
+        d[x][y] = l; 
+        d[y][x] = l;
+    }   
     floy();
     for (int i = 1 ; i <= N ; i++)
     {
