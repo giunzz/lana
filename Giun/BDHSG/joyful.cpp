@@ -41,13 +41,17 @@ struct event{
     ll x, tt, id;
 };
 
+bool cmpset(segment a, segment b){
+    return a.first.second < b.first.second;
+}
+
 cll mxn = 2e5 + 7;
 ll n, ans = 0;
 segment a[mxn];
 vec(segment) tx, ty;
 vec(event) ev;
 vec(set<segment>::iterator) where;
-set<segment> sweep;
+set<segment, decltype(&cmpset)> sweep(cmpset);
 
 inline bool Oy(segment const &q){
     return q.first.first == q.second.first;
@@ -60,10 +64,6 @@ inline bool cmp(segment &a, segment &b){
 inline bool cmp1(event &a, event &b){
     if(a.x == b.x) return a.tt > b.tt;
     return a.x < b.x;
-}
-
-bool operator<(segment &a, segment &b){
-    return a.first.second < b.first.second;
 }
 
 int main(){
@@ -94,17 +94,19 @@ int main(){
         if(ev[i].tt == 1){
             set<segment>::iterator it = sweep.lower_bound(tx[ev[i].id]);
             where[ev[i].id] = sweep.insert(it, tx[ev[i].id]);
-            ++i;
+            while(i < ev.size() - 1 && ev[i + 1].x == ev[i].x && ev[i + 1].tt == 1) where[ev[i + 1].id] = sweep.insert(where[ev[i].id], tx[ev[++i].id]);
         }
         set<segment>::iterator it, it1;
-        while(j < ty.size() && (ty[j].first.first < ev[i + 1].x || (ty[j].first.first == ev[i + 1].x && ev[i + 1].tt == -1))){
+        while(j < ty.size() && (ty[j].first.first < ev[i + 1].x || (ev[i].x == ev[i + 1].x && ev[i + 1].tt == -1))){
             it = sweep.lower_bound({ty[j].first, ty[j].first});
             it1 = sweep.upper_bound({ty[j].second, ty[j].second});
-            cerr << sweep.size();
-            ans += distance(it, --it1);
+            ans += distance(it, it1);
             ++j;
         }
-        if(ev[i].tt == -1) sweep.erase(where[ev[i].id]);
+        if(ev[i].tt == -1){
+            sweep.erase(where[ev[i].id]);
+            while(i < ev.size() - 1 && ev[i + 1].x == ev[i].x && ev[i + 1].tt == -1) sweep.erase(where[ev[++i].id]);
+        }
     }
     cout << ans;
 }
