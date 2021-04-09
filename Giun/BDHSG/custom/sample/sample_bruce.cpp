@@ -6,7 +6,7 @@
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
 #define EACHCASE lpd(cs, read(), 1)
-#define Fname "f"
+#define Fname "sample"
 using namespace std;
 
 template <typename T> inline void Read(T &x){
@@ -31,17 +31,29 @@ void giuncute(){
 
 void OF(){
     freopen(Fname".inp", "r", stdin);
-    freopen(Fname".out", "w", stdout);
+    freopen(Fname".ans", "w", stdout);
 }
 
-void test(bitset<10> i){
-    cout << i;
-}
+cll mxm = (1 << 12) + 3;
+ll n, m, k, cnt[mxm] = {0}, ma = 0, ans = 0;
 
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    test(5);
+    cin >> n >> m >> k;
+    lp(i, 1, n){
+        string s;
+        cin >> s;
+        ll num = bitset<64>(s).to_ullong();
+        ++cnt[num];
+        ma = max(ma, num);
+    }
+    lp(i, 0, ma){
+        lp(j, 0, i){
+            if(bitset<64>(i ^ j).count() == k) ans += cnt[i] * cnt[j];
+        }
+    }
+    cout << ans;
 }

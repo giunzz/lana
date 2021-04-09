@@ -34,14 +34,23 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-void test(bitset<10> i){
-    cout << i;
-}
+ll n;
+string s1, s2;
 
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    test(5);
+    cin >> n >> s1;
+    ll pos = s1.find('*');
+    lp(i, pos + 1, s1.size() - 1) s2.push_back(s1[i]);
+    while(s1.size() != pos) s1.pop_back();
+    lp(test, 1, n){
+        string tmp;
+        cin >> tmp;
+        for(char &i : tmp) if(i < 'a') i += 32;
+        if(s1.size() + s2.size() <= tmp.size() && tmp.substr(0, s1.size()) == s1 && tmp.substr(tmp.size() - s2.size(), s2.size()) == s2) cout << "YES\n";
+        else cout << "NO\n";
+    }
 }
