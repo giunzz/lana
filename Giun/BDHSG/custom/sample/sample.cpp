@@ -91,4 +91,5 @@ int main(){
         ans += cnt[i] * cnt[j];
     }
     cout << ans;
+    cerr << clock();
 }
