@@ -37,7 +37,6 @@ int main()
     {
         cin >> x >> y >> l;
         d[x][y] = l; 
-        d[y][x] = l;
     }   
     floy();
     for (int i = 1 ; i <= N ; i++)
