@@ -1,34 +1,25 @@
-#include <bits/stdc++.h>
-#define ll long long
-#define cll const ll
-#define giuncute  ios_base::sync_with_stdio(0),cin.tie(0); cout.tie(0);
-cll maxn = 2007;
+#include<iostream>
+#include<fstream>
 using namespace std;
-ll n , t , m , u , v , b[maxn][maxn] , sum = 0;
-ll check(ll i)
-{
-    int dem = 0 ;
-    for (int j = 1; j <= n ; j++)
-        if(b[i][j] == 1) dem++;
-    return dem;
-}
+const int maxn = 1e4+7;
+int n,m,a[maxn][maxn],c[(int) 1e7+7],d[(int) 1e7+7],x,y,dem;
 int main()
 {
-    giuncute;
-    freopen("chuyen03.inp","r",stdin);
-    freopen("chuyen03.out","w",stdout);
-    cin >> n >> m;
-    for (int i = 1 ; i <= m ; i++)
+    ifstream f1("CHUYEN03.inp");
+    ofstream f2("CHUYEN03.out");
+    f1>>n>>m;
+    for(int i=1;i<=m;i++)
     {
-        cin >> u >> v ;
-        b[u][v] = 1  , b[v][u] = 1;
+        f1>>x>>y;
+        a[x][y]++;
     }
-    cout << 0 <<" ";
-    for (int i = 1 ; i <= n ; i++) sum += check(i) , cout << sum << " ";
-    cout<<endl;
-    for(int i = 1; i <= n ; i++)
+    for(int i=1;i<=n;i++)
     {
-        for (int j = 1 ; j <= n ; j++)
-            if (b[i][j] == 1) cout << j << " ";
+        for(int j=1;j<=n;j++)
+            if(a[i][j]>0) dem++,c[dem]=j;
+        d[i]=dem;
     }
+    for(int i=0;i<=n;i++) f2<<d[i]<<" ";
+    f2<<"\n";
+    for(int i=1;i<=dem;i++) f2<<c[i]<< " ";
 }

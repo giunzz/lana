@@ -6,7 +6,7 @@ struct ans{
 	long a,b,c;
 };
 long A[2050][2050],N,dem;
-ans B[(int) 1e7+7];
+ans B[(int) 1e6+7];
 bool cmp(ans val1, ans val2)
 {
 	return val1.c<val2.c;
