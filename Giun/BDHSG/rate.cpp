@@ -35,8 +35,24 @@ void OF(){
 }
 
 cll mxn = 3e5 + 7;
-ll n, k, a[mxn], s[mxn];
-double med = 0, res = 0;
+ll n, k;
+double a[mxn];
+
+//(a[l] + a[l + 1] + .. + a[r]) / (r - l + 1) >= x
+// => a[l] - x + a[l + 1] - x + .. + a[r] - x >= 0
+// => b[l] + b[l + 1] + .. + b[r] >= 0
+
+bool check(double vl){
+    vec(double) b(n + 1);
+    b[0] = 0;
+    lp(i, 1, n) b[i] = b[i - 1] + a[i] - vl;
+    double mi = 0;
+    lp(i, k, n){
+        mi = min(b[i - k], mi);
+        if(b[i] - mi >= (double)0) return 1; 
+    }
+    return 0;
+}
 
 int main(){
     giuncute();
@@ -44,15 +60,13 @@ int main(){
     OF();
     #endif
     cin >> n >> k;
-    lp(i, 1, n){cin >> a[i]; s[i] = s[i - 1] + a[i];}
-    res = med = s[k] / (k * 1.0);
-    ll i = 1, j = k;
-    while(j <= n){
-        ll ni = i;
-        ++j;
-        while(j - ni >= k && (s[j] - s[ni]) * (j - ni + 1) > (s[j] - s[ni - 1]) * (j - ni)) ++ni;
-        i = ni;
-        res = max(res, (s[j] - s[i - 1]) / ((j - i + 1) * 1.0));
+    lp(i, 1, n) cin >> a[i];
+    ll l = 0, r = 1e13;
+    double ans;
+    while(l <= r){
+        ll mid = (l + r) / 2;
+        if(check(mid / 1e7)) ans = mid / 1e7, l = mid + 1;
+        else r = mid - 1;
     }
-    cout << fixed << setprecisio    n(6) << res;
-}   
+    cout << fixed << setprecision(6) << ans;
+}
