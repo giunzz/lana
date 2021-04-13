@@ -95,3 +95,41 @@ vd gọi pij là đỉnh trung gian đến đường đi đó đỉnh i đến �
 				path(pij,j);
 			}
 		}
+3) Thuật toán dijsktra
+ * Ý tưởng 
+Gọi li là độ dài đường đi ngắn nhất từ s đến u -> cần tìm lt
+b1 : Giải ls = 0 , lv = g[s][v] với mọi v thuộc V \ {s}
+b2 : Tìm đỉnh u có lu nhỏ nhất
+b3 : với mọi đỉnh v thuoc |V| nếu :lu + guv < lv thì cập nhật lại lv = lu + guv
+b4 : Loại đỉnh u ra khỏi đồ thị V = V \{u}
+b5 : Quay lại b2 cho đế khi V ={ rỗng}
+* Cài đặt
+gij : lưu cạnh (i,j)
+Ci : đánh dấu các đỉnh thuộc đồ thị
+tri : lưu đỉnh kề trc đỉh i tren đường đi s-> t
+li : lưu nhãn tổng độ dài ngắn nhất trên đường đi s đến t 
+void dijskrea()
+{
+	* khoi tạo *
+	for (int i = 1 ;i <= n ; i++)
+	{
+		li = gsi ;
+		ci = false;
+		Tri = s;
+	}
+	Ls = 0 , trs = 0 ;
+	* Cập nhật nhãn lại các đỉnh "
+	while (!ct)
+	{
+		u = minlab
+		for (v = 1 ; v <= n ; v++)
+			if (lu+ guv < lv ) lv = lu + guv , tr v = u ;
+	} -> kq Lt
+}
+int minlab()
+{
+int v = 0 , mk = oo;
+for (int i = 1 ; i <+ n ; i++)
+if (!ci && li < ml) ml = li , v = i ;
+retur v;
+}

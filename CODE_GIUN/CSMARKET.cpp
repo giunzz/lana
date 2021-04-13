@@ -15,7 +15,7 @@ void floy()
         {
             for (int j = 1 ; j <= N ; j++)
             {
-                if (d[i][j] > (d[k][i] + d[j][k]))
+                if (d[i][j] > (d[i][k] + d[k][j]))
                 {
                     d[i][j] = d[i][k] + d[k][j];
                     p[i][j] = k;
@@ -27,13 +27,13 @@ void floy()
 int main()
 {
     giuncute;
-    freopen("pathk.inp","r",stdin);
-    freopen("pathk.out","w",stdout);
-    cin >> N >> M >> S;
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
+    cin >> N >> M ;
     ll x, y, l , ans = 0 ;
     for(int i = 1; i<=N; ++i) 
         for(int j = 1; j<=N; ++j) d[i][j] = oo;
-    //for (int i = 1 ; i <= N ; i++) d[i][i] = 0 ;
+    for (int i = 1 ; i <= N ; i++) d[i][i] = 0 ;
     for (int i = 1 ; i <= M ; i++)
     {
         cin >> x >> y >> l;
