@@ -1,4 +1,23 @@
-Target: SC4 
+Target: DAYSOE 
 Directory: G:\HocLapTrinh\cham\checker
-Test00: TLE
-AC: 0/1
+test0: 0.130917s
+Accept
+test1: 0.126687s
+Accept
+test2: 0.138014s
+Accept
+test3: 0.138013s
+Accept
+test4: 0.138018s
+Accept
+test5: 0.121607s
+Accept
+test6: 0.222454s
+Accept
+test7: 0.222731s
+Accept
+test8: 1.063002s
+Accept
+test9: 1.061617s
+Accept
+AC: 10/10

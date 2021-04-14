@@ -15,7 +15,7 @@ void floy()
         {
             for (int j = 1 ; j <= N ; j++)
             {
-                if (d[i][j] > (d[k][i] + d[j][k]))
+                if (d[i][j] > (d[i][k] + d[k][j]))
                 {
                     d[i][j] = d[i][k] + d[k][j];
                     p[i][j] = k;
@@ -33,12 +33,11 @@ int main()
     ll x, y, l , ans = 0 ;
     for(int i = 1; i<=N; ++i) 
         for(int j = 1; j<=N; ++j) d[i][j] = oo;
-    //for (int i = 1 ; i <= N ; i++) d[i][i] = 0 ;
+    for (int i = 1 ; i <= N ; i++) d[i][i] = 0 ;
     for (int i = 1 ; i <= M ; i++)
     {
         cin >> x >> y >> l;
-        d[x][y] = l; 
-        d[y][x] = l;
+        d[x][y] = d[y][x] = min(d[x][y] , l) ; 
     }   
     floy();
     for (int i = 1 ; i <= N ; i++)
