@@ -1,23 +1,53 @@
-Target: DAYSOE 
+Target: BALOON 
 Directory: C:\Users\tienp\Desktop\Quang\Hoc\Python\checker
-test0: 0.216119s
+test0: 0.334464s
 Accept
-test1: 0.222667s
+test1: 1.046441s
 Accept
-test2: 0.537500s
+test10: 1.111637s
 Accept
-test3: 0.216117s
+test11: 0.340677s
 Accept
-test4: 0.278159s
+test12: 1.621785s
 Accept
-test5: 0.278567s
+test13: 1.022033s
 Accept
-test6: 0.400847s
+test14: 1.582833s
 Accept
-test7: 0.315300s
+test15: 0.343035s
 Accept
-test8: 1.179894s
+test16: 0.965415s
 Accept
-test9: 1.162535s
+test17: 0.977784s
 Accept
-AC: 10/10
+test18: 0.642287s
+Accept
+test19: 1.166925s
+Accept
+test2: 0.323222s
+Accept
+test20: 3.537750s
+Accept
+test21: 2.531458s
+Accept
+test22: 2.698242s
+Accept
+test23: 2.564977s
+Accept
+test24: 3.452467s
+Accept
+test3: 1.003074s
+Accept
+test4: 0.292219s
+Accept
+test5: 0.535026s
+Accept
+test6: 1.201886s
+Accept
+test7: 0.371171s
+Accept
+test8: 1.022445s
+Accept
+test9: 0.996280s
+Accept
+AC: 25/25
