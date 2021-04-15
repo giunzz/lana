@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#define ll long long
+#define ll int
 #define cll const ll
 #define lp(a, b, c) for(ll a = b; a <= c; ++a)
 #define lpd(a, b, c) for(ll a = b; a >= c; --a)
@@ -37,16 +37,15 @@ inline ll cal_dp(ll col, ll num, ll i, ll j){
         return cur = num * num;
     } 
     if(col == a[s[i]]) return cur = cal_dp(col, num + 1, i + 1, j);
-    if(i == j - 1 && a[s[i]] != col) return cur = inf;
     cur = inf;
-    lp(k, i + 1, j) cur = max(cur, cal_dp(a[s[i]], 1, i + 1, k) + cal_dp(col, num, k, j));
+    lp(k, i + 2, j) cur = max(cur, cal_dp(a[s[i]], 1, i + 1, k) + cal_dp(col, num, k, j));
     return cur; 
 }
 
 void sol(){
     cin >> s;
     lp(i, 1, s.size()) lp(j, 1, s.size()) lp(num, 1, s.size()) lp(k, 0, 3) dp[k][num][i][j] = -1; 
-    cout << max(cal_dp(a[s[0]], 1, 1, s.size()), 0LL) << '\n';
+    cout << max(cal_dp(a[s[0]], 1, 1, s.size()), 0) << '\n';
 }
 
 int main(){
