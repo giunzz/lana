@@ -51,7 +51,7 @@ def processingRun():
         thread1 = Thread(target=runfile)
         thread1.start()
         # time.sleep(timeLimit + 1.0)
-        maxLimit = timeLimit + 1.0
+        maxLimit = timeLimit + 0.2
         while float((datetime.now() - timeStart).total_seconds()) < maxLimit and thread1.is_alive():
             pass
         time.sleep(0.2)

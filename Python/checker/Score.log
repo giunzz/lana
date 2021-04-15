@@ -1,83 +1,23 @@
-Target: JUMP 
-Directory: G:\GitAnh\Python\checker
-test010: 0.334951s
+Target: DAYSOE 
+Directory: C:\Users\tienp\Desktop\Quang\Hoc\Python\checker
+test0: 0.216119s
 Accept
-test011: 0.378349s
+test1: 0.222667s
 Accept
-test012: 0.314804s
+test2: 0.537500s
 Accept
-test013: 0.239890s
+test3: 0.216117s
 Accept
-test014: 0.221863s
+test4: 0.278159s
 Accept
-test015: 0.271832s
+test5: 0.278567s
 Accept
-test016: 0.408748s
+test6: 0.400847s
 Accept
-test017: 0.218862s
+test7: 0.315300s
 Accept
-test018: 0.259840s
+test8: 1.179894s
 Accept
-test019: 0.239851s
+test9: 1.162535s
 Accept
-test020: 0.283826s
-Accept
-test021: 0.266846s
-Accept
-test022: 0.233853s
-Accept
-test023: 0.294816s
-Accept
-test024: 0.312805s
-Accept
-test025: 0.520676s
-Accept
-test026: 0.474807s
-Accept
-test027: 0.662320s
-Accept
-test028: 0.503685s
-Accept
-test029: 0.526676s
-Accept
-test030: 0.456717s
-Accept
-test031: 0.434727s
-Accept
-test032: 0.409062s
-Accept
-test033: 0.515665s
-Accept
-test034: 0.456718s
-Accept
-test035: 0.545661s
-Accept
-test036: 0.423896s
-Accept
-test037: 0.500708s
-Accept
-test038: 0.440726s
-Accept
-test039: 0.491690s
-Accept
-test040: 0.477703s
-Accept
-test041: 0.477705s
-Accept
-test042: 0.506691s
-Accept
-test043: 0.462712s
-Accept
-test044: 0.445723s
-Accept
-test045: 0.543662s
-Accept
-test046: 0.475711s
-Accept
-test047: 0.552756s
-Accept
-test048: 0.612714s
-Accept
-test049: 0.543340s
-Accept
-AC: 40/40
+AC: 10/10
