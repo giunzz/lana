@@ -15,7 +15,7 @@ void floy()
         {
             for (int j = 1 ; j <= N ; j++)
             {
-                if (d[i][j] > (d[i][k] + d[k][j]))
+                if (d[i][j] > (d[i][k] + d[k][j])) // neu co canh am thi if(d[i][j] > d[i][k] + d[k][j] and i != k and k != j and i != j)
                 {
                     d[i][j] = d[i][k] + d[k][j];
                     p[i][j] = k;
@@ -43,7 +43,7 @@ int main()
     for (int i = 1 ; i <= N ; i++)
     {
         for (int j = 1 ; j <= N ; j++)
-            if (d[i][j] == S) ans++;
+            if (d[i][j] == S) ans++; // neu co canh am thi if(d[i][j] == S and i != j)
     }
     cout << ans ;
 }
