@@ -19,7 +19,8 @@ int calc(int c, int d, int l, int r) {
 	} else {
 		int cur = -oo;
 		for (int k = l + 2; k <= r; ++k)
-			cur = max(cur, calc(col[s[l]], 1, l + 1, k) + calc(c, d, k, r));
+			cur = max(cur, calc(col[s[l]], 1, l + 1, k) + 
+			calc(c, d, k, r));
 		return memo[c][d][l][r] = cur;
 	}
 }
@@ -41,8 +42,8 @@ void solve() {
 int32_t main()
 {
 	ios_base::sync_with_stdio(0); cin.tie(0);
-	// freopen("BALLOON.INP", "r", stdin);
-	// freopen("BALLOON.OUT", "w", stdout);
+	freopen("BALOON.INP", "r", stdin);
+	freopen("BALOON.OUT", "w", stdout);
 
 	col['R'] = 0;
 	col['B'] = 1;

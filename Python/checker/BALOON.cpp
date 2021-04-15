@@ -1,58 +1,58 @@
 #include <bits/stdc++.h>
-
+#define ll int
+#define cll const ll
+#define lp(a, b, c) for(ll a = b; a <= c; ++a)
+#define lpd(a, b, c) for(ll a = b; a >= c; --a)
+#define vec(a) vector<a>
+#define pp(a, b) pair<a, b>
+#define EACHCASE lpd(cs, read(), 1)
+#define Fname "baloon"
 using namespace std;
 
-const int N = 205, oo = 1e9;
-int memo[4][N][N][N];
-int col[200];
+ll read(){
+    ll tmp;
+    cin >> tmp;
+    return tmp;
+}
+
+void giuncute(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+}
+
+void OF(){
+    freopen(Fname".inp", "r", stdin);
+    freopen(Fname".out", "w", stdout);
+}
+
+cll mxn = 203, inf = -1e9;
+ll a[256] = {0}, dp[4][mxn][mxn][mxn]; //ccccccc[i, j) d bong c
 string s;
 
-int calc(int c, int d, int l, int r) {
-	if (l == r) {
-		if (d == 1) return -oo;
-		else return d * d;
-	}
-	if (memo[c][d][l][r] != -1) return memo[c][d][l][r];
-	if (col[s[l]] == c) {
-		if (l == r - 1) return (d + 1) * (d + 1);
-		return memo[c][d][l][r] = calc(c, d + 1, l + 1, r);
-	} else {
-		int cur = -oo;
-		for (int k = l + 2; k <= r; ++k)
-			cur = max(cur, calc(col[s[l]], 1, l + 1, k) + calc(c, d, k, r));
-		return memo[c][d][l][r] = cur;
-	}
+inline ll cal_dp(ll col, ll num, ll i, ll j){
+    ll &cur = dp[col][num][i][j];
+    if(~cur) return cur;
+    if(i == j){
+        if(num == 1) return cur = inf;
+        return cur = num * num;
+    } 
+    if(col == a[s[i]]) return cur = cal_dp(col, num + 1, i + 1, j);
+    cur = inf;
+    lp(k, i + 2, j) cur = max(cur, cal_dp(a[s[i]], 1, i + 1, k) + cal_dp(col, num, k, j));
+    return cur; 
 }
 
-void solve() {
-	cin >> s;
-	int n = s.size();
-	for (int i = 0; i < 4; ++i) {
-		for (int j = 1; j <= n; ++j) {
-			for (int l = 1; l <= n; ++l) {
-				for (int r = l; r <= n; ++r)
-					memo[i][j][l][r] = -1;
-			}
-		}
-	}
-	cout << max(0, calc(col[s[0]], 1, 1, s.size())) << '\n';
+void sol(){
+    cin >> s;
+    lp(i, 1, s.size()) lp(j, 1, s.size()) lp(num, 1, s.size()) lp(k, 0, 3) dp[k][num][i][j] = -1; 
+    cout << max(cal_dp(a[s[0]], 1, 1, s.size()), 0) << '\n';
 }
 
-int32_t main()
-{
-	ios_base::sync_with_stdio(0); cin.tie(0);
-	freopen("BALOON.INP", "r", stdin);
-	freopen("BALOON.OUT", "w", stdout);
-
-	col['R'] = 0;
-	col['B'] = 1;
-	col['G'] = 2;
-	col['Y'] = 3;
-	int tc;
-	cin >> tc;
-	while (tc--) {
-		solve();
-	}
-
-	return 0;
+int main(){
+    giuncute();
+    #ifndef ONLINE_JUDGE
+    OF();
+    #endif
+    a['R'] = 0, a['B'] = 1, a['G'] = 2, a['Y'] = 3;
+    EACHCASE sol();
 }

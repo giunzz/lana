@@ -6,7 +6,7 @@
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
 #define EACHCASE lpd(cs, read(), 1)
-#define Fname "baloon"
+#define Fname "f"
 using namespace std;
 
 ll read(){

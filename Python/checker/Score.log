@@ -1,51 +1,50 @@
 Target: BALOON 
 Directory: C:\Users\tienp\Desktop\Hoc\Python\checker
-test0: 0.306205s
+test0: 0.244472s
 Accept
-test1: 0.313139s
+test1: 0.211560s
 Accept
-test10: 0.454680s
+test10: 0.588639s
 Accept
-test11: 0.760534s
+test11: 0.323802s
 Accept
-test12: 2.565719s
+test12: 2.326869s
 Accept
-test13: 1.908823s
+test13: 1.310589s
 Accept
-test14: 2.349098s
+test14: 1.919894s
 Accept
-test15: 0.366338s
+test15: 0.207508s
 Accept
-test16: 2.417257s
+test16: 1.166028s
 Accept
-test17: 1.674732s
+test17: 1.684846s
 Accept
-test18: 0.375933s
+test18: 0.343125s
 Accept
-test19: 1.945641s
+test19: 2.725507s
 Accept
-test2: 0.312535s
+test2: 0.259525s
 Accept
 test20: TLE
-test21: 4.091952s
-Accept
-test22: 4.502740s
-Accept
-test23: 4.609332s
-Accept
+test21: 1.822722s
+Wrong Ans at line 1
+test22: TLE
+test23: 2.333065s
+Wrong Ans at line 1
 test24: TLE
-test3: 0.346787s
+test3: 0.670588s
 Accept
-test4: 0.717559s
+test4: 1.219250s
 Accept
-test5: 1.509071s
+test5: 1.564036s
 Accept
-test6: 1.250231s
+test6: 0.420737s
 Accept
-test7: 0.641603s
+test7: 0.903444s
 Accept
-test8: 1.603015s
+test8: 2.564168s
 Accept
-test9: 1.407094s
+test9: 2.864239s
 Accept
-AC: 23/25
+AC: 20/25
