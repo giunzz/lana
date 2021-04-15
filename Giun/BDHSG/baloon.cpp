@@ -34,6 +34,7 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+<<<<<<< HEAD
 cll mxn = 203, inf = -1e9;
 ll a[256] = {0}, dp[4][mxn][mxn][mxn]; //ccccccc[i, j) d bong c
 string s;
@@ -57,11 +58,17 @@ void sol(){
     cout << max(cal_dp(a[s[0]], 1, 1, s.size()), 0LL) << '\n';
 }
 
+=======
+>>>>>>> 7d1810fd91cf8d53d5ededaf7577ab51fd930daa
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
+<<<<<<< HEAD
     a['R'] = 0, a['B'] = 1, a['G'] = 2, a['Y'] = 3;
     EACHCASE sol();
+=======
+    
+>>>>>>> 7d1810fd91cf8d53d5ededaf7577ab51fd930daa
 }
