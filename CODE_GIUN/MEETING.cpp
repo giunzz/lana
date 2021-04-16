@@ -3,9 +3,10 @@
 #include <cmath>
 #include <algorithm>
 using namespace std;
+#define ll long long
 const long maxn = 2005;
 const long oo = 1e9;
-long m, n,s,t, G[maxn][maxn], L[maxn], Tr[maxn]={0};
+long m, n,s,t, G[maxn][maxn], L[maxn], Tr[maxn]={0} , G1[maxn][maxn];
 bool C[maxn] = {false}, vn = false;
 void Init()
 {
@@ -54,21 +55,24 @@ int main()
 {
 	freopen("dijsktra.INP","r",stdin);
 	freopen("dijsktra.OUT","w",stdout);
-	cin >> n >> m >> s >> t;
-	int u,v, val;
+	cin >> n >> m ;
+	ll u , v , t , x;
+	ll s , f ;
 	for (int i=1;i<=n;i++)
-		for (int j=1;j<=n;j++) G[i][j]=oo;
+		for (int j=1;j<=n;j++) G[i][j]=oo , G1[i][j] = oo;
 
 	for (int i=1;i<=m;i++)
 	{
-		cin >> u >> v >> val >> x ;
-		G[u][v] = G[v][u] = val;
+		cin >> u >> v >> t >> x ;
+		G[u][v] = G[v][u]  = t;
+		G1[u][v] = G1[v][u]  = x;
 	}
+	cin >> s >> f ;
 	Init();
 	Dijsktra();
 	if (vn) cout << -1;
 	else {
-		cout << L[t] << endl;
+		cout << L[f] << endl;
 		Trace(t);
 	}
 }

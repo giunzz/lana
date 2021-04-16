@@ -7,16 +7,17 @@ const int MAXN = 1e3+7;
 const ll oo = 1e9 + 7;
 ll N,M, S , T;
 ll d[MAXN][MAXN]={0} , p[MAXN][MAXN]={0}  , dt[MAXN][MAXN]={0};
-void trace (int i , int j )
-{
-    if ( p[i][j] == 0 ) return;
-    else 
-    {
-        trace(i , p[i][j]) ;
-        cout << p[i][j] << " ";
-        trace(p[i][j],j);
-    }
-}
+// void trace (int i , int j )
+// {
+//     if ( p[i][j] == 0 ) return;
+//     else 
+//     {
+//         trace(i , p[i][j]) ;
+//         cout << p[i][j] << " ";
+//         trace(p[i][j],j);
+//     }
+// }
+ll  t , res ;
 void floy()
 {
     for (int k = 1 ; k <= N ; k++)
@@ -27,6 +28,7 @@ void floy()
             {
                 if (d[i][j] > (d[i][k] + d[j][k]))
                 {
+                    if (d[i][j] == t ) res++;
                     d[i][j] = d[i][k] + d[j][k];
                     p[i][j] = k;
                 }
@@ -37,9 +39,9 @@ void floy()
 int main()
 {
     giuncute;
-    freopen("floyd.inp","r",stdin);
-    freopen("floyd.out","w",stdout);
-    cin >> N >> M >> S >> T;
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
+    cin >> N >> M >> t;
     ll x, y, l;
     for(int i = 1; i<=N; ++i) 
         for(int j = 1; j<=N; ++j) d[i][j] = 1e17;
@@ -50,13 +52,14 @@ int main()
         d[y][x] = l;
     }   
     floy();
-    for (int i = 1 ; i <= N ; i++)
-    {
-        for (int j = 1 ; j <= N ; j++) cerr << p[i][j] << " ";
-        cerr << endl;
-    }
-    cout << d[S][T] << endl;
-    cout << S << " ";
-    trace(S,T);
-    cout << T ;
+    // for (int i = 1 ; i <= N ; i++)
+    // {
+    //     for (int j = 1 ; j <= N ; j++) cerr << p[i][j] << " ";
+    //     cerr << endl;
+    // }
+    // cout << d[S][T] << endl;
+    // cout << S << " ";
+    // trace(S,T);
+    // cout << T ;
+    cout << res/2;
 }

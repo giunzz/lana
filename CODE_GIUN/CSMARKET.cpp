@@ -4,9 +4,10 @@ using namespace std;
 #define ll long long 
 #define pi pair<int,int>
 const int MAXN = 1e3+7;
-const ll oo = 1e17 + 7;
-ll N,M, S , T;
-ll d[MAXN][MAXN]={0} , p[MAXN][MAXN]={0}  , dt[MAXN][MAXN]={0};
+const ll oo = 1e9 + 7;
+ll N,M;
+double d[MAXN][MAXN]={0} ;
+ll p[MAXN][MAXN]={0}  ;
 void floy()
 {
     for (int k = 1 ; k <= N ; k++)
@@ -15,9 +16,9 @@ void floy()
         {
             for (int j = 1 ; j <= N ; j++)
             {
-                if (d[i][j] > (d[i][k] + d[k][j]))
+                if (d[i][j] > (d[i][k] + d[j][k]))
                 {
-                    d[i][j] = d[i][k] + d[k][j];
+                    d[i][j] = d[i][k] + d[j][k];
                     p[i][j] = k;
                 }
             }
@@ -27,13 +28,13 @@ void floy()
 int main()
 {
     giuncute;
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
-    cin >> N >> M ;
-    ll x, y, l , ans = 0 ;
+    freopen("CSMARKET.inp","r",stdin);
+    freopen("CSMARKET.out","w",stdout);
+    cin >> N >> M;
+    ll x, y;
+    double l ,ans = -oo ;
     for(int i = 1; i<=N; ++i) 
-        for(int j = 1; j<=N; ++j) d[i][j] = oo;
-    for (int i = 1 ; i <= N ; i++) d[i][i] = 0 ;
+        for(int j = 1; j<=N; ++j) d[i][j] = 1e17;
     for (int i = 1 ; i <= M ; i++)
     {
         cin >> x >> y >> l;
@@ -41,10 +42,6 @@ int main()
         d[y][x] = l;
     }   
     floy();
-    for (int i = 1 ; i <= N ; i++)
-    {
-        for (int j = 1 ; j <= N ; j++)
-            if (d[i][j] == S) ans++;
-    }
-    cout << ans ;
+    ans = min (d[1][N] , d[N][1]);
+    cout << fixed << setprecision(2) << ans;
 }

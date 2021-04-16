@@ -4,9 +4,10 @@ using namespace std;
 #define ll long long 
 #define pi pair<int,int>
 const int MAXN = 1e3+7;
-const ll oo = 1e17 + 7;
+const ll oo = 1e9 + 7;
 ll N,M, S , T;
 ll d[MAXN][MAXN]={0} , p[MAXN][MAXN]={0}  , dt[MAXN][MAXN]={0};
+ll  t , res ;
 void floy()
 {
     for (int k = 1 ; k <= N ; k++)
@@ -15,9 +16,10 @@ void floy()
         {
             for (int j = 1 ; j <= N ; j++)
             {
-                if (d[i][j] > (d[i][k] + d[k][j])) // neu co canh am thi if(d[i][j] > d[i][k] + d[k][j] and i != k and k != j and i != j)
+                if (d[i][j] > (d[i][k] + d[j][k]))
                 {
-                    d[i][j] = d[i][k] + d[k][j];
+                    if (d[i][j] == t ) res++;
+                    d[i][j] = d[i][k] + d[j][k];
                     p[i][j] = k;
                 }
             }
@@ -29,21 +31,17 @@ int main()
     giuncute;
     freopen("pathk.inp","r",stdin);
     freopen("pathk.out","w",stdout);
-    cin >> N >> M >> S;
-    ll x, y, l , ans = 0 ;
+    cin >> N >> M >> t;
+    ll x, y, l;
     for(int i = 1; i<=N; ++i) 
-        for(int j = 1; j<=N; ++j) d[i][j] = oo;
+        for(int j = 1; j<=N; ++j) d[i][j] = 1e17;
     for (int i = 1 ; i <= N ; i++) d[i][i] = 0 ;
     for (int i = 1 ; i <= M ; i++)
     {
         cin >> x >> y >> l;
-        d[x][y] = d[y][x] = min(d[x][y] , l) ; 
+        d[x][y] = l; 
+        d[y][x] = l;
     }   
     floy();
-    for (int i = 1 ; i <= N ; i++)
-    {
-        for (int j = 1 ; j <= N ; j++)
-            if (d[i][j] == S) ans++; // neu co canh am thi if(d[i][j] == S and i != j)
-    }
-    cout << ans ;
+    cout << res/2;
 }
