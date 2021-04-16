@@ -14,7 +14,7 @@ INPUT: dòng đầu M, N, Q (M, N <= 2000, Q <= 1e5)
     + '.' nếu (i, j) trống
     + 'S' nếu (i, j) có thiết bị xuất phát
     + '#' nếu (i, j) bị chặn tức không đi qua được
-- Q dòng tiếp theo mỗi dòng chứa 2 số x, y (1 <= x <= M, 1 <= y <= N)
+- Q dòng tiếp theo mỗi dòng chứa 2 số x, y (1 <= x <= M, 1 <= y <= N, x != y)
 Dữ liệu đảm bảo tồn tại ít nhất 1 chữ 'S'
 
 OUTPUT: gồm Q dòng là yêu cầu bài, nếu không tồn tại đường đi tới (x, y) xuất -1.
