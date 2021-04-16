@@ -1,0 +1,34 @@
+Cho 1 mảnh đất M hàng, N cột. Siu nhân Meo sẽ xuất hiện trên 1 ô nào đó trên mảnh đất có thiết bị xuất hiện. 
+Có Q truy vấn, mỗi truy vấn có dạng: x y.
+Hỏi nếu xuất phát tại 1 trong những ô có thiết bị xuất phát thì thời gian nhỏ nhất tới được ô (x, y) là bao nhiêu?
+
+Chú ý: tại ô (i, j) bất kì thì có thể đi đến được các ô chung cạnh hoặc chung góc
+VD:
+...
+...
+...
+Khi ở ô (2, 2) thì có thể đi đến được các ô còn lại
+
+INPUT: dòng đầu M, N, Q (M, N <= 2000, Q <= 1e5)
+- M dòng tiếp theo mỗi dòng có N kí tự:
+    + '.' nếu (i, j) trống
+    + 'S' nếu (i, j) có thiết bị xuất phát
+    + '#' nếu (i, j) bị chặn tức không đi qua được
+- Q dòng tiếp theo mỗi dòng chứa 2 số x, y (1 <= x <= M, 1 <= y <= N)
+
+OUTPUT: gồm Q dòng là yêu cầu bài, nếu không tồn tại đường đi tới (x, y) xuất -1.
+
+
+Test vd:
+INP 
+4 4 2
+#.##
+#..S
+S...
+..#.
+1 2
+1 1
+
+OUT
+2
+-1
