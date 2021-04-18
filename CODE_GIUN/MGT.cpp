@@ -29,7 +29,7 @@ int main()
     for (int i = 1 ; i <= N ; i++)
         for (int j = 1 ; j <= N ; j++) cin >> cost[i][j] ;
     for (int i = 1 ;i <= N ; i++)
-        if (!visited[i]) TPLT++ , dfs(i,cnount );
+        if (!visited[i]) TPLT++ , dfs(i);
     for (int i = 1 ; i <=)
     for (int i = 0 ; i < TPLT.size() ; i++)
     {
