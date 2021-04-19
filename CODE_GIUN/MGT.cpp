@@ -14,6 +14,12 @@ void dfs(ll node , ll color)
     for (int v : G[node])
         if (!visited[v]) dfs(v);
 }
+ll get (ll u )
+{
+    if(p[u] == u) return u;
+    return p[u] = get(p[u]);
+}
+
 int main()
 {
     giuncute;
@@ -28,17 +34,9 @@ int main()
     }
     for (int i = 1 ; i <= N ; i++)
         for (int j = 1 ; j <= N ; j++) cin >> cost[i][j] ;
+    ll cnt = 1 ;
     for (int i = 1 ;i <= N ; i++)
-        if (!visited[i]) TPLT++ , dfs(i);
-    for (int i = 1 ; i <=)
-    for (int i = 0 ; i < TPLT.size() ; i++)
-    {
-        
-        for (int j = 1 ; j <= N ; i++)
-            if (cost[TPLT[i]][j] > cost[j][TPLT[i]] && cost[TPLT[i]][j] > 0 ) 
-                    ans += cost[TPLT[i]][j] , C.push_back(TPLT[i]).first , C.push_back(j).second;
-            else  if (cost[TPLT[i]][j] < cost[j][TPLT[i]] && cost[j][TPLT[i]] > 0 ) 
-                    ans += cost[TPLT[i]][j] , C.push_back(TPLT[i]).first , C.push_back(j).second;
-    }
+        if (!visited[i]) TPLT++ , dfs(i,cnt);
+
 }
 
