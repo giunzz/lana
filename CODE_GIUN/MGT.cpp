@@ -65,4 +65,3 @@ int main()
     if (ans > 0 )
         for (int i = 0 ; i < res.size() ; i++) cout << res[i].first << " " << res[i].second << endl;
 }
-

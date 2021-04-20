@@ -1,80 +1,127 @@
-#include <bits/stdc++.h>
-#define ll long long
-#define cll const ll
-#define lp(a, b, c) for(ll a = b; a <= c; ++a)
-#define lpd(a, b, c) for(ll a = b; a >= c; --a)
-#define vec(a) vector<a>
-#define pp(a, b) pair<a, b>
-#define Fname "meeting"
+#include<bits/stdc++.h>
 using namespace std;
 
-void OF(){
-    freopen(Fname ".inp", "r", stdin);
-    freopen(Fname ".out", "w", stdout);
+#define ll long long
+
+const ll mxdigit = 17;
+ll dp_sol[mxdigit][10][2], dp_cnt[mxdigit][10][2];
+vector<ll> digit;
+
+ll cnt(ll pos, ll num, bool ok){
+    if(pos == mxdigit - 1)
+        return dp_cnt[pos][num][ok] = 1; 
+    if(~dp_cnt[pos][num][ok]) return dp_cnt[pos][num][ok];
+    ll npos = pos + 1, res = 0;
+    for(ll nnum = 0; nnum <= 9; ++nnum){
+        if(ok){
+            if(nnum < digit[npos]) res += cnt(npos, nnum, 0);
+            else if(nnum == digit[npos]) res += cnt(npos, nnum, 1);
+        } else{
+            res += cnt(npos, nnum, ok);
+        }
+    }
+    return dp_cnt[pos][num][ok] = res;
 }
 
-struct quang{
-    ll b, e, id = 0;
-};
-
-cll maxn = 2e5 + 7;
-ll n, res[maxn] = {0}, ans = 0;
-quang a[maxn];
-
-bool cpr(const quang &x, const quang &y){
-    if(x.b == y.b && (x.e - x.b) < (y.e - y.b)) return 1;
-    // if(x.b == y.b && (x.e - x.b) == (y.e - y.b) && x.id < y.id) return 1;
-    return (x.b < y.b);
+ll sol(ll pos, ll num, bool ok){
+    if(pos == mxdigit - 1)
+        return dp_sol[pos][num][ok] = num;
+    if(~dp_sol[pos][num][ok]) return dp_sol[pos][num][ok];
+    ll npos = pos + 1, res = 0;
+    for(ll nnum = 0; nnum <= 9; ++nnum){
+        if(ok){
+            if(nnum < digit[npos]){
+                res += sol(npos, nnum, 0) + num * cnt(npos, nnum, 0);
+            } else if(nnum == digit[npos]) res += sol(npos, nnum, 1) + num * cnt(npos, nnum, 1);
+        } else{
+            res += sol(npos, nnum, ok) + num * cnt(npos, nnum, ok);
+        }
+    }
+    return dp_sol[pos][num][ok] = res;
 }
 
-// ll cnp(ll x, ll i){
-//     ll l = i, r = n, tmp = 0;
-//     while(l <= r){
-//         ll mid = (l + r) / 2;
-//         if(a[mid].b >= x){
-//             tmp = mid;
-//             r = mid - 1;
-//         }
-//         else l = mid + 1;
-//     }
-//     return tmp;
-// }
+ll cal(ll n){
+    digit.clear();
+    while(n) digit.push_back(n % 10), n /= 10;
+    while(digit.size() < mxdigit) digit.push_back(0);
+    reverse(digit.begin(), digit.end());
+    memset(dp_cnt, -1, sizeof dp_cnt);
+    memset(dp_sol, -1, sizeof dp_sol);
+    return sol(0, 0, 1);
+}
 
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-    OF();
-    cin >> n;
-    lp(i, 1, n){
-        cin >> a[i].b >> a[i].e; 
-        a[i].id = i;
+    ll tests;
+    cin >> tests;
+    while(tests--){
+        ll l, r;
+        cin >> l >> r;
+        cout << cal(r) - cal(l - 1) << '\n';
     }
-    // cerr << 1;
-    sort(a + 1, a + 1 + n, cpr);
-    // lp(i, 1, n) cerr << a[i].b << ' ' << a[i].e << '\n';
-    ll ee;
-    lp(i, 1, n){
-        // cerr << 1;
-        // mi = LLONG_MAX, vt = 0;
-        // if(!res[a[i].id])
-        //     res[a[i].id] = ++ans;
-        // lp(j, i + 1, n){
-        //     if(a[j].b >= a[i].e && !res[a[j].id] && mi >= (a[j].b - a[i].e)) mi = a[j].b - a[i].e, vt = j; 
-        // }
-        // vt = cnp(a[i].e, i + 1);
-        // while(res[a[vt].id] && vt) ++vt;
-        // if(vt) res[a[vt].id] = res[a[i].id];
-        if(res[a[i].id]) continue;
-        res[a[i].id] = ++ans;
-        ee = a[i].e;
-        lp(j, i + 1, n){
-            if(a[j].b >= ee){
-                res[a[j].id] = ans, ee = a[j].e;
-            }
+}
+
+/*
+#include<bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+
+const ll mxdigit = 5;
+ll n;
+vector<ll> digit;
+// *****
+// 
+
+ll cnt(ll pos, ll num, bool ok){
+    if(pos == mxdigit - 1)
+        return 1; 
+    ll npos = pos + 1, res = 0;
+    for(ll nnum = 0; nnum <= 9; ++nnum){
+        if(ok){
+            if(nnum < digit[npos]) res += cnt(npos, nnum, 0);
+            else if(nnum == digit[npos]) res += cnt(npos, nnum, 1);
+        } else{
+            res += cnt(npos, nnum, ok);
         }
     }
-    cout << ans << '\n';
-    // lp(i, 1, n){
-    //     cout << res[i] << '\n';
-    // }
+    return res;
 }
+
+// sol(2, 4, 1) -> sol(3, 1, 0)
+// sol(2, 1, 0) -> sol(3, 1, 0)
+// ....2    5 ... = 1000 + 2 * 99 
+//    pos npos
+// ..........6
+
+ll sol(ll pos, ll num, bool ok){
+    if(pos == mxdigit - 1)
+        return num;
+    ll npos = pos + 1, res = 0;
+    for(ll nnum = 0; nnum <= 9; ++nnum){
+        if(ok){
+            // 024354
+            // 021*** 
+            if(nnum < digit[npos]){
+                res += sol(npos, nnum, 0) + num * cnt(npos, nnum, 0);
+            } else if(nnum == digit[npos]) res += sol(npos, nnum, 1) + num * cnt(npos, nnum, 1);
+        } else{
+            res += sol(npos, nnum, ok) + num * cnt(npos, nnum, ok);
+        }
+    }
+    return res;
+}
+
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    freopen("f.inp", "r", stdin);
+    freopen("f.out", "w", stdout);
+    cin >> n;
+    while(n) digit.push_back(n % 10), n /= 10;
+    while(digit.size() < mxdigit) digit.push_back(0);
+    reverse(digit.begin(), digit.end());
+    cout << sol(0, 0, 1);
+}
+*/

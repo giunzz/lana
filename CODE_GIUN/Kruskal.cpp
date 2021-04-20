@@ -26,11 +26,12 @@ bool ghep(giun& a){
     p[y] = x;
     return 1;
 }
+vector<pair<ll,pair<ll,ll>>> res;
 int main()
 {
     giuncute;
-  //  freopen("giun.inp","r",stdin);
-  //  freopen("giun.out","w",stdout);
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
     cin >> n >> m ;// n dinh m canh
     for (int i = 1 ; i <= m ; i++) cin >> a[i].u >> a[i].v >> a[i].w;
     for (int i = 1 ; i <= m ; i++) p[i] = i , size[i] = 1;
@@ -42,7 +43,9 @@ int main()
         {
             ++cnt;
             ans += a[i].w;
+            res.push_back(make_pair(a[i].u,make_pair(a[i].v,a[i].w)));
         }
     }
-    cout << ans;
+    cout << ans << endl;
+    for (int i = 0 ; i < res.size() ; i++) cout << res[i].first << " " << res[i].second.first << " " << res[i].second.second << endl;
 }
