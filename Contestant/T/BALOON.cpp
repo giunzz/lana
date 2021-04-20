@@ -9,12 +9,15 @@ string s;
 
 int calc(int c, int d, int l, int r) {
 	if (l == r) {
-		if (d == 1) return -oo;
+		if (d == 1) 
+			return -oo;
 		else return d * d;
 	}
-	if (memo[c][d][l][r] != -1) return memo[c][d][l][r];
+	if (memo[c][d][l][r] != -1) 
+		return memo[c][d][l][r];
 	if (col[s[l]] == c) {
-		if (l == r - 1) return (d + 1) * (d + 1);
+		if (l == r - 1) 
+			return (d + 1) * (d + 1);
 		return memo[c][d][l][r] = calc(c, d + 1, l + 1, r);
 	} else {
 		int cur = -oo;
@@ -54,6 +57,6 @@ int32_t main()
 	while (tc--) {
 		solve();
 	}
-
+	cerr << clock();
 	return 0;
 }
