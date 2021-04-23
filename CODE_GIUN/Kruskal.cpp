@@ -30,8 +30,8 @@ vector<pair<ll,pair<ll,ll>>> res;
 int main()
 {
     giuncute;
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
+    freopen("kruskal.inp","r",stdin);
+    freopen("kruskal.out","w",stdout);
     cin >> n >> m ;// n dinh m canh
     for (int i = 1 ; i <= m ; i++) cin >> a[i].u >> a[i].v >> a[i].w;
     for (int i = 1 ; i <= m ; i++) p[i] = i , size[i] = 1;

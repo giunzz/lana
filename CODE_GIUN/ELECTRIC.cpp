@@ -38,7 +38,7 @@ int main()
     sort (a+1 , a+1+m , cmp);
     ll ans = 0  , cnt = 0 ;
     vector<ll> mini;
-    for (int i = 1 ; i <= m ; i++ )
+    for (int i = 1 ; i <= m ; i++ 
     {
         if(ghep(a[i]) && cnt != n - 1)
         {
