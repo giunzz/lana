@@ -16,9 +16,5 @@ int main()
 {
     srand(time(NULL));
     freopen("giun.inp","w",stdout);
-    cout << 10 << endl;
-   for (int i = 1 ; i <= 10 ; i++ ) 
-   {
-       cout << giun(1, 10 ) << " ";
-   }
+    cout << giun(-10000000,10000000);
 }

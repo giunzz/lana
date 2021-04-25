@@ -24,3 +24,11 @@ int main()
     }
     cout << ans;    
 }*/
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main()
+{
+    cerr << char ('W' - 'A') ;
+}
