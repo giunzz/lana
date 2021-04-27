@@ -31,8 +31,8 @@ int main()
 {
     vector<pair<ll,ll>> res;
     giuncute;
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
+    freopen("mgt.inp","r",stdin);
+    freopen("mgt.out","w",stdout);
     cin >> N >> M ;
     for (int i = 1 ; i <= M ; i++)
     {
