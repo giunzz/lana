@@ -6,7 +6,7 @@ using namespace std;
 const int MAXN = 1e3+7;
 const ll oo = 1e9 + 7;
 ll N,M;
-double d[MAXN][MAXN]={0} ;
+long long d[MAXN][MAXN]={0} ;
 ll p[MAXN][MAXN]={0}  ;
 void floy()
 {
@@ -32,7 +32,7 @@ int main()
     freopen("CSMARKET.out","w",stdout);
     cin >> N >> M;
     ll x, y;
-    double l ,ans = -oo ;
+    long long l ,ans = -oo ;
     for(int i = 1; i<=N; ++i) 
         for(int j = 1; j<=N; ++j) d[i][j] = 1e17;
     for (int i = 1 ; i <= M ; i++)
@@ -42,6 +42,9 @@ int main()
         d[y][x] = l;
     }   
     floy();
-    ans = min (d[1][N] , d[N][1]);
-    cout << fixed << setprecision(2) << ans;
+    for (int i = 1 ; i <= N ; i++)
+        for (int j = 1 ; j <= N ; j++) ans = max (ans,d[i][j]);
+    cout << ans / 2;
+    if (ans % 2 == 0  ) cout << ".00";
+    else cout << ".50";
 }
