@@ -1,50 +1,82 @@
-#include<bits/stdc++.h>
+#include <string>
+#include <iostream> 
 using namespace std;
-#define ll long long 
-#define pl pair<ll,ll> 
-#define giuncute ios_base::sync_with_stdio(0),cin.tie(0)
-ll n , m , s , t , dp[(int) 1e5+7];
-vector<pair<ll,ll>> G[(int)1e5+7];
-
-void dijkstra(int node)
+int stringToNum(char c)     
 {
-    priority_queue< pl , vector<pl> , greater<pl>> p;
-    for (int i = 1 ; i <= n ; i++) dp[i] = 1e17;
-    p.push({0,node});
-    dp[node] = 0 ;
-    while (p.size())
+    return c - '0';
+}
+char numToString(int n)     
+{
+    return (char)(n+48);
+}
+ 
+void chuanHoa(string &a, string &b) 
+{
+    int l1 = a.length(), l2 = b.length();
+    if (l1 >= l2)
     {
-        ll u = p.top().second  , disu = p.top().first;
-        p.pop();
-        cerr << u << " " << disu << endl;
-        if (dp[u] != disu) continue;
-        for (pl v : G[u])
-        {
-            if (dp[v.first] > disu + v.second )
-            {
-                dp[v.first] = disu + v.second;
-                p.push({dp[v.first] , v.first});
-            }
-        }
+        b.insert(0, l1-l2, '0');    
     }
-
+    else
+    {
+        a.insert(0, l2-l1, '0');    
+    }
+}
+ 
+string sum(string a, string b)  
+{
+    string s = "";
+    chuanHoa(a,b);      
+    int l = a.length();
+     
+    int tam = 0;
+    for (int i=l-1; i>=0; i--)   
+    {
+        tam = stringToNum(a[i]) + stringToNum(b[i]) + tam;   
+        s.insert(0,1,numToString(tam%10));        
+        tam = tam/10;    
+    }
+    if (tam>0)  
+    {
+        s.insert(0,1,numToString(tam));
+    } 
+    return s;
+}
+ 
+string mulNho(char a, string b)    
+{
+    string s = "";
+    int tam = 0;
+    for (int i=b.length()-1; i>=0; i--)      
+    {
+        tam = stringToNum(a) * stringToNum(b[i]) + tam;
+        s.insert(0,1,numToString(tam%10));
+        tam = tam/10;
+    }
+     
+    if (tam>0)
+    {
+        s.insert(0,1,numToString(tam));
+    } 
+    return s;
+}
+ 
+string mul(string a, string b)     
+{
+    string s = "";
+    int l = a.length();
+    string s1[l];
+    for (int i=l-1; i>=0; i--)   
+    {
+        s1[i] = mulNho(a[i], b);  
+        s1[i].insert(s1[i].length(), l-i-1, '0');   
+        s = sum(s, s1[i]);  
+    }
+    return s;
 }
 int main()
 {
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
+    string n , m;
     cin >> n >> m ;
-    for (int i = 1 ; i <= m ; i++ )
-    {
-        ll u , v , w;
-        cin >> u >> v >> w;
-        G[u].push_back({v,w});
-        G[v].push_back({u,w});
-    }
-    cin >> s >> t ;
-    cerr << s << " " << t << endl;
-    dijkstra(s);
-    for (int i = 1 ; i <= n ; i++) cerr << dp[i] << " ";
-    if (dp[t] != 1e17) cout << dp[t];
-    else cout << -1;
+    cout << mul(n,m);
 }
