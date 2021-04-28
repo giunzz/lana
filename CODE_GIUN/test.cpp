@@ -1,82 +1,107 @@
-#include <string>
-#include <iostream> 
+#include <assert.h>
+#include <stdio.h>
+
+#include <algorithm>
+#include <iostream>
+#include <vector>
 using namespace std;
-int stringToNum(char c)     
-{
-    return c - '0';
-}
-char numToString(int n)     
-{
-    return (char)(n+48);
-}
- 
-void chuanHoa(string &a, string &b) 
-{
-    int l1 = a.length(), l2 = b.length();
-    if (l1 >= l2)
-    {
-        b.insert(0, l1-l2, '0');    
+
+#define long long long
+
+typedef vector<int> vi;
+const int BASE = 10000;
+
+void fix(vi &a) {
+    a.push_back(0);
+    for (int i = 0; i < a.size() - 1; ++i) {
+        a[i + 1] += a[i] / BASE;
+        a[i] %= BASE;
+        if (a[i] < 0) {
+            a[i] += BASE;
+            a[i + 1]--;
+        }
     }
-    else
-    {
-        a.insert(0, l2-l1, '0');    
-    }
+    while (a.size() >= 2 && a.back() == 0) a.pop_back();
 }
- 
-string sum(string a, string b)  
-{
-    string s = "";
-    chuanHoa(a,b);      
-    int l = a.length();
-     
-    int tam = 0;
-    for (int i=l-1; i>=0; i--)   
-    {
-        tam = stringToNum(a[i]) + stringToNum(b[i]) + tam;   
-        s.insert(0,1,numToString(tam%10));        
-        tam = tam/10;    
-    }
-    if (tam>0)  
-    {
-        s.insert(0,1,numToString(tam));
-    } 
-    return s;
+
+vi operator*(const vi &a, const vi &b) {
+    vi c(a.size() + b.size() + 1);
+    for (int i = 0; i < a.size(); ++i)
+        for (int j = 0; j < b.size(); ++j) {
+            c[i + j] += a[i] * b[j];
+            c[i + j + 1] += c[i + j] / BASE;
+            c[i + j] %= BASE;
+        }
+    return fix(c), c;
 }
- 
-string mulNho(char a, string b)    
-{
-    string s = "";
-    int tam = 0;
-    for (int i=b.length()-1; i>=0; i--)      
-    {
-        tam = stringToNum(a) * stringToNum(b[i]) + tam;
-        s.insert(0,1,numToString(tam%10));
-        tam = tam/10;
-    }
-     
-    if (tam>0)
-    {
-        s.insert(0,1,numToString(tam));
-    } 
-    return s;
+
+vi to_vi(int x) {  // x < Base
+    assert(x < BASE);
+    return vi(1, x);
 }
- 
-string mul(string a, string b)     
-{
-    string s = "";
-    int l = a.length();
-    string s1[l];
-    for (int i=l-1; i>=0; i--)   
-    {
-        s1[i] = mulNho(a[i], b);  
-        s1[i].insert(s1[i].length(), l-i-1, '0');   
-        s = sum(s, s1[i]);  
-    }
-    return s;
+
+vi operator+(vi a, const vi &b) {
+    a.resize(max(a.size(), b.size()));
+    for (int i = 0; i < b.size(); ++i)
+        a[i] += b[i];
+    return fix(a), a;
 }
-int main()
-{
-    string n , m;
-    cin >> n >> m ;
-    cout << mul(n,m);
+vi operator-(vi a, const vi &b) {
+    for (int i = 0; i < b.size(); ++i)
+        a[i] -= b[i];
+    return fix(a), a;
+}
+vi operator*(vi a, int x) {  // x < BASE
+    assert(x < BASE);
+    for (int i = 0; i < a.size(); ++i)
+        a[i] *= x;
+    return fix(a), a;
+}
+
+bool operator<(const vi &a, const vi &b) {
+    if (a.size() != b.size()) return a.size() < b.size();
+    for (int i = a.size() - 1; i >= 0; i--)
+        if (a[i] != b[i])
+            return a[i] < b[i];
+    return false;
+}
+
+vi operator/(vi a, int x) {  // x < BASE
+    assert(x < BASE);
+    for (int i = (int)a.size() - 1, r = 0; i >= 0; --i, r %= x) {
+        r = r * BASE + a[i];
+        a[i] = r / x;
+    }
+    return fix(a), a;
+}
+int operator%(const vi &a, int x) {  //x < BASE
+    int r = 0;
+    for (int i = (int)a.size() - 1; i >= 0; --i)
+        r = (r * BASE + a[i]) % x;
+    return r;
+}
+
+istream &operator>>(istream &cin, vi &a) {
+    string s;
+    cin >> s;
+    a.clear();
+    a.resize(s.size() / 4 + 1);
+    for (int i = 0; i < s.size(); ++i) {
+        int x = (s.size() - 1 - i) / 4;  // <- log10(BASE)=4
+        a[x] = a[x] * 10 + (s[i] - '0');
+    }
+    return fix(a), cin;
+}
+
+ostream &operator<<(ostream &cout, const vi &a) {
+    printf("%d", a.back());
+    for (int i = (int)a.size() - 2; i >= 0; i--)
+        printf("%04d", a[i]);
+    return cout;
+}
+
+int main() {
+    vi a, b;
+    cin >> a >> b;
+    cout << a * b ;
 }
