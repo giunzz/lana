@@ -7,7 +7,6 @@ const string tenfile = "giun";
 int n , a[30] , x[30];
 long long s , s1 , s2 , ans;
 
-
 void Kt() 
 {
     s2 = 0;

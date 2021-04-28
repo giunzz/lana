@@ -36,8 +36,8 @@ ll o ,p ;
 int main()
 {
 	giuncute;
-	freopen("giun.inp","r",stdin);
-	freopen("giun.out","w",stdout);
+	freopen("MEETING.inp","r",stdin);
+	freopen("MEETING.out","w",stdout);
     cin >> k >> n >> m ;
     for (int i = 1 ; i <= m ; i++) 
     {
