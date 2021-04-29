@@ -1,127 +1,107 @@
-#include<bits/stdc++.h>
+#include <assert.h>
+#include <stdio.h>
+
+#include <algorithm>
+#include <iostream>
+#include <vector>
 using namespace std;
 
-#define ll long long
+#define long long long
 
-const ll mxdigit = 17;
-ll dp_sol[mxdigit][10][2], dp_cnt[mxdigit][10][2];
-vector<ll> digit;
+typedef vector<int> vi;
+const int BASE = 10000;
 
-ll cnt(ll pos, ll num, bool ok){
-    if(pos == mxdigit - 1)
-        return dp_cnt[pos][num][ok] = 1; 
-    if(~dp_cnt[pos][num][ok]) return dp_cnt[pos][num][ok];
-    ll npos = pos + 1, res = 0;
-    for(ll nnum = 0; nnum <= 9; ++nnum){
-        if(ok){
-            if(nnum < digit[npos]) res += cnt(npos, nnum, 0);
-            else if(nnum == digit[npos]) res += cnt(npos, nnum, 1);
-        } else{
-            res += cnt(npos, nnum, ok);
+void fix(vi &a) {
+    a.push_back(0);
+    for (int i = 0; i < a.size() - 1; ++i) {
+        a[i + 1] += a[i] / BASE;
+        a[i] %= BASE;
+        if (a[i] < 0) {
+            a[i] += BASE;
+            a[i + 1]--;
         }
     }
-    return dp_cnt[pos][num][ok] = res;
+    while (a.size() >= 2 && a.back() == 0) a.pop_back();
 }
 
-ll sol(ll pos, ll num, bool ok){
-    if(pos == mxdigit - 1)
-        return dp_sol[pos][num][ok] = num;
-    if(~dp_sol[pos][num][ok]) return dp_sol[pos][num][ok];
-    ll npos = pos + 1, res = 0;
-    for(ll nnum = 0; nnum <= 9; ++nnum){
-        if(ok){
-            if(nnum < digit[npos]){
-                res += sol(npos, nnum, 0) + num * cnt(npos, nnum, 0);
-            } else if(nnum == digit[npos]) res += sol(npos, nnum, 1) + num * cnt(npos, nnum, 1);
-        } else{
-            res += sol(npos, nnum, ok) + num * cnt(npos, nnum, ok);
+vi operator*(const vi &a, const vi &b) {
+    vi c(a.size() + b.size() + 1);
+    for (int i = 0; i < a.size(); ++i)
+        for (int j = 0; j < b.size(); ++j) {
+            c[i + j] += a[i] * b[j];
+            c[i + j + 1] += c[i + j] / BASE;
+            c[i + j] %= BASE;
         }
+    return fix(c), c;
+}
+
+vi to_vi(int x) {  // x < Base
+    assert(x < BASE);
+    return vi(1, x);
+}
+
+vi operator+(vi a, const vi &b) {
+    a.resize(max(a.size(), b.size()));
+    for (int i = 0; i < b.size(); ++i)
+        a[i] += b[i];
+    return fix(a), a;
+}
+vi operator-(vi a, const vi &b) {
+    for (int i = 0; i < b.size(); ++i)
+        a[i] -= b[i];
+    return fix(a), a;
+}
+vi operator*(vi a, int x) {  // x < BASE
+    assert(x < BASE);
+    for (int i = 0; i < a.size(); ++i)
+        a[i] *= x;
+    return fix(a), a;
+}
+
+bool operator<(const vi &a, const vi &b) {
+    if (a.size() != b.size()) return a.size() < b.size();
+    for (int i = a.size() - 1; i >= 0; i--)
+        if (a[i] != b[i])
+            return a[i] < b[i];
+    return false;
+}
+
+vi operator/(vi a, int x) {  // x < BASE
+    assert(x < BASE);
+    for (int i = (int)a.size() - 1, r = 0; i >= 0; --i, r %= x) {
+        r = r * BASE + a[i];
+        a[i] = r / x;
     }
-    return dp_sol[pos][num][ok] = res;
+    return fix(a), a;
+}
+int operator%(const vi &a, int x) {  //x < BASE
+    int r = 0;
+    for (int i = (int)a.size() - 1; i >= 0; --i)
+        r = (r * BASE + a[i]) % x;
+    return r;
 }
 
-ll cal(ll n){
-    digit.clear();
-    while(n) digit.push_back(n % 10), n /= 10;
-    while(digit.size() < mxdigit) digit.push_back(0);
-    reverse(digit.begin(), digit.end());
-    memset(dp_cnt, -1, sizeof dp_cnt);
-    memset(dp_sol, -1, sizeof dp_sol);
-    return sol(0, 0, 1);
-}
-
-int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
-    ll tests;
-    cin >> tests;
-    while(tests--){
-        ll l, r;
-        cin >> l >> r;
-        cout << cal(r) - cal(l - 1) << '\n';
+istream &operator>>(istream &cin, vi &a) {
+    string s;
+    cin >> s;
+    a.clear();
+    a.resize(s.size() / 4 + 1);
+    for (int i = 0; i < s.size(); ++i) {
+        int x = (s.size() - 1 - i) / 4;  // <- log10(BASE)=4
+        a[x] = a[x] * 10 + (s[i] - '0');
     }
+    return fix(a), cin;
 }
 
-/*
-#include<bits/stdc++.h>
-using namespace std;
-
-#define ll long long
-
-const ll mxdigit = 5;
-ll n;
-vector<ll> digit;
-// *****
-// 
-
-ll cnt(ll pos, ll num, bool ok){
-    if(pos == mxdigit - 1)
-        return 1; 
-    ll npos = pos + 1, res = 0;
-    for(ll nnum = 0; nnum <= 9; ++nnum){
-        if(ok){
-            if(nnum < digit[npos]) res += cnt(npos, nnum, 0);
-            else if(nnum == digit[npos]) res += cnt(npos, nnum, 1);
-        } else{
-            res += cnt(npos, nnum, ok);
-        }
-    }
-    return res;
+ostream &operator<<(ostream &cout, const vi &a) {
+    printf("%d", a.back());
+    for (int i = (int)a.size() - 2; i >= 0; i--)
+        printf("%04d", a[i]);
+    return cout;
 }
 
-// sol(2, 4, 1) -> sol(3, 1, 0)
-// sol(2, 1, 0) -> sol(3, 1, 0)
-// ....2    5 ... = 1000 + 2 * 99 
-//    pos npos
-// ..........6
-
-ll sol(ll pos, ll num, bool ok){
-    if(pos == mxdigit - 1)
-        return num;
-    ll npos = pos + 1, res = 0;
-    for(ll nnum = 0; nnum <= 9; ++nnum){
-        if(ok){
-            // 024354
-            // 021*** 
-            if(nnum < digit[npos]){
-                res += sol(npos, nnum, 0) + num * cnt(npos, nnum, 0);
-            } else if(nnum == digit[npos]) res += sol(npos, nnum, 1) + num * cnt(npos, nnum, 1);
-        } else{
-            res += sol(npos, nnum, ok) + num * cnt(npos, nnum, ok);
-        }
-    }
-    return res;
+int main() {
+    vi a, b;
+    cin >> a >> b;
+    cout << a * b ;
 }
-
-int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
-    freopen("f.inp", "r", stdin);
-    freopen("f.out", "w", stdout);
-    cin >> n;
-    while(n) digit.push_back(n % 10), n /= 10;
-    while(digit.size() < mxdigit) digit.push_back(0);
-    reverse(digit.begin(), digit.end());
-    cout << sol(0, 0, 1);
-}
-*/
