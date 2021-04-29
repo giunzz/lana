@@ -48,7 +48,7 @@ void DIJKSTRA (int startnode)
                 {
                     dp[v][costv] = dp[u][costu] + timeuv;
                     pq.push({dp[v][costv], {v, costv}});
-                     trace[costv] = costu;
+                    trace[costv] = costu;
                 }
             }
         }
@@ -68,13 +68,19 @@ int main()
     }
     cin >> o >> p;
     DIJKSTRA(o);
-    cerr << n << endl;
-    for (int  i = 1 ; i <= n ; i++)
-    {
-        for (int j = 1 ; j <= k ; j++) cerr<< dp[i][j] << " ";
-        cerr << endl;
+    // cerr << n << endl;
+    // for (int  i = 1 ; i <= n ; i++)
+    // {
+    //     for (int j = 1 ; j <= k ; j++) cerr<< dp[i][j] << " ";
+    //     cerr << endl;
+    // }
+    // cerr << dp[4][7] ;
+    // if (dp[o][p] != 1e17) cout << dp[p][7];
+    // else cout << -1;
+    long long res = 1e9;
+    for(int i = 1; i <= k; ++i){
+        res = min(dp[p][i], res);
+        cerr << dp[p][i] << ' ' << i << '\n';
     }
-    cerr << dp[4][7] ;
-    if (dp[o][p] != 1e17) cout << dp[p][7];
-    else cout << -1;
+    cout << res;
 }
