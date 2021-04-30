@@ -18,3 +18,7 @@ f[i] = 1, e đang đi và e thắng nên f[i] = 1 là a thua
 
 f[n] là bài toán em đang đi, nước đi của em cho nên = 0 anh thắng, = 1 thì e thắng
 !f[n] + 1 
+
+
+Xor dung trong truong hop cac bai toan doc lap nhau 
+Mex dung trong truong hop cac bai toan lien ket voi nhau hoac la trang thai ke truoc cua doi thu toi trang thai nay cua minh trong 1 game

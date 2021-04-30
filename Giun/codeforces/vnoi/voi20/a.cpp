@@ -25,7 +25,7 @@ ll f[maxn][maxn][maxk] = {{{0}}}, n, a[maxn], k, t1, t2, t3, t4, t5, y;
 
 ii main(){
     opt;
-    file;
+    // file;
     cin >> n >> k;
     lp(i, 1, n) cin >> a[i];
     lp(tmp, 1, n){
