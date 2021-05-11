@@ -1,36 +1,38 @@
-#include<iostream>
-#include<fstream>
-#include<algorithm>
-using namespace std;
-struct ans{
-	long a,b,c;
-};
-long A[2050][2050],N,dem;
-ans B[(int) 1e6+7];
-bool cmp(ans val1, ans val2)
-{
-	return val1.c<val2.c;
+#include <bits/stdc++.h>
 
+using namespace std;
+
+#pragma GCC optimize("Ofast")
+
+struct giun{
+	int u , v , w;
+};
+
+bool cmp(giun &a , giun &b) {
+	return a.w < b.w;
 }
+
+int n , x;
+vector <giun> v;
+
 int main(){
-	freopen("CHUYEN01.INP","r",stdin);
-	freopen("CHUYEN01.OUT","w",stdout);
-cin>>N;
-for(long i=1; i<=N; i++) 
-	for(long j=1; j<=N; j++)
-		scanf("%ld", &A[i][j]);
-for(long i=1; i<=N; i++)
-	for(long j=i+1; j<=N; j++)
-		if(A[i][j]!=0){
-			dem+=1;
-			B[dem].a=i;
-			B[dem].b=j;
-			B[dem].c=A[i][j];
+	ios_base::sync_with_stdio(0); cin.tie(NULL); cout.tie(NULL);
+	freopen("chuyen01.inp","r",stdin);
+	freopen("chuyen01.out","w",stdout);
+	cin >> n;
+	vector <vector<int>> adj(n , vector<int> (n));
+	for (int i = 0 ; i < n ; i++) 
+		for (int j = 0 ; j < n ; j++) 
+			cin >> adj[i][j];
+	for (int i = 0 ; i < n; i++)
+		for (int j = i ; j < n; j ++) {
+			if (adj[i][j] != 0) {
+				v.push_back({i + 1 , j + 1 , adj[i][j]});
+			}	
 		}
-sort(B+1,B+dem+1,cmp);
-cout<<dem<<endl;
-for(long i=1; i<=dem; i++){
-	cout<<B[i].a<<" "<<B[i].b<<" "<<B[i].c<<endl;
-}
+	sort(v.begin() , v.end() , cmp);
+	cout << v.size() << '\n';
+	for (int i = 0 ; i < (int) v.size(); i++) 
+		cout << v[i].u << " " << v[i].v << " " << v[i].w << '\n';
 	return 0;
 }
