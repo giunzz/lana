@@ -27,12 +27,17 @@ bool ghep(pair<ll,pair<ll,ll>> a)
     p[y] = x;
     return 1;
 }
+
+bool cmp(pair<ll,pair<ll,ll>> &a, pair<ll,pair<ll,ll>> &b){
+    return a.first < b.first;
+}
+
+vector<pair<ll,ll>> res;
 int main()
 {
-    vector<pair<ll,ll>> res;
     giuncute;
-    freopen("mgt.inp","r",stdin);
-    freopen("mgt.out","w",stdout);
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
     cin >> N >> M ;
     for (int i = 1 ; i <= M ; i++)
     {
@@ -43,25 +48,26 @@ int main()
     for (int i = 1 ; i <= N ; i++) p[i] = i , size[i] = 1;
     for (int i = 1 ; i <= N ; i++)
         for (int j = 1 ; j <= N ; j++) cin >> cost[i][j] ;
-    ll TPLT = 0 , cnt = 0  ;
-    for (int i = 1 ;i <= N ; i++)
-        if (!visited[i]) TPLT++ , cnt++ , dfs(i,cnt);
-    for (int i = 1 ; i <= N ; i++)
+    ll cnt = 0;
+    for (int i = 1 ;i <= N ; i++) if(!visited[i]) dfs(i, ++cnt);
+    for (int i = 1 ; i <= N ; i--)
     {
-        for (int j = i+1 ; j <= N ; j++)
+        for (int j = 1 ; j <= N ; j++)
             if (visited[i] != visited[j]) G1.push_back(make_pair(cost[i][j] , make_pair(i,j)));
     }
-    sort(G1.begin(), G1.end());
+    sort(G1.begin(), G1.end(), cmp);
+    // cerr << cnt;
+    // cnt = 0;
     for (int i = 0 ; i < G1.size() ; i++ )
     {
-        if(ghep(G1[i]) && cnt != TPLT - 1)
+        if(ghep(G1[i]))
         {
-            ++cnt;
+            // ++cnt;
             ans += G1[i].first;
             res.push_back(make_pair(G1[i].second.first,G1[i].second.second));
         }
     }
     cout << ans << endl;
-    if (ans > 0 )
+    if (ans >= 0 )
         for (int i = 0 ; i < res.size() ; i++) cout << res[i].first << " " << res[i].second << endl;
 }
