@@ -55,7 +55,6 @@ int main(){
         ll step = i, j = 0;
         while(j <= m){
             if(nxt[j] - j <= step) step -= (nxt[j] - j);
-            // else if(nxt[j] - j == step) step = i, ++tot[i];
             else if(i >= nxt[j] - j) step = i - (nxt[j] - j), ++tot[i];
             else {tot[i] = 1e17; break;}
             if(!step) ++tot[i], step = i;
