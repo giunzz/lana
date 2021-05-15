@@ -43,6 +43,7 @@ int main()
     freopen("giun.inp","r",stdin);
     freopen("giun.out","w",stdout);
     cin >> s ;
+    
     n = s.length();
     build(1,0,n-1);
     cin >> m ;
