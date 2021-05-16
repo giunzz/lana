@@ -2,7 +2,7 @@
 using namespace std;
 #define ll long long 
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
-const ll maxn = 1e5+7;
+const ll maxn = 1e6+7;
 string s ;
 
 struct Zun
@@ -43,14 +43,13 @@ int main()
     freopen("giun.inp","r",stdin);
     freopen("giun.out","w",stdout);
     cin >> s ;
-    
     n = s.length();
     build(1,0,n-1);
     cin >> m ;
     for (int i = 1 ; i <= m ; i++)
     {
         cin >> x >> y ;
-        Zun ans = Get (1 , 0 , n-1 , x , y);
+        Zun ans = Get (1 , 0 , n-1 , x-1 , y-1);
         cout << ans.pair * 2 << endl;
     }
 }
