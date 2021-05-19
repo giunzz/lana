@@ -34,8 +34,10 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-void test(bitset<10> i){
-    cout << i;
+int a[5][2] = {{0}};
+
+void test(int **b){
+    b[0][1] = 5;
 }
 
 int main(){
@@ -43,5 +45,6 @@ int main(){
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    test(5);
+    test(a);
+    // cerr << a[0][1];
 }
