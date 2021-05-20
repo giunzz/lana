@@ -1,107 +1,168 @@
-#include <assert.h>
-#include <stdio.h>
-
-#include <algorithm>
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
+#define ll long long
+#define cll const ll
+#define lp(a, b, c) for(ll a = b; a <= c; ++a)
+#define lpd(a, b, c) for(ll a = b; a >= c; --a)
+#define vec(a) vector<a>
+#define pp(a, b) pair<a, b>
+#define EACHCASE lpd(cs, read(), 1)
+#define Fname "giun"
 using namespace std;
 
-#define long long long
+template <typename T> inline void Read(T &x){
+    x = 0; char c;
+    while(!isdigit(c = getchar()));
+    do
+    {
+        x = x * 10 + c - '0';
+    } while (isdigit(c = getchar()));
+}
 
-typedef vector<int> vi;
-const int BASE = 10000;
+ll read(){
+    ll tmp;
+    cin >> tmp;
+    return tmp;
+}
 
-void fix(vi &a) {
-    a.push_back(0);
-    for (int i = 0; i < a.size() - 1; ++i) {
-        a[i + 1] += a[i] / BASE;
-        a[i] %= BASE;
-        if (a[i] < 0) {
-            a[i] += BASE;
-            a[i + 1]--;
+void giuncute(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+}
+
+void OF(){
+    freopen(Fname".inp", "r", stdin);
+    freopen(Fname".out", "w", stdout);
+}
+
+cll mxn = 1e5 + 7;
+ll n, q, a[mxn];
+
+struct SEGMENT1{
+    ll st[4 * mxn] = {0};
+    void update(ll id, ll l, ll r, ll u){
+        if(r < u || l > u) return;
+        if(l == r){
+            st[id] = 1;
+            return;
         }
+        ll mid = (l + r) >> 1;
+        update(id << 1, l, mid, u);
+        update(id << 1 | 1, mid + 1, r, u);
+        st[id] = st[id << 1] + st[id << 1 | 1];
     }
-    while (a.size() >= 2 && a.back() == 0) a.pop_back();
-}
-
-vi operator*(const vi &a, const vi &b) {
-    vi c(a.size() + b.size() + 1);
-    for (int i = 0; i < a.size(); ++i)
-        for (int j = 0; j < b.size(); ++j) {
-            c[i + j] += a[i] * b[j];
-            c[i + j + 1] += c[i + j] / BASE;
-            c[i + j] %= BASE;
+    ll get(ll id, ll l, ll r, ll u, ll v){
+        if(v < l || r < u) return 0;
+        if(u <= l && r <= v) return st[id];
+        ll mid = (l + r) >> 1;
+        return get(id << 1, l, mid, u, v) + get(id << 1 | 1, mid + 1, r, u, v);
+    }
+    void update(ll u){
+        update(1, 1, n, u);
+    }
+    ll get(ll r){
+        return get(1, 1, n, 1, r);
+    }
+    ll get_left(ll group){
+        ll l = 1, r = n, res = -1;
+        while(l <= r){
+            ll mid = (l + r) >> 1;
+            if(get(mid) >= group){
+                res = mid;
+                r = mid - 1;
+            } else l = mid + 1;
         }
-    return fix(c), c;
-}
-
-vi to_vi(int x) {  // x < Base
-    assert(x < BASE);
-    return vi(1, x);
-}
-
-vi operator+(vi a, const vi &b) {
-    a.resize(max(a.size(), b.size()));
-    for (int i = 0; i < b.size(); ++i)
-        a[i] += b[i];
-    return fix(a), a;
-}
-vi operator-(vi a, const vi &b) {
-    for (int i = 0; i < b.size(); ++i)
-        a[i] -= b[i];
-    return fix(a), a;
-}
-vi operator*(vi a, int x) {  // x < BASE
-    assert(x < BASE);
-    for (int i = 0; i < a.size(); ++i)
-        a[i] *= x;
-    return fix(a), a;
-}
-
-bool operator<(const vi &a, const vi &b) {
-    if (a.size() != b.size()) return a.size() < b.size();
-    for (int i = a.size() - 1; i >= 0; i--)
-        if (a[i] != b[i])
-            return a[i] < b[i];
-    return false;
-}
-
-vi operator/(vi a, int x) {  // x < BASE
-    assert(x < BASE);
-    for (int i = (int)a.size() - 1, r = 0; i >= 0; --i, r %= x) {
-        r = r * BASE + a[i];
-        a[i] = r / x;
+        return res;
     }
-    return fix(a), a;
-}
-int operator%(const vi &a, int x) {  //x < BASE
-    int r = 0;
-    for (int i = (int)a.size() - 1; i >= 0; --i)
-        r = (r * BASE + a[i]) % x;
-    return r;
-}
-
-istream &operator>>(istream &cin, vi &a) {
-    string s;
-    cin >> s;
-    a.clear();
-    a.resize(s.size() / 4 + 1);
-    for (int i = 0; i < s.size(); ++i) {
-        int x = (s.size() - 1 - i) / 4;  // <- log10(BASE)=4
-        a[x] = a[x] * 10 + (s[i] - '0');
+    ll get_right(ll group){
+        ll l = 1, r = n, res = -1;
+        while(l <= r){
+            ll mid = (l + r) >> 1, tmp;
+            if(get(mid) <= group){
+                res = mid;
+                l = mid + 1;
+            } else r = mid - 1;
+        }
+        return res;
     }
-    return fix(a), cin;
-}
+};
 
-ostream &operator<<(ostream &cout, const vi &a) {
-    printf("%d", a.back());
-    for (int i = (int)a.size() - 2; i >= 0; i--)
-        printf("%04d", a[i]);
-    return cout;
-}
+struct node{
+    ll size, max;
+};
 
-int main() {
-    vi a, b;
-    cin >> a >> b;
-    cout << a * b ;
+struct SEGMENT2{
+    node st[4 * mxn];
+    void build(ll id, ll l, ll r){
+        if(l == r){
+            st[id].size = 1;
+            st[id].max = a[l];
+            return;
+        }
+        ll mid = (l + r) >> 1;
+        build(id << 1, l, mid);
+        build(id << 1 | 1, mid + 1, r);
+        st[id].max = max(st[id << 1].max, st[id << 1 | 1].max);
+        st[id].size = st[id << 1].size + st[id << 1 | 1].size;
+    }
+    ll erase(ll id, ll l, ll r, ll h){
+        if(l == r){
+            st[id].size = 0;
+            st[id].max = -1;
+            return l;
+        }
+        ll mid = (l + r) >> 1, pos;
+        // l -> mid, mid + 1 -> r
+        // st[id].size 
+        if(st[id << 1].size < h) pos = erase(id << 1 | 1, mid + 1, r, h - st[id << 1].size);
+        else pos = erase(id << 1, l, mid, h);
+        st[id].size = st[id << 1].size + st[id << 1 | 1].size;
+        st[id].max = max(st[id << 1].max, st[id << 1 | 1].max);
+        return pos;
+    }
+    ll get_max(ll id, ll l, ll r, ll u, ll v){
+        if(v < l || r < u) return -1;
+        if(u <= l && r <= v) return st[id].max;
+        ll mid = (l + r) >> 1;
+        return max(get_max(id << 1, l, mid, u, v), get_max(id << 1 | 1, mid + 1, r, u, v));
+    }
+    void build(){
+        build(1, 1, n);
+    }
+    ll erase(ll h){
+        return erase(1, 1, n, h);
+    }
+    ll get_max(ll u, ll v){
+        if(u < 0 || v < 0) return -1; 
+        return get_max(1, 1, n, u, v);
+    }
+};
+
+int main(){
+    giuncute();
+    #ifndef ONLINE_JUDGE
+    OF();
+    #endif
+    cin >> n;
+    lp(i, 1, n) cin >> a[i];
+    cerr << 1;
+    // SEGMENT1 tree1;
+    // SEGMENT2 tree2;
+    // tree2.build();
+    // cin >> q;
+    // char c;
+    // ll x, y;
+    // while(q--){
+    //     cin >> c;
+    //     if(c == 'S'){
+    //         cin >> x;
+    //         tree1.update(tree2.erase(x));
+    //     } else{
+    //         cin >> x >> y;
+    //         if(x < 0) x = 0;
+    //         if(y > n) y = n;
+    //         ll ans = tree2.get_max(tree1.get_left(x), tree1.get_right(y)); 
+    //         if(ans != -1) cout << ans << '\n';
+    //         else cout << "NONE\n";
+    //     }
+    // }
 }
