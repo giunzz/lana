@@ -144,25 +144,27 @@ int main(){
     #endif
     cin >> n;
     lp(i, 1, n) cin >> a[i];
-    cerr << 1;
-    // SEGMENT1 tree1;
-    // SEGMENT2 tree2;
-    // tree2.build();
-    // cin >> q;
-    // char c;
-    // ll x, y;
-    // while(q--){
-    //     cin >> c;
-    //     if(c == 'S'){
-    //         cin >> x;
-    //         tree1.update(tree2.erase(x));
-    //     } else{
-    //         cin >> x >> y;
-    //         if(x < 0) x = 0;
-    //         if(y > n) y = n;
-    //         ll ans = tree2.get_max(tree1.get_left(x), tree1.get_right(y)); 
-    //         if(ans != -1) cout << ans << '\n';
-    //         else cout << "NONE\n";
-    //     }
-    // }
+    SEGMENT1 tree1;
+    SEGMENT2 tree2;
+    tree2.build();
+    cin >> q;
+    char c;
+    ll x, y;
+    while(q--){
+        cin >> c;
+        if(c == 'S'){
+            cin >> x;
+            tree1.update(tree2.erase(x));
+        } else{
+            cin >> x >> y;
+            if(x < 0) x = 0;
+            if(y > n) y = n;
+            ll ans = tree2.get_max(tree1.get_left(x), tree1.get_right(y)); 
+             cerr << ans << " " << tree1.get_left(x) << " " << tree1.get_right(y) << endl;
+               
+            if(ans != -1) cout << ans << '\n';
+            else cout << "NONE\n";
+        }
+    }
+    cerr << clock() << " ms";
 }

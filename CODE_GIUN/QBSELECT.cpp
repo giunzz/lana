@@ -53,7 +53,7 @@ int ok = 0;
 int main()
 {
     giuncute;
-    // blablalolo();
+     //blablalolo();
     cin >> n ;
     for (int j = 0 ; j < 4  ; j++)
     {

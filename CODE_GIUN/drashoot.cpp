@@ -16,16 +16,16 @@ struct segment1{
             return ;
         }
         ll mid = (l+r) >> 1;
-        update(id*2 , l , mid , u);
-        update(id*2+1 , mid+1, r , u);
-        st[id] = st[id*2] + st[id*2+1];
+        update(id << 1  , l , mid , u);
+        update(id << 1 | 1 , mid+1, r , u);
+        st[id] = st[id << 1 ] + st[id << 1 | 1];
     }
     ll get (ll id , ll l , ll r , ll u , ll v)
     {
         if ( u > r || v < l) return 0 ;
-        if (l <= u && r <= v) return st[id];
+        if (l >= u && r <= v) return st[id];
         ll mid = (l+r) >> 1 ;
-        return get(id*2 , l , mid , u , v) + get (id*2+1 , mid+1, r , u , v);
+        return get(id << 1  , l , mid , u , v) + get (id << 1 | 1 , mid+1, r , u , v);
     }
     void update (ll u)
     {
@@ -37,7 +37,7 @@ struct segment1{
     }
     ll get_left( ll group)
     {
-        ll l = 1 , r = n ,  ans;
+        ll l = 1 , r = n ,  ans = -1 ;
         while ( l <= r)
         {
             ll mid = (l+r) >> 1;
@@ -48,18 +48,18 @@ struct segment1{
     }
     ll get_right(ll group)
     {
-        ll l = 1 , r = n ,  ans ;
+        ll l = 1 , r = n ,  ans = -1 ;
         while (l <= r)
         {
             ll mid = (l+r) >> 1;
-            if (get(mid) <= group) ans = mid , l = mid+1;
+            if (get(mid) <= group)  ans = mid , l = mid+1;
             else r = mid-1;
         }
         return ans;
     }
 };
 
-struct node 
+struct node  
 {
     ll size , max ;
 };
@@ -75,10 +75,10 @@ struct segment2
             return;
         }
         ll mid = (l+r) >> 1;
-        build(id *2 , l , mid );
-        build(id *2 + 1 , mid+1 , r);
-        st[id].max = max (st[id*2].max , st[id*2+1].max);
-        st[id].size = st[id*2].size + st[id*2+1].size;
+        build(id << 1  , l , mid );
+        build(id << 1  | 1 , mid+1 , r);
+        st[id].max = max (st[id<< 1 ].max , st[id<< 1 | 1].max);
+        st[id].size = st[id<< 1 ].size + st[id<< 1 | 1].size;
     }
     ll erase ( ll id , ll l , ll r , ll h)
     {
@@ -89,10 +89,10 @@ struct segment2
             return l ;
         }
         ll mid = (l+r) >> 1 , pos;
-        if ( st[id * 2].size < h) pos = erase(id*2+1 , mid+1 , r , h - st[id*2].size);
-        else pos = erase(id*2 , l , mid , h);
-        st[id].size = st[id*2].size + st[id*2+1].size;
-        st[id].max = max (st[id*2].max, st[id*2+1].max);
+        if ( st[id * 2].size < h) pos = erase(id<< 1 | 1 , mid+1 , r , h - st[id<< 1 ].size);
+        else pos = erase(id<< 1  , l , mid , h);
+        st[id].size = st[id<< 1 ].size + st[id<< 1 | 1].size;
+        st[id].max = max (st[id<< 1 ].max, st[id<< 1 | 1].max);
         return pos;
     }
     ll get_max(ll id , ll l , ll r , ll u , ll v)
@@ -100,7 +100,7 @@ struct segment2
         if (v < l || r < u) return -1;
         if (u <= l &&  v >= r) return st[id].max;
         ll mid = (l+r) >> 1 ;
-        return st[id].max = max (get_max(id * 2 , l , mid , u , v) , get_max(id*2 , mid+1, r , u , v));
+        return  max (get_max(id * 2 , l , mid , u , v) , get_max(id<< 1 | 1 , mid+1, r , u , v));
     }
     void build ()
     { 
@@ -108,6 +108,7 @@ struct segment2
     }
     ll get_max(ll u , ll v)
     {
+        if(u < 0 || v < 0) return -1; 
         return get_max(1,1,n,u,v);
     }
     ll erase(ll h)
@@ -117,41 +118,33 @@ struct segment2
 };
 int main()
 {
-    // giuncute;
+    giuncute;
     freopen("giun.inp","r",stdin);
     freopen("giun.out","w",stdout);
-    cerr << "ok";
     segment1 tr1;
-    // segment2 tr2;
-    //tr2.build();
-    // cerr << 1;
-    // cin >> n ;
-    // for (int i = 1  ; i <= n ; i++) cin >> a[i];
-    // cin >> q;
-    // ll tmp = 0 ;
-    // while (q--)
-    // {
-    //     cin >> c;
-    //     cerr << 1;
-    //     if (c == 'S')
-    //     {
-    //         cerr << 1;
-    //         cin >> x ;
-    //         tr1.update(tr2.erase(x));
-    //         tmp++;
-    //     }
-    //     else 
-    //     {
-    //         cin >> x >> y ;
-    //         if (x > tmp || y < 0) cout << "NONE" << endl;
-    //         else 
-    //         {
-    //             if (x < 0) x = 0 ;
-    //             if ( y > tmp) y = tmp ;
-    //             ll ans = tr2.get_max(tr1.get_left(x) , tr1.get_right(y));
-    //             if (ans == -1) cout << "NONE" << endl;
-    //             else cout << ans << endl;
-    //         }
-    //     }
-    // }
+    segment2 tr2;
+    cin >> n ;
+    for (int i = 1  ; i <= n ; i++) cin >> a[i];
+    cin >> q;
+    tr2.build();
+    while (q--)
+    {
+        cin >> c;
+        if (c == 'S')
+        {
+            cin >> x ;
+            tr1.update(tr2.erase(x));
+        }
+        else 
+        {
+                cin >> x >> y;
+                if(x < 0) x = 0;
+                if(y > n) y = n;
+                ll ans = tr2.get_max(tr1.get_left(x), tr1.get_right(y)); 
+//                cerr << ans << " " << tr1.get_left(x) << " " << tr1.get_right(y) << endl;
+                if(ans != -1) cout << ans << '\n';
+                else cout << "NONE\n";
+        }
+    }
+  //  cerr << clock() << " ms";
 }
