@@ -30,18 +30,19 @@ void giuncute(){
 }
 
 void OF(){
-    freopen(Fname".inp", "r", stdin);
-    freopen(Fname".out", "w", stdout);
-}
-
-void test(bitset<10> i){
-    cout << i;
+    freopen(Fname".out", "r", stdin);
+    freopen(Fname".inp", "w", stdout);
 }
 
 int main(){
+    srand((int)time(0));
     giuncute();
-    #ifndef ONLINE_JUDGE
-    OF();
-    #endif
-    test(5);
+    ofstream fo("f.inp");
+    lp(i, 1, 9){
+        if(rand() % 2) fo << '(';
+        else fo << ')';
+    }
+    fo.close();
+    system("brackets");
+    system("test1");
 }
