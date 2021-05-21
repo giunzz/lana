@@ -30,6 +30,7 @@ void giuncute(){
 }
 
 void OF(){
+<<<<<<< HEAD
     freopen(Fname".inp", "r", stdin);
     freopen(Fname".out", "w", stdout);
 }
@@ -38,13 +39,29 @@ int a[5][2] = {{0}};
 
 void test(int **b){
     b[0][1] = 5;
+=======
+    freopen(Fname".out", "r", stdin);
+    freopen(Fname".inp", "w", stdout);
+>>>>>>> 43d0f7ffc84b4883841c84578fb28ffb5caa3d27
 }
 
 int main(){
+    srand((int)time(0));
     giuncute();
+<<<<<<< HEAD
     #ifndef ONLINE_JUDGE
     OF();
     #endif
     test(a);
     // cerr << a[0][1];
+=======
+    ofstream fo("f.inp");
+    lp(i, 1, 9){
+        if(rand() % 2) fo << '(';
+        else fo << ')';
+    }
+    fo.close();
+    system("brackets");
+    system("test1");
+>>>>>>> 43d0f7ffc84b4883841c84578fb28ffb5caa3d27
 }
