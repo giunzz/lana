@@ -44,8 +44,8 @@ void init(){
     // n = sigma euler i voi i la uoc cua n
     // h[n] * cnt[n]
     // h[n] = n = sigma euler i voi i la uoc cua n
-    // fn = sigma ()
-    lp(i, 1, n) for(ll j = i; j <= 1e6; j += i) 
+    // fn = sigma (sigma(fd', d' la uoc cua d) * mu(n/d), d la uoc cua n)
+    lp(i, 1, n) for(ll j = i; j <= 1e6; j += i)  
 }
 
 int main(){
