@@ -34,13 +34,16 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-cll MOD = 1e9 + 7;
-
-ll Pow(ll u, ll v){
-    if(!v) return 1;
-    ll tmp = Pow(u, v >> 1);
-    if(v & 1) return (((tmp * tmp) % MOD) * u) % MOD;
-    return (tmp * tmp) % MOD;
+bool check(ll i){
+    ll tmp = 0;
+    for(ll j = 1; j * j <= i; ++j){
+        if(i % j == 0){
+            ++tmp;
+            if(j != i / j) ++tmp;
+        }
+    }
+    if(tmp == 4) return 1;
+    return 0;
 }
 
 int main(){
@@ -48,5 +51,13 @@ int main(){
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    cerr << Pow(24, MOD - 2);
+    ll n, cnt = 0;
+    cin >> n;
+    for(ll i = 1; i * i <= n; ++i){
+        if(n % i == 0){
+            if(check(i)) ++cnt;
+            if(n / i != i and check(n / i)) ++cnt;
+        }
+    }
+    cout << cnt;
 }

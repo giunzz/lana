@@ -34,19 +34,26 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-cll MOD = 1e9 + 7;
-
-ll Pow(ll u, ll v){
-    if(!v) return 1;
-    ll tmp = Pow(u, v >> 1);
-    if(v & 1) return (((tmp * tmp) % MOD) * u) % MOD;
-    return (tmp * tmp) % MOD;
-}
+cll mxn = 2e5 + 7, MOD = 1e9 + 7;
+ll n, a[mxn], dp = 0, ans = 0;
+unordered_map<ll, ll> mp;
 
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    cerr << Pow(24, MOD - 2);
+    cin >> n;
+    lp(i, 1, n){
+        cin >> a[i];
+        ++mp[a[i]];
+    }
+    ll p16 = 41666667;
+    lp(i, 1, n){
+        if(!mp[a[i]]) continue;
+        (ans += ((dp * ((mp[a[i]] * (mp[a[i]] - 1) / 2) % MOD)) % MOD) + ((((mp[a[i]] * (mp[a[i]] - 1)) % MOD) * (((((mp[a[i]] - 2) * (mp[a[i]] - 3)) % MOD) * p16) % MOD)) % MOD)) %= MOD;
+        (dp += mp[a[i]] * (mp[a[i]] - 1) / 2) %= MOD;
+        mp[a[i]] = 0;
+    }
+    cout << ans;
 }
