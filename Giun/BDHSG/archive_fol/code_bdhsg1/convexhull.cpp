@@ -25,10 +25,10 @@ struct point{
     ll x, y;
 }p[maxn], pp[maxn];
 
-// bool cpr(point p1, point p2){
-//     if(p1.x * p2.y >= p2.x * p1.y) return 1;
-//     else return 0;
-// }
+bool cpr(point p1, point p2){
+    if(p1.x * p2.y >= p2.x * p1.y) return 1; // xa / ya >= xb / yb
+    else return 0;
+}
 
 // void cdOp(){ //tim diem co min y nho nhat neu min y = nhau tim min x 
 //     lp(i, 2, n){
