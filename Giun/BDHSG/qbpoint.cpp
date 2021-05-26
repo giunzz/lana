@@ -38,31 +38,25 @@ void OF(){
 #define x first
 #define y second
 
-cll mxn = 2e3 + 7;
+cll mxn = 1e4 + 7;
 ll n, ans = 0;
-point a[mxn], p;
+point a[mxn], p, b[mxn];
 
 inline void change(point &a){
-    if(a.y < 0 or (!a.y && a.x < 0)) a = {-a.x, -a.y};
+    if(a.y < 0 or (a.y == 0 && a.x < 0)) a = {-a.x, -a.y};
 }
 
-bool cmp(point a, point b){
-    a = {a.x - p.x, a.y - p.y};
-    b = {b.x - p.x, b.y - p.y};
-    change(a);
-    change(b);
-    // if(!(a.x | a.y)) return 1;
-    // else if(!(b.x | b.y)) return 0;
-    return a.x * b.y >= b.x * a.y;
+// (x, 0)
+
+inline bool cmp(point &a, point &b){
+    return a.x * b.y > b.x * a.y;
 }
 
-bool cmpeq(point a, point b){
-    a = {a.x - p.x, a.y - p.y};
-    b = {b.x - p.x, b.y - p.y};
-    // change(a);
-    // change(b);
+inline bool cmpeq(point &a, point &b){
     return a.x * b.y == b.x * a.y;
 }
+
+// ax + by + c = 0 => y = -(ax + c)/b = -ax/b - c / b
 
 int main(){
     giuncute();
@@ -70,28 +64,28 @@ int main(){
     OF();
     #endif
     cin >> n;
+    lp(i, 1, n) cin >> b[i].x >> b[i].y;
     lp(i, 1, n){
-        cin >> a[i].x >> a[i].y;
-    }
-    if(n == 1 || n == 2){
-        cout << 0;
-        return 0;
-    }
-    lp(i, 1, n){
-        p = a[i];
-        sort(a + 1, a + 1 + n, cmp);
-        ll k = 2;
-        // if(i == 1) lp(j, 1, n) cerr << a[j].x << ' ' << a[j].y << '\n';
-        lp(j, 3, n){
+        p = b[i];
+        lp(j, i + 1, n){a[j] = {b[j].x - p.x, b[j].y - p.y}; change(a[j]);}
+        sort(a + i + 1, a + 1 + n, cmp);
+        ll k = i + 1;
+        lp(j, i + 2, n){
             if(!cmpeq(a[j], a[k])){
                 ans += (j - k) * (j - k - 1) / 2;
                 k = j;
             }
-            else if(a[j] == p || a[k] == p) ++k;
         }
         ans += (n - k) * (n - k + 1) / 2;
-        // cerr << ans << ' ';
     }
-    // cerr << ans;
-    cout << ans / 3;
+    cout << ans;
 }
+
+//n! = (n - 2)! * (n - 1) *  n
+
+// c(n, 2) = n * (n - 1) / 2
+
+// p24 = 24 ^ (mod - 2)
+// c(n, 4) = n * (n - 1) * (n - 2) * (n - 3) * p24;
+
+// (a / b) % MOD voi MOD la snt = (a * b ^ (MOD - 2)) % MOD;
