@@ -34,13 +34,8 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-cll MOD = 1e9 + 7;
-
-ll Pow(ll u, ll v){
-    if(!v) return 1;
-    ll tmp = Pow(u, v >> 1);
-    if(v & 1) return (((tmp * tmp) % MOD) * u) % MOD;
-    return (tmp * tmp) % MOD;
+void test(int a[4][5]){
+    a[0][0] = 5;
 }
 
 int main(){
@@ -48,5 +43,7 @@ int main(){
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    cerr << Pow(24, MOD - 2);
+    int a[4][5];
+    test(a);
+    cerr << a[0][0];
 }
