@@ -34,16 +34,12 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-void test(int a[4][5]){
-    a[0][0] = 5;
-}
-
 int main(){
     giuncute();
-    #ifndef ONLINE_JUDGE
-    OF();
-    #endif
-    int a[4][5];
-    test(a);
-    cerr << a[0][0];
+    // #ifndef ONLINE_JUDGE
+    // OF();
+    // #endif
+    int a;
+    cin >> a;
+    cout << a;
 }
