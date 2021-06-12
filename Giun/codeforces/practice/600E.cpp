@@ -35,8 +35,22 @@ void OF(){
 }
 
 cll mxn = 1e5 + 7;
-ll n, col[mxn];
+ll n, col[mxn], p[mxn], sz[mxn], nxt[mxn], cnt[mxn] = {0};
 vec(ll) g[mxn];
+
+void init_dfs(ll u){
+    sz[u] = 1, nxt[u] = -1;
+    for(ll v : g[u]) if(v != p[u]) p[v] = u, init_dfs(v), sz[u] += sz[v], nxt[u] = (nxt[u] == -1 || sz[nxt[u]] < sz[v]) ? v : nxt[u];    
+}
+
+void add(ll u, ll num){
+    cnt[col[u]] += num;
+    for(ll v : g[u]) if(v != p[u]) add(v, num);
+}
+
+void dfs(ll u, ll p, bool keep){
+
+}
 
 int main(){
     giuncute();
@@ -47,5 +61,11 @@ int main(){
     lp(i, 1, n) cin >> col[i];
     lp(i, 1, n - 1){
         ll u, v;
+        cin >> u >> v;
+        g[u].push_back(v);
+        g[v].push_back(u);
     }
+    p[1] = -1;
+    init_dfs(1);
+    dfs(1, p[1], 1);
 }
