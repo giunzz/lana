@@ -34,10 +34,18 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+cll mxn = 1e5 + 7;
+ll n, col[mxn];
+vec(ll) g[mxn];
+
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    
+    cin >> n;
+    lp(i, 1, n) cin >> col[i];
+    lp(i, 1, n - 1){
+        ll u, v;
+    }
 }
