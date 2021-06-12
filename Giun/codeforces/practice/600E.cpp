@@ -35,21 +35,33 @@ void OF(){
 }
 
 cll mxn = 1e5 + 7;
-ll n, col[mxn], p[mxn], sz[mxn], nxt[mxn], cnt[mxn] = {0};
+ll n, col[mxn], p[mxn], sz[mxn], nxt[mxn], cnt[mxn] = {0}, sum, one_col;
+bool isBig[mxn] = {0};
 vec(ll) g[mxn];
+pp(ll, ll) res[mxn];
 
 void init_dfs(ll u){
     sz[u] = 1, nxt[u] = -1;
     for(ll v : g[u]) if(v != p[u]) p[v] = u, init_dfs(v), sz[u] += sz[v], nxt[u] = (nxt[u] == -1 || sz[nxt[u]] < sz[v]) ? v : nxt[u];    
 }
 
-void add(ll u, ll num){
+void add(ll u, ll num, bool haveDo){
     cnt[col[u]] += num;
-    for(ll v : g[u]) if(v != p[u]) add(v, num);
+    if(haveDo){
+        if(cnt[col[u]] == cnt[col[one_col]]) sum += col[u];
+        else if(cnt[col[u]] > cnt[col[one_col]]) sum = col[u], one_col = col[u];
+    }
+    for(ll v : g[u]) if(v != p[u] && !isBig[v]) add(v, num, haveDo);
 }
 
-void dfs(ll u, ll p, bool keep){
-
+void dfs(ll u, bool keep){
+    for(ll v : g[u]) if(v != nxt[u] && v != p[u]) dfs(v, 0);
+    if(nxt[u] != -1) dfs(nxt[u], 1), isBig[nxt[u]] = 1;
+    one_col = res[nxt[u]].second, sum = res[nxt[u]].first;
+    add(u, 1, 1);
+    res[u] = {sum, one_col};
+    if(nxt[u] != -1) isBig[nxt[u]] = 0;
+    if(!keep) add(u, -1, 0);
 }
 
 int main(){
@@ -67,5 +79,6 @@ int main(){
     }
     p[1] = -1;
     init_dfs(1);
-    dfs(1, p[1], 1);
+    dfs(1, 1);
+    lp(i, 1, n) cout << res[i].first << ' ';
 }
