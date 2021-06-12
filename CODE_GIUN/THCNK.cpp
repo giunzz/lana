@@ -18,7 +18,7 @@ int main()
     }
     for (ll i = 0 ; i <= max(n,k); i++)  f[0][i] = 1;
     f[1][1] = 1;
-    //for (int i = 1 ; i <= max(n,k); i++) f[i][i] = 1;
+    //for (int i = 1 ; i <= max(n,k); i++) f[i][i] = 1; 
     for (ll i = 1 ; i <= k ; i++)
     {
         for (ll j = 1 ; j <= n ; j++) 
