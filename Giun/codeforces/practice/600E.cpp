@@ -35,7 +35,7 @@ void OF(){
 }
 
 cll mxn = 1e5 + 7;
-ll n, col[mxn], p[mxn], sz[mxn], nxt[mxn], cnt[mxn] = {0}, sum, one_col;
+ll n, col[mxn], p[mxn], sz[mxn], nxt[mxn], cnt[mxn] = {0}, sum, mx;
 bool isBig[mxn] = {0};
 vec(ll) g[mxn];
 pp(ll, ll) res[mxn];
@@ -48,18 +48,19 @@ void init_dfs(ll u){
 void add(ll u, ll num, bool haveDo){
     cnt[col[u]] += num;
     if(haveDo){
-        if(cnt[col[u]] == cnt[col[one_col]]) sum += col[u];
-        else if(cnt[col[u]] > cnt[col[one_col]]) sum = col[u], one_col = col[u];
+        if(cnt[col[u]] == mx) sum += col[u];
+        else if(cnt[col[u]] > mx) sum = col[u], mx = cnt[col[u]];
     }
     for(ll v : g[u]) if(v != p[u] && !isBig[v]) add(v, num, haveDo);
 }
 
 void dfs(ll u, bool keep){
     for(ll v : g[u]) if(v != nxt[u] && v != p[u]) dfs(v, 0);
-    if(nxt[u] != -1) dfs(nxt[u], 1), isBig[nxt[u]] = 1;
-    one_col = res[nxt[u]].second, sum = res[nxt[u]].first;
+    if(nxt[u] != -1) 
+        dfs(nxt[u], 1), isBig[nxt[u]] = 1, mx = res[nxt[u]].second, sum = res[nxt[u]].first;
+    else mx = 0, sum = 0;
     add(u, 1, 1);
-    res[u] = {sum, one_col};
+    res[u] = {sum, mx};
     if(nxt[u] != -1) isBig[nxt[u]] = 0;
     if(!keep) add(u, -1, 0);
 }
