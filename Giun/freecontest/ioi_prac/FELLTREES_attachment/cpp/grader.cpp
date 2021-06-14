@@ -6,6 +6,8 @@
 using namespace std;
 
 int main() {
+  freopen("f.inp", "r", stdin);
+  freopen("f.out", "w", stdout);
   int n, q;
   assert(scanf("%d%d", &n, &q) == 2);
   vector<int> x(n), h(n), l(q), r(q);
