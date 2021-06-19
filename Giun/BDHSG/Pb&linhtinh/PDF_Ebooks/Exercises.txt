@@ -18,3 +18,9 @@ https://www.facebook.com/groups/3274666745903595/permalink/3274707955899474/
 oj.us
 
 csacademy.com
+
+prob tag list
+https://codeforces.com/blog/entry/23054
+
+list dp
+https://codeforces.com/blog/entry/67679
