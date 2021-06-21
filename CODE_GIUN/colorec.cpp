@@ -20,7 +20,7 @@ int main()
     {
         for (int j = i+1 ; j <= 400 ; j++)
         {
-            memset(cnt , 0 , sizeof cnt);
+            set(cnt , 0 , sizeof cnt);
             for (int k = 0 ; k <= 400 ; k++)
             {
                 if (a[k][i] && a[k][j])
