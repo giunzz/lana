@@ -38,6 +38,8 @@ cll mxn = 2e3 + 7;
 ll n, a[mxn];
 pp(ll, ll) b[mxn];
 
+
+//cnp dap an va dung dp kiem tra 
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
