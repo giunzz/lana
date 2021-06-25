@@ -34,10 +34,23 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+cll mxn = 1e6 + 7, base = 31, MOD = 1e9 + 9;
+string a, b;
+ll a_hash[mxn] = {0}, b_hash = 0, pw[mxn];
+
+inline ll c(char a){return (a - 'a' + 1);}
+
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    cerr << "quanggg dep trai     ";
+    cin >> a >> b;
+    a = '.' + a, b = '.' + b, pw[1] = 1;
+    lp(i, 2, 1e6 + 2) pw[i] = (pw[i - 1] * base) % MOD;
+    lp(i, 1, a.size() - 1) a_hash[i] = (a_hash[i - 1] + c(a[i]) * pw[i]) % MOD;
+    lp(i, 1, b.size() - 1) (b_hash += c(b[i]) * pw[i]) %= MOD;
+    lp(i, b.size(), a.size()) 
+        if((b_hash * pw[i - b.size() + 1]) % MOD == (((a_hash[i - 1] - a_hash[i - b.size()]) % MOD) + MOD) % MOD) 
+            cout << i - b.size() + 1 << ' '; 
 }
