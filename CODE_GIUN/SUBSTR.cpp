@@ -14,7 +14,6 @@ ll mod (ll v)
 }
 ll get (ll i , ll j)
 {
-    cerr << i << " " << j << " " << hash_b * p_a[i] << " " << mod  (hash_a[j] - hash_a[i-1]) << endl  ;
     if (i ==  0) return (mod(hash_a[j]));
     return (mod  (hash_a[j] - hash_a[i-1])  );
 }
@@ -30,12 +29,11 @@ int main()
         p_b = (p_b * base) % MOD;
     }
     hash_a[0] = (a[0] - 'a' + 1 ) % MOD , p_a[0] = 1 ;
-    for (int i = 1 ; i < a.length() ; i++)
+    for (int i = 1 ; i < (int) a.length() ; i++)
     {
         p_a[i] = (p_a[i-1] * base) % MOD;
         hash_a[i] = (hash_a[i-1] + (a[i] - 'a' + 1) * p_a[i]) % MOD;
     }
-    for (int i = 0 ; i < a.length() ; i++) cerr << hash_a[i] << " ";
-    for (int i = 0 ; i <= a.length() - b.length() ; i++)
-        if (hash_b * p_a[i] == get(i , i + b.length() - 1)) cout << i+1 << " ";
+    for (int i = 0 ; i <= (int) (a.length() - b.length()) ; i++)
+        if ( (hash_b % MOD * p_a[i] % MOD ) % MOD == get(i , i + b.length() - 1)) cout << i+1 << " ";
 } 
