@@ -47,13 +47,11 @@ void init(){
 
 void sol(){
     cin >> n;
-    // cerr << n;
     ll tmp = n, p2 = 0, totu = 0, totcp = 0, cnt = 0;
     while(tmp % 2 == 0){
         ++p2;
         tmp /= 2;
     }
-    // cerr << tmp;
     totcp = p2 / 2, totu = p2 + 1;
     while(sang[tmp] != 0 && tmp % sang[tmp] == 0){
         ll pr = sang[tmp];
@@ -64,7 +62,7 @@ void sol(){
     }
     if(tmp != 1) totu *= 2;
     --totu;
-    if((ll)sqrt(n) * (ll)sqrt(n) == n) --totcp;
+    if((ll)sqrt(n) * (ll)sqrt(n) == n && !(n & 1)) --totcp;
     ll gcd = __gcd(totu, totcp);
     if(totcp) cout << totcp / gcd << "/" << totu / gcd<< '\n';
     else cout << "0\n";
