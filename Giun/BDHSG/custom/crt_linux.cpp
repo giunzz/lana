@@ -25,7 +25,6 @@ int main(){
     cout << "name: ";
     cin >> name;
     st("mkdir " + name);
-    st("copy pb " + name);
-    st("cd " + name + " && rename pb.* " + name + ".*");
-    st("cd " + name + " && rename pb_bruce.cpp " + name + "_bruce.cpp");
+    st("cp -R pb/* " + name);
+    st("cd " + name +  " && for i in pb*; do\necho \"${i#pb}\"\nmv -- \"$i\" \"" + name + "${i#pb}\"\ndone");
 }
