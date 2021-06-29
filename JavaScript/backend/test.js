@@ -4,6 +4,7 @@ var port = 3000
 
 // This responds with "Hello World" on the homepage
 app.get('/', function (req, res) {
+    res.send('hello');
     console.log("Got a GET request for the homepage");
     // response.writeHead(302, {
     //     'Location': 'download'

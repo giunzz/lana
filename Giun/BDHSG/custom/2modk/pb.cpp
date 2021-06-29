@@ -6,7 +6,7 @@
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
 #define EACHCASE lpd(cs, read(), 1)
-#define Fname "f"
+#define Fname "pb"
 using namespace std;
 
 template <typename T> inline void Read(T &x){
@@ -34,11 +34,31 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+cll mxk = 1e4 + 7;
+ll n, k, mul, cnt, f[mxk], ng, dv;
+
+void sol(){
+    cnt = 0;
+    cin >> n >> k;
+    ng = n / k;
+    dv = n % k;
+    lp(i, 0, k - 1){
+        f[i] = ng;
+        if(i <= dv) ++f[i]; 
+    }
+    --f[0];
+    lp(i, 0, k - 1){
+        if(i > k - i) break;
+        if(i == 0 or i == k - i) cnt += f[i] * (f[i] - 1) / 2;
+        else cnt += f[i] * f[k - i]; 
+    }
+    cout << cnt << '\n';
+}
+
 int main(){
     giuncute();
     // #ifndef ONLINE_JUDGE
     // OF();
     // #endif
-    while(1){}
-    
+    EACHCASE sol();
 }
