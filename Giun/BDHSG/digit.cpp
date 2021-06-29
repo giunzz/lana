@@ -94,8 +94,11 @@ void case_bruce(){
 
 int main(){
     giuncute();
+    #ifndef
+    OF();
+    #endif
     cin >> x >> a >> b;
     inp();
     if(x <= mxx) case_dp();
-    else case_bruce();
+    else case_bruce(); 
 }
