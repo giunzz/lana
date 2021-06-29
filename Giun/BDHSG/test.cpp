@@ -36,10 +36,8 @@ void OF(){
 
 int main(){
     giuncute();
-    // #ifndef ONLINE_JUDGE
-    // OF();
-    // #endif
-    int a;
-    cin >> a;
-    cout << a;
+    #ifndef ONLINE_JUDGE
+    OF();
+    #endif
+    while(1){}
 }

@@ -39,6 +39,6 @@ int main(){
     // #ifndef ONLINE_JUDGE
     // OF();
     // #endif
-    unordered_map<ll, ll> mp;
+    while(1){}
     
 }
