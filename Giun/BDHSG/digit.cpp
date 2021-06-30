@@ -101,4 +101,5 @@ int main(){
     inp();
     if(x <= mxx) case_dp();
     else case_bruce(); 
+    cerr << clock();
 }
