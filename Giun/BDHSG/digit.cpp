@@ -100,6 +100,5 @@ int main(){
     cin >> x >> a >> b;
     inp();
     if(x <= mxx) case_dp();
-    else case_bruce(); 
-    cerr << clock();
+    else case_bruce();
 }
