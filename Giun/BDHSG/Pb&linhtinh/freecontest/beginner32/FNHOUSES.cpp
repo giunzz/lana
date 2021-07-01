@@ -37,5 +37,5 @@ int main(){
     lp(x, 1, m) lp(y, 1, n) 
         if(a[x][y]) total += numpairs(x, y);
         else more = max(more, numpairs(x, y));
-    cout << total / 2 + more;
+    cout << total / 2 + more << '\n';
 }

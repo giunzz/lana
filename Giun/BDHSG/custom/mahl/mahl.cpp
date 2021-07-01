@@ -6,7 +6,7 @@
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
 #define EACHCASE lpd(cs, read(), 1)
-#define Fname "pb"
+#define Fname "mahl"
 using namespace std;
 
 template <typename T> inline void Read(T &x){
@@ -70,9 +70,9 @@ void sol(){
 
 int main(){
     giuncute();
-    #ifndef ONLINE_JUDGE
-    OF();
-    #endif
+    // #ifndef ONLINE_JUDGE
+    // OF();
+    // #endif
     init();
     // cerr << '1';
     EACHCASE sol();

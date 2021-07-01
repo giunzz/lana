@@ -34,21 +34,20 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-cll mxn = 1e5;
+cll mxn = 1e5 + 7; 
 ll a[mxn], l[mxn] = {0}, r[mxn] = {0}, n, ma = 1;
 
 int main(){
     giuncute();
-    #ifndef ONLINE_JUDGE
-    OF();
-    #endif
+    // #ifndef ONLINE_JUDGE
+    // OF();
+    // #endif
     cin >> n;
     lp(i, 1, n){cin >> a[i]; l[i] = __gcd(l[i - 1], a[i]);}
     lpd(i, n, 1) r[i] = __gcd(r[i + 1], a[i]);
     lp(i, 1, n){
-        // ll tmp = __gcd(l[i - 1], r[i + 1]);
-        // if(a[i] % tmp) ma = max(ma, tmp);
-        ma = max(ma, __gcd(l[i - 1], r[i + 1]));
+        ll tmp = __gcd(l[i - 1], r[i + 1]);
+        if(a[i] % tmp) ma = max(ma, tmp);
     }
     cout << ma;
 }
