@@ -1,0 +1,16 @@
+Thuận toán Prim 
+ * ý tưởng
+- Dựng cây T từ đồ thị G có n đỉnh 
+- Bắt đầu từ cây T gồm mojt đỉnh bất kì , ta tiến hành tìm các đỉnh kế với các đỉnh T có trọng sso cạnh nhỏ nhẩ để nạp vào T.
+- Lặp lại cho đếm khi T đủ n đỉnh
+
+  * Thuận toán 
+- b1: Khởi tạo L[i] = oo với mọi x 
+- b2: L[1] = 0 (nhãn đỉnh 1 = 0 ) kc[i] = 0.
+- b3: với mọi đỉnh i kề đỉnh 1
+	+ li = G[i][1] , kc[i] = 1 ;
+	+ T = {1};
+- b4: Lặp lại cho đến khi T đủ n đỉnh 
+	+ Tìm u là đỉnh có nhãn nhỏ nhất 
+	+ T = T + {u}
+	+ Với mọi v kề dỉnh u nếu G[u][v] < L[v] và v không thộc T thì gán nhãn L[v] = G[u][v] và kc[v] = 

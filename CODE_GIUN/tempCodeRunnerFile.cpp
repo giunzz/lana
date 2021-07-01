@@ -1,1 +1,5 @@
- // gan phan don vi vao
+if (check(a) == true)
+        {
+            ans = -1;
+            break;
+        }
