@@ -1,10 +1,7 @@
-#include <cmath>
-#include<cstido>
-#include<iostream>
-#include <algorithm>
-using mamespace;
+#include<bits/stdc++.h>
+using mamespace std;
 int a,b,c,d;
- int main(){
+int main(){
      cin>>a,b;
      cin>>c,d;
      if (b<d){
