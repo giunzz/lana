@@ -34,31 +34,19 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-cll mxn = 2e5 + 7;
-set<pp(ll, ll)> bst;
-set<pp(ll, ll)>::iterator it;
-ll a, b, tot = 0;
-pp(ll, ll) q[mxn];
-map<ll, map<ll, ll>> mp;
+// key = b, prior = a   
+
+struct Node{
+    ll key, prior, id;
+    Node(ll _key, ll _prior, ll _id) : key(_key), prior(_prior), id(_id){}
+};
+
+Node 
 
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    EACHCASE{
-        char c;
-        cin >> c;
-        if(c == 'D'){
-            cin >> a >> b;
-            bst.insert({b, a});
-            q[++tot] = {b, a};
-            mp[b][a] = tot;
-        } else{
-            cin >> a;
-            it = bst.upper_bound(q[a]);
-            if(it == bst.end()) cout << "NE\n";
-            else cout << mp[(*it).first][(*it).second] << '\n';
-        }
-    }
+    
 }
