@@ -34,19 +34,70 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-// key = b, prior = a   
+// key = b, prior = a, heap giam
 
 struct Node{
     ll key, prior, id;
-    Node(ll _key, ll _prior, ll _id) : key(_key), prior(_prior), id(_id){}
+    Node *left = nullptr, *right = nullptr, *par = nullptr;
+    Node(ll _key, ll _prior, ll _id, Node *_par) : key(_key), prior(_prior), id(_id), par(_par){}
 };
 
-Node 
+cll mxn = 2e5 + 7;
+Node *p[mxn];
+
+#define upd_par x -> par = par_node, node -> par = x
+
+Node *rot_right(Node *node){
+    Node *x = node -> left, *t = x -> right, *par_node = node -> par;
+    x -> right = node;
+    node -> left = t;
+    upd_par;
+    if(t != nullptr) t -> par = node;
+    return x;
+}
+
+Node *rot_left(Node *node){
+    Node *x = node -> right, *t = x -> left, *par_node = node -> par;
+    x -> left = node;
+    node -> right = t;
+    upd_par;
+    if(t != nullptr) t -> par = node;
+    return x;
+}
+
+Node *insert(Node *root, ll key, ll prior, ll id, Node *par){
+    if(!root) return p[id] = new Node(key, prior, id, par);
+    if(key <= root -> key){
+        root -> left = insert(root -> left, key, prior, id, root);
+        if(root -> prior < root -> left -> prior)
+            root = rot_right(root);
+    } else{
+        root -> right = insert(root -> right, key, prior, id, root);
+        if(root -> prior <= root -> right -> prior)
+            root = rot_left(root);
+    }
+    return root;
+}
 
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    
+    char c;
+    ll a, b, tot = 0;
+    Node *root = nullptr, *tmp = nullptr;
+    EACHCASE{
+        cin >> c;
+        if(c == 'D'){
+            cin >> a >> b;
+            root = insert(root, b, a, ++tot, nullptr);
+        } else{
+            cin >> a;
+            tmp = p[a] -> par;
+            while(tmp != nullptr && tmp -> key < p[a] -> key) tmp = tmp -> par;
+            if(tmp == nullptr) cout << "NE\n";
+            else cout << tmp -> id << '\n';
+        }
+    }
 }
