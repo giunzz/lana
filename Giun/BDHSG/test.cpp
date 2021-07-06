@@ -34,10 +34,15 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+cll N = 5e5;
+ll l[N + 3][18] = {{0}}, r[N + 3][18] = {{0}};
+
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    while(1){}
+    lp(i, 1, N) lp(j, 1, 15) if(j <= i) l[i][j] = l[i][j - 1] + (__gcd(i - j, i) == 1);
+    lpd(i, N, 1) lp(j, 1, 15) if(j <= i) r[i][j] = r[i][j - 1] + (__gcd(i + j, i) == 1);
+    lp(i, 1, N) lp(j, 0, 15) if(l[i][j] + r[i][15 - j] != 15) cerr << i - j << ' ' << i << ' ' << i + 15 - j << ' ' << j << '\n';  
 }

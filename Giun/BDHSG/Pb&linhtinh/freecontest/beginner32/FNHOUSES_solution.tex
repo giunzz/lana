@@ -1,7 +1,7 @@
 \documentclass[12pt,a4paper,oneside]{article}
 
 \usepackage[utf8]{vietnam}
-\usepackage[vietnamese]{babel}
+\usepackage[english]{babel}
 \usepackage{freecontest}
 
 \header{\LARGE Beginner Free Contest 32}
@@ -10,10 +10,11 @@
 
 \problemtitle{FNHOUSES}
 
-Bài này có 1 cách giải đơn giản đó là với mỗi ô đất, nếu ô đất đó có nhà trên đấy thì mình sẽ tăng biến $count$ với những ô có nhà và chung góc hoặc cạnh với nó, ngược lại mình sẽ lấy $max$ ô trống nào có nhiều ô chung cạnh hoặc chung góc và có nhà trên đó nhiều nhất.
+Xét mỗi ô đất, nếu ô đất đó có nhà trên đấy thì mình sẽ tăng biến $count$ với những ô có nhà và chung góc hoặc cạnh với nó, ngược lại mình sẽ lấy $max$ ô trống nào có nhiều ô chung cạnh hoặc chung góc và có nhà trên đó nhiều nhất.
 
 Kết quả bài này sẽ là $\frac{count}{2} + max$.
 
 Độ phức tạp: $O(M * N * const)$.
 
 \end{document}
+
