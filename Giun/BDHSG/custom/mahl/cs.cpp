@@ -17,7 +17,7 @@
 using namespace std;
 cll MOD = 1e9 + 7;
 const double esf = 1e-9;
-const string tenfile = "f";
+const string tenfile = "pb";
 #define file freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 ofstream co;
@@ -53,8 +53,8 @@ int main(){
     ni = name + ".inp";
     na = name + ".ans";
     nb = name + "_bruce";
-    lp(i, 1, 100){
-        Sinh();
+    lp(i, 1, 1){
+        // Sinh();
         cham();
     }
     cout << "ac: " << ac << "/" << cs;
