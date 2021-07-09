@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <windows.h>
 #define ll long long
 #define cll const ll
 #define lp(a, b, c) for(ll a = b; a <= c; ++a)
@@ -34,15 +35,33 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-cll N = 5e5;
-ll l[N + 3][18] = {{0}}, r[N + 3][18] = {{0}};
+mt19937 rng(rand());
+const string gach = "--------------------------------------", state[] = {"Bua", "Bao", "Keo"};
+bool win[3][3];
+char ckey;
+ll bot, key;
+
+ll randll(ll a, ll b){
+    return uniform_int_distribution<ll>(a, b)(rng);
+}
 
 int main(){
-    giuncute();
-    #ifndef ONLINE_JUDGE
-    OF();
-    #endif
-    lp(i, 1, N) lp(j, 1, 15) if(j <= i) l[i][j] = l[i][j - 1] + (__gcd(i - j, i) == 1);
-    lpd(i, N, 1) lp(j, 1, 15) if(j <= i) r[i][j] = r[i][j - 1] + (__gcd(i + j, i) == 1);
-    lp(i, 1, N) lp(j, 0, 15) if(l[i][j] + r[i][15 - j] != 15) cerr << i - j << ' ' << i << ' ' << i + 15 - j << ' ' << j << '\n';  
+    win[0][2] = win[1][0] = win[2][1] = 1;
+    while(true){
+        system("cls");
+        cout << "BAO TIENG XUM\n" << gach << endl;
+        lp(i, 0, 2) cout << i << ". " << state[i] << endl;
+        cout << "q. Exit\n" << gach << endl;
+        bot = randll(0, 2);
+        cout << "Chon so phan cuoc doi: ";
+        ckey = __getch();
+        if(ckey == 'q') break;
+        key = ckey - '0';
+        cout << "Da chon: " << state[key] << '\n';
+        cout << "Bot chon: " << state[bot] << '\n';
+        if(key == bot) cout << "Cuoc doi xem chet!";
+        else if(win[key]) cout << "Cuoc doi no hoa!!!!";
+        else cout << "Cuoc song be tat.";
+        Sleep(5000);
+    }
 }
