@@ -54,7 +54,7 @@ int main(){
         cout << "q. Exit\n" << gach << endl;
         bot = randll(0, 2);
         cout << "Chon so phan cuoc doi: ";
-        ckey = __getch();
+        ckey = getch();
         if(ckey == 'q') break;
         key = ckey - '0';
         cout << "Da chon: " << state[key] << '\n';
