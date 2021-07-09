@@ -26,7 +26,7 @@ int main()
     for (int i = 1 ; i <= n ; i++)
     {
         for (int j = 1 ; j < i ; j++)
-            if (a[j].y < a[i].x ) f[i] = max(f[i],f[j]);
+            if (a[j].y <= a[i].x ) f[i] = max(f[i],f[j]);
         f[i] += (a[i].y-a[i].x);
         ans = max (ans,f[i]);
     }
