@@ -50,6 +50,12 @@ ll lca(ll u, ll v){
     return p[u];
 }
 
+ll tot_dis(vec(ll) du){
+    ll lu = du[0];
+    lp(i, 1, du.size() - 1) lu = lca(lu, du[i]);
+
+}
+
 void sol_sub3(){
     ll u, ans = 0, tot, uu, tott, uuu, tmp;
     p[1] = -1;
