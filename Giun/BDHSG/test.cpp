@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #include <windows.h>
+#include <conio.h>
 #define ll long long
 #define cll const ll
 #define lp(a, b, c) for(ll a = b; a <= c; ++a)
@@ -35,7 +36,7 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-mt19937 rng(rand());
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 const string gach = "--------------------------------------", state[] = {"Bua", "Bao", "Keo"};
 bool win[3][3];
 char ckey;
@@ -50,18 +51,23 @@ int main(){
     while(true){
         system("cls");
         cout << "BAO TIENG XUM\n" << gach << endl;
-        lp(i, 0, 2) cout << i << ". " << state[i] << endl;
+        lp(i, 0, 2) cout << i+1 << ". " << state[i] << endl;
         cout << "q. Exit\n" << gach << endl;
         bot = randll(0, 2);
         cout << "Chon so phan cuoc doi: ";
         ckey = getch();
-        if(ckey == 'q') break;
+        fclose(stdin);
+        if(ckey == 'q'){
+            cout << "Exit";
+            break;
+        }
+        if(--ckey < '0' || ckey > '2') continue;
         key = ckey - '0';
-        cout << "Da chon: " << state[key] << '\n';
+        cout << state[key] << '\n';
         cout << "Bot chon: " << state[bot] << '\n';
-        if(key == bot) cout << "Cuoc doi xem chet!";
-        else if(win[key]) cout << "Cuoc doi no hoa!!!!";
-        else cout << "Cuoc song be tat.";
+        if(key == bot) cout << "Hoa roiii!";
+        else if(win[key][bot]) cout << "Chien thang!!!!";
+        else cout << "Thua cuoc.";
         Sleep(5000);
     }
 }
