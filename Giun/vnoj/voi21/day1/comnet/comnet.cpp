@@ -11,6 +11,7 @@ using namespace std;
 cll mxn = 1e3 + 3;
 ll n, k, a, b, dis[mxn][mxn] = {{0}}, p[mxn] = {0}, dp[mxn][mxn] = {{0}}, high[mxn];
 vec(ll) g[mxn];
+bool done[5];
 
 void dfs3(ll u){
     ll uu = p[u];
@@ -50,17 +51,31 @@ ll lca(ll u, ll v){
     return p[u];
 }
 
-ll tot_dis(vec(ll) du){
-    ll lu = du[0];
-    lp(i, 1, du.size() - 1) lu = lca(lu, du[i]);
+inline bool cmp(ll &a, ll &b){
+    return high[a] > high[b];
+}
 
+bool tot_dis(vec(ll) du){
+    ll lu = du[0], res = 0;
+    lp(i, 1, du.size() - 1) lu = lca(lu, du[i]);
+    lp(i, 0, du.size() - 1) done[i] = 0, res += dis[lu][du[i]];
+    sort(du.begin(), du.end(), cmp);
+    lp(i, 0, du.size() - 1){
+        if(done[i]) continue;
+        done[i] = 1;
+        lp(j, i + 1, du.size() - 1){
+            if(done[j]) continue;
+            if(dis[du[i]][du[j]]) done[j] = 1, res -= dis[lu][du[j]];
+        }
+    }
+    return a <= res && res <= b;
 }
 
 void sol_sub3(){
     ll u, ans = 0, tot, uu, tott, uuu, tmp;
     p[1] = -1;
     dfs3(1);
-    if(k == 2){
+    /*if(k == 2){
         lp(i, 1, n) lp(j, i + 1, n){
             u = lca(i, j);
             if(u == i || u == j){
@@ -103,7 +118,10 @@ void sol_sub3(){
                 }
             }
         }
-    }
+    }*/
+    if(k == 2) lp(i, 1, n) lp(j, i + 1, n) ans += tot_dis({i, j});
+    else if(k == 3) lp(i, 1, n) lp(j, i + 1, n) lp(k, j + 1, n) ans += tot_dis({i, j, k});
+    else lp(i, 1, n) lp(j, i + 1, n) lp(k, j + 1, n) lp(l, k + 1, n) ans += tot_dis({i, j, k, l});
     cout << ans;
 }
 
