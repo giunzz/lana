@@ -68,6 +68,8 @@ bool tot_dis(vec(ll) du){
             if(dis[du[i]][du[j]]) done[j] = 1, res -= dis[lu][du[j]];
         }
     }
+    for(ll u : du) cerr << u << ' ';
+    cerr << res << '\n';
     return a <= res && res <= b;
 }
 
