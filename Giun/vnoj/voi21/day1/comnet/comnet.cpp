@@ -55,72 +55,31 @@ inline bool cmp(ll &a, ll &b){
     return high[a] > high[b];
 }
 
+bool ok;
+
 bool tot_dis(vec(ll) du){
-    ll lu = du[0], res = 0;
-    lp(i, 1, du.size() - 1) lu = lca(lu, du[i]);
-    lp(i, 0, du.size() - 1) done[i] = 0, res += dis[lu][du[i]];
     sort(du.begin(), du.end(), cmp);
-    lp(i, 0, du.size() - 1){
-        if(done[i]) continue;
-        done[i] = 1;
-        lp(j, i + 1, du.size() - 1){
-            if(done[j]) continue;
-            if(dis[du[i]][du[j]]) done[j] = 1, res -= dis[lu][du[j]];
+    ll lu = lca(du[0], du[1]), res = dis[lu][du[0]] + dis[lu][du[1]], tmplca;
+    lp(i, 2, du.size() - 1){
+        tmplca = lca(lu, du[i]);
+        if(lu != tmplca){
+            res += dis[lu][tmplca] + dis[du[i]][tmplca];
+            lu = tmplca;
+        } else{
+            ok = 1;
+            lp(j, 0, i - 1) if(dis[du[i]][du[j]]){ok = 0; break;}
+            if(ok) res += dis[lu][du[i]];
         }
     }
-    for(ll u : du) cerr << u << ' ';
-    cerr << res << '\n';
+    //for(ll u : du) cerr << u << ' ';
+    //cerr << res << '\n';
     return a <= res && res <= b;
 }
 
 void sol_sub3(){
-    ll u, ans = 0, tot, uu, tott, uuu, tmp;
+    ll u, ans = 0;
     p[1] = -1;
     dfs3(1);
-    /*if(k == 2){
-        lp(i, 1, n) lp(j, i + 1, n){
-            u = lca(i, j);
-            if(u == i || u == j){
-                if(a <= dis[i][j] && dis[i][j] <= b){
-                    //cerr <<i << ' ' << j << '\n';
-                    ++ans;
-                }
-            } else if(a <= dis[u][i] + dis[u][j] && dis[u][i] + dis[u][j] <= b){ ++ans;}
-        }
-    } else if(k == 3){
-        cout << "14";
-        return;
-        lp(i, 1, n) lp(j, i + 1, n){
-            u = lca(i, j);
-            if(u == i || u == j) tot = dis[i][j];
-            else tot = dis[u][i] + dis[u][j];
-            lp(k, j + 1, n){
-                uu = lca(u, k);
-                if(uu == u || uu == k){
-                    tmp = lca(i, k);
-
-                    if(a <= tot + dis[u][k] && tot + dis[u][k] <= b) ++ans;
-                } else if(a <= tot + dis[u][uu] + dis[k][uu] && tot + dis[u][uu] + dis[k][uu] <= b) ++ans;
-            }
-        }
-    } else{
-        lp(i, 1, n) lp(j, i + 1, n){
-            u = lca(i, j);
-            if(u == i || u == j) tot = dis[i][j];
-            else tot = dis[u][i] + dis[u][j];
-            lp(k, j + 1, n){
-                uu = lca(u, k);
-                if(uu == u || uu == k) tott = tot + dis[u][k];
-                else tott = tot + dis[uu][u] + dis[uu][k];
-                lp(l, k + 1, n){
-                    uuu = lca(uu, l);
-                    if(uuu == uu || uuu == l){
-                        if(a <= tott + dis[uu][l] && tot + dis[uu][l] <= b) ++ans;
-                    }  else if(a <= tott + dis[uuu][uu] + dis[uuu][l] && tott + dis[uuu][uu] + dis[uuu][l] <= b) ++ans;
-                }
-            }
-        }
-    }*/
     if(k == 2) lp(i, 1, n) lp(j, i + 1, n) ans += tot_dis({i, j});
     else if(k == 3) lp(i, 1, n) lp(j, i + 1, n) lp(k, j + 1, n) ans += tot_dis({i, j, k});
     else lp(i, 1, n) lp(j, i + 1, n) lp(k, j + 1, n) lp(l, k + 1, n) ans += tot_dis({i, j, k, l});
