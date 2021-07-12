@@ -67,8 +67,12 @@ bool tot_dis(vec(ll) du){
             lu = tmplca;
         } else{
             ok = 1;
-            lp(j, 0, i - 1) if(dis[du[i]][du[j]]){ok = 0; break;}
-            if(ok) res += dis[lu][du[i]];
+            lp(j, 0, i - 1){
+                if(dis[du[i]][du[j]]){ok = 0; break;}
+                ll tmp = lca(du[i], du[j]);
+                if(high[tmp] > high[tmplca]) tmplca = tmp;
+            }
+            if(ok) res += dis[tmplca][du[i]];
         }
     }
     //for(ll u : du) cerr << u << ' ';

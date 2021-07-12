@@ -6,7 +6,7 @@
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
 #define EACHCASE lpd(cs, read(), 1)
-#define Fname "f"
+#define Fname "bdxau"
 using namespace std;
 
 template <typename T> inline void Read(T &x){
@@ -34,10 +34,20 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+string s, t;
+vec(vec(ll)) dp;
+
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    int a[] = {1, 4, 5, 7 , 8, 10};
+    cin >> s >> t;
+    s = '.' + s, t = '.' + t;
+    dp.assign(s.size(), vec(ll)(t.size()));
+    lp(i, 0, s.size() - 1) dp[i][0] = i;
+    lp(i, 0, t.size() - 1) dp[0][i] = i;
+    lp(i, 1, s.size() - 1) lp(j, 1, t.size() - 1)
+        dp[i][j] = min({dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + (s[i] != t[j])});
+    cout << dp[s.size() - 1][t.size() - 1];
 }

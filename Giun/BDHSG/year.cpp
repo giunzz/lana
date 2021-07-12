@@ -6,7 +6,7 @@
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
 #define EACHCASE lpd(cs, read(), 1)
-#define Fname "f"
+#define Fname "year"
 using namespace std;
 
 template <typename T> inline void Read(T &x){
@@ -34,10 +34,39 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+cll mxn = 1e3 + 6;
+ll n;
+string num[mxn];
+
+void prc(string &a, string b){
+    string tmp, res = "";
+    lp(i, 0, 3){
+        tmp = a;
+        lpd(j, '9', '0'){
+            if(!i && j == '0') continue;
+            tmp[i] = j;
+            if(tmp <= b){
+                res = max(tmp, res);
+            }
+        }
+    }
+    a = res;
+}
+
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    int a[] = {1, 4, 5, 7 , 8, 10};
+    cin >> n;
+    lp(i, 1, n) cin >> num[i];
+    num[n + 1] = "2011";
+    lpd(i, n, 1){
+        prc(num[i], num[i + 1]);
+        if(num[i] == ""){
+            cout << "-1";
+            return 0;
+        }
+    }
+    lp(i, 1, n) cout << num[i] << '\n';
 }
