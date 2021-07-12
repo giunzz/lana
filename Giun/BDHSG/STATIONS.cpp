@@ -49,9 +49,11 @@ inline ll Find(ll val, ll r){
 
 bool check(ll d){
     vec(ll) dp(n + 1, 0), trace(n + 1, 0);
+    ll j = 0;
     lp(i, 1, n){
-        ll last = a[i] - d * 2 - 1, pos = Find(max(last, 0LL), i - 1);
-        dp[i] = dp[pos] + 1, trace[i] = pos;
+        ll last = max(a[i] - d * 2 - 1, 0LL);// pos = Find(max(last, 0LL), i - 1);
+        while(a[j + 1] <= last) ++j;
+        dp[i] = dp[j] + 1, trace[i] = j;
     }
     if(dp[n] > 3) return 0;
     ll le = n;
