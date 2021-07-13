@@ -25,8 +25,8 @@ inline bool check (ll a[maxn])
 int main()
 {
     giuncute;
-    freopen("giun.inp" , "r",stdin);
-    freopen("giun.out", "w" ,stdout);
+    freopen("kenre.inp" , "r",stdin);
+    freopen("kenre.out", "w" ,stdout);
     cin >> n ;
     for (int i = 1 ; i <= 2*n ; i++)  cin >> a[i] , b[i] = a[i];
     sort(b + 1 , b + 1 + 2*n);

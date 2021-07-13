@@ -28,7 +28,6 @@ void prim ()
             q.push(v) ;
             trace[v.second] = u;
         }
-        cerr << endl;
     }
     cout << res.size()-1 << " " << ans << endl;
     for (int i = 1 ; i < res.size() ; i++) cout << res[i].second << " " << res[i].first << endl;
@@ -37,8 +36,8 @@ void prim ()
 int main()
 {
     giuncute;
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
+    freopen("city.inp","r",stdin);
+    freopen("city.out","w",stdout);
     cin >> n >> m ; 
     for (int i = 1 ; i <= m ; i++)
     {
