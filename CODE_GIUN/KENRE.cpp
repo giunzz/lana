@@ -2,25 +2,19 @@
 #define ll long long
 #define giuncute ios_base::sync_with_stdio(0),cin.tie(0);
 const ll maxn = 3e3 +  7;
-ll n , a[maxn] , ans = 0 , b[maxn];
+ll n , a[maxn] , ans = 0 , b[maxn] , c[maxn];
 using namespace std;
-inline bool check_day(ll a[maxn])
+inline bool check_day(ll x[maxn])
 {
     for (int i = 1 ; i < 2*n ; i++)
-        if (a[i] > a[i+1]) return false;
+        if (x[i] > x[i+1]) return false;
     return true;
 }
-inline bool check (ll a[maxn])
+inline bool check (ll x[maxn])
 {
-    ll k = 0 , c = 0 ;
     for (int i = 1 ; i <= 2*n ; i++) 
-    {
-        if (a[i] == b[i]) k++;
-        else c = max(k,c) , k = 0 ;
-    }
-    if (k == 2*n) return false;
-    if (c > 1) return true;
-    return false;
+        if (x[i] != b[i]) return false;
+    return true;
 }
 int main()
 {
@@ -28,9 +22,27 @@ int main()
     freopen("kenre.inp" , "r",stdin);
     freopen("kenre.out", "w" ,stdout);
     cin >> n ;
-    for (int i = 1 ; i <= 2*n ; i++)  cin >> a[i] , b[i] = a[i];
-    sort(b + 1 , b + 1 + 2*n);
-    ll k = 0;
+    for (int i = 1 ; i <= 2*n ; i++)  cin >> a[i], b[i] = a[i] , c[i] = a[i];
+    ll k = 0 , k1 = 1 , ans1 = 0 ;
+    while (check_day(c) == false)
+    {
+        ans1++;
+        if (k1 == 0)
+        {
+            for (int i = 1 ; i <= 2*n ; i += 2) swap(c[i] , c[i+1]);
+            k1 = 1;
+        }
+        else
+        {
+            for (int i = 1 ; i <= n ; i++) swap(c[i] , c[i+n]);
+            k1 = 0 ;
+        }
+        if (check(c) == true)
+        {
+            ans1 = -1;
+            break;
+        }
+    }
     while (check_day(a) == false)
     {
         ans++;
@@ -50,5 +62,5 @@ int main()
             break;
         }
     }
-    cout << ans;
+    cout << min(ans1 ,ans);
 }
