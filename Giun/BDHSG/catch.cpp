@@ -6,7 +6,7 @@
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
 #define EACHCASE lpd(cs, read(), 1)
-#define Fname "f"
+#define Fname "catch"
 using namespace std;
 
 template <typename T> inline void Read(T &x){
@@ -30,8 +30,18 @@ void giuncute(){
 }
 
 void OF(){
-    //freopen(Fname".inp", "r", stdin);
-    freopen(Fname".inp", "w", stdout);
+    freopen(Fname".inp", "r", stdin);
+    freopen(Fname".out", "w", stdout);
+}
+
+cll mxn = 2e3 + 6, dx[] = {-1, -1, -1, 0, 1, 1, 1, 0, 0}, dy[] = {1, 0, -1, -1, -1, 0, 1, 1, 0};
+ll a, b, x, y;
+string s;
+vec(ll) ans;
+
+inline bool check(){
+    lp(i, 0, 8) if(x + dx[i] == a && y + dy[i] == b) return 1;
+    return 0;
 }
 
 int main(){
@@ -39,10 +49,16 @@ int main(){
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    ll n = 1e3;
-    cout << n << ' ' << (ll)2000 << '\n';
-    lp(i, 1, 4){
-        lp(j, 1, n) cout << i * j << " ";
-        cout << '\n';
+    cin >> x >> y >> s;
+    s = '.' + s, a = b = 0;
+    if(check()) ans.push_back(0);
+    lp(i, 1, s.size() - 1){
+        if(s[i] == 'U') ++b;
+        else if(s[i] == 'D') --b;
+        else if(s[i] == 'R') ++a;
+        else --a;
+        if(check()) ans.push_back(i);
     }
+    if(ans.empty()) cout << -1;
+    else for(ll i : ans) cout << i << '\n';
 }

@@ -39,5 +39,5 @@ int main(){
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    int a[] = {1, 4, 5, 7 , 8, 10};
+
 }

@@ -30,19 +30,25 @@ void giuncute(){
 }
 
 void OF(){
-    //freopen(Fname".inp", "r", stdin);
-    freopen(Fname".inp", "w", stdout);
+    freopen(Fname".inp", "r", stdin);
+    freopen(Fname".out", "w", stdout);
 }
+
+cll mxn = 1e3 + 7, mxnn = 1e6 + 7;
+ll n, a[mxn], b[mxn], c[mxn], d[mxn], l, ans = 0, down[mxnn];
+unordered_map<ll, ll> cnt;
 
 int main(){
     giuncute();
-    #ifndef ONLINE_JUDGE
     OF();
-    #endif
-    ll n = 1e3;
-    cout << n << ' ' << (ll)2000 << '\n';
-    lp(i, 1, 4){
-        lp(j, 1, n) cout << i * j << " ";
-        cout << '\n';
-    }
+    Read(n); Read(l);
+    lp(i, 1, n) Read(a[i]);
+    lp(i, 1, n) Read(b[i]);
+    lp(i, 1, n) Read(c[i]);
+    lp(i, 1, n) Read(d[i]);
+    ll tot = 0;
+    lp(i, 1, n) lp(j, 1, n) down[++tot] = (c[i] + d[j]), ++cnt[a[i] + b[j]];
+    lp(i, 1, tot) ans += cnt[l - down[i]];
+    cout << ans;
+    cerr << clock();
 }
