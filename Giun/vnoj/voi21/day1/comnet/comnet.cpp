@@ -9,7 +9,7 @@ using namespace std;
 #define Fname "comnet"
 
 cll mxn = 1e3 + 3;
-ll n, k, a, b, dis[mxn][mxn] = {{0}}, p[mxn] = {0}, dp[mxn][mxn] = {{0}}, high[mxn];
+ll n, k, a, b, dis[mxn][mxn] = {{0}}, p[mxn] = {0}, dp[mxn][mxn] = {{0}}, high[mxn], memo[mxn][mxn];
 vec(ll) g[mxn];
 bool done[5];
 
@@ -30,7 +30,8 @@ void dfs3(ll u){
 }
 
 ll lca(ll u, ll v){
-    ll cha, cha1;
+    if(~memo[u][v]) return memo[u][v];
+    ll cha, cha1, &cur = memo[u][v], &cur1 = memo[v][u];
     if(high[u] < high[v]) swap(u, v);
     cha = u;
     while(high[cha] > high[v]){
@@ -48,7 +49,7 @@ ll lca(ll u, ll v){
         }
         u = cha, v = cha1;
     }
-    return p[u];
+    return cur = cur1 = p[u];
 }
 
 inline bool cmp(ll &a, ll &b){
@@ -95,6 +96,7 @@ int main(){
     cin.tie(0); cout.tie(0);
     freopen(Fname".inp", "r", stdin);
     freopen(Fname".out", "w", stdout);
+    memset(memo, -1, sizeof memo);
     cin >> n >> k >> a >> b;
     lp(i, 1, n - 1){
         ll u, v;
