@@ -2,7 +2,7 @@
 using namespace std; 
 const int nmax = 1e7 + 7;
 #define giuncute ios_base::sync_with_stdio(0),cin.tie(0);
-#define ballolo freopen("DEMNTO.inp","r",stdin) , freopen("DEMNTO.out","w",stdout) ; 
+#define ballolo freopen("giun.inp","r",stdin) , freopen("giun.out","w",stdout) ; 
 bool sang[nmax];
 
 void xaysang()
@@ -19,9 +19,9 @@ int main()
     ballolo;
     xaysang();
     cin >> n;
-    for (int i = 1; i <= n; i++){
-        cin >> num;
-        if (sang[num] == 0) ans++;
+    for (int i = 1; i <= 100; i++){
+        num = i;
+        if (sang[num] == 0) cerr << num << " , " , ans++;
     }
     cout << ans;
 }
