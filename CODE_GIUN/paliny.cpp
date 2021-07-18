@@ -1,7 +1,7 @@
-// HASH Onlogn
+//HASH Onlogn
 //----------------------
-// #include <bits/stdc++.h>
-// #define ll long long
+//#include <bits/stdc++.h>
+//#define ll long long
 // #define giuncute ios_base::sync_with_stdio(0),cin.tie(0);
 // const ll base = 27;
 // const ll MOD = 1e9+9;
@@ -66,14 +66,49 @@
 //     solve(1 , n/2 , 0); // 2*k
 //     cout << ans;
 // }
-//----------------------
+// ----------------------
 
 // Manacher o(n)
-
 #include <bits/stdc++.h>
 #define ll long long
 #define giuncute ios_base::sync_with_stdio(0),cin.tie(0);
-const ll base = 27;
-const ll MOD = 1e9+9;
 const ll maxn = 1e6 + 7 ;
 using namespace std;
+ll ans = 0 , odd[maxn] ={0} , even[maxn] ={0} , n ;
+string s;
+int main()
+{
+    giuncute;
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
+    cin >> n >> s;
+    ll l = 0 , r = -1;
+    // odd
+    for (int i = 0 ; i < (int) s.size() ; i++)
+    {
+        ll k = (i > r) ? 1 : min(odd[r - i + l] , r - i + 1);
+        while (0 <= i - k && i + k < s.size() && s[i - k] == s[i+k]) k ++;
+        ans = max (ans , k * 2 - 1);
+        odd[i] = k;
+        ll newl = i - k + 1 , newr = i + k - 1;
+        if (newr > r) l = newl , r = newr;
+    }
+    // even ( 2 tam (i,i-1))
+    for (int i = 0 ; i < (int) s.size() ; i++)
+    {
+        if (s[i] != s[i-1]) continue;
+        ll k = (i > r) ? 1 : min(even[r - i + l + 1] , r - i + 1);
+        while (0 <= i - k - 1 && i + k < s.size() && s[i - k - 1] == s[i + k]) k ++;
+        ans = max (ans , k * 2 ); 
+        even[i] = k;
+        ll newl = i - k  , newr = i + k - 1;
+        if (newr > r) l = newl , r = newr;
+    }
+    cout << ans;
+}
+
+
+
+
+
+
