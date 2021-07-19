@@ -30,19 +30,18 @@ void giuncute(){
 }
 
 void OF(){
-    //freopen(Fname".inp", "r", stdin);
-    freopen(Fname".inp", "w", stdout);
+    freopen(Fname".inp", "r", stdin);
+    freopen(Fname".out", "w", stdout);
 }
+
+ll l, r, k;
 
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    ll n = 1e3;
-    cout << n << ' ' << (ll)2000 << '\n';
-    lp(i, 1, 4){
-        lp(j, 1, n) cout << i * j << " ";
-        cout << '\n';
+    EACHCASE{
+
     }
 }
