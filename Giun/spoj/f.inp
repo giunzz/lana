@@ -1,3 +1,17 @@
-1
-FOOD
-MONEY
+7
+12 11
+100 1
+12 14
+15 15
+15 13
+20 5
+1 100
+
+dp[i] = min{dp[j] +  rec[j + 1].w * rec[i].h} vs j < i
+
+b = dp[j], a = rec[j + 1].w
+
+y = a * x + b
+
+a' * x + b' = a * x + b
+x = (b - b') / (a' - a) = (b' - b) / (a - a') <= val
