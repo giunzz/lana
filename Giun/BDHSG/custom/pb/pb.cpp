@@ -5,7 +5,6 @@
 #define lpd(a, b, c) for(ll a = b; a >= c; --a)
 #define vec(a) vector<a>
 #define pp(a, b) pair<a, b>
-#define EACHCASE lpd(cs, read(), 1)
 #define Fname "pb"
 using namespace std;
 
@@ -23,6 +22,7 @@ ll read(){
     cin >> tmp;
     return tmp;
 }
+#define EACHCASE lpd(cs, read(), 1)
 
 void giuncute(){
     ios_base::sync_with_stdio(0);
