@@ -19,7 +19,7 @@ bool check(ll x , vector<ll> y)
 
 void quaylui (ll vt )
 {
-    if (vt == n + 1) 
+    if (vt == n + 1)         
     {
         vector<ll> tmp;
         for (int i = 1 ; i <= n ; i++)
