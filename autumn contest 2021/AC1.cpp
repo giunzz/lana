@@ -29,8 +29,8 @@ void quaylui(ll vt)
 int main()
 {
     giuncute;
-    freopen("giun.inp" , "r",stdin);
-    freopen("giun.out", "w" ,stdout);
+    freopen("ac1.inp" ,"r",stdin);
+    freopen("ac1.out", "w" ,stdout);
     cin >> t;
     while (t --)
     {
@@ -49,12 +49,13 @@ int main()
         {
             for (int j = 0 ; j < b.size() ; j++)
             {
-                if (d1[j] == 1) continue;
-                if (b[j] == c[i]) s += b[j] , d1[j] = 1;
+                if (d1[j] == 1 ) continue;
+                if (b[j] == c[i] && a[j] != b[j]) s += b[j] , d1[j] = 1;
             }
         }
         for (int i = 0 ; i < c.size() ; i++) x[i] = 0;
         ok = 0;
+        cerr << s << endl;
         if (s == "") cout << "NO" << endl;
         else 
         {
