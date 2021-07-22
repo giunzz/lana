@@ -48,14 +48,21 @@ ll pt(ll x){
     return a * x * x + b * x + c;
 }
 
+pp(ll, ll) inter(pp(ll, ll) &l1, pp(ll, ll) &l2){
+    pp(ll, ll) frac = {l1.second - l2.second, l2.first - l1.first};
+    if(frac.second < 0) frac.first = -frac.first, frac.second = -frac.second;
+    return frac;
+}
+
 void push_line(pp(ll, ll) line){
     if(convex.size() < 2) convex.push_back(line);
     else{
         while(convex.size() > 1){
-            pp(ll, ll) line1 = convex[convex.size() - 2], line2 = convex.back();
-            if(line1.first - line2.first <= )
-        }
-
+            pp(ll, ll) line1 = convex[convex.size() - 2], line2 = convex.back(), in12 = inter(line1, line2), in13 = inter(line1, line);
+            if(in12.first * in13.second >= in13.first * in12.second) convex.pop_back();
+            else break;
+        } 
+        convex.push_back(line);
     }
 }
 
@@ -64,11 +71,14 @@ void sol(){
     dp[1] = pt(sum[1]);
     convex.push_back({-2 * a * sum[1], dp[1] + a * sum[1] * sum[1] - b * sum[1]});
     lp(i, 2, n){
-        while(j + 1 < convex.size() && convex[j].first - convex[j + 1].first <= sum[i] * (convex[j + 1].second - convex[j].second))
+        while(j + 1 < convex.size() && convex[j].second - convex[j + 1].second <= sum[i] * (convex[j + 1].first - convex[j].first))
             ++j;
         dp[i] = pt(sum[i]) + convex[j].first * sum[i] + convex[j].second;
         push_line({-2 * a * sum[i], dp[i] + a * sum[i] * sum[i] - b * sum[i]});
+        j = min(convex.size() - 1LL, j);
     }
+    for(auto i : convex) cerr << i.first << ' ' << i.second << '\n';
+    cout << dp[n] << '\n';
 }
 
 int main(){
@@ -77,4 +87,4 @@ int main(){
     OF();
     #endif
     EACHCASE{input(); sol();}
-}
+} 

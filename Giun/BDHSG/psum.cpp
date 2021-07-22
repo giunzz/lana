@@ -9,18 +9,6 @@
 #define Fname "f"
 using namespace std;
 
-/**
- * dp[mask][i] la so phep bien doi it nhat de di qua dc cac dinh trong mask va ket thuc tai i
- * for tung trang thai trong mask vs vi tri se dung trc i nen status[j][i] = 'Y' va status[i][j] = 'N'
-*/
-
-class OrderOfTheHats{
-public:
-    int minChanged(vector <string> spellChart){
-
-    }
-};
-
 template <typename T> inline void Read(T &x){
     x = 0; char c;
     while(!isdigit(c = getchar()));
@@ -46,10 +34,28 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+cll mxn = 1e3 + 7;
+ll x, n, dp[mxn][40] = {0}, p[40] = {0}, mx;
+
+ll Pow(ll u, ll p){
+    ll res = 1;
+    lp(i, 1, p) res *= u;
+    return res;
+}
+
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-
+    cin >> x >> n;
+    lp(i, 1, 39) if((p[i] = Pow(i, n)) > x){mx = i - 1; break;}
+    dp[0][0] = 1;
+    lp(i, 1, x) lp(j, 1, mx){
+        if(p[j] > i) break;
+        lp(k, 0, j - 1) dp[i][j] += dp[i - p[j]][k];
+    }
+    ll ans = 0;
+    lp(i, 0, mx) ans += dp[x][i];
+    cout << ans; 
 }
