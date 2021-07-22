@@ -73,12 +73,19 @@ void sol(){
     lp(i, 2, n){
         while(j + 1 < convex.size() && convex[j].second - convex[j + 1].second <= sum[i] * (convex[j + 1].first - convex[j].first))
             ++j;
-        dp[i] = pt(sum[i]) + convex[j].first * sum[i] + convex[j].second;
+        dp[i] = max(pt(sum[i]) + convex[j].first * sum[i] + convex[j].second, pt(sum[i]));
         push_line({-2 * a * sum[i], dp[i] + a * sum[i] * sum[i] - b * sum[i]});
         j = min(convex.size() - 1LL, j);
     }
-    for(auto i : convex) cerr << i.first << ' ' << i.second << '\n';
+    // for(auto i : convex) cerr << i.first << ' ' << i.second << '\n';
     cout << dp[n] << '\n';
+}
+
+void bruce(){
+    vec(ll) dp1(n + 2, 0);
+    dp1[1] = pt(sum[1]);
+    lp(i, 2, n) lp(j, 1, i - 1) dp1[i] = max(dp1[i], dp1[j] + pt(sum[i] - sum[j]));
+    lp(i, 1, n) cerr << dp1[i] << ' ';
 }
 
 int main(){
