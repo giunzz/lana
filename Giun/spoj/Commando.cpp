@@ -75,7 +75,7 @@ void sol(){
             ++j;
         dp[i] = max(pt(sum[i]) + convex[j].first * sum[i] + convex[j].second, pt(sum[i]));
         push_line({-2 * a * sum[i], dp[i] + a * sum[i] * sum[i] - b * sum[i]});
-        j = min(convex.size() - 1LL, j);
+        j = min((ll)convex.size() - 1LL, j);
     }
     // for(auto i : convex) cerr << i.first << ' ' << i.second << '\n';
     cout << dp[n] << '\n';
