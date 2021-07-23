@@ -1,11 +1,10 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 int n , k ,  total = 0 , s1 , s2;
 vector <int> x(30);
 vector <int> v(30);
-bool check = false;
+int  check = 0;
 
 void write() {
 	s1 = k , s2 = 0;
@@ -13,7 +12,7 @@ void write() {
 		if (x[j] == 1) s1 += v[j];
 		else if (x[j] == 2) s2 += v[j];
 	}
-	if (s1 == s2) check = true;
+	if (s1 == s2) check++;
 }
 
 int giuncute(int i) {
@@ -25,17 +24,18 @@ int giuncute(int i) {
 	return 0;
 }
 
-int main(){
+int main()
+{
 	ios::sync_with_stdio(0); cin.tie(NULL);
-	freopen("cank.inp","r",stdin);
-	freopen("cank.out","w",stdout);
+	freopen("giun.inp","r",stdin);
+	freopen("giun.out","w",stdout);
 	cin >> n >> k;
 	for (int i = 1 ; i <= n ; i++){
 		cin >> v[i];
 		total += v[i];
 	}
 	giuncute(1);
-	if (check == false) cout << "NO";
-	else cout << "YES";
+	if (check == 0) cout << -1;
+	else cout << check;
 	return 0;
 }
