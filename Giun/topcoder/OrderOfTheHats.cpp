@@ -31,12 +31,11 @@ private:
         cur = 1e9;
         vec(ll) bi, bo;
         lp(i, 0, n - 1) if((nmask >> i) & 1) bi.push_back(i); else if(i != pos) bo.push_back(i);
-        // if(mask == ((1 << n) - 1) && pos == 2) for(ll i : bi) cerr << i << ' ';
         ll tmp;
         for(ll &i : bi){
             tmp = (a[i][pos] != 'Y') + (a[pos][i] != 'N');
             // if(mask == ((1 << n) - 1) && pos == 2) cerr << tmp << ' ' << i << '\n';
-            for(ll &j : bo) if(i != j) tmp += (a[i][j] != 'N') + (a[j][i] != 'N');
+            for(ll &j : bi) if(i != j) tmp += (a[pos][j] != 'N') + (a[j][pos] != 'N');
             cur = min(cur, sol(nmask, i) + tmp);
         } 
         return cur;
