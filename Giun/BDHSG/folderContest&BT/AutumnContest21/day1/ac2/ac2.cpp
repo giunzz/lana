@@ -9,15 +9,6 @@
 #define Fname "ac2"
 using namespace std;
 
-template <typename T> inline void Read(T &x){
-    x = 0; char c;
-    while(!isdigit(c = getchar()));
-    do
-    {
-        x = x * 10 + c - '0';
-    } while (isdigit(c = getchar()));
-}
-
 ll read(){
     ll tmp;
     cin >> tmp;
@@ -39,6 +30,7 @@ ll n, d, dp[mxn][mxn][mxn][1 << 3];
 bool a[3][mxn];
 
 void sol(){
+    // ofstream ferr(".log");
     memset(a, 0, sizeof a);
     memset(dp, 0, sizeof dp);
     cin >> n >> d;
@@ -52,6 +44,7 @@ void sol(){
         ll next_pos = max({i, j, k}) + 1;
         if(next_pos > n){ 
             if(!mask && j && k) (ans += dp[i][j][k][mask]) %= MOD;
+            // ferr << ans << ' ' << mask << ' ' << i << ' ' << j << ' ' << k << '\n';
             continue;
         }
         lp(t, 0, 2) if(a[t][next_pos]){
