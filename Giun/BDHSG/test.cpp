@@ -36,8 +36,18 @@ void OF(){
 
 int main(){
     giuncute();
-    #ifndef ONLINE_JUDGE
-    OF();
-    #endif
-    
+    // #ifndef ONLINE_JUDGE
+    // OF();
+    // #endif
+    // lp(i, 1, 8){
+    //     cerr << i << ' ';
+    //     ll sum = i * 15;
+    //     lp(j, 1, 8) if(i != j) sum += j * 20;
+    //     cerr << sum << '\n';
+    // }
+    double ans = 1;
+    lp(i, 1, 6) ans = ans * 2 + 0.5;
+    double test = 0, t = 96;
+    lp(j, 1, 1000) {t = j; lp(i, 1, 6) t = t / 2- 0.5; if(t == 1.0){cout << j << ' ' << t; break;}}
+    // cout << t;
 }
