@@ -36,8 +36,16 @@ void OF(){
 
 int main(){
     giuncute();
-    #ifndef ONLINE_JUDGE
-    OF();
-    #endif
-    
+    // #ifndef ONLINE_JUDGE
+    // OF();
+    // #endif
+    ll n, ans = 0;
+    cin >> n;
+    for(ll i = 1; i * i <= n; i++){
+        if(n % i == 0){ 
+            ++ans;
+            if(n / i != i) ++ans;
+        }
+    }
+    cout << ans;
 }
