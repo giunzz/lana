@@ -1,22 +1,18 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long 
-ll m, n;
-string a[3005][3005];
-string f[3005][3005];
+ll m, n, a[3005][3005],f[3005][3005] = {{0}};
 using namespace std;
 int main()
 {
 ios_base::sync_with_stdio(0);
     cin.tie(0);
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
-    cin >> n;
-	for (int i = 1 ; i <= n ; i++)
+    freopen("ROBOT.inp","r",stdin);
+    freopen("ROBOT.out","w",stdout);
+    cin >> m >> n;
+	for (int i = 1 ; i <= m ; i++)
 	    for (int j = 1 ; j <= n ; j++) cin >> a[i][j]; 
-    for (int i = 0 ; i <= n ; i++) f[0][i] = "";
-    for (int j = 0  ; j <= n ; j++) f[j][0] = "";
-    for (int i = 1 ; i <= n ; i++)
+    for (int i = 1 ; i <= m ; i++)
 	{
 		for (int j = 1 ; j <= n ; j++) 
         {
@@ -25,9 +21,7 @@ ios_base::sync_with_stdio(0);
             else if (j == 1) f[i][j] = f[i - 1][j];
             else f[i][j] = min(f[i - 1][j],f[i][j-1]);
             f[i][j] += a[i][j];
-            cerr << f[i][j] << " ";
         }
-        cerr << endl;
     }
-    cout << f[n][n];
+    cout << f[m][n];
 }
