@@ -88,9 +88,9 @@ ll find_path(){
 }
 
 void increase(ll c){
-    ll v = T, u;
+    ll v = T, u = T;
     while(~(u = trace[u]))
-        cost[u][v] -= c, cost[v][u] += c;
+        cost[u][v] -= c, cost[v][u] += c, v = u;
 }
 
 ll max_flow(){
