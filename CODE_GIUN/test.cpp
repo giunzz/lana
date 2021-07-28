@@ -1,30 +1,46 @@
 #include <bits/stdc++.h>
+#define ll long long
+#define giuncute ios_base::sync_with_stdio(0),cin.tie(0);
+const ll maxn = 3e3 +  7;
 using namespace std;
-const long long MOD = 1e9 + 7;
+ll n , t , x[maxn] , ok = 0;
+string a , b , c  ;
 
-int sol(int N, int K) 
+void quaylui(ll vt)
 {
-    long long dp[N+7][K+1];
-    for(int i = 1; i <= N; i++)dp[i][0] = 1;
-    for(int i = 1; i <= N; i++)
+    if (vt == a.size() + 1) 
     {
-        for(int j = 1; j <= K; j++)
+        string tmp ="";
+        for (int i = 0 ; i < (int)a.size() ; i++)
         {
-            int val = dp[i-1][j];
-            if(j >= i)
-                val = (val % MOD - dp[i-1][j-i] % MOD ) % MOD;
-            dp[i][j] = (dp[i][j-1]%MOD + val % MOD) % MOD;
+            if (x[i] == 1) tmp += a[i];
+            if (x[i] == 2) tmp += b[i];
+        }
+        if (tmp == c) ok = 1;
+        if (tmp[0] == 'N' && tmp[1] == 'Q' && tmp[2] == 'J')cerr << tmp << endl;
+    }
+    else 
+    {
+        for (int i = 0 ; i <= 2 ; i++)
+        {
+            x[vt] = i;
+            quaylui(vt + 1);
+            if (ok == 1) {break;}
         }
     }
-    int ans = dp[N][K];
-    if(K >= 1)
-        ans = (ans % MOD - dp[N][K-1]%MOD);
-    return ans;
 }
-int main() 
+
+int main()
 {
-    int N , K;
-    cin >> N >> K;
-    cout << sol(N,K) ;
-    return 0;
+    giuncute;
+    freopen("giun.inp" ,"r",stdin);
+    freopen("giun.out", "w" ,stdout);
+    cin >> t;
+    while (t --)
+    {
+        cin >> a >> b >> c;
+        quaylui(0);
+        if (ok == 0) cout << "NO" << endl;
+        else cout << "YES" << endl;
+    }
 }
