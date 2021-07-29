@@ -1,0 +1,64 @@
+\documentclass[10pt,a4paper,oneside]{article}
+
+\usepackage[utf8]{vietnam}
+\usepackage[vietnamese]{babel}
+\usepackage{freecontest}
+\usepackage{graphicx}
+
+\header{\LARGE Free Contest 129}
+
+\begin{document}
+
+\problemtitle{CIRCLE}
+
+Chú bé Tus vừa qua đã đậu được học bổng đi Nga. Tuy nhiên, không hiểu vì sao trong lớp không ai tin cậu làm được điều đó cả. Vì vậy, thầy giáo đã đố cậu $1$ bài toán sau.
+
+Cho $N$ đường tròn phân biệt cùng thuộc $1$ mặt phẳng có tâm nằm trên trục $Ox$. Đồng thời, với $2$ đường tròn bất kì chỉ có tối đa $1$ điểm chung. Hãy đếm xem có bao nhiêu vùng được chia ra từ các đường tròn.
+
+\begin{figure}[h]
+\includegraphics{cir2.png}
+\centering
+\end{figure}
+Trên đây là $1$ ví dụ hợp lệ với $4$ đường tròn đã chia mặt phẳng thành 6 vùng.
+
+Vì đang bận chuẩn bị hồ sơ du học nên Tus không kịp nghĩ bài toán trên nên Tus nhờ các bạn hãy giúp Tus.
+
+\heading{Dữ liệu}
+
+\begin{itemize}
+    \item Dòng đầu tiên gồm $1$ số nguyên dương $N$ là số lượng đường tròn $(1 \le N \le 300000)$.
+    \item $N$ dòng tiếp theo mỗi dòng chứa $2$ số nguyên $x_i$ và $r_i$ là tâm và bán kính đường tròn $(|x_i| \le 10^9, 1 \le r_i \le 10^9)$.
+\end{itemize}
+
+\heading{Kết quả}
+
+$1$ số nguyên dương duy nhất là số lượng vùng.
+
+\heading{Ví dụ}
+\begin{example}
+    \exmp{%
+2
+1 3
+2 1
+}{%
+3
+}%
+    \exmp{%
+4
+7 5
+-9 11
+11 9
+0 20
+}{%
+6
+}%
+\end{example}
+
+\heading{Subtask}
+\begin{itemize}
+    \item $40\%$ số test mỗi đường tròn chỉ có tối đa $1$ đường tròn con.
+    \item $60\%$ số test còn lại không có điều kiện thêm.
+\end{itemize}
+
+\end{document}
+
