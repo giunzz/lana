@@ -9,15 +9,6 @@
 #define Fname "f"
 using namespace std;
 
-template <typename T> inline void Read(T &x){
-    x = 0; char c;
-    while(!isdigit(c = getchar()));
-    do
-    {
-        x = x * 10 + c - '0';
-    } while (isdigit(c = getchar()));
-}
-
 ll read(){
     ll tmp;
     cin >> tmp;
@@ -31,14 +22,41 @@ void giuncute(){
 
 void OF(){
     freopen(Fname".inp", "r", stdin);
-    freopen(Fname".out", "w", stdout);
+    freopen(Fname".ans", "w", stdout);
+}
+
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+
+ll randll(ll a, ll b){
+    return uniform_int_distribution<ll>(a, b)(rng);
+}
+
+double randb(double a, double b){
+    return uniform_real_distribution<double>(a, b)(rng);
+}
+
+double sigmoid(double x){
+    return 1.0 / (1 + exp(-x));
+}
+
+void gen(ostream &cout, ll n, double threshold){
+    cout << n << '\n';
+    lp(j, 1, n) cout << (randb(0.0, 1.0) < threshold ? randll(1, 2) : randll(3, 4)) << ' ';
+}
+
+void run(){
+    ofstream f(Fname".inp");
+    gen(f, randll(2, 1e6), sigmoid(randb(-1.0, 1.0)));
+    f.close();
 }
 
 cll mxn = 1e6 + 7;
 ll n, cnt[5] = {0}, a[mxn];
 
 int main(){
+    run();
     giuncute();
+    OF();
     cin >> n;
     lp(i, 1, n) ++cnt[a[i] = read()];
 

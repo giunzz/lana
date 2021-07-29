@@ -9,15 +9,6 @@
 #define Fname "f"
 using namespace std;
 
-template <typename T> inline void Read(T &x){
-    x = 0; char c;
-    while(!isdigit(c = getchar()));
-    do
-    {
-        x = x * 10 + c - '0';
-    } while (isdigit(c = getchar()));
-}
-
 ll read(){
     ll tmp;
     cin >> tmp;
@@ -31,7 +22,7 @@ void giuncute(){
 
 void OF(){
     freopen(Fname".inp", "r", stdin);
-    freopen(Fname".out", "w", stdout);
+    freopen(Fname".ans", "w", stdout);
 }
 
 cll mxn = 1e6 + 6;
@@ -40,9 +31,7 @@ bool sang[mxn] = {0};
 
 int main(){
     giuncute();
-    #ifndef ONLINE_JUDGE
     OF();
-    #endif
     cin >> n;
     for(ll i = 2; i * i <= n; i++){
         if(!sang[i]){
