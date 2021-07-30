@@ -26,12 +26,29 @@ void OF(){
 }
 
 cll mxm = 22, mxn = 102, mxtot = 12;
-ll tot, r, m, n, dp[mxtot][mxm][mxn] = {{{0}}}, ans = 0;
+ll tot, r, m, n, ans = 0, trace[mxtot] = {0}, check_house[mxn] = {0}, res = 0;
 pp(ll, ll) food[mxm];
 pp(pp(ll, ll), ll) house[mxn];
 
 ll dis(pp(ll, ll) &a, pp(ll, ll) &b){
     return (a.first - b.first) * (a.first - b.first) + (a.second - b.second) * (a.second - b.second);
+}
+
+void ql(ll pos){
+    ll cnt;
+    if(pos > tot){
+        ans = max(ans, res);
+    } else{
+        lp(i, trace[pos - 1] + 1, m - (tot - pos)){
+            cnt = 0, trace[pos] = i;
+            lp(j, 1, n) if(!check_house[j] && dis(food[i], house[j].first) <= r) 
+                cnt += house[j].second, check_house[j] = pos;
+            res += cnt;
+            ql(pos + 1);
+            lp(j, 1, n) if(check_house[j] == pos) check_house[j] = 0;
+            res -= cnt;
+        }
+    }
 }
 
 int main(){
@@ -44,15 +61,6 @@ int main(){
     lp(i, 1, m) cin >> food[i].first >> food[i].second;
     cin >> n;
     lp(i, 1, n) cin >> house[i].first.first >> house[i].first.second >> house[i].second;
-    lp(i, 1, tot) lp(j, i, m) lp(k, 1, n){
-        dp[i][j][k] = dp[i][j][k - 1];
-        if(dis(food[j], house[k].first) <= r){
-            lp(z, i - 1, j - 1) dp[i][j][k] = max(dp[i][j][k], dp[i - 1][z][k - 1]);
-            dp[i][j][k] += house[k].second;
-        }
-        else 
-            lp(z, i - 1, j - 1) dp[i][j][k] = max(dp[i][j][k], dp[i - 1][z][k]);
-        if(i == tot) ans = max(ans, dp[i][j][k]);
-    }
+    ql(1);
     cout << ans;
 }
