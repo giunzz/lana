@@ -8,9 +8,9 @@
 #define Fname "circle"
 using namespace std;
 
-cll maxn = 3e5 + 7;
+cll maxn = 1e5 + 7;
 ll n;
-map<ll, ll> update;
+map<ll, ll> trace;
 pp(ll, ll) a[maxn];
 
 bool cpr(pp(ll, ll) &x, pp(ll, ll) &y){
@@ -28,11 +28,11 @@ int main(){
     lp(i, 1, n){
         ll r = a[i].second, x = a[i].first;
         ll cnt = 1, right = x + r, left;
-        while(update.find(right) != update.end() && (left = update[right]) >= x - r)
+        while(trace.find(right) != trace.end() && (left = trace[right]) >= x - r)
             right = left;
         if(right == x - r) ++cnt;
         ans += cnt;
-        update[x + r] = x - r;
+        trace[x + r] = x - r;
     }
     cout << ans << '\n';
 }

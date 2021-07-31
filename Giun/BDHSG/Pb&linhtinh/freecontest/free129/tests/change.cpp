@@ -23,7 +23,7 @@ int main(){
     lp(i, 1, 10){
         char file_inp[128], file_out[128];
         sprintf(file_inp, "exam/kruznice.in.%d", i);
-        sprintf(file_out, "input.%03d", i + 9);
+        sprintf(file_out, "input.%03d", i + 14);
         cerr << file_inp << ' ' << file_out << '\n';
         ofstream co(file_out);
         ifstream ci(file_inp);
