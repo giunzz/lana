@@ -1,60 +1,73 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-#define giuncute ios_base::sync_with_stdio(0) , cin.tie(0) , cout.tie(0)
-#define ll int 
-#define pi pair<int,int>
-const int MAXN = 1e5+7;
-const ll oo = 1e9 + 7;
-int n,m,u,v,w,a,b,k;
-int  d[MAXN] ={0} , visited[MAXN] = {0};
-vector<pi>G[MAXN] ;
 
-void dijkstra(ll node) 
+const long long oo=(int) (1e9 + 7);
+bool ck[100001],check[100001];
+long long n,m,k,F[10001][10001],path[100001],a,b;
+
+long long find_min(int n)
 {
-    priority_queue<pi, vector<pi>, greater<pi>> pq;
-    for (int i = 1; i <= n; i++) d[i] = oo;
-    d[node] = 0;
-    pq.push({0, node});
-    while (pq.size())
+    long long ret,mn=oo;
+    for (int i = 1 ; i <= n ; i++)
     {
-        int u = pq.top().second;
-        int du = pq.top().first;
-        pq.pop();
-        if (du != d[u]) continue;
-        for (pi i : G[u]) 
+        if (ck[i]&&path[i]<mn)
         {
-            int v = i.second;
-            int uv = i.first;
-            if (d[v] > du + uv) d[v] = du + uv , pq.push({d[v], v});
+            ret=i;
+            mn=path[i];
         }
     }
+    ck[ret]=0;
+    return ret;
 }
 
-int main() 
+void dijkstra(long long u)
 {
-    giuncute;
-    freopen("WARRANTY.inp","r",stdin);
-    freopen("WARRANTY.out","w",stdout);
-    cin >> n >> m >> a >> b >> k;
-    for (int i = 1 ; i <= n ; i++) visited[i] = 0;
-    visited[a] = 1, visited[b] = 1;
-    while (m--) 
+    for (int i=1;i<=n;i++)
     {
-        cin >> u >> v >> w;
-        visited[u] = 0;
-        visited[v] = 0;
-        G[u].push_back({w, v});
-        G[v].push_back({w, u});
+        ck[i]=1; 
+        path[i]=oo;
+    }
+    path[u]=0;
+    for (int i=1;i<=n;i++)
+    {
+        long long x=find_min(n);
+        for (int j=1;j<=n;j++)
+            if (F[x][j]+path[x]<path[j]&&ck[j])
+                path[j]=F[x][j]+path[x];
+    }
+    for (int i=1;i<=n;i++)
+        if (path[i]<=k) check[i]=1;
+    return;
+}
+int main()
+{
+    ios::sync_with_stdio(0); cin.tie(NULL);
+    cout.tie(NULL);
+
+    freopen("warranty.inp","r",stdin);
+    freopen("warranty.out","w",stdout);
+    cin >> n >> m >> a >> b >> k;
+    for (int i=1;i<=n;i++)
+    {
+        check[i]=0;
+        for (int j=1;j<=n;j++) F[i][j]=oo;
+    }
+    int u,v,val;
+    for (int i=1;i<=m;i++)
+    {
+        cin >> u >> v >> val;
+        F[u][v]=val;
+        F[v][u]=val;
     }
     dijkstra(a);
-    for (int j = 1 ; j <= n ; j++) 
-        if (d[j] <= k) visited[j] = 1;
-
     dijkstra(b);
-    for (int j = 1 ; j <= n ; j++) 
-        if (d[j] <= k)  visited[j] = 1;
-    int ok = 0 ;
-    for (int i = 1 ; i <= n ; i++)
-        if (visited[i] == 0) ok = 1 , cout << i << " ";
-    if (ok == 0) cout << -1;
+    bool check1=1;
+    for (int i=1;i<=n;i++)
+        if (!check[i])
+        {
+            cout << i << " ";
+            check1=0;
+        } 
+    if (!check) cout << "-1";
+    return 0;
 }

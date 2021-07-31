@@ -9,8 +9,8 @@ ll n, c, f[maxn] = {0} , g[maxn] = {0};
 int main()
 {
     giuncute;
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
+    freopen("order.inp","r",stdin);
+    freopen("order.out","w",stdout);
     cin >> n >> c;
     for (int i = 1 ; i <= n ; i++)
     {

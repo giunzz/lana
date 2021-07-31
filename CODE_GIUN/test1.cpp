@@ -1,72 +1,83 @@
-#include <bits/stdc++.h>
-using namespace std;
-const int maxn = 205;
-const float oo = 1e9;
-float X[maxn],Y[maxn], L[maxn][maxn]={{0}}, D[maxn][maxn]={{0}};
-int n, G[maxn][maxn]={{0}};
-
-float kc(int i, int j){
-	return sqrt(pow(X[j]-X[i],2) + pow(Y[j]-Y[i],2));
+#include<stdio.h>
+#define MAX   250
+struct pos
+    {
+        long x;
+        long y;
+    };
+int k,n,m,r,sum,b;
+pos p[MAX];
+pos h[MAX];
+int s[MAX];
+int sou[MAX];
+bool c[MAX];
+bool go[MAX][MAX];
+void init(void)
+{
+    scanf("%d",&k);
+    scanf("%d",&r);
+    scanf("%d",&m);
+    int i,j;
+    for (i=1;i<=m;i=i+1)
+        {
+            scanf("%ld",&p[i].x);
+            scanf("%ld",&p[i].y);
+        }
+    scanf("%d",&n);
+    for (i=1;i<=n;i=i+1)
+        {
+            scanf("%ld",&h[i].x);
+            scanf("%ld",&h[i].y);
+            scanf("%d",&s[i]);
+        }
+    for (i=1;i<=m;i=i+1)
+        for (j=1;j<=n;j=j+1)
+            {
+                if ((p[i].x-h[j].x)*(p[i].x-h[j].x)+(p[i].y-h[j].y)*(p[i].y-h[j].y)<=r*r) go[i][j]=true;
+                else go[i][j]=false;
+            }
+    for (i=1;i<=n;i=i+1) c[i]=false;
+    sou[0]=0;
+    b=0;
 }
-
-void Trace(int d, int c){
-	if (c-d<3) return;
-
-	if (G[d][c]-d>=2) {
-		cout << d << " " << G[d][c] << endl;
-		Trace(d,G[d][c]);
-	}
-
-	if (c-G[d][c]>=2){
-		cout << G[d][c] << " " << c << endl;
-		Trace(G[d][c],c);
-	}
+void update(void)
+{
+    if (sum<=b) return;
+    b=sum;
 }
-
-int main(){
-	
-	freopen("giun.INP","r",stdin);
-	freopen("giun.OUT","w",stdout);
-	cin >> n;
-	for (int i=1;i<=n;i++){
-		cin >> X[i] >> Y[i];
-	}
-	
-	int i,j,k,v;
-	//Tính D
-	for (i=1; i<=n; i++){
-		for (j=i; j<=n; j++){
-			if (j-i > 1) {
-				D[i][j]=D[j][i]=kc(i,j);
-			}
-			else {
-				D[i][j]=D[j][i]=0;
-			}
-		}
-	}
-	//Tính L
-	float minl = oo,t;
-	for (i=n; i>=1; i--){
-		for (j=i-1; j<=n; j++){
-			if (j-i<3) L[i][j]=0;
-			else {
-				v=0;
-				minl = oo;
-				for (k=i+1;k<j; k++){
-					t=L[i][k]+L[k][j] + D[i][k] + D[k][j];
-					if (t > 0 && t < minl){
-						minl = t;
-						v=k;
-					}
-				}
-				if (v!=0){
-					L[i][j]=minl;
-					G[i][j]=v;
-				}
-			}
-		}
-	}
-	printf("%0.4f\n",L[1][n]);
-	Trace(1,n);
-	return 0;
+void btrk(int t)
+{
+    int i,j,l;
+    int tmp[MAX];
+    for (i=sou[t-1]+1;i+k-t<=m;i=i+1)
+        {
+            sou[t]=i;
+            l=0;
+            for (j=1;j<=n;j=j+1)
+                {
+                    if ((go[i][j]) && (!c[j]))
+                        {
+                            l=l+1;
+                            c[j]=true;
+                            tmp[l]=j;
+                            sum=sum+s[j];
+                        }
+                }
+            if (t==k) update();
+            else btrk(t+1);
+            for (j=1;j<=l;j=j+1)
+                {
+                    c[tmp[j]]=false;
+                    sum=sum-s[tmp[j]];
+                }
+        }
 }
+int main(void)
+{
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
+    init();
+    btrk(1);
+    printf("%d",b);
+}
+ 
