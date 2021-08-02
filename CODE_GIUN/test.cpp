@@ -8,7 +8,7 @@ string a , b , c  ;
 
 void quaylui(ll vt)
 {
-    if (vt == a.size() + 1) 
+    if (vt == a.size() ) 
     {
         string tmp ="";
         for (int i = 0 ; i < (int)a.size() ; i++)
@@ -16,8 +16,8 @@ void quaylui(ll vt)
             if (x[i] == 1) tmp += a[i];
             if (x[i] == 2) tmp += b[i];
         }
+        sort (tmp.begin() , tmp.end());
         if (tmp == c) ok = 1;
-        if (tmp[0] == 'N' && tmp[1] == 'Q' && tmp[2] == 'J')cerr << tmp << endl;
     }
     else 
     {
@@ -38,7 +38,9 @@ int main()
     cin >> t;
     while (t --)
     {
+        ok = 0 ;
         cin >> a >> b >> c;
+        sort (c.begin() , c.end());
         quaylui(0);
         if (ok == 0) cout << "NO" << endl;
         else cout << "YES" << endl;

@@ -1,5 +1,5 @@
-Target: AC5 
-Directory: g:\HocLapTrinh\cham\checker
-Test00: 0.354783s
-Wrong Ans at line 2
-AC: 0/1
+Target: AC1 
+Directory: G:\HocLapTrinh\cham\checker
+Test00: 0.225863s
+Accept
+AC: 1/1
