@@ -35,6 +35,7 @@ void OF(){
 }
 
 #define point pp(ll, ll)
+#define segment pp(point, point)
 
 int ccw(point &a, point &b, point &c){
     ll tmp = (b.first - a.first) * (c.second - b.second) - (b.second - a.second) * (c.first - b.first);
@@ -44,15 +45,10 @@ int ccw(point &a, point &b, point &c){
 
 void input(point &x){cin >> x.first >> x.second;}
 
-int sign(ll a){
-    if(a < 0) return -1;
-    else return a > 0;
-}
+segment a, b;
 
-point a, b, c;
-
-bool check(point a, point b){
-    return (a.first ? sign(a.first) != sign(b.first) : sign(a.second) != sign(b.second));
+bool check(segment &u, segment &v){
+    return ccw(u.first, u.second, v.first) != ccw(u.first, u.second, v.second);
 }
 
 int main(){
@@ -61,10 +57,11 @@ int main(){
     // OF();
     // #endif
     EACHCASE{
-        input(a), input(b), input(c);
-        if(!ccw(a, b, c) && check({a.first - c.first, a.second - c.second}, {b.first - c.first, b.second - c.second})){
+        input(a.first); input(a.second); 
+        input(b.first); input(b.second);
+        if(check(a, b) && check(b, a)){
             cout << "YES\n";
-        } else {
+        } else{
             cout << "NO\n";
         }
     }
