@@ -70,7 +70,11 @@ int main(){
             cout << "Saiiii\n";
             usleep(1000000);
         }
-        if(++total_ac == _require_skip) i += 2;
+        if(++total_ac == _require_skip){
+            i += 2;
+            cout << "Chuc mung dat duoc 5 cau lien tiep!\n";
+            total_ac = 0;
+        }
         cout << "Dunggg\n";
         usleep(1000000);
     }
