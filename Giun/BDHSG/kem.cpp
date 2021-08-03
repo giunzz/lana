@@ -1,5 +1,5 @@
 #define _total 50
-#define _seed 38832
+#define _seed 16102012
 #define _require_skip 5
 
 #include <bits/stdc++.h>
