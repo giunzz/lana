@@ -9,6 +9,15 @@
 #define Fname "f"
 using namespace std;
 
+template <typename T> inline void Read(T &x){
+    x = 0; char c;
+    while(!isdigit(c = getchar()));
+    do
+    {
+        x = x * 10 + c - '0';
+    } while (isdigit(c = getchar()));
+}
+
 ll read(){
     ll tmp;
     cin >> tmp;
@@ -26,29 +35,9 @@ void OF(){
 }
 
 cll mxn = 207;
-ll n, m, par[mxn], size[mxn], far1, ans = 0, dis[mxn];
-vec(pp(ll, pp(ll, ll))) edge;
+ll n, m;
 vec(pp(ll, ll)) g[mxn];
-
-ll _get(ll u){
-    return par[u] == u ? u : _get(par[u]);
-}
-
-bool _join(ll u, ll v){
-    u = _get(u), v = _get(v);
-    if(u == v) return 0;
-    if(size[u] < size[v]) swap(u, v);
-    par[v] = u, size[u] += size[v];
-    return 1;
-}
-
-void dfs(ll u, ll p){
-    for(pp(ll, ll) v : g[u]){
-        if(v.second == p) continue;
-        dis[v.second] = dis[u] + v.first;
-        dfs(v.second, u);
-    }
-}
+vec(pp(ll, pp(ll, ll))) edge;
 
 int main(){
     giuncute();
@@ -61,19 +50,7 @@ int main(){
         cin >> u >> v >> w;
         edge.push_back({w, {u, v}});
     }
-    sort(edge.begin(), edge.end());
-    lp(i, 1, n) par[i] = i, size[i] = 1;
-    for(pp(ll, pp(ll, ll)) i : edge) if(_join(i.second.first, i.second.second)){
-        g[i.second.first].push_back({i.first, i.second.second});
-        g[i.second.second].push_back({i.first, i.second.first});
+    lp(i, 1, m){
+        
     }
-    lp(i, 1, n) dis[i] = 0;
-    dfs(1, -1);
-    far1 = 1;
-    lp(i, 1, n) if(dis[i] > dis[far1]) far1 = i;
-    lp(i, 1, n) dis[i] = 0;
-    dfs(far1, -1);
-    lp(i, 1, n) ans = max(ans, dis[i]);
-    // cout << ans / 2 << '.' << (ans & 1) * 5 << "0\n";
-    cout << setprecision(2) << fixed << ans / 2.0 << '\n';
 }
