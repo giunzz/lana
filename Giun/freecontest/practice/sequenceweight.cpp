@@ -1,3 +1,4 @@
+// dirii
 #include <bits/stdc++.h>
 #define ll long long
 #define cll const ll
@@ -34,10 +35,26 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+cll mxn = 1e4 + 7;
+ll n, a, ans;
+unordered_map<ll, ll> cnt;
+
+void sol(){
+    cnt.clear();
+    ans = 0;
+    cin >> n;
+    lp(i, 1, n){
+        cin >> a;
+        ans += cnt[a] * (n - i + 1);
+        cnt[a] += i;
+    }
+    cout << ans << '\n';
+}
+
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    
+    EACHCASE sol();
 }

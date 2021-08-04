@@ -40,5 +40,5 @@ int main(){
     OF();
     #endif
     ll a = 7, b = a--;
-    cerr << b;
+    assert(a != 7);
 }
