@@ -66,7 +66,8 @@ int main(){
     cin >> n;
     lp(i, 1, n){
         cin >> a[i].first >> a[i].second;
-        if(a[i].second < a[1].second || (a[i].second == a[1].second && a[i].first < a[1].first)) swap(a[i], a[1]);
+        if(a[i].second < a[1].second || (a[i].second == a[1].second && a[i].first < a[1].first)) 
+            swap(a[i], a[1]);
     }
     sort(a + 2, a + 1 + n, cpr);
     lp(i, 1, n){

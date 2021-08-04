@@ -32,7 +32,7 @@ void graham()
         else 
         {
             
-            if (ccw(v[hs.size() - 2], v[hs.size() -1], v[k]) < 0) hs.pop_back();
+            if (ccw(v[hs[hs.size() - 2]], v[hs[hs.size() -1]], v[k]) < 0) hs.pop_back();
             else hs.push_back(k) , k++;
         }
     }
@@ -54,22 +54,22 @@ int main()
     sort(v + 2 , v + 1+ n , cmp);
     v[n + 1] = v[1];
     graham();
-    // for(auto i : hs) cerr << i << ' ';
-    // res.push_back(hs[0]);
-    // for(ll i = 1; i < hs.size() - 1; i++){
-    //     if(ccw(v[hs[i - 1]], v[hs[i]], v[hs[i + 1]]) == 1) res.push_back(hs[i]); 
-    // }
-    // cout << res.size() << endl;
-    // for(auto i : res){
-    //     cout << v[i].first << ' ' << v[i].second << '\n';
-    // }
-    while (hs.size() > 1)
-    {
-        // cerr << hs.size() << ' ';
-        ll u = hs.back();
-        cout << v[u].fi << " " << v[u].se << endl;
-        hs.pop_back();
+    // for(auto i : hs) cerr << v[i].first << ' ' << v[i].second << '\n';
+    res.push_back(hs[0]);
+    for(ll i = 1; i < hs.size() - 1; i++){
+        if(ccw(v[hs[i - 1]], v[hs[i]], v[hs[i + 1]]) == 1) res.push_back(hs[i]); 
     }
+    cout << res.size() << endl;
+    for(auto i : res){
+        cout << v[i].first << ' ' << v[i].second << '\n';
+    }
+    // while (hs.size() > 1)
+    // {
+    //     // cerr << hs.size() << ' ';
+    //     ll u = hs.back();
+    //     cout << v[u].fi << " " << v[u].se << endl;
+    //     hs.pop_back();
+    // }
     // cerr << hs.size();
     return 0;
 }
