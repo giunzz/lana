@@ -1,2 +1,2 @@
 
-    cerr << '\t' << s << '\n';
+int main(){
