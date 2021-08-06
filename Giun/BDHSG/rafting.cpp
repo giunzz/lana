@@ -78,12 +78,15 @@ ll dis_p(point &a, point &b){
     return (a.first - b.first) * (a.first - b.first) + (a.second - b.second) * (a.second - b.second);
 }
 
-bool checkk(point &a, point &b, point &c){
-    return dis_p(a, b) + dis_p(a, c) >= dis_p(b, c);
-}
+// bool checkk(point &a, point &b, point &c){
+//     return dis_p(a, b) + dis_p(a, c) >= dis_p(b, c);
+// }
 
 bool check_tri(point &a, point &b, point &c){
-    return checkk(a, b, c) && checkk(a, c, b) && checkk(b, c, a);
+    vector<ll> tmp{dis_p(a, b), dis_p(a, c), dis_p(b, c)};
+    // sort(tmp.begin(), tmp.end());
+    // for(ll i : tmp) cerr <<i << ' ';
+    return tmp[0] + tmp[2] >= tmp[1] && tmp[1] + tmp[2] >= tmp[0];
 }
 
 void sol(){
@@ -101,7 +104,11 @@ void sol(){
     lp(i, 1, n) l[i] = line(a[i - 1], a[i]), l[i].rut();
     // xu ly diem vs 1 canh
     lp(i, 1, m) lp(j, 1, n){
-        if(!check_tri(b[i], a[j], a[j - 1])) ans = min(ans, l[j].dis(b[i]));
+        if(check_tri(b[i], a[j], a[j - 1])){
+            ans = min(ans, l[j].dis(b[i]));
+            // cerr << a[j - 1].first << ' ' << a[j - 1].second << " --> "  << a[j].first << ' ' << a[j].second << " --> "  \
+            //     << b[i].first << ' ' << b[i].second << '\n';
+        }
     }
     ans /= 2.0;
     cout << setprecision(8) << fixed << ' ' << ans << '\n';
@@ -112,9 +119,10 @@ int main(){
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    point p1 = {-1, 1}, p2 = {-5, 10}, p3 = {-2, 6};
-    line test(p1, p2);
-    test.rut();
-    cerr << test.a << ' ' << test.b << ' ' << test.c << ' ' << test.dis(p3);
+    // point p1 = {-5, -5}, p2 = {-10, -10}, p3 = {10, -10};
+    // line test(p1, p2);
+    // test.rut();
+    // // cerr << test.a << ' ' << test.b << ' ' << test.c << ' ' << test.dis(p3);
+    // cerr << check_tri(p1, p2, p3);
     EACHCASE sol();
 }
