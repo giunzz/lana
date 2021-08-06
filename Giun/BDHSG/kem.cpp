@@ -1,5 +1,5 @@
 #define _total 50
-#define _seed 16102012
+#define _seed 16105145
 #define _require_skip 5
 
 #include <bits/stdc++.h>
@@ -63,9 +63,10 @@ void cong(ll wa){
 
 int main(){
     ll wa = 0, total_ac = 0;
-    lp(i, 1, _total){
+    lp(i, 7, _total){
         bool ok = 1;
         while(!gen(i)){
+            cout.flush();
             ++wa, ok = 0, total_ac = 0;
             cout << "Saiiii\n";
             usleep(1000000);

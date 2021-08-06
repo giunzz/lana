@@ -34,20 +34,24 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-#define point pp(ll, ll)
+cll mxn = 1e7 + 5;
+ll sang[mxn] = {0}, m;
 
-ll Sabc;
-point a, b, c;
-
-void inp(point &u){cin >> u.first >> u.second;}
-
-ll getS(point &a, point &b, point &c){
-    ll tmp = (b.first - a.first) * (c.second - b.second) - (b.second - a.second) * (c.first - b.first);
-    return abs(tmp);
-}
-
-bool check(point &u){
-    return getS(a, b, u) + getS(b, c, u) + getS(a, c, u) == Sabc;
+void sol(){
+    cin >> m;
+    if(m < 2) cout << m << '\n';
+    else{
+        string s;
+        ll tmp = sqrt(m);
+        for(ll i = 2; i <= tmp && m != 1; i++)
+            while(m % i == 0){
+                s += to_string(i) + "*";
+                m /= i;
+            }
+        if(m > 1) s += to_string(m);
+        else s.pop_back();
+        cout << s << '\n';
+    }
 }
 
 int main(){
@@ -55,13 +59,10 @@ int main(){
     #ifdef PMQ
     OF();
     #endif
-    inp(a), inp(b), inp(c);
-    Sabc = getS(a, b, c);
-    ll ans = 0;
-    EACHCASE{
-        point p;
-        inp(p);
-        if(check(p)) ++ans;
-    }
-    cout << Sabc / 2 << '.' << (Sabc & 1) * 5 << '\n' << ans <<'\n';
+    // for(ll i = 2; i * i <= 1e7; ++i){
+    //     if(!sang[i]) for(ll j = i * i; j <= 1e7; j += i){
+    //         if(!sang[j]) sang[j] = i;
+    //     }
+    // }
+    EACHCASE sol();
 }

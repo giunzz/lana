@@ -36,32 +36,35 @@ void OF(){
 
 #define point pp(ll, ll)
 
-ll Sabc;
-point a, b, c;
-
 void inp(point &u){cin >> u.first >> u.second;}
 
 ll getS(point &a, point &b, point &c){
     ll tmp = (b.first - a.first) * (c.second - b.second) - (b.second - a.second) * (c.first - b.first);
-    return abs(tmp);
+    return tmp;
 }
 
-bool check(point &u){
-    return getS(a, b, u) + getS(b, c, u) + getS(a, c, u) == Sabc;
+int ccw(point &a, point &b, point &c){
+    ll tmp = (b.first - a.first) * (c.second - b.second) - (b.second - a.second) * (c.first - b.first);
+    if(tmp < 0) return -1;
+    else return tmp > 0;
 }
+
+cll mxn = 1e3 + 7;
+ll n, ans = 0; 
+point a[mxn];
+bool ok = 0;
 
 int main(){
     giuncute();
     #ifdef PMQ
     OF();
     #endif
-    inp(a), inp(b), inp(c);
-    Sabc = getS(a, b, c);
-    ll ans = 0;
-    EACHCASE{
-        point p;
-        inp(p);
-        if(check(p)) ++ans;
+    cin >> n;
+    lp(i, 1, n) inp(a[i]);
+    lp(i, 2, n - 1){
+        if(ccw(a[i - 1], a[i], a[i + 1]) == 1) ok = 1;
+        ans += getS(a[1], a[i], a[i + 1]);
     }
-    cout << Sabc / 2 << '.' << (Sabc & 1) * 5 << '\n' << ans <<'\n';
+    ans = abs(ans);
+    cout << (ok ? "CCW" : "CW") << ' ' << ans / 2 << '.' << (ans & 1) * 5 << '\n';
 }

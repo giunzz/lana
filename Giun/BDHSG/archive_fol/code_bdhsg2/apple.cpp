@@ -34,34 +34,34 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-#define point pp(ll, ll)
+#define point pp(pp(ll, ll), ll)
+#define x first
+#define y second
 
-ll Sabc;
-point a, b, c;
+cll mxn = 1e5 + 7;
+ll n;
+point a[mxn];
 
-void inp(point &u){cin >> u.first >> u.second;}
-
-ll getS(point &a, point &b, point &c){
-    ll tmp = (b.first - a.first) * (c.second - b.second) - (b.second - a.second) * (c.first - b.first);
-    return abs(tmp);
+bool ccw(point &a, point &b, point &c){
+    return (b.x.x - a.x.x) * (c.x.y - b.x.y) - (b.x.y - a.x.y) * (c.x.x - b.x.x) < 0; // turn right
 }
 
-bool check(point &u){
-    return getS(a, b, u) + getS(b, c, u) + getS(a, c, u) == Sabc;
+bool cpr(point &u, point &v){
+    return ccw(v, a[1], u);
 }
 
 int main(){
     giuncute();
-    #ifdef PMQ
-    OF();
-    #endif
-    inp(a), inp(b), inp(c);
-    Sabc = getS(a, b, c);
-    ll ans = 0;
-    EACHCASE{
-        point p;
-        inp(p);
-        if(check(p)) ++ans;
+    cin >> n;
+    lp(i, 1, n){
+        a[i] = {{read(), read()}, i};
+        if(i > 1 && a[i] < a[1]) swap(a[i], a[1]);
     }
-    cout << Sabc / 2 << '.' << (Sabc & 1) * 5 << '\n' << ans <<'\n';
+    sort(a + 2, a + 1 + n, cpr);
+    lp(i, 2, n){
+        if(i - 2 == n - i){
+            cout << a[1].second << ' ' << a[i].second;
+            return 0;
+        }
+    }
 }
