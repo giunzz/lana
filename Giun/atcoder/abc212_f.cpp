@@ -46,7 +46,7 @@ int main(){
     #endif
     cin >> n >> m >> q;
     lp(i, 1, m) 
-        cin >> bus[i].second.first >> bus[i].second.second >> bus[i].first.first >> bus[i].first.second;
+        cin >> bus[i].second.second >> bus[i].second.first >> bus[i].first.first >> bus[i].first.second;
     sort(bus + 1, bus + 1 + m);
     lp(i, 1, m) bus_at[bus[i].second.first].push_back(i);
     
