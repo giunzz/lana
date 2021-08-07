@@ -34,10 +34,20 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+struct adj_bus{
+    ll s, t, a, b, id;
+    void init(ll _id){
+        cin >> a >> b >> s >> t;
+        id = _id;
+    }
+};
+
 cll mxn = 1e5 + 7;
 ll n, m, q;
-pp(pp(ll, ll), pp(ll, ll)) bus[mxn];
+adj_bus bus[mxn];
 vec(ll) bus_at[mxn];
+
+bool cpr(adj_bus &a, adj_bus &b){return a.t > b.t;}
 
 int main(){
     giuncute();
@@ -45,9 +55,10 @@ int main(){
     OF();
     #endif
     cin >> n >> m >> q;
-    lp(i, 1, m) 
-        cin >> bus[i].second.second >> bus[i].second.first >> bus[i].first.first >> bus[i].first.second;
-    sort(bus + 1, bus + 1 + m);
-    lp(i, 1, m) bus_at[bus[i].second.first].push_back(i);
+    lp(i, 1, m) {
+        bus[i].init(i);
+    }
+    sort(bus + 1, bus + 1 + m, cpr);
+    lp(i, 1, m) bus_at[bus[i].second.second].push_back(i);
     
 }
