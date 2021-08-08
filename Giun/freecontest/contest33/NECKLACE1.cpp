@@ -34,32 +34,41 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-struct adj_bus{
-    ll s, t, a, b, id;
-    void init(ll _id){
-        cin >> a >> b >> s >> t;
-        id = _id;
+cll mxn = 3500;
+ll n, k, a[mxn], dp[mxn][mxn] = {{0}}, ans = 1e18;
+vec(ll) trace;
+
+void prc(){
+    lp(i, 2, n) lp(j, 1, k) dp[i][j] = min(dp[i - 1][j], dp[i - 2][j - 1] + a[i]);
+}
+
+void trc(){
+    trace.clear();
+    ll i = n;
+    lpd(j, k, 1){
+        while(dp[i - 1][j] == dp[i][j]){
+            --i;
+        }
+        trace.push_back(i); 
+        i -= 2;
     }
-};
-
-cll mxn = 1e5 + 7;
-ll n, m, q;
-adj_bus bus[mxn];
-vec(ll) bus_at[mxn];
-
-bool cpr(adj_bus &a, adj_bus &b){return a.t > b.t;}
+}
 
 int main(){
     giuncute();
-    #ifndef ONLINE_JUDGE    
-    OF();
-    #endif
-    cin >> n >> m >> q;
-    lp(i, 1, m) 
-        bus[i].init(i);
-    sort(bus + 1, bus + 1 + m, cpr);
-    lp(i, 1, m) bus_at[bus[i].b].push_back(i);
-    lp(i, 1, m){
-        // xu ly tao do thi + danh dau adj da them vao
-    }
+    cin >> n >> k;
+    lp(i, 1, n) cin >> a[i];
+    lp(i, 0, n) lp(j, 1, k) dp[i][j] = 1e18;
+    
+    prc();
+    ans = dp[n][k]; trc();
+
+    dp[1][1] = a[1];
+    a[n] = 1e18;
+    prc();
+    if(dp[n][k] < ans) ans = dp[n][k], trc();
+    
+    cout << ans << '\n';
+    reverse(trace.begin(), trace.end());
+    for(ll i : trace) cout << i - 1 << ' ';
 }
