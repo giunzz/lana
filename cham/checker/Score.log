@@ -1,5 +1,83 @@
-Target: AC1 
+Target: convexhull 
 Directory: G:\HocLapTrinh\cham\checker
-Test00: 0.225863s
+Test01: 0.147909s
 Accept
-AC: 1/1
+Test02: 0.152126s
+Accept
+Test03: 0.144149s
+Accept
+Test04: 0.159007s
+Accept
+Test05: 0.148147s
+Accept
+Test06: 0.155380s
+Accept
+Test07: 0.462228s
+Accept
+Test08: 0.324806s
+Accept
+Test09: 0.411898s
+Accept
+Test10: 0.518090s
+Accept
+Test11: 0.140971s
+Accept
+Test12: 0.142109s
+Accept
+Test13: 0.136919s
+Accept
+Test14: 0.152275s
+Accept
+Test15: 0.140417s
+Accept
+Test16: 0.154909s
+Accept
+Test17: 0.162219s
+Accept
+Test18: 0.139399s
+Accept
+Test19: 0.145411s
+Accept
+Test20: 0.148051s
+Accept
+Test21: 0.173893s
+Accept
+Test22: 0.153005s
+Accept
+Test23: 0.140217s
+Accept
+Test24: 0.153372s
+Accept
+Test25: 0.142916s
+Accept
+Test26: 0.414989s
+Accept
+Test27: 0.176997s
+Accept
+Test28: 0.504687s
+Accept
+Test29: 0.187883s
+Accept
+Test30: 0.517578s
+Accept
+Test31: 0.452140s
+Accept
+Test32: 0.419740s
+Accept
+Test33: 0.193368s
+Accept
+Test34: 0.318895s
+Accept
+Test35: 0.334829s
+Accept
+Test36: 0.310614s
+Accept
+Test37: 0.373161s
+Accept
+Test38: 0.214865s
+Accept
+Test39: 0.459797s
+Accept
+Test40: 0.212164s
+Accept
+AC: 40/40

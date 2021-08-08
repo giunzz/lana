@@ -9,28 +9,21 @@ const ll MOD = 1000000007;
 const ll maxn = 1e5 + 3;
 ll n;
 pl v[maxn];
-ll hs[maxn] ;
-vector <ll> res;
+vector <pl> res;
 ll ccw (pl &a, pl &b, pl &c) 
 { 
-    ll a1 = b.fi - a.fi , b1 = b.se - a.se , a2 = c.fi - a.fi , b2 = c.se - a.se ;
+    ll a1 = b.fi - a.fi , b1 = b.se - a.se , a2 = c.fi - b.fi , b2 = c.se - b.se ;
     ll t  = a1*b2 - a2*b1;
-    if (t == 0) return 0;
-    else if (t < 0) return -1;
-    else return 1;
-}
-
-bool cmp1 (pl& i, pl& j)
-{
-    if(i.se != j.se) return i.se < j.se;
-    return i.fi > j.fi;
+    if (t == 0) return 0; // di thang
+    else if (t < 0) return -1; // queo phai
+    else return 1; // queo trai
 }
 
 bool cmp (pl &i , pl &j)
 {
-    return ccw( v[1] , i , j) > 0;
+    ll tmp = ccw( v[1] , i , j) ;
+    return (tmp == 1) || ( (tmp == 0) && (i.se < j.se || (i.se == j.se && i.fi < j.fi)) ) ;
 }
-
 
 ll getS(pl &a, pl &b, pl &c)
 {
@@ -38,50 +31,33 @@ ll getS(pl &a, pl &b, pl &c)
     return abs(tmp);
 }
 
-void graham() 
-{
-    int k = 1, j = 1;
-    while (k <= n + 1) 
-    {
-        while (j > 2 && ccw(v[hs[j - 2]], v[hs[j - 1]], v[k]) <= 0) {
-            j--;
-        }
-        hs[j++] = k++;
-    }
-    cout << j - 2 << endl;
-    ll ans = 0 ;
-    for (int i = 3 ; i <= j - 2 ; i++) 
-        ans += getS(v[hs[1]], v[hs[i - 1]], v[hs[i]]);
-    cout << ans / 2 << '.' << (ans & 1) * 5 << '\n';
-
-    // for (int i = 2 ; i < j - 1 ; i++)
-    // {
-    //     if (v[hs[i]].se < v[hs[1]].se) swap(v[hs[i]] ,  v[hs[1]]);
-    //     else if (v[hs[i]].se == v[hs[1]].se && v[hs[i]].fi < v[hs[1]].fi) swap(v[hs[i]] ,  v[hs[1]]);
-    // }
-    // vector <ll> res;
-    // res.push_back(hs[1]);
-    // for(ll i = 2; i < j - 1; i++)
-    // {
-    //     cerr << v[hs[i]].fi <<' ' << v[hs[i]].se << endl;
-    //     if(ccw(v[hs[i - 1]], v[hs[i]], v[hs[i + 1]]) == 1) res.push_back(hs[i]); 
-    // }
-    // for(auto i : res) cout << v[i].first << ' ' << v[i].second << '\n';
-    // // for(long i = 1; i < j-1; i++) 
-    //         cout << v[hs[i]].fi <<' ' << v[hs[i]].se << endl;
-    for(long i = j - 2; i >= 1; i--) cout << v[hs[i]].fi <<' ' << v[hs[i]].se << endl;
-}
-
 int main()
 {
     giuncute;
     freopen("giun.inp","r",stdin);
     freopen("giun.out","w",stdout);
-    cin >> n;
+    while (cin >> n  && n )
+    {
+        res.clear();
+        v[0] = {-1e18, -1e18};
     for (int i = 1 ; i <= n ; i++) cin >> v[i].fi >> v[i].se; 
-    sort(v + 1, v + n + 1, cmp1);
-    sort(v + 2 , v + 1 + n , cmp);
-    v[n + 1] = v[1];
-    graham();
-    return 0;
+    for (int i = 2 ; i <= n ; i++)
+    {
+        if (v[i].se < v[1].se) swap(v[i] , v[1]);
+        else if (v[i].se == v[1].se && v[i].fi < v[1].fi) swap(v[i] , v[1]);
+    }
+    sort(v + 2 , v + 1+ n , cmp);
+    for (int i = 1 ; i <= n ; i++)
+    {
+        if (v[i] == v[i-1]) continue;
+        if(res.size() < 2) res.push_back(v[i]);
+        else
+        {
+            while( res.size() > 1 && ccw(res[res.size() - 2], res.back(), v[i]) <= 0) res.pop_back();
+            res.push_back(v[i]) ; 
+        }
+    }
+    cout << res.size() << '\n';
+    for (int i = 0 ; i < (int)res.size() ; i++) cout << res[i].first << ' ' << res[i].second << '\n';
+    }
 }
