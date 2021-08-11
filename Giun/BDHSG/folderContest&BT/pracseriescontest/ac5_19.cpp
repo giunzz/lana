@@ -34,7 +34,7 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-cll mxn = 123, s = 0, t = 121;
+cll mxn = 123, s = 0, t = 241;
 ll n, c[mxn][mxn] = {{0}}, par[mxn] = {0}, l[mxn];
 
 ll find_path(){
@@ -64,16 +64,15 @@ void increase(ll cost){
 void sol(){
     cin >> n;
     memset(c, 0, sizeof c);
-    lp(i, 1, 120) c[s][i] = c[i][t] = 1;
+    lp(i, 1, 240) c[s][i] = c[i][t] = 1;
     lp(i, 1, n){
         ll u, v;
         cin >> u >> v;
-        c[u][v] = 1;
+        c[u][v + 120] = 1;
     }
     ll cost, ans = 0;
     while(cost = find_path()){
-        cerr << cost << '\n';
-        if(ans == 1)  
+        cerr << cost << '\n'; 
         increase(cost);
         ans += cost;
     }
