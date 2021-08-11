@@ -34,10 +34,32 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+cll mxn = 57;
+ll n, k, ans;
+pp(ll, ll) a[mxn];
+queue<pp(ll, ll)> can;
+
+void sol(){
+    cin >> n >> k;
+    lp(i, 1, n) cin >> a[i].second >> a[i].first;
+    sort(a + 1, a + 1 + n, greater<pp(ll, ll)>());
+    while(can.size()) can.pop();
+    ans = 0;
+    lp(i, 1, n){
+        ll col = a[i].second, val = a[i].first;
+        if(can.empty() || can.front().second == col) can.push(a[i]);
+        else{
+            ans += val + can.front().first;
+            can.pop();
+            --k;
+        }
+        if(!k) break;
+    }
+    if(k) cout << "-1\n";
+    else cout << ans << '\n';
+}
+
 int main(){
     giuncute();
-    #ifndef ONLINE_JUDGE
-    OF();
-    #endif
-    
+    EACHCASE sol();
 }
