@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long
-int n , d = 0, f[(ll) 1e5+7]={0};
+long long n , d = 0, f[(ll) 1e5+7]={0};
 
 bool find( int k)
 {
@@ -16,11 +16,12 @@ int main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    freopen("FIBONTO.inp","r",stdin);
-    freopen("FIBONTO.out","w",stdout);
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
     cin >> n;
     f[0]=f[1] = 1 , f[2] = 1;
      for (int i = 3 ; i <= n ; i++)f[i] = f[i-1] + f[i-2];
+     cerr << f[40];
     for (int i = 1 ; i <= n ; i++) if (find(f[i]) == true) d++;
     cout << d;
     return 0;

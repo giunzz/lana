@@ -5,15 +5,15 @@
 #define fi first
 #define se second
 const ll MOD = 1e9 + 7;
-const ll maxn = 4e5 + 7;
+const ll maxn = 4e6 + 7;
 using namespace std;
 
 ll a[maxn], color[maxn] , n ,t , dp[maxn][5] ;
 int main()
 {
     giuncute;
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
+    freopen("DANXEN.inp","r",stdin);
+    freopen("DANXEN.out","w",stdout);
     cin >> n ;
     for (int i = 1 ; i <= n ; i++) cin >> a[i];
     for (int i = 1 ; i <= n ; i++) cin >> color[i] , --color[i];
