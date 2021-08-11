@@ -9,15 +9,6 @@
 #define Fname "f"
 using namespace std;
 
-template <typename T> inline void Read(T &x){
-    x = 0; char c;
-    while(!isdigit(c = getchar()));
-    do
-    {
-        x = x * 10 + c - '0';
-    } while (isdigit(c = getchar()));
-}
-
 ll read(){
     ll tmp;
     cin >> tmp;
@@ -69,12 +60,11 @@ void dfs(ll u, ll p){
             ok = 0;
             lpd(i, mhigh[far], 0){
                 ll nu = par[far][i];
-                if(bus[nu].t <= req){far = nu, ok = 1; break;}
+                if(bus[nu].s < req){far = nu, ok = 1; break;}
             }
         }
-        // if(u == 2) cerr << mhigh[2] << ' ';
-        if(bus[far].s < req) ans[idq] = {bus[far].a, bus[far].b};
-        else ans[idq] = {bus[far].a, -1};
+        if(bus[far].t >= req) ans[idq] = {bus[far].a, bus[far].b};
+        else ans[idq] = {bus[far].b, -1};
     }
     for(ll v : g[u]){
         if(v == p) continue;
@@ -102,15 +92,9 @@ int main(){
         ll time, city, req;
         cin >> time >> city >> req;
         auto pos = lower_bound(bus_at[city].begin(), bus_at[city].end(), time);
-        // cerr << (*pos).id;
-        if(pos != bus_at[city].end()) ask_bus[(*pos).id].push_back({req, i});
+        if(pos != bus_at[city].end() && (*pos).s < req) ask_bus[(*pos).id].push_back({req, i});
         else ans[i] = {city, -1};
     }
-    // lp(i, 1, m){
-    //     cerr << i << "\n---->\n";
-    //     for(auto j : ask_bus[i]) cerr << '\t' << j.first << ' ' << j.second << '\n';
-    //     cerr << '\n';
-    // }
     lp(i, 1, m) if(go[i]) g[go[i]].push_back(i);
     sort(bus + 1, bus + 1 + m, cpr_id);
     memset(par, -1, sizeof par);
@@ -119,11 +103,4 @@ int main(){
         if(~ans[i].second) cout << ans[i].first << ' ' << ans[i].second << '\n';
         else cout << ans[i].first << '\n';
     }
-    // lp(i, 1, m){
-    //     cerr << i << '\n';
-    //     for(auto j : bus_at[i]){
-    //         cerr << j.s << ' ';
-    //     }
-    //     cerr << '\n';
-    // }
 }
