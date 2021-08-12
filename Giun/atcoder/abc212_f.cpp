@@ -9,15 +9,6 @@
 #define Fname "f"
 using namespace std;
 
-template <typename T> inline void Read(T &x){
-    x = 0; char c;
-    while(!isdigit(c = getchar()));
-    do
-    {
-        x = x * 10 + c - '0';
-    } while (isdigit(c = getchar()));
-}
-
 ll read(){
     ll tmp;
     cin >> tmp;
@@ -45,19 +36,40 @@ struct adj_bus{
     }
 };
 
-cll mxn = 1e5 + 7;
-ll n, m, q, go[mxn] = {0};
-pp(ll, ll) ask_bus[mxn];
+cll mxn = 1e5 + 7, mxlog = 20;
+ll n, m, q, go[mxn] = {0}, par[mxn][mxlog], mhigh[mxn] = {0};
+vec(pp(ll, ll)) ask_bus[mxn];
+pp(ll, ll) ans[mxn];
 adj_bus bus[mxn];
-vec(ll) g[mxn];
-vec(adj_bus) bus_at[mxn];
+vec(ll) g[mxn]; // 1 -> m
+vec(adj_bus) bus_at[mxn]; // 1 -> n
 
 bool cpr(adj_bus &a, adj_bus &b){return a.s < b.s;}
 
 bool cpr_id(adj_bus &a, adj_bus &b){return a.id < b.id;}
 
-priority_queue dfs(ll u){
-    
+void dfs(ll u, ll p){
+    par[u][0] = p;
+    lp(i, 1, 17) if(~par[u][i - 1] && ~(par[u][i] = par[par[u][i - 1]][i - 1])) mhigh[u] = i;
+    if(par[u][mhigh[u]] == -1) mhigh[u] = -1;
+    while(ask_bus[u].size()){
+        ll req = ask_bus[u].back().first, idq = ask_bus[u].back().second, far = u;
+        ask_bus[u].pop_back();
+        bool ok = 1;
+        while(ok){
+            ok = 0;
+            lpd(i, mhigh[far], 0){
+                ll nu = par[far][i];
+                if(bus[nu].s < req){far = nu, ok = 1; break;}
+            }
+        }
+        if(bus[far].t >= req) ans[idq] = {bus[far].a, bus[far].b};
+        else ans[idq] = {bus[far].b, -1};
+    }
+    for(ll v : g[u]){
+        if(v == p) continue;
+        dfs(v, u);
+    }
 }
 
 int main(){
@@ -79,24 +91,16 @@ int main(){
     lp(i, 1, q){
         ll time, city, req;
         cin >> time >> city >> req;
-        auto pos = lower_bound(bus_at[city].begin(), bus_at[city].end(), req);
-        if(pos != bus_at[city].end()) ask_bus[(*pos).id] = {req, i};
+        auto pos = lower_bound(bus_at[city].begin(), bus_at[city].end(), time);
+        if(pos != bus_at[city].end() && (*pos).s < req) ask_bus[(*pos).id].push_back({req, i});
+        else ans[i] = {city, -1};
     }
-    lp(i, 1, n) if(go[i]) g[go[i]].push_back(i);
+    lp(i, 1, m) if(go[i]) g[go[i]].push_back(i);
     sort(bus + 1, bus + 1 + m, cpr_id);
-    lp(i, 1, n) if(!go[i]){
-        set<ll> s = dfs(i);
+    memset(par, -1, sizeof par);
+    lp(i, 1, m) if(!go[i]) dfs(i, -1);
+    lp(i, 1, q){
+        if(~ans[i].second) cout << ans[i].first << ' ' << ans[i].second << '\n';
+        else cout << ans[i].first << '\n';
     }
-    // lp(i, 1, n){
-    //     cerr << i << "\n----> ";
-    //     for(ll j : g[i]) cerr << j << ' ';
-    //     cerr << '\n';
-    // }
-    // lp(i, 1, m){
-    //     cerr << i << '\n';
-    //     for(auto j : bus_at[i]){
-    //         cerr << j.s << ' ';
-    //     }
-    //     cerr << '\n';
-    // }
 }
