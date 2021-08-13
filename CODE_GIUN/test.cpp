@@ -1,27 +1,52 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <bitset>
 using namespace std;
-int n, m, k , res = INT_MAX;
-string a , b ;
-int main() 
-{
+
+typedef vector<vector<int>> dsk;
+typedef bitset<10001> bs;
+
+int main() {
+     freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
     ios::sync_with_stdio(false); cin.tie(0);
-    cin >> n >> m >> k;
-    cin >> a;
-    while (k--) 
+    int n, m; cin >> n >> m;
+    dsk ke(n + 1);
+    vector<bs> bits(n + 1);
+    while (m--) 
     {
-        cin >> b;
-        for (int i = 0 ; i < n; i++) 
+        int u, v; cin >> u >> v;
+        if (!bits[u].test(v)) 
         {
-            int j = i , dis = 0;
-            for (int z = 0 ; z < m ; z++) 
-            {
-                if (j == n) j = 0;
-                dis += (a[j] != b[z]) ;
-                j++;
-            }
-            res = min(res,dis);
+            ke[u].push_back(v);
+            ke[v].push_back(u);
+            bits[v].set(u);
+            bits[u].set(v);
         }
     }
-    cout << res;
+    for (int u=1; u<=n; u++) 
+    {
+        bs f;
+        for (int v: ke[u]) 
+        {
+            bits[v][u] = false;
+            if ((f & bits[v]).any()) 
+            {
+                f &= bits[v];
+                int w = 1;
+                while (!f[w]) w++;
+                for (int x: ke[w]) 
+                {
+                    if (bits[u][x]) 
+                    {
+                        cout << u << " " << v << " " << w << " " << x;
+                        return 0;
+                    }
+                }
+            } else f |= bits[v];
+            bits[v][u] = true;
+        }
+    }
+    cout << -1;
     return 0;
 }
