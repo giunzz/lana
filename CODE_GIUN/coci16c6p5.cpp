@@ -1,9 +1,10 @@
-#include <bits/stdc++.h>
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
 #define ll int
-#define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
 #define pl pair<ll,ll>
-#define fi first
-#define se second
 const ll MOD = 1e9 + 7;
 const ll maxm = 1e7 + 7;
 const ll maxn = 1e5 + 7;
@@ -42,53 +43,32 @@ void meo()
             //cerr << i << " " << vt[naj[a[i] + 1]] << endl;
         }
         for (int j = a[i] * 2 ; j <= 1e7 ; j += a[i])
-            if (j + a[i] > 1e7 || naj[j + a[i]] != naj[j])
-                if (naj[j] != -1 )
-                {
-                    g[naj[j] - j].push_back({i , vt[naj[j]]});
+            if ((naj[j] != -1 ) && (j + a[i] > 1e7 || naj[j + a[i]] != naj[j]))
+                g[naj[j] - j].push_back({i , vt[naj[j]]});
                     //cerr << i << " " << vt[naj[j]] << endl;
-                }
         //cerr << endl;
     }
 }
-void fastscan(int &number) 
-{ 
-    bool negative = false; 
-    register int c; 
-    number = 0; 
-    c = getchar(); 
-    if (c == ' ') fastscan(number);
-    if (c=='-') 
-    { 
-        negative = true; 
-        c = getchar(); 
-    } 
-    for (; (c>47 && c<58); c=getchar()) 
-        number = number *10 + c - 48; 
-    if (negative) 
-        number *= -1; 
-}
+
 int main()
 {
-    giuncute;
     freopen("giun.inp","r",stdin);
     freopen("giun.out","w",stdout);
-    fastscan(n);
-    memset(naj, -1, sizeof naj);
+    scanf("%d",&n);
+    for (int i = 0 ; i <= 1e7 + 3 ; i++) naj[i] = -1;
     for (int i = 1 ; i <= n ; i++)
     {
-        fastscan(a[i]);
+        p[i] = i , size[i] = 1;
+        scanf("%d",&a[i]);
         if (vt[a[i]]) continue;
         vt[a[i]] = i , naj[a[i]] = a[i];
     }
-    for (int i = 1 ; i <= n ; i++) p[i] = i , size[i] = 1;
     for (int i = 1e7 ; i >= 1 ; i--)
         if (naj[i] == -1) naj[i] = naj[i+1];
     meo();
     ll cnt = 0 , ans = 0 ;
     for (int i = 0 ; i <= 1e7 ; i++)
     {
-        if(g[i].empty()) continue;
         for(pl j : g[i]) 
             if(ghep(j.first, j.second)) ++cnt, ans += i ;
         if(cnt == n - 1) break;
