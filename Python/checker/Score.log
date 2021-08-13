@@ -1,69 +1,69 @@
 Target: sirni 
 Directory: C:\Users\tienp\Desktop\Hoc\Python\checker
-test0: 0.351001s
+test0: 0.368000s
 Accept
-test1: 0.400000s
+test1: 0.633005s
 Accept
-test10: 0.782998s
+test10: 0.730991s
 Accept
-test11: 0.490998s
+test11: 0.400000s
 Accept
-test12: 0.443995s
+test12: 0.551997s
 Accept
-test13: 0.431991s
+test13: 0.430994s
 Accept
-test14: 0.400002s
+test14: 0.476996s
 Accept
-test15: 0.925996s
+test15: 0.814007s
 Accept
-test16: 1.358008s
+test16: 1.628003s
 Accept
-test17: 0.894983s
+test17: 0.830000s
 Accept
-test18: 0.480000s
+test18: 0.526982s
 Accept
-test19: 1.343991s
+test19: 1.328997s
 Accept
-test2: 0.384001s
+test2: 0.495002s
 Accept
-test20: 1.085991s
+test20: 1.197996s
 Accept
-test21: 1.135992s
+test21: 1.135990s
 Accept
-test22: 1.755997s
+test22: 1.906002s
 Accept
-test23: 0.814999s
+test23: 0.921997s
 Accept
-test24: 0.841989s
+test24: 0.872997s
 Accept
-test25: 1.868003s
+test25: 1.995005s
 Accept
-test26: 0.815999s
+test26: 0.908979s
 Accept
-test27: 0.735997s
+test27: 0.767997s
 Accept
-test28: 3.056000s
+test28: 3.333970s
 Accept
-test29: 0.703998s
+test29: 0.788008s
 Accept
-test3: 0.588995s
+test3: 0.603995s
 Accept
-test30: 0.719996s
+test30: 0.767991s
 Accept
-test31: 4.725991s
+test31: 4.655007s
 Accept
-test32: 0.816000s
+test32: 0.828010s
 Accept
-test4: 4.957003s
+test4: 4.893998s
 Accept
-test5: 0.895956s
+test5: 0.876999s
 Accept
-test6: 0.398997s
+test6: 0.415970s
 Accept
-test7: 0.495906s
+test7: 0.493995s
 Accept
-test8: 0.396997s
+test8: 0.412001s
 Accept
-test9: 0.654984s
+test9: 0.623990s
 Accept
 AC: 33/33
