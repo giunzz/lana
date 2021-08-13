@@ -1,52 +1,96 @@
-#include <iostream>
-#include <vector>
-#include <bitset>
+#include <bits/stdc++.h>
+#define ll int
+#define cll const ll
+#define lp(a, b, c) for(ll a = b; a <= c; ++a)
+#define lpd(a, b, c) for(ll a = b; a >= c; --a)
+#define vec(a) vector<a>
+#define pp(a, b) pair<a, b>
+#define EACHCASE lpd(cs, read(), 1)
+#define Fname "f"
 using namespace std;
 
-typedef vector<vector<int>> dsk;
-typedef bitset<10001> bs;
+template <typename T> inline void Read(T &x){
+    x = 0; char c;
+    while(!isdigit(c = getchar()));
+    do
+    {
+        x = x * 10 + c - '0';
+    } while (isdigit(c = getchar()));
+}
 
-int main() {
-     freopen("giun.inp","r",stdin);
+ll read(){
+    ll tmp;
+    cin >> tmp;
+    return tmp;
+}
+
+void giuncute(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+}
+
+void OF(){
+    freopen(Fname".inp", "r", stdin);
+    freopen(Fname".out", "w", stdout);
+}
+
+cll mx = 1e7 + 4, mxn = 1e5 + 4;
+ll n, a[mxn], near[mx] = {0}, pos[mx] = {0}, par[mxn], sz[mxn], ans = 0;
+bool visit[mx] = {0};
+vec(pp(ll, ll)) edge[mx];
+
+ll _get(ll u){
+    return par[u] = (par[u] == u ? u : _get(par[u]));
+}
+
+bool _join(ll u, ll v){
+    u = _get(u), v = _get(v);
+    if(u == v) return 0;
+    if(sz[u] < sz[v]) swap(u, v);
+    sz[u] += sz[v];
+    par[v] = u;
+    return 1;
+}
+
+int main(){
+    freopen("giun.inp","r",stdin);
     freopen("giun.out","w",stdout);
-    ios::sync_with_stdio(false); cin.tie(0);
-    int n, m; cin >> n >> m;
-    dsk ke(n + 1);
-    vector<bs> bits(n + 1);
-    while (m--) 
+    
+    giuncute();
+    memset(near, -1, sizeof near);
+    cin >> n;
+    lp(i, 1, n)
     {
-        int u, v; cin >> u >> v;
-        if (!bits[u].test(v)) 
-        {
-            ke[u].push_back(v);
-            ke[v].push_back(u);
-            bits[v].set(u);
-            bits[u].set(v);
-        }
+        cin >> a[i];
+        if(pos[a[i]]) continue;
+        pos[a[i]] = i, near[a[i]] = a[i];
     }
-    for (int u=1; u<=n; u++) 
+    lpd(i, 1e7, 1) if(near[i] == -1) near[i] = near[i + 1];
+    lp(i, 1, n)
     {
-        bs f;
-        for (int v: ke[u]) 
+        if(visit[a[i]]) continue;
+        visit[a[i]] = 1;
+        if(near[a[i] + 1] != -1 && (2 * a[i] > 1e7 || near[a[i] * 2] != near[a[i] + 1])) 
         {
-            bits[v][u] = false;
-            if ((f & bits[v]).any()) 
+            edge[near[a[i] + 1] - a[i]].push_back({i, pos[near[a[i] + 1]]}); 
+            //cerr << i << " " << near[a[i] + 1] << endl;
+        }
+        for(ll j = a[i] * 2; j <= 1e7; j += a[i])
+            if(j + a[i] > 1e7 || near[j + a[i]] != near[j]) if(near[j] != -1) 
             {
-                f &= bits[v];
-                int w = 1;
-                while (!f[w]) w++;
-                for (int x: ke[w]) 
-                {
-                    if (bits[u][x]) 
-                    {
-                        cout << u << " " << v << " " << w << " " << x;
-                        return 0;
-                    }
-                }
-            } else f |= bits[v];
-            bits[v][u] = true;
-        }
+                edge[near[j] % a[i]].push_back({i, pos[near[j]]});
+                //cerr << i << " " << near[j] << endl;
+            }
+        cerr << endl;
     }
-    cout << -1;
-    return 0;
+    // find min tree
+    lp(i, 1, n) par[i] = i, sz[i] = 1;
+    ll cnt_edge = 0;
+    lp(i, 0, 1e7){
+        if(edge[i].empty()) continue;
+        for(auto e : edge[i]) if(_join(e.first, e.second)) ++cnt_edge, ans += i , cerr << e.first << " " << e.second << endl;
+        // cerr << i << '\n';
+        if(cnt_edge == n - 1) break;
+    }
+    cout << ans;
 }
