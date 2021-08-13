@@ -53,7 +53,7 @@ bool _join(ll u, ll v){
 }
 
 int main(){
-    giuncute();
+    // giuncute();
     memset(near, -1, sizeof near);
     // cin >> n;
     scanf("%d", &n);
