@@ -1,96 +1,88 @@
 #include <bits/stdc++.h>
-#define ll int
-#define cll const ll
-#define lp(a, b, c) for(ll a = b; a <= c; ++a)
-#define lpd(a, b, c) for(ll a = b; a >= c; --a)
-#define vec(a) vector<a>
-#define pp(a, b) pair<a, b>
-#define EACHCASE lpd(cs, read(), 1)
-#define Fname "f"
+
 using namespace std;
 
-template <typename T> inline void Read(T &x){
-    x = 0; char c;
-    while(!isdigit(c = getchar()));
-    do
-    {
-        x = x * 10 + c - '0';
-    } while (isdigit(c = getchar()));
+#define MAX_N (int) (1e5 + 7)
+int P[MAX_N][19];
+vector <int> adj[MAX_N] , H(MAX_N);
+int n;
+
+void DFS(int u , int father) {
+	P[u][0] = father;
+	for (int i = 0 ; i < (int) adj[u].size() ;i++) {
+		int v = adj[u][i];
+		if (v == father) {
+			continue;
+		}
+		H[v] = H[u] + 1;
+		DFS(v , u);
+	}
 }
 
-ll read(){
-    ll tmp;
-    cin >> tmp;
-    return tmp;
+void buildtable() {
+	for (int u = 1 ; u <= n ; u++) {
+		for (int k = 1 ; k < 19 ; k ++) {
+			P[u][k] = -1;
+		}
+	}
+	for (int k = 1 ; k < 19 ;k++) {
+		for (int u = 1 ; u <= n ; u++) {
+			if (P[u][k - 1] != -1){
+				P[u][k] = P[P[u][k - 1]][k - 1];
+			}
+		}
+	}
 }
-
-void giuncute(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
-}
-
-void OF(){
-    freopen(Fname".inp", "r", stdin);
-    freopen(Fname".out", "w", stdout);
-}
-
-cll mx = 1e7 + 4, mxn = 1e5 + 4;
-ll n, a[mxn], near[mx] = {0}, pos[mx] = {0}, par[mxn], sz[mxn], ans = 0;
-bool visit[mx] = {0};
-vec(pp(ll, ll)) edge[mx];
-
-ll _get(ll u){
-    return par[u] = (par[u] == u ? u : _get(par[u]));
-}
-
-bool _join(ll u, ll v){
-    u = _get(u), v = _get(v);
-    if(u == v) return 0;
-    if(sz[u] < sz[v]) swap(u, v);
-    sz[u] += sz[v];
-    par[v] = u;
-    return 1;
+int LCA(int u , int v) {
+	if (H[u] < H[v]) {
+		swap(u , v);
+	}
+	while (H[u] > H[v]) {
+		for (int k = 18 ; k >= 0 ; k --) {
+			if (P[u][k] != -1 && H[P[u][k]] >= H[v]) {
+				u = P[u][k];
+				break;
+			}
+		}
+	}	
+	if (u == v) return u;
+	while (true) {
+		bool found = false;
+		for (int k = 18 ; k >= 0 ; k --) {
+			if (P[u][k] != 1 && P[v][k] != -1  && P[u][k] != P[v][k]) {
+				u = P[u][k];
+				v = P[v][k];
+				found = true;
+				break;
+			}
+		}
+		if (!found) {
+			break;
+		}
+	}
+	return P[u][0];
 }
 
 int main(){
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
-    
-    giuncute();
-    memset(near, -1, sizeof near);
-    cin >> n;
-    lp(i, 1, n)
-    {
-        cin >> a[i];
-        if(pos[a[i]]) continue;
-        pos[a[i]] = i, near[a[i]] = a[i];
-    }
-    lpd(i, 1e7, 1) if(near[i] == -1) near[i] = near[i + 1];
-    lp(i, 1, n)
-    {
-        if(visit[a[i]]) continue;
-        visit[a[i]] = 1;
-        if(near[a[i] + 1] != -1 && (2 * a[i] > 1e7 || near[a[i] * 2] != near[a[i] + 1])) 
-        {
-            edge[near[a[i] + 1] - a[i]].push_back({i, pos[near[a[i] + 1]]}); 
-            //cerr << i << " " << near[a[i] + 1] << endl;
-        }
-        for(ll j = a[i] * 2; j <= 1e7; j += a[i])
-            if(j + a[i] > 1e7 || near[j + a[i]] != near[j]) if(near[j] != -1) 
-            {
-                edge[near[j] % a[i]].push_back({i, pos[near[j]]});
-                //cerr << i << " " << near[j] << endl;
-            }
-        cerr << endl;
-    }
-    // find min tree
-    lp(i, 1, n) par[i] = i, sz[i] = 1;
-    ll cnt_edge = 0;
-    lp(i, 0, 1e7){
-        if(edge[i].empty()) continue;
-        for(auto e : edge[i]) if(_join(e.first, e.second)) ++cnt_edge, ans += i , cerr << e.first << " " << e.second << endl;
-        // cerr << i << '\n';
-        if(cnt_edge == n - 1) break;
-    }
-    cout << ans;
+	ios::sync_with_stdio(0); cin.tie(NULL);
+	cout.tie(NULL);
+	//freopen("inp.inp","r",stdin);
+	cin >> n;
+	for (int i = 1 ; i < n ;i++) {
+		int u , v;
+		cin >> u >> v;
+		adj[u].push_back(v);
+		adj[v].push_back(u);
+	}
+	DFS(1 , -1);	
+	H[1] = 0;
+	buildtable();
+	int q;
+	cin >> q;
+	int u , v;
+	for (int i = 1 ; i <= q ; i++) {
+		cin >> u >> v;
+		cout << LCA(u , v) << '\n';
+	}
+	return 0;
 }
