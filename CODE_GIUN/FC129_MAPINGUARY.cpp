@@ -9,7 +9,7 @@ const ll maxn = 4e5 + 7;
 using namespace std;
 
 ll n , k , c , d ;
-
+vector<ll> card[maxn][5];
 int main()
 {
     giuncute;
@@ -20,35 +20,41 @@ int main()
     for (int i = 1 ; i <= n ; i++)
     {
         cin >> k;
-        vector <ll> a1 , a2 , a3;  
         for (int j = 1 ; j <= k ; j++)
         {
             cin >> c >> d;
-            if (c == 1) a1.push_back(d);
-            if (c == 2) a2.push_back(d);
-            if (c == 3) a3.push_back(d);
+            card[i][c].push_back(d);
         }
-        ll s1 = 0 , s2 = 0 , s3 = 0;
-        for (int i = 0 ; i < (int) a1.size() ; i++) 
-        {
-            if (a1[i] % 10 == 0 && a1[i] != 10) s1 += (a1[i] * 2 );
-            else s1 += a1[i];
-        }
-        for (int i = 0 ; i < (int) a2.size() ; i++) 
-        {
-            if (a2[i] % 10 == 0 && a2[i] != 10) s2 += (a2[i] * 2 );
-            else s2 += a2[i];
-        }
-        for (int i = 0 ; i < (int) a3.size() ; i++)
-        {
-            if (a3[i] % 10 == 0 && a3[i] != 10 ) s3 += (a3[i] * 2 );
-            else s3 += a3[i];
-        }
-        if (a1.size() == 1 && a2.size() == 1 && a3.size() == 1){
-            ans += max({s1+s2,s1+s3,s2+s3});
-        }
-        else ans += max({s1,s2,s3});
-        cerr << ans << " ";
     }
-    cout << ans;
+    for (int i = 1 ; i <= n ; i++)
+    {
+        for (int j = 1 ;  j <= 3 ; j++)
+        {
+            if (card[i][j].size() == 0) continue;
+            cerr << j << ": ";
+            for (int k : card[i][j]) cerr << k << " ";
+            cerr << endl;
+        }
+        //cerr << endl;
+    }
+    for (int i = 1 ; i <= n ; i++)
+    {
+        for (int j = 1 ;  j <= 3 ; j++)
+        {
+            ll sz;
+            if (j == 1) sz = 3;
+            else sz = 1 ;
+            sort (card[i][j].rbegin() , card[i][j].rend());
+            while(card[i][j].size() > sz) card[i][j].pop_back();
+        }
+    }
+    for (int i = 1 ; i <= n ; i++)
+    {
+        for (int j = 1 ; j <= 3 ; j++)
+        {
+            vector<pl> tmp;
+            for (int k : card[i][j]) tmp.push_back({j , k});
+        }
+    }
+
 }

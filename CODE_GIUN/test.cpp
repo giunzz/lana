@@ -1,88 +1,51 @@
 #include <bits/stdc++.h>
-
+#define ll long long
+#define cll const long long
+#define lp(a, b, c) for(ll a = b; a <= c; a++)
+#define lpd(a, b, c) for(ll a = b; a >= c; a--)
+#define vec(a) vector<a>
 using namespace std;
 
-#define MAX_N (int) (1e5 + 7)
-int P[MAX_N][19];
-vector <int> adj[MAX_N] , H(MAX_N);
-int n;
-
-void DFS(int u , int father) {
-	P[u][0] = father;
-	for (int i = 0 ; i < (int) adj[u].size() ;i++) {
-		int v = adj[u][i];
-		if (v == father) {
-			continue;
-		}
-		H[v] = H[u] + 1;
-		DFS(v , u);
-	}
+void file(const string file){
+    freopen((file + ".inp").c_str(), "r", stdin);
+    freopen((file + ".out").c_str(), "w", stdout);
 }
 
-void buildtable() {
-	for (int u = 1 ; u <= n ; u++) {
-		for (int k = 1 ; k < 19 ; k ++) {
-			P[u][k] = -1;
-		}
-	}
-	for (int k = 1 ; k < 19 ;k++) {
-		for (int u = 1 ; u <= n ; u++) {
-			if (P[u][k - 1] != -1){
-				P[u][k] = P[P[u][k - 1]][k - 1];
-			}
-		}
-	}
+string s;
+ll n, k;
+
+ll dec(char c){
+    return c - 'a';
 }
-int LCA(int u , int v) {
-	if (H[u] < H[v]) {
-		swap(u , v);
-	}
-	while (H[u] > H[v]) {
-		for (int k = 18 ; k >= 0 ; k --) {
-			if (P[u][k] != -1 && H[P[u][k]] >= H[v]) {
-				u = P[u][k];
-				break;
-			}
-		}
-	}	
-	if (u == v) return u;
-	while (true) {
-		bool found = false;
-		for (int k = 18 ; k >= 0 ; k --) {
-			if (P[u][k] != 1 && P[v][k] != -1  && P[u][k] != P[v][k]) {
-				u = P[u][k];
-				v = P[v][k];
-				found = true;
-				break;
-			}
-		}
-		if (!found) {
-			break;
-		}
-	}
-	return P[u][0];
+
+void sol(){
+    ll r = 0, cnt[30] = {0}, ct = 1, ans = 0;
+    cnt[dec(s[0])] = 1;
+    lp(l, 0, s.size() - 1)
+    {
+        while(r < s.size() - 1 && ((!cnt[dec(s[r + 1])] && ct + 1 <= k) || cnt[dec(s[r + 1])])) 
+        {
+            ++r;
+            if (cnt[dec(s[r])]) ct += 0 ;
+            else ct += 1;
+            cnt[dec(s[r])]++;
+            //ct += (cnt[dec(s[++r])]++ ? 0 : 1);
+            cerr << ct << " ";
+        }
+        cerr << endl;
+        if (ct == k) ans = max(ans, r - l + 1);
+        cerr << ans << " ";
+        if(r == s.size() - 1) break;
+        while(ct == k) ct -= (--cnt[dec(s[l++])] ? 0 : 1);
+        --l; 
+    }
+    cout << ans;
 }
 
 int main(){
-	ios::sync_with_stdio(0); cin.tie(NULL);
-	cout.tie(NULL);
-	//freopen("inp.inp","r",stdin);
-	cin >> n;
-	for (int i = 1 ; i < n ;i++) {
-		int u , v;
-		cin >> u >> v;
-		adj[u].push_back(v);
-		adj[v].push_back(u);
-	}
-	DFS(1 , -1);	
-	H[1] = 0;
-	buildtable();
-	int q;
-	cin >> q;
-	int u , v;
-	for (int i = 1 ; i <= q ; i++) {
-		cin >> u >> v;
-		cout << LCA(u , v) << '\n';
-	}
-	return 0;
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    file("giun");
+    cin >> n >> k >> s;
+    sol();
 }
