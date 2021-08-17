@@ -19,9 +19,12 @@ void dfs (ll u , ll father)
         if (v == father) continue;
         dfs(v , u);
         size[u] += size[v];
+        if (u == 1 ) cerr << size[v] << " " << size[u] << " " << v << endl;
         f[u] += f[v];
     }
+    //if (u == 1 ) cerr << f[u] << " " << size[u] << endl;
     f[u] += size[u];
+    
 }
 int main()
 {
