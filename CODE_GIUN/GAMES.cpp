@@ -50,20 +50,5 @@ int main()
     g[a].push_back({b , 0});
     dij(a , fa);
     dij(b , fb);
-    if (fa[s] == -oo && fb[s] == -oo) cout << -1;
-    else 
-    {
-        if (fa[s] >= fb[s])
-        {
-            dij(b , fc);
-            if (fc[t] == oo) cout << -1;
-            else cout << fa[s] + fc[t];
-        }
-        else 
-        {
-            dij(a, fc) ;
-            if (fc[t] == oo) cout << -1;
-            else cout << fb[s] + fc[t];
-        }
-    }
+
 }
