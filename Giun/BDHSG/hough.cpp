@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#define ll int
+#define ll long long
 #define cll const ll
 #define lp(a, b, c) for(ll a = b; a <= c; ++a)
 #define lpd(a, b, c) for(ll a = b; a >= c; --a)
@@ -18,6 +18,12 @@ template <typename T> inline void Read(T &x){
     } while (isdigit(c = getchar()));
 }
 
+ll read(){
+    ll tmp;
+    cin >> tmp;
+    return tmp;
+}
+
 void giuncute(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
@@ -28,31 +34,17 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-cll mxn = 1e6 + 2;
-ll n, a[mxn], ans;
+cll mxn = 1e5 + 4;
+ll n, m, a[mxn];
 
 int main(){
     giuncute();
-    OF();
-    scanf("%d", &n);
-    a[0] = 0;
-    ll c;
-    lp(i, 1, n){
-        scanf("%d", &c);
-        a[i] = a[i - 1] + c - 1;
+    cin >> n >> m;
+    lp(i, 1, n) cin >> a[i];
+    sort(a + 1, a + 1 + n);
+    lp(i, 1, m){
+        ll x;
+        cin >> x;
+        cout << (lower_bound(a + 1, a + 1 + n, x) - a - 1) << '\n';
     }
-    ans = min(a[n], n - a[n]);
-    ll tmp;
-    lp(i, 1, n - 1){
-        ans = min(ans, a[i] + n - i - (a[n] - a[i]));
-        // if(tmp == 2){
-        //     dp[i][1] = _min(dp[i - 1][1], dp[i - 1][0]);
-        //     dp[i][0] = dp[i - 1][0] + 1;
-        // } else{
-        //     dp[i][1] = _min(dp[i - 1][0], dp[i - 1][1]) + 1;
-        //     dp[i][0] = dp[i - 1][0];
-        // }
-    }
-    // cout << min(dp[n][0], dp[n][1]);
-    printf("%d", ans);
 }
