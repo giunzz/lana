@@ -9,6 +9,21 @@
 #define Fname "f"
 using namespace std;
 
+template <typename T> inline void Read(T &x){
+    x = 0; char c;
+    while(!isdigit(c = getchar()));
+    do
+    {
+        x = x * 10 + c - '0';
+    } while (isdigit(c = getchar()));
+}
+
+ll read(){
+    ll tmp;
+    cin >> tmp;
+    return tmp;
+}
+
 void giuncute(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
@@ -19,9 +34,16 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+void test(vec(ll) *a){
+    // cout << a[0][0] << ' ' << a[1][0];
+    cerr << a << '\n';
+}
+
 int main(){
     giuncute();
-    ll a, b;
-    cin >> a >> b;
-    cout << a + b;
+    vec(ll) a[8];
+    a[0].push_back(1);
+    a[1].push_back(0);
+    cerr << a << '\n';
+    test(a);
 }

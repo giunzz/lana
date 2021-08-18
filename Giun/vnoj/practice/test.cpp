@@ -36,9 +36,5 @@ void OF(){
 
 int main(){
     giuncute();
-    #ifndef ONLINE_JUDGE
-    OF();
-    #endif
-    ll a = 7, b = a--;
-    assert(a != 7);
+    cerr<< ('Z' - 'A');
 }
