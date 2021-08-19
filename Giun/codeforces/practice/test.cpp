@@ -39,5 +39,7 @@ int main(){
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    cerr << "quanggg dep trai     ";
+    bitset<10> a(7);
+    bitset<10> b(2);
+    cerr << ~(a ^ b);
 }
