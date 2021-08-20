@@ -34,13 +34,28 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
+cll mxn = 4e4 + 3;
+ll n, a[mxn], m, cur_seg[mxn], last[mxn], dp[mxn];
+
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    set<ll> s;
-    s.insert(1);
-    s.insert(1);
-    cerr << s.size();
+    cin >> n >> m;
+    lp(i, 1, n) cin >> a[i];
+    memset(cur_seg, -1, sizeof cur_seg);
+    memset(last, -1, sizeof last);
+    cur_seg[0] = 1;
+    lp(i, 1, n){
+        dp[i] = 1e18;
+        ll k = last[a[i]], j;
+        for(j = 0; j * j <= n && cur_seg[j] - 1 != k; ++j);
+        for(; j > 0; --j) cur_seg[j] = cur_seg[j - 1];
+        cur_seg[0] = i + 1;
+        last[a[i]] = i;
+        for(j = 0; j * j <= n; ++j) if(cur_seg[j] != -1) dp[i] = min(dp[i], j * j + dp[cur_seg[j] - 1]);
+    }
+    // cerr << dp[1];
+    cout << dp[n];
 }
