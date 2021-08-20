@@ -3,35 +3,43 @@
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
 using namespace std;
 const ll maxn = 3e5+7;
-ll n , a[maxn] , ans = 0;
-priority_queue<ll, vector<ll>, greater<ll> > mip;
-priority_queue<ll, vector<ll> > pa;
+ll n , a[maxn] , ans = -1e18 , s1 = 0 , s2 = 0 , l[maxn] , r[maxn];
+priority_queue<ll, vector<ll> , greater<ll>> ma2N ;
+priority_queue<ll, vector<ll> > ma3N;
 int main()
 {
     giuncute;
-    freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
+    freopen("SEQ3N.inp","r",stdin);
+    freopen("SEQ3N.out","w",stdout);
     cin >> n ;
-    ll s1 = 0  , s2 = 0;
     for (ll i = 1 ; i <= 3 * n ; i++) 
     {
         cin >> a[i];
-        if (i <= n) mip.push(a[i]) , s1 += a[i];
-        if (i > 2*n) pa.push(a[i]) , s2 += a[i];
+        if (i <= n)  ma2N.push(a[i]) , s1 += a[i];
+        if (i > 2*n) ma3N.push(a[i]) , s2 += a[i];
     }
-    ll i = n , j = 2*n+1;
-    while (i < j -1)
+    l[n] = s1;
+    r[2*n+1] = s2;
+    for (int i = n + 1 ; i <= 2*n ; i++)
     {
-        ll t1 = mip.top() , t2 = pa.top() , a1 =  (s1 - t1 + a[i+1]) - s2  , b = s1 - (s2 - t2 + a[j-1]) ;
-        ll c = (s1 - t1 + a[i+1]) - (s2 - t2 + a[j-1])   ; 
-        cerr << a1 << " " << b << " " << c << endl;
-        if (i+1 < j-1) c = INT_MIN;
-        if (a1 >= c && a1 >= b && i+1 < j) mip.pop() , s1 -= t1 , i++ , mip.push(a[i]) , s1 += a[i];
-        else if (c >= b  && c >= a1 && i+1 < j-1) mip.pop() , s1 -= t1 , s2 -= t2 , pa.pop() , i++ , j-- , mip.push(a[i]) , pa.push(a[j]) , s1 += a[i] , s2 += a[j];
-        else if (b >= c && b >= a1  && j-1 > i) pa.pop() , s2 -= t2 , j-- , pa.push(a[j]) , s2 += a[j];
-        cerr << t1 << " " << t2 << " " << s1 << " " << s2 << endl;
-        cerr << endl;
-        ans = max (ans , s1 - s2);
+        if(ma2N.top() < a[i])
+        {
+            s1 = s1 - ma2N.top() + a[i]; 
+            ma2N.pop();
+            ma2N.push(a[i]);
+        }
+        l[i] = s1;
     }
+    for (int i = 2*n ; i >= n + 1 ; i--)
+    {
+        if(ma3N.top() > a[i])
+        {
+            s2 = s2 - ma3N.top() + a[i];
+            ma3N.pop();
+            ma3N.push(a[i]);
+        }
+        r[i] = s2;
+    }
+    for (int i = n ; i <= 2 *n ; i++) ans = max (ans , l[i] - r[i+1]);
     cout << ans;
 }

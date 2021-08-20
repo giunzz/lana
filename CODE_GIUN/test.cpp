@@ -1,70 +1,34 @@
-#include <bits/stdc++.h>
-#define fi first
-#define se second
-const int N = 200200;
+#include<bits/stdc++.h>
+#define ll long long
+#define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
 using namespace std;
-int n;
-long long f[11];
-long long d[11];
-vector < pair < long long, long long > > get()
-{
-        int k;
-        cin >> k;
-        vector < long long > a[3];
-        for(int i = 1; i <= k; i++){
-                int x, y;
-                cin >> x >> y;
-                a[x - 1].push_back(y);
-        }
-        sort(a[0].begin(), a[0].end());
-        sort(a[1].begin(), a[1].end());
-        sort(a[2].begin(), a[2].end());
-        reverse(a[0].begin(), a[0].end());
-        reverse(a[1].begin(), a[1].end());
-        reverse(a[2].begin(), a[2].end());
-        vector < pair < long long, long long > > res(3);
-        for(int i = 0; i < 3; i++)
-		{
-                a[i].push_back(-1e17);
-                a[i].push_back(-1e17);
-                a[i].push_back(-1e17);
-        }
-        res[0].fi = max(a[0][0], max(a[1][0], a[2][0]));
-        res[1].fi = max(a[0][0] + a[1][0], a[0][0] + a[0][1]);
-        res[2].fi = a[0][0] + a[0][1] + a[0][2];
-        res[0].se = res[0].fi * 2;
-        res[1].se = max(a[0][0] + a[1][0] + max(a[0][0], a[1][0]), 2 * a[0][0] + a[0][1]);
-        res[2].se = res[2].fi + a[0][0];
-        return res;
-}
+const ll maxn = 3e5+7;
+ll n , a[maxn] , ans = 0;
+priority_queue<ll, vector<ll>, greater<ll> > mi;
+priority_queue<ll, vector<ll> > ma;
 int main()
 {
-        //freopen("input.txt", "r", stdin);
-        //freopen("output.txt", "w", stdout);
-		cerr << 12 % 10 ;
-        ios_base::sync_with_stdio(0);
-        cin >> n;
-        for(int i = 0; i < 10; i++) d[i] = f[i] = -1e18;
-        d[0] = 0;
-        for(int i = 1; i <= n; i++)
-		{
-                auto v = get();
-                for(int j = 0; j < 10; j++)
-				{
-                    for(int h = 0; h < 3; h++)
-					{
-                        int nj = (j + h + 1) % 10;
-                        if(j + h + 1 >= 10) f[nj] = max(f[nj], d[j] + v[h].se);
-                        else f[nj] = max(f[nj], d[j] + v[h].fi);
-                    }
-                }
-                for(int j = 0; j < 10; j++)
-				{
-                        d[j] = max(d[j], f[j]);
-                        f[j] = -1e18;
-                }
-        }
-        long long res = 0;
-        for(int i = 0; i < 10; i++) res = max(res, d[i]);
-        cout << res << "\n";
+    giuncute;
+    freopen("SEQ3N.inp","r",stdin);
+    freopen("SEQ3N.out","w",stdout);
+    cin >> n ;
+    ll s1 = 0  , s2 = 0;
+    for (ll i = 1 ; i <= 3 * n ; i++) 
+    {
+        cin >> a[i];
+        if (i <= n) mip.push(a[i]) , s1 += a[i];
+        if (i > 2*n) pa.push(a[i]) , s2 += a[i];
+    }
+    ll i = n , j = 2*n+1;
+    while (i < j -1)
+    {
+        ll t1 = mip.top() , t2 = pa.top() , a1 =  (s1 - t1 + a[i+1]) - s2  , b = s1 - (s2 - t2 + a[j-1]) ;
+        ll c = (s1 - t1 + a[i+1]) - (s2 - t2 + a[j-1])   ; 
+        if (i+1 < j-1) c = INT_MIN;
+        if (a1 >= c && a1 >= b && i+1 < j) mip.pop() , s1 -= t1 , i++ , mip.push(a[i]) , s1 += a[i];
+        else if (c >= b  && c >= a1 && i+1 < j-1) mip.pop() , s1 -= t1 , s2 -= t2 , pa.pop() , i++ , j-- , mip.push(a[i]) , pa.push(a[j]) , s1 += a[i] , s2 += a[j];
+        else if (b >= c && b >= a1  && j-1 > i) pa.pop() , s2 -= t2 , j-- , pa.push(a[j]) , s2 += a[j];
+        ans = max (ans , s1 - s2);
+    }
+    cout << ans;
 }
