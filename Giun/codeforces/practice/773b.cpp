@@ -34,25 +34,10 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-ll n, s, flo[1003] = {0}, ti = 0;
-
 int main(){
     giuncute();
     #ifndef ONLINE_JUDGE
     OF();
     #endif
-    cin >> n >> s;
-    lp(i, 1, n){
-        ll tmp, tmp1;
-        cin >> tmp >> tmp1;
-        flo[tmp] = tmp1;
-    }
-    ll ans =0;
-    lpd(i, s, 0){
-        if(flo[i]){
-            if(ti < flo[i]) ti += (flo[i] - ti);
-        }   
-        ++ti;
-    }
-    cout << ti - 1;
+    
 }
