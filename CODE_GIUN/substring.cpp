@@ -29,7 +29,7 @@ int main()
             l++;
         }
         if (tmp == k) ans = max(ans , r-l+1);
-        cerr << l << " " << r << " " << ans << endl;
+        //cerr << l << " " << r << " " << ans << endl;
     }
     cout << ans;
 }

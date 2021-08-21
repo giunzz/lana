@@ -11,14 +11,13 @@ int main()
     cin.tie(0);
     freopen("giun.inp","r",stdin);
     freopen("giun.out","w",stdout);
-    cin >> n ;
-    for (int i = 1 ; i <= n ; i++) cin >> x[i];
+    scanf("%lld",&n);
+    for (int i = 1 ; i <= n ; i++) scanf("%lld",&x[i]);
     for (int i = 0 ; i <= n + 7 ; i++) chk.push_back(oo);
     chk[0] = -oo;
     for (int i = 1 ; i <= n ; i++)
     {
         ll vt = upper_bound(chk.begin() , chk.end() , x[i]) - chk.begin();
-        //cerr << vt << " ";
         chk[vt] = x[i];
         ans = max (ans , vt);
     }
