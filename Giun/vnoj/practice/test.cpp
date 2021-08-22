@@ -25,6 +25,7 @@ void dfs (ll u , ll father)
     }
 }
 
+<<<<<<< HEAD
 ll lca (ll u , ll v)
 {
     if (size[v] > size[u]) swap(u,v);
@@ -75,4 +76,15 @@ int main()
             cout << lca(u,v) << endl;
         }
     }
+=======
+int main(){
+    giuncute();
+    #ifndef ONLINE_JUDGE
+    OF();
+    #endif
+    set<ll> s;
+    s.insert(1);
+    s.insert(1);
+    cerr << s.size();
+>>>>>>> 5cfac3cb99e40822ab8ce5a6c7940668597caf2a
 }

@@ -21,7 +21,8 @@ ll dec(char c){
 void sol(){
     ll r = 0, cnt[30] = {0}, ct = 1, ans = 0;
     cnt[dec(s[0])] = 1;
-    lp(l, 0, s.size() - 1){
+    lp(l, 0, s.size() - 1)
+    {
         while(r < s.size() - 1 && ((!cnt[dec(s[r + 1])] && ct + 1 <= k) || cnt[dec(s[r + 1])])) ct += (cnt[dec(s[++r])]++ ? 0 : 1);
         if (ct == k) ans = max(ans, r - l + 1);
         if(r == s.size() - 1) break;
