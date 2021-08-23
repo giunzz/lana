@@ -1,0 +1,71 @@
+https://vnoi.info/problems/list/
+
+cau truc du lieu
+	block dau lam het
+	block 2 tap trung bitset rmq va sparse table + binary lifting
+	block ordered set
+
+ly thuyet do thi
+	cay khung nho nhat
+	dfs/bfs
+	dsu
+	topo sort
+	do thi
+	dijkstra + quan tam do thi dag + SSSP graph + floyd
+	bfs 0-1
+	lca
+	tplt manh
+	tp song lien thong
+	dsu rollback
+
+quy hoach dong
+	lam het tru qhd chia de tri (co the lam nang trinh)
+	qhd doi nhan
+	open close
+	knuth
+bai toan can quan tam knapsack, day con tang
+1 so blog
+cac topic dp https://codeforces.com/blog/entry/67679
+dp sos https://codeforces.com/blog/entry/45223
+dp non-trivial https://codeforces.com/blog/entry/47764
+
+tham lam
+	lam het chu y exchange argument
+
+xu ly sau
+	block dau tien lam het
+	
+chia can
+	lam het
+
+hinh hoc
+**cong thuc: tinh dien tich va` ccw
+	bao loi
+	sweep line https://codeforces.com/blog/entry/20377
+
+luong
+	cap ghep
+	
+toan hoc
+	bao ham loai tru
+	bitwise
+	gcd
+	mobius
+	sang nguyen to
+	so hoc
+	thang du trung hoa
+	to hop
+	toan - adhoc
+
+ky nang khac
+	2 con tro
+	ad hoc
+	cai trau
+	lat nguoc bai toan
+	nhan ma tran (tinh so fibo trong logn)
+	roi rac hoa (nen so, co the coi day con tang) https://vietcodes.github.io/algo/lis
+	tim kiem nhi phan tam phan
+	co the lam gop set
+	
+	
+	
