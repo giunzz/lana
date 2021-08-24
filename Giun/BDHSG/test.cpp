@@ -1,49 +1,75 @@
+//Given a tree and weights of nodes. Weights are non-negative integers. Task is to find maximum size of a subtree of a given tree such that all nodes are even in weights.
+// 600E (cF)
 #include <bits/stdc++.h>
-#define ll long long
-#define cll const ll
-#define lp(a, b, c) for(ll a = b; a <= c; ++a)
-#define lpd(a, b, c) for(ll a = b; a >= c; --a)
-#define vec(a) vector<a>
-#define pp(a, b) pair<a, b>
-#define EACHCASE lpd(cs, read(), 1)
-#define Fname "f"
 using namespace std;
+#define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
+#define ll long long 
+const ll maxn = 5e6+7;
+ll n , color[maxn] , u , v , sum = 0 , mx = 0 ;
+vector<ll> G[maxn];
+ll size[maxn] , p[maxn] , cnt[maxn] = {0} , Big_Child[maxn] = {0};
+bool Big[maxn] = {0};
+pair <ll,ll> ans[maxn];
 
-template <typename T> inline void Read(T &x){
-    x = 0; char c;
-    while(!isdigit(c = getchar()));
-    do
+void DFS (ll u)
+{
+    size[u] = 1 ;
+    Big_Child[u] = -1;
+    for (int v : G[u])
     {
-        x = x * 10 + c - '0';
-    } while (isdigit(c = getchar()));
+        if (v != p[u])
+        {
+            p[v] = u , DFS(v) ;
+            size[u] += size[v];
+            if (Big_Child[u] == -1 || size[Big_Child[u]] < size[v]) Big_Child[u] = v;
+        }
+    }
 }
 
-ll read(){
-    ll tmp;
-    cin >> tmp;
-    return tmp;
+void add (ll u , ll num , bool check)
+{
+    cnt[color[u]] += num ; 
+    if (check)
+    {
+        if (cnt[color[u]] == mx) sum += color[u];
+        else if (cnt[color[u]] > mx ) mx = cnt[color[u]] , sum = color[u];
+    }
+    for (int v : G[u])
+        if (v != p[u] && !Big[v]) add(v , num , check );
 }
 
-void giuncute(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
+void sol_DFS(ll u , bool keep)
+{
+    for (int v : G[u])
+        if (v != p[u] && v != Big_Child[u]) sol_DFS(v , 0 );
+    if (Big_Child[u] != -1)
+    {
+        sol_DFS(Big_Child[u] , 1);
+        Big[Big_Child[u]] = 1 ;
+        mx = ans[Big_Child[u]].second , sum = ans[Big_Child[u]].first;
+    }
+    else mx = 0 , sum = 0 ;
+    add (u , 1 , 1);
+    ans[u] = {sum , mx};
+    if (Big_Child[u] != -1 ) Big[Big_Child[u]] = 0;
+    if (!keep) add(u , -1 , 0);
 }
-
-void OF(){
-    freopen(Fname".inp", "r", stdin);
-    freopen(Fname".out", "w", stdout);
-}
-
-void test(vec(ll) *a){
-    // cout << a[0][0] << ' ' << a[1][0];
-    cerr << a << '\n';
-}
-
-int main(){
-    giuncute();
-    vec(ll) a[8];
-    a[0].push_back(1);
-    a[1].push_back(0);
-    cerr << a << '\n';
-    test(a);
+int main()
+{
+    giuncute;
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
+    scanf("%lld", &n);
+    for (int i = 1 ; i <= n ; i++) scanf("%lld", &color[i]);    
+    for (int i = 1 ; i < n ; i++)
+    {
+        scanf("%lld", &u);
+        scanf("%lld", &v);
+        G[u].push_back(v);
+        G[v].push_back(u);
+    }
+    p[1] = 1; 
+    DFS(1);
+    sol_DFS(1,1);
+    for (int i = 1 ; i <= n ; i++) printf("%lld ", ans[i].first);
 }
