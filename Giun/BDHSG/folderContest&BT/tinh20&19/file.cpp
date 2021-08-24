@@ -11,6 +11,6 @@ using namespace std;
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-    #define name "waw"
+    #define name "gopqua"
     system("mkdir " name " && copy pb " name " && cd " name " && rename pb.* " name ".*");
 }
