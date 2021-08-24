@@ -42,7 +42,6 @@ ll sol(ll r){
     lp(i, 1, n) b[i] = {(a[i].first + r - 1) / r, a[i].second / r};
     lp(i, 1, n) if(b[i].first > b[i].second) return 0;
     nm = m / r;
-    // lp(i, 1, n) cerr << b[i].first << ' ' << b[i].second << '\n';
     lp(i, 0, 1) lp(j, 0, nm) dp[i][j] = 0;
     dp[0][0] = 1;
     lp(i, 1, n){
@@ -52,9 +51,7 @@ ll sol(ll r){
                 (dp[i & 1][j] += dp[~i & 1][j - b[i].first]) %= MOD;
             if(j - b[i].second - 1 >= 0)
                 (dp[i & 1][j] -= dp[~i & 1][j - b[i].second - 1]) %= MOD;
-            // cerr << dp[i & 1][j] << ' ';
         }
-        // cerr << '\n';
         dp[0][0] = 0;
     }
     ll res = 0;
