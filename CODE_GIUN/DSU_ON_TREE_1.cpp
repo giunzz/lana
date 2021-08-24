@@ -4,7 +4,7 @@
 using namespace std;
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
 #define ll long long 
-const ll maxn = 1e6+7;
+const ll maxn = 5e6+7;
 ll n , color[maxn] , u , v , sum = 0 , mx = 0 ;
 vector<ll> G[maxn];
 ll size[maxn] , p[maxn] , cnt[maxn] = {0} , Big_Child[maxn] = {0};
@@ -59,17 +59,17 @@ int main()
     giuncute;
     freopen("giun.inp","r",stdin);
     freopen("giun.out","w",stdout);
-    cin >> n ; 
-    for (int i = 1 ; i <= n ; i++) cin >> color[i];
+    scanf("%lld", &n);
+    for (int i = 1 ; i <= n ; i++) scanf("%lld", &color[i]);    
     for (int i = 1 ; i < n ; i++)
     {
-        cin >> u >> v;
+        scanf("%lld", &u);
+        scanf("%lld", &v);
         G[u].push_back(v);
         G[v].push_back(u);
     }
     p[1] = 1; 
     DFS(1);
-    for (int i = 1 ; i <= n ; i++) cerr<< i << " " <<p[i] << " " << size[i] << " " << Big_Child[i] << endl;
     sol_DFS(1,1);
-    for (int i = 1 ; i <= n ; i++) cout << ans[i].first << " ";
+    for (int i = 1 ; i <= n ; i++) printf("%lld ", ans[i].first);
 }

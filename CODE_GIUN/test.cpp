@@ -1,45 +1,58 @@
 #include <bits/stdc++.h>
-
-const int MOD = 1000000007;
-const int MAXN = 20;
-const int MAXS = MAXN*MAXN;
-int n, a, x[MAXN], dp[2][2*MAXS];
+#define ll long long
+#define cll const long long
+#define lp(a, b, c) for (ll a  =b; a <= c; a++)
+#define lpd(a, b, c) for (ll a  =b; a >= c; a--)
+#define vec(a) vector<a>
+#define pp(a, b) pair<a, b>
+#define pb push_back
 using namespace std;
-int add(int &a, int b) {
-    a += b;
-    if (a >= MOD) a -= MOD;
+
+void File(const string ff){
+    freopen((ff + ".inp").c_str(), "r", stdin);
+    freopen((ff + ".out").c_str(), "w", stdout);
 }
 
-int main() {
-	freopen("giun.inp","r",stdin);
-    freopen("giun.out","w",stdout);
-    scanf("%d%d", &n, &a);
-    for(int i = 0; i < n; ++i) {
-        scanf("%d", &x[i]);
-        x[i] -= a;
-    }
+cll maxn = 2e5 + 7;
+ll n, tg, a[maxn];
+vec(ll) g[maxn], cnt[maxn];
 
-    dp[0][MAXS] = 1;
-    for(int i = 0; i < n; ++i) 
-	{
-        for(int j = 0; j < 2*MAXS; ++j) 
-		{
-            if (dp[0][j] > 0) {
-			cerr << dp[0][j] << " ";
-                add(dp[1][j], dp[0][j])%MOD;
-                add(dp[1][j+x[i]], dp[0][j])%MOD;
-            }
-		}
-        for(int j = 0; j < 2*MAXS; ++j) 
-		{
-            dp[0][j] = dp[1][j];
-            dp[1][j] = 0;
+void init(){
+    ll u, v;
+    lp(i, 1, n - 1) {
+        cin >> u >> v;
+        g[u].pb(v);
+        g[v].pb(u);
+    }
+}
+
+void dfs(ll u){
+    a[u] = 0;
+    for(ll v : g[u]){
+        if(a[v] == -1){
+            dfs(v);
+            cnt[u].pb(a[v]);
         }
-		cerr << endl;
-        
     }
+    sort(cnt[u].rbegin(), cnt[u].rend());
+    for(ll v : cnt[u]) cerr << v << ' ';
+    cerr << '\n';
+    for(ll v = 0; v < cnt[u].size(); v++){
+        a[u] = max(a[u], v + 1 + cnt[u][v]);
+    }
+}
 
-    printf("%d", (dp[0][MAXS]-1+MOD)%MOD);
+void sol(){
+    lp(i, 1, n) a[i] = -1;
+    dfs(tg);
+    cout << a[tg];
+}
 
-    return 0;
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    File("giun");
+    cin >> n >> tg;
+    init();
+    sol();
 }
