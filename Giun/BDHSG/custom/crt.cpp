@@ -24,8 +24,8 @@ string name;
 int main(){
     cout << "name: ";
     cin >> name;
-    // st("mkdir " + name);
-    // st("cp -r pb " + name);
+    st("mkdir " + name);
+    st("copy pb " + name);
     st("cd " + name + " && rename pb.* " + name + ".*");
     st("cd " + name + " && rename pb_bruce.cpp " + name + "_bruce.cpp");
 }

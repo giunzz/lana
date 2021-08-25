@@ -1,0 +1,40 @@
+\documentclass[12pt,a4paper,oneside]{article}
+
+\usepackage[utf8]{vietnam}
+\usepackage[vietnamese]{babel}
+\usepackage{freecontest}
+
+\header{\LARGE Beginner Free Contest 32}
+
+\begin{document}
+
+\problemtitle{FNHOUSES}
+
+Cho $1$ mảnh đất $M$ hàng và $N$ cột. Mỗi ô ($i, j$) trên đó có thể có $1$ ngôi nhà hoặc không có gì cả. Tại đây, $2$ ngôi nhà được gọi là cặp nhà vui vẻ nếu 2 ô đất của chúng có chung cạnh hoặc chung góc với nhau. Mảnh đất càng có nhiều cặp nhà vui vẻ thì càng đắt giá. Chính vì vậy, tổ chức Free Contest quyết định xây thêm đúng $1$ ngôi nhà trên bất kì ô trống nào trên mảng đất đó sao cho số lượng cặp nhà vui vẻ nhiều nhất. Nếu không còn ô đất nào trống thì tổ chức sẽ không xây thêm nhà. 
+
+Hãy giúp tổ chức Free Contest tìm số lượng cặp nhà vui vẻ lớn nhất.
+
+\heading{Dữ liệu}
+
+\begin{itemize}
+    \item Dòng đầu tiên gồm 2 số nguyên dương $M$, $N$ là kích thước mảnh đất ($1 \le M, N \le 10^3$).
+    \item $M$ dòng tiếp theo, mỗi dòng chứa $N$ ký tự, ''.'' nếu ô đất trống và ''\#'' nếu ô đất đó có nhà.
+\end{itemize}
+
+\heading{Kết quả}
+
+In ra 1 số duy nhất là số lượng cặp nhà vui vẻ lớn nhất.
+
+\heading{Ví dụ}
+
+\begin{example}
+    \exmp{%
+2 3
+..\#
+..\#
+}{%
+3
+}%
+\end{example}
+
+\end{document}
