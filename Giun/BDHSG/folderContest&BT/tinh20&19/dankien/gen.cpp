@@ -20,7 +20,7 @@ double randb(double a, double b){
 
 void gen(){
     ofstream co(Fname".inp");
-    ll n = 1e6, last = 0;
+    ll n = 100, last = 0;
     co << n << '\n';
     lp(i, 1, n) co << randll(1, 100) << ' ';
     co << '\n';
@@ -54,9 +54,9 @@ int main(){
     cin.tie(0); cout.tie(0);
     lp(i, 1, 1){
         gen();
-//        ofstream o(Fname".ans"); ifstream ip(Fname".inp");
-//        bruce(o, ip);
-//        o.close(); ip.close();
+        ofstream o(Fname".ans"); ifstream ip(Fname".inp");
+        bruce(o, ip);
+        o.close(); ip.close();
         // cerr << clock() << '\n';
         system(Fname);
         // cerr << clock() << '\n';
