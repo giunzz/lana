@@ -1,2 +1,2 @@
-cerr << a[i] << " " << a[i] + k << " " << j << endl;
-                    
+for (int i = 0 ; i < a.size() ; i++) 
+    

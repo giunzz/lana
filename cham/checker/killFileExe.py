@@ -21,8 +21,10 @@ def killFile(name):
                     os.kill(pid, signal.SIGTERM)
 
             else:
-                pid = int("".join(getpid(name)))
-                os.kill(pid, signal.SIGTERM)
+                temp = getpid(name)
+                if len(temp) >= 1:
+                    pid = int("".join(temp))
+                    os.kill(pid, signal.SIGTERM)
 
 if __name__ == "__main__":
     killFile('test.exe')

@@ -3,4 +3,4 @@
 - N folder test cases
 - 5 file .py
 
-2. Huong dan su dung: run file run.py -> set time limit -> ket qua o file Score.log, run file success != AC
+2. Huong dan su dung: run file run.bat -> set time limit -> ket qua o file Score.log, run file success != AC

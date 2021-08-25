@@ -1,5 +1,23 @@
-Target: AC1 
+Target: dientich 
 Directory: G:\HocLapTrinh\cham\checker
-Test00: 0.195987s
+Test01: 0.114192s
 Accept
-AC: 1/1
+Test02: 0.127918s
+Accept
+Test03: 0.166899s
+Accept
+Test04: 0.127919s
+Accept
+Test05: 0.760529s
+Accept
+Test06: 0.138915s
+Accept
+Test07: 0.142911s
+Accept
+Test08: 0.174891s
+Accept
+Test09: 0.303812s
+Accept
+Test10: 0.797502s
+Accept
+AC: 10/10

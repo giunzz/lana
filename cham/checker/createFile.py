@@ -8,7 +8,7 @@ def createExe():
         if nameFileCpp.endswith('.cpp'):
             nameTarget = ''.join(nameFileCpp.split('.cpp'))
             try:
-                os.system('cd "%s" && g++ %s -o %s' % (currentDirectory, os.path.join(currentDirectory, nameFileCpp), os.path.join(currentDirectory, nameTarget + '.exe')))
+                os.system('cd "%s" && g++ -pipe -O2 -s -static -lm -x c++ -Wl,--stack=268435456 %s -o %s' % (currentDirectory, os.path.join(currentDirectory, nameFileCpp), os.path.join(currentDirectory, nameTarget + '.exe')))
             except:
                 print('Build file Error!')
     return nameTarget
