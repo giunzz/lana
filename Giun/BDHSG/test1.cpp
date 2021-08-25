@@ -34,21 +34,13 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-vec(pp(ll, ll)) a;
-ll u, v, ans = 0, cnt = 0;
-
 int main(){
     giuncute();
-    lp(i, 0, 1){
-        cin >> u >> v;
-        if(u > v) swap(u, v);
-        a.push_back({u, -1}), a.push_back({v, 1});
-    }
-    sort(a.begin(), a.end());
-    for(pp(ll, ll) i : a){
-        if(cnt == 0) ans -= i.first;
-        cnt += i.second;
-        if(cnt == 0) ans += i.first;
-    }
-    cout << ans;
+    #ifndef ONLINE_JUDGE
+    OF();
+    #endif
+    cout << "***";
+    lp(i, 'A', 'Z') cout << (char)i;
+    cout << "***";
+    // cerr << a.substr(0, 3);
 }

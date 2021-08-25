@@ -1,50 +1,69 @@
-Target: BALOON 
+Target: sirni 
 Directory: C:\Users\tienp\Desktop\Hoc\Python\checker
-test0: 0.244472s
+test0: 0.368000s
 Accept
-test1: 0.211560s
+test1: 0.633005s
 Accept
-test10: 0.588639s
+test10: 0.730991s
 Accept
-test11: 0.323802s
+test11: 0.400000s
 Accept
-test12: 2.326869s
+test12: 0.551997s
 Accept
-test13: 1.310589s
+test13: 0.430994s
 Accept
-test14: 1.919894s
+test14: 0.476996s
 Accept
-test15: 0.207508s
+test15: 0.814007s
 Accept
-test16: 1.166028s
+test16: 1.628003s
 Accept
-test17: 1.684846s
+test17: 0.830000s
 Accept
-test18: 0.343125s
+test18: 0.526982s
 Accept
-test19: 2.725507s
+test19: 1.328997s
 Accept
-test2: 0.259525s
+test2: 0.495002s
 Accept
-test20: TLE
-test21: 1.822722s
-Wrong Ans at line 1
-test22: TLE
-test23: 2.333065s
-Wrong Ans at line 1
-test24: TLE
-test3: 0.670588s
+test20: 1.197996s
 Accept
-test4: 1.219250s
+test21: 1.135990s
 Accept
-test5: 1.564036s
+test22: 1.906002s
 Accept
-test6: 0.420737s
+test23: 0.921997s
 Accept
-test7: 0.903444s
+test24: 0.872997s
 Accept
-test8: 2.564168s
+test25: 1.995005s
 Accept
-test9: 2.864239s
+test26: 0.908979s
 Accept
-AC: 20/25
+test27: 0.767997s
+Accept
+test28: 3.333970s
+Accept
+test29: 0.788008s
+Accept
+test3: 0.603995s
+Accept
+test30: 0.767991s
+Accept
+test31: 4.655007s
+Accept
+test32: 0.828010s
+Accept
+test4: 4.893998s
+Accept
+test5: 0.876999s
+Accept
+test6: 0.415970s
+Accept
+test7: 0.493995s
+Accept
+test8: 0.412001s
+Accept
+test9: 0.623990s
+Accept
+AC: 33/33

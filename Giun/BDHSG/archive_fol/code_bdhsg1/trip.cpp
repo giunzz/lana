@@ -11,7 +11,7 @@
 #define vec(type) vector<type>
 #define vecite(type) vector<type>::iterator
 using namespace std;
-const string tenfile = "f";
+const string tenfile = "giun";
 #define fi freopen((tenfile + ".inp").c_str(), "r", stdin); freopen((tenfile + ".out").c_str(), "w", stdout)
 
 cii maxn = 1e4 + 7;
@@ -24,6 +24,7 @@ int main(){
     loop(i, 1, n) cin >> a[i];
     sort(a + 1, a + 1 + n);
     loopd(i, n, 1){
+        cerr << i ;
         if(c[i]) continue;
         c[i] = 1;
         if(a[i] + a[1] > d || i == 1) ++ans;
@@ -34,6 +35,7 @@ int main(){
                 while(c[k]) --k;
                 if(!k) ++ans;
                 else c[k] = 1, ++ans;
+                cerr << 1;
             }
         }
     }
