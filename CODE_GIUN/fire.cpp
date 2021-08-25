@@ -1,20 +1,21 @@
 #include<bits/stdc++.h>
 using namespace std;
-2int n  , f[(int) 8331e3+7]={0};
+#define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
+#define int maxn = 1e4 + 7;
+int n  , f[maxn]={0};
 struct giun
 {
     int time , d , p ;
 } a[(int) 1008];
-
-bool cmp (giun x , giun y )
+bool cmp (giun &x , giun &y )
 {
     return(x.d < y.d);
 }
 int main()
 {
     giuncute;
-    freopen("fire.inp","r",stdin);
-    freopen("fire.out","w",stdout);
+    freopen("giun.inp","r",stdin);
+    freopen("giun.out","w",stdout);
     cin >> n;
     for (int i = 1 ; i <= n ; i++) cin >> a[i].time >> a[i].d >> a[i].p;   
     sort(a+1,a+1+n,cmp);
@@ -30,7 +31,7 @@ int main()
     int ans = f[1];
     for (int i = 2 ; i <= n ; i++) 
     {
-        for (int j = a[i].d-1 ; j >= a[i].time ; j-- )ans = max(ans,f[j]);
+        for (int j = a[i].d-1 ; j >= a[i].time ; j-- ) ans = max(ans,f[j]);
     }
     cout << ans;
 }

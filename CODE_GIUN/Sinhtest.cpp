@@ -17,20 +17,11 @@ int main()
 {
     srand(time(NULL));
     freopen("giun.inp","w",stdout);
-    ll n = 10;
-    cout << n << endl;
-    ll t = 0 , cnt[600] = {0};
-    while (t != n)
+    ll n = 100 ;
+    cout << n <<  endl;
+    for (int i = 1 ; i <= n ; i++)
     {
-        int a = giun(1 , 30); 
-        if (cnt[a] == 0) cout << a << " "  , cnt[a] = 1 , t++;
-    }
-    cout << endl;
-    t = 0 ;
-    memset(cnt , 0 , sizeof cnt);
-    while (t != n)
-    {
-        int a = giun(1 , 30); 
-        if (cnt[a] == 0) cout << a << " ",  cnt[a] = 1 , t++;
+            int a = giun(1 , 2000); 
+            cout << giun(1,20) << " " << a << " " <<  giun (1,20) << endl;
     }
 }
