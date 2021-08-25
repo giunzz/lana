@@ -1,69 +1,23 @@
-Target: sirni 
-Directory: C:\Users\tienp\Desktop\Hoc\Python\checker
-test0: 0.368000s
+Target: dientich 
+Directory: C:\Users\tienp\Desktop\Quang\Hoc\Python\checker
+Test01: 2.240413s
 Accept
-test1: 0.633005s
+Test02: 1.827540s
 Accept
-test10: 0.730991s
+Test03: 1.796301s
 Accept
-test11: 0.400000s
+Test04: 1.964406s
 Accept
-test12: 0.551997s
+Test05: 2.805247s
 Accept
-test13: 0.430994s
+Test06: 1.718202s
 Accept
-test14: 0.476996s
+Test07: 1.811920s
 Accept
-test15: 0.814007s
+Test08: 1.897078s
 Accept
-test16: 1.628003s
+Test09: 2.155560s
 Accept
-test17: 0.830000s
+Test10: 2.671019s
 Accept
-test18: 0.526982s
-Accept
-test19: 1.328997s
-Accept
-test2: 0.495002s
-Accept
-test20: 1.197996s
-Accept
-test21: 1.135990s
-Accept
-test22: 1.906002s
-Accept
-test23: 0.921997s
-Accept
-test24: 0.872997s
-Accept
-test25: 1.995005s
-Accept
-test26: 0.908979s
-Accept
-test27: 0.767997s
-Accept
-test28: 3.333970s
-Accept
-test29: 0.788008s
-Accept
-test3: 0.603995s
-Accept
-test30: 0.767991s
-Accept
-test31: 4.655007s
-Accept
-test32: 0.828010s
-Accept
-test4: 4.893998s
-Accept
-test5: 0.876999s
-Accept
-test6: 0.415970s
-Accept
-test7: 0.493995s
-Accept
-test8: 0.412001s
-Accept
-test9: 0.623990s
-Accept
-AC: 33/33
+AC: 10/10
