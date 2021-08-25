@@ -1,26 +1,46 @@
-#include <direct.h>
-#include<limits.h>
-#include<iostream>
-#include<fstream>
+#include <bits/stdc++.h>
+#define ll long long
+#define cll const ll
+#define lp(a, b, c) for(ll a = b; a <= c; ++a)
+#define lpd(a, b, c) for(ll a = b; a >= c; --a)
+#define vec(a) vector<a>
+#define pp(a, b) pair<a, b>
+#define EACHCASE lpd(cs, read(), 1)
+#define Fname "f"
 using namespace std;
 
-void reduce(string &a){
-    while(a.back() != '\\') a.pop_back();
+template <typename T> inline void Read(T &x){
+    x = 0; char c;
+    while(!isdigit(c = getchar()));
+    do
+    {
+        x = x * 10 + c - '0';
+    } while (isdigit(c = getchar()));
 }
 
-int main() 
-{
-    char buff[PATH_MAX];
-    _getcwd( buff, PATH_MAX );
-    string cur(buff);
-    string tmp = cur;
-    reduce(cur);
-    cur.pop_back();
-    reduce(cur);
-    cur += "answer\\answer00.txt";
-    ifstream ciii;
-    ciii.open(cur);
-    string tmoo;
-    while(ciii >> tmoo) cout << tmoo << '\n';
-    return 0;
+ll read(){
+    ll tmp;
+    cin >> tmp;
+    return tmp;
+}
+
+void giuncute(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+}
+
+void OF(){
+    freopen(Fname".inp", "r", stdin);
+    freopen(Fname".out", "w", stdout);
+}
+
+int main(){
+    giuncute();
+    #ifndef ONLINE_JUDGE
+    OF();
+    #endif
+    cout << "***";
+    lp(i, 'A', 'Z') cout << (char)i;
+    cout << "***";
+    // cerr << a.substr(0, 3);
 }

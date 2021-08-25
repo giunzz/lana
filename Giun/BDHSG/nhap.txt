@@ -1,0 +1,2 @@
+di * ri - di * r(i - 1)
+di * (ri - r_(i-1))

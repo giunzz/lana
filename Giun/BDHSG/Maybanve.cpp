@@ -34,22 +34,17 @@ void OF(){
     freopen(Fname".out", "w", stdout);
 }
 
-cll mxn = 1e6 + 3;
-ll n, ans = 0;
-pp(ll, ll) a[mxn];
-vec(pp(ll, ll)) b;
+const string table[] = {
+    "***ABCDE",
+    "FGHIJKLM",
+    "NOPQRSTU",
+    "VWXYZ***"
+};
 
-void init(){
-    ll ma = 0;
-    b.push_back({0, 0});
-    lp(i, 1, n){
-        if(a[i].second > ma){
-            ans += a[i].first * (a[i].second - b.back().second);
-            b.push_back(a[i]);
-            ma = a[i].second;
-        }
-    }
-}
+cll mxn = 55;
+ll n;
+string s, a[mxn];
+bool d[300] = {0};
 
 int main(){
     giuncute();
@@ -57,8 +52,13 @@ int main(){
     OF();
     #endif
     cin >> n;
-    lp(i, 1, n) cin >> a[i].first >> a[i].second;
-    sort(a + 1, a + 1 + n, greater<pp(ll, ll)>());
-    init();
-    cout << ans;
+    lp(i, 1, n) cin >> a[i];
+    cin >> s;
+    lp(i, 1, n)
+        if(a[i].substr(0, s.size()) == s)
+            if(s.size() < a[i].size()) d[a[i][s.size()]] = 1;
+    lp(i, 0, 3){
+        lp(j, 0, 7) cout << (d[table[i][j]] ? table[i][j] : '*');
+        cout << '\n';
+    }
 }
