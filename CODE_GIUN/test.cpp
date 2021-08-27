@@ -1,82 +1,68 @@
-#include<bits/stdc++.h>
-#define ll long long
-#define cll const ll
-#define lp(a, b, c) for(ll a = b; a <= c; ++a)
-#define lpd(a, b, c) for(ll a = b; a >= c; --a)
-#define vec(a) vector<a>
-#define pp(a, b) pair<a, b>
-#define Fname "vluoi"
-#pragma GCC optimize("Ofast")
+#include <iostream>
+#include <algorithm>
+#include <cstdio>
+#include <vector>
+#include <utility>
+#include <queue>
+#include <cstring>
 using namespace std;
-
-cll mxn = 1e3 + 2, dx[] = {-1, 0, 1, 0}, dy[] = {0, -1, 0, 1};
-ll n, m, a[mxn][mxn] = {{0}}, tot[mxn * mxn] = {0}, ti = 0, d[mxn][mxn] = {{0}}, curcol, dp[mxn][mxn];
-
-void bfs(ll xr, ll yr){
-	d[xr][yr] = ++ti;
-	tot[ti] = 1;
-	curcol = a[xr][yr];
-	queue<pp(ll, ll)> q;
-	q.push({xr, yr});
-	while(q.size()){
-		ll x = q.front().first, y = q.front().second;
+const int dx[]={-1,0,1,0};
+      int dy[]={0,1,0,-1};
+ 
+int m,n,h[1010][1010],a[1010][1010];
+vector < pair<int,int> > p[1000100];
+ 
+void bfs(int x,int y,int val)
+{
+	queue < pair<int,int> > q;
+	h[x][y]=val;
+	q.push(make_pair(x,y));
+	while (!q.empty())
+	{
+		x=q.front().first; y=q.front().second;
 		q.pop();
-		lp(i, 0, 3){
-			ll nx = x + dx[i], ny = y + dy[i];
-			if(a[nx][ny] == curcol && !d[nx][ny]){
-				d[nx][ny] = ti;
-				++tot[ti];
-				q.push({nx, ny});
+		for (int i=0;i<4;i++)
+		{
+			int xx=x+dx[i],yy=y+dy[i];
+			if (!h[xx][yy] && a[xx][yy]<=val)
+			{
+				h[xx][yy]=val;
+				q.push(make_pair(xx,yy));
 			}
 		}
 	}
 }
-
-void dijk(){
-	lp(i, 1, n) lp(j, 1, m) dp[i][j] = 1e18;
-	dp[1][1] = 0;
-	priority_queue<pp(ll,  pp(ll, ll)), vec(pp(ll, pp(ll, ll))), greater<pp(ll, pp(ll, ll))>> q;
-	q.push({0, {1, 1}});
-	while(q.size()){
-		ll dis = q.top().first, x = q.top().second.first, y = q.top().second.second;
-		q.pop();
-		if(dis != dp[x][y]) continue;
-		if(x == n && y == m) break;
-		lp(i, 0, 3){
-			ll nx = x + dx[i], ny = y + dy[i];
-			if(!nx || !ny || nx > n || ny > m) continue;
-			if((a[x][y] == a[nx][ny] || a[nx][ny] == 1) && dp[x][y] < dp[nx][ny]){
-				dp[nx][ny] = dp[x][y];
-				q.push({dp[nx][ny], {nx, ny}});
-			} else if(a[x][y] != a[nx][ny] && dp[x][y] + a[nx][ny] * tot[d[nx][ny]] < dp[nx][ny]){
-				dp[nx][ny] = dp[x][y] + a[nx][ny] * tot[d[nx][ny]];
-				q.push({dp[nx][ny], {nx, ny}});
-			}
-		}
-	}
-	//    cout << dp[n][m];
-	printf("%lld", dp[n][m]);
+ 
+int isBorder(int x,int y)
+{
+	for (int i=0;i<4;i++)
+		if (h[x+dx[i]][y+dy[i]]) return 1;
+	return 0;
 }
-
-int main(){
-    freopen("giun.inp","r",stdin);
+ 
+int main()
+{
+	freopen("giun.inp","r",stdin);
     freopen("giun.out","w",stdout);
-    
-	ios_base::sync_with_stdio(0);
-	cin.tie(0); cout.tie(0);
-	//    cin >> n >> m;
-	scanf("%lld %lld", &n, &m);
-	lp(i, 1, n) lp(j, 1, m) scanf("%lld", &a[i][j]);
-	lp(i, 1, n) lp(j, 1, m)
-		if(!d[i][j]) bfs(i, j);
-        for (int i = 1 ; i <= n ; i++ )
+	memset(h,-1,sizeof(h));
+	cin >> m >> n;
+	for (int i=1;i<=m;i++)
+		for (int j=1;j<=n;j++)
+			scanf("%d",&a[i][j]), p[a[i][j]].push_back(make_pair(i,j)), h[i][j]=0;
+	for (int i=1;i<=1000000;i++)
+		for (int j=0;j<int(p[i].size());j++)
+		{
+			int x=p[i][j].first,y=p[i][j].second;
+			if (!h[x][y] && isBorder(x,y)) bfs(x,y,a[x][y]);
+		}
+	for (int i = 1 ; i <= m ; i++)
     {
-        for (int j = 1 ; j <= m ; j++)
-        {
-            cerr << d[i][j] << " ";
-        }
+        for (int j = 1 ; j <= n ; j++) cerr << h[i][j] << " ";
         cerr << endl;
     }
-
-	dijk();
+	long long ans=0;
+	for (int i=2;i<m;i++)
+		for (int j=2;j<n;j++)
+			ans+=max(0,h[i][j]-a[i][j]);
+	cout << ans << endl;
 }

@@ -1,23 +1,43 @@
-Target: dientich 
+Target: Chiathe 
 Directory: G:\HocLapTrinh\cham\checker
-Test01: 0.114192s
+Test01: 0.139914s
 Accept
-Test02: 0.127918s
+Test02: 0.127922s
 Accept
-Test03: 0.166899s
+Test03: 0.170895s
 Accept
-Test04: 0.127919s
+Test04: 0.127924s
 Accept
-Test05: 0.760529s
+Test05: 0.125922s
 Accept
-Test06: 0.138915s
+Test06: 0.127919s
 Accept
-Test07: 0.142911s
+Test07: 0.127919s
 Accept
-Test08: 0.174891s
+Test08: 0.127920s
 Accept
-Test09: 0.303812s
+Test09: 0.127919s
 Accept
-Test10: 0.797502s
+Test10: 0.139913s
 Accept
-AC: 10/10
+Test11: 0.127921s
+Accept
+Test12: 0.141909s
+Accept
+Test13: 0.143910s
+Accept
+Test14: 0.127927s
+Accept
+Test15: 0.479701s
+Accept
+Test16: 0.618615s
+Accept
+Test17: 0.729544s
+Accept
+Test18: 0.907435s
+Accept
+Test19: 0.991386s
+Accept
+Test20: 1.063338s
+Accept
+AC: 20/20

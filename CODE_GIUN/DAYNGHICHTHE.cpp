@@ -3,6 +3,7 @@ using namespace std;
 #define ll long long 
 #define giuncute ios_base::sync_with_stdio(0) , cin.tie(0);
 const ll maxn = 6e4 + 7;
+const ll MOD = 1e9;
 ll n , a[maxn] , st[4 * maxn] = {0} ,  ans = 0 ;
 
 void update(ll id , ll l , ll r , ll u)
@@ -38,7 +39,7 @@ int main()
         
         if (ma > a[i] ) ans += get(1, 1, (int) 6e4 , a[i] + 1, ma);
         update(1,1,(int)6e4,a[i]);
-        ma = max(ma,a[i] );
+        ma = max(ma,a[i]);
     }
     cout << ans;
 }
